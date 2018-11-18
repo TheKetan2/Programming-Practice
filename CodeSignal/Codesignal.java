@@ -454,12 +454,11 @@ boolean isMonotonous(int[] sequence) {
 
 
 ////////////////////////////////////////
-int differentValuesInMultiplicationTable(int n, int m) {
+int differentValuesInMultiplicationTable2(int n, int m) {
     HashSet<Integer> hs = new HashSet<Integer>();
     for(int i = 1; i<=n; i++){
         for(int j = 1; j<=m; j++){
-            if(hs.add(i*j))
-               
+            hs.add(i*j);     
         }
     }
     return hs.size();
@@ -576,142 +575,590 @@ String insertDashes(String inputString) {
 
 
 ////////////////////////////////////////
+boolean isSumOfConsecutive(int n) {
+    for(int i = 1; i<=n; i++){
+        int sum = 0;
+        for(int j = i+1;j<n ; j++){
+            sum+=j;
+            if(sum == n)
+                return true;
+        }
+    }
+    return false;
+}
+
+
+
+////////////////////////////////////////
+int lastDigit(int a, int b) {
+    
+    int sol = 1;
+    while(b>0){
+        sol *=a;
+        sol %=10;
+        b--;
+    }
+    
+    return sol;
+}
+
+
+
+////////////////////////////////////////
+int divNumber(int k, int l, int r) {
+    int sol = 0;
+    
+    for(int i = l; i<=r; i++){
+        int count = 0;
+        for(int j = 1; j<=i; j++){
+            if(i % j == 0)
+                count++;
+        }
+        if(count == k)
+            sol++;
+    }
+    return sol;
+}
+
+
+////////////////////////////////////////
+boolean insideCircle(int[] point, int[] center, int radius) {
+    System.out.println((int)Math.sqrt((int)Math.pow(point[0]-center[0],2)+(int)Math.pow(point[1]-center[1],2)));
+    return (float)Math.sqrt((int)Math.pow(point[0]-center[0],2)+(int)Math.pow(point[1]-center[1],2)) <= radius;
+}
+
+
+
+////////////////////////////////////////
+String replaceFirstDigitRegExp(String input) {
+    int index = 0;
+    for(char c: input.toCharArray()){
+        if(c >='0' && c<='9')
+            break;
+         index++;   
+    }
+    return input.substring(0,index) +"#"+input.substring(index+1);
+}
+
+
+
+////////////////////////////////////////
+int gcdNaive(int a, int b) {
+
+    int gcd = 1;
+    for (int divisor = 2; divisor <= Math.min(a, b); divisor++) {
+      if (a % divisor == 0 && b % divisor == 0) {
+        gcd = divisor;
+      }
+    }
+  
+  
+    return gcd;
+  }
+  
+
+////////////////////////////////////////
+int countInversionsNaive(int[] inputArray) {
+    int sol = 0;
+    for(int i = 0; i<inputArray.length-1;i++){
+        for(int j = i+1; j<inputArray.length; j++){
+            if(inputArray[i]>inputArray[j])
+                sol++;
+        }
+    }
+    return sol;
+    
+}
+
+
+
+////////////////////////////////////////
+int[] fractionMultiplication(int[] a, int[] b) {
+    int[] fraction = {a[0]*b[0], a[1]*b[1]};
+    int div = Math.min(fraction[0],fraction[1]);
+    while(div !=1){
+        if(fraction[0]%div == 0 && fraction[1]%div == 0){
+            fraction[0]/=div;
+            fraction[1]/=div;
+            div = Math.min(fraction[0],fraction[1]);
+        }
+        else
+            div--;
+    }
+    return fraction;
+}
+
+
+
+////////////////////////////////////////
+boolean charactersRearrangement(String string1, String string2) {
+    if(string1.length() != string2.length()) return false;
+    char[] s1 = string1.toCharArray();
+    char[] s2 = string2.toCharArray();
+    Arrays.sort(s1);
+    Arrays.sort(s2);
+    
+    for(int i = 0; i<s1.length; i++){
+        if(s1[i] !=s2[i])
+            return false;
+    }
+    
+    return true;
+        
+}
+
+
+////////////////////////////////////////
+
+int[] firstReverseTry(int[] arr) { 
+    if(arr.length <2) return arr;
+    int temp = arr[0];
+    arr[0] = arr[arr.length-1];
+    arr[arr.length-1] = temp;
+    return arr;
+}
+
+
+////////////////////////////////////////
+int[] concatenateArrays(int[] a, int[] b) {
+    int[] sol = new int[a.length + b.length];
+    int i;
+    for(i = 0; i<a.length; i++){
+        sol[i] = a[i];
+    }
+    
+    for(int j = 0; j<b.length; j++){
+        sol[i] = b[j];
+        i++;
+    }
+    return sol;
+}
+
+
+
+////////////////////////////////////////
+int[] removeArrayPart(int[] inputArray, int l, int r) {
+    int[] sol = new int[inputArray.length - (r - l +1) ];
+    for(int i = 0, j = 0; i<inputArray.length; i++){
+        if( i < l || i>r ){
+            sol[j] = inputArray[i];
+            j++;
+        }
+    }
+    return sol;
+    
+}
+
+
+////////////////////////////////////////
+boolean isSmooth(int[] arr) {
+    //if(arr.length <2) return true;
+    
+    if(arr.length %2 == 0)
+        return arr[0] == arr[arr.length-1] && arr[arr.length-1] == (arr[arr.length/2]+arr[arr.length/2 - 1]);
+    else 
+        return arr[0] == arr[arr.length-1] && arr[arr.length-1] == arr[arr.length/2]; 
+    
+}
+
+
+
+////////////////////////////////////////
+int[] replaceMiddle(int[] arr) {
+    if(arr.length%2 == 0){
+        int[] sol = new int[arr.length-1];        
+        for(int i = 0, j = 0; i<arr.length; j++){
+            if(i == arr.length/2 -1){
+                sol[j] = arr[arr.length/2] +arr[arr.length/2-1];
+                i+=2;
+            }
+            else{
+                sol[j] = arr[i];
+                i++;
+            }
+        }
+        return sol;
+            
+    }
+    return arr;
+        
+    
+}
+
+
+
+////////////////////////////////////////
+int makeArrayConsecutive2(int[] statues) {
+    Arrays.sort(statues);
+    HashSet<Integer> hs = new HashSet<Integer>();
+    for(int num:statues){
+        hs.add(num);
+    }
+    int sol = 0;
+    for(int i = statues[0]+1 ; i<statues[statues.length-1];i++){
+        if(hs.add(i))
+            sol++;
+    }
+    return sol;
+}
+
+
+////////////////////////////////////////
+String buildPalindrome(String st) {
+    String str = new StringBuilder(st).reverse().toString();
+if(str.equals(st)) return st;
+for(int i = 0;i<st.length(); i++ ){
+System.out.println("New String: "+st.substring(0,i)+str);
+if((st.substring(0,i)+str).equals(new StringBuilder((st.substring(0,i)+str)).reverse().toString() ))
+return st.substring(0,i)+str;
+}
+return "";
+}
 
 
 
 ////////////////////////////////////////
 
+int largestDistance(int[] a) {
 
-
-////////////////////////////////////////
-
-
-////////////////////////////////////////
-
-
-
-////////////////////////////////////////
-
-
-
-////////////////////////////////////////
-
-
-////////////////////////////////////////
-
-
+    int[] mx = new int[] {a[0], a[1]};
+    int[] mn =  new int[] {a[a.length-2], a[a.length-1]} ;
+    for (int i = 0; i < a.length; i++) {
+      int k = i % 2;
+      if (a[i] > mx[k]) {
+        mx[k] = a[i];
+      } else if (a[i] < mn[k]) {
+        mn[k] = a[i];
+      }
+    }
+    return Math.max(mx[0] - mn[0], mx[1] - mn[1]);
+  }
+  
 
 ////////////////////////////////////////
 
-
-
-////////////////////////////////////////
-
-
-////////////////////////////////////////
-
-
+boolean isInRange(int a, int b, int c) {
+    return b>=a && b<=c;
+}
 
 ////////////////////////////////////////
-
-
-
-////////////////////////////////////////
-
-
-////////////////////////////////////////
+String caesarBoxCipherEncoding(String inputString) {
+    int n = (int)Math.sqrt(inputString.length());
+    String sol = "";
+    for(int i = 0; i<n;i++){
+        for(int j = i; j<inputString.length(); j+=n){
+            sol += inputString.charAt(j)+"";
+        }
+    }
+    return sol;
+}
 
 
 
 ////////////////////////////////////////
+int sumOfMultiples(int n, int k) {
+    int sum = 0;
+    for(int i  = 1; ; i++ ){
+        if(i*k <=n)
+            sum +=(i*k);
+        else 
+            break;
+    }
+    return sum;
+}
+
+
+
+////////////////////////////////////////
+int differentSubstringsTrie(String inputString) {
+
+    class Helper {
+      void addNode(ArrayList<int[]> lastVersion) {
+        int[] line = new int[26];
+        lastVersion.add(line);
+      }
+    }
+    Helper h = new Helper();
+  
+    int nodesCount = 1;
+    ArrayList<int[]> trie = new ArrayList<>();
+    h.addNode(trie);
+  
+    for (int i = 0; i < inputString.length(); i++) {
+      int currentNode = 0;
+      for (int j = i; j < inputString.length(); j++) {
+        int symbol = inputString.charAt(j) - 'a';
+        if (trie.get(currentNode)[symbol] == 0) {
+          h.addNode(trie);
+          trie.get(currentNode)[symbol] = nodesCount;
+          nodesCount++;
+        }
+        currentNode = trie.get(currentNode)[symbol];
+      }
+    }
+  
+    return nodesCount-1;
+  }
+  
+
+////////////////////////////////////////
+boolean isPower(int n) {
+    int power = 2;
+    while(power<(n)){
+        System.out.println((Math.pow(n,1.0/power)));
+        if(n == (int)Math.pow((int)Math.ceil(Math.pow(n,1.0/power)),power))
+            return true;
+        power++;
+    }
+    return n<2;
+}
+
+
+
+////////////////////////////////////////
+int isSumOfConsecutive2(int n) {
+    int sol = 0;
+    for(int i = 1; i<n; i++){
+        int sum = i;
+        for(int j = i+1;j<n ; j++){
+            sum+=j;
+            if(sum == n)
+                sol++;
+        }
+    }
+    return sol;
+}
+
+//1 2 3 4 5 6 7 8 
+
+
+////////////////////////////////////////
+int squareDigitsSequence(int a0) {
+    
+    ArrayList<Integer> list = new ArrayList<Integer>();
+    int sol = 0;
+    list.add(a0);
+    while(true){
+        int sum = 0;
+        while(a0!=0){
+            //System.out.println(a0%10 * a0%10);
+            sum += (a0%10) * (a0%10);
+            a0 /=10;
+        }
+        System.out.println(sum);
+        if(list.contains(sum))
+            break;
+        else 
+            list.add(sum);
+        a0 = sum;
+        sol++;
+    }
+       
+    
+    return sol+2;
+}
+
+
+////////////////////////////////////////
+
+int pagesNumberingWithInk(int current, int numberOfDigits) {
+    String numbers="";
+    int count = 0;
+    for(int i = current;  ; i++){
+        numbers += i+"";
+        if(numbers.length()>numberOfDigits)
+            break;
+        count = i;        
+    }
+    return count;
+}
+
+
+////////////////////////////////////////
+int[] easyAssignmentProblem(int[][] skills) {
+    
+    if (skills[0][0] + skills[1][1] > skills[0][1] + skills[1][0]){
+        int[] sol = {1, 2};
+        return sol;
+    }
+       int[] sol = {2, 1};
+        return sol;
+}
+
+
+
+////////////////////////////////////////
+def permutationShift(permutation):
+    
+    s = []
+    for i, e in enumerate(permutation):
+        s.append(e-i)
+    return max(s) - min(s)
+
+////////////////////////////////////////
+int commonCharacterCount(String s1, String s2) {
+    int sol = 0;
+    for(char c: s1.toCharArray()){
+        if(s2.replaceFirst(c+"","").length() != s2.length()){
+            s2 = s2.replaceFirst(c+"","");
+            sol++;
+        }
+        s1 = s1.replaceFirst(c+"","");
+    }
+    return sol;
+}
+
+
+
+////////////////////////////////////////
+String integerToStringOfFixedWidth(int number, int width) {
+    String num = number+"";
+    if(num.length()>width)
+        return num.substring(num.length() - width);
+    if(num.length()<width){
+        while(num.length() != width)
+            num = "0"+num;
+        return num;
+    }
+    return num;
+}
+
+
+
+////////////////////////////////////////
+int fibonacciIndex(int n) {
+
+    int a = 0;
+    int b = 1;
+    int i = 1;
+    while (String.valueOf(a).length() < n) {
+      int c = a + b;
+      a = b;
+      b = c;
+      i++;
+    }
+    return i;
+  }
+  
+
+////////////////////////////////////////
+int minimalNumberOfCoins(int[] coins, int price) {
+    int sol = 0;
+    for(int i = coins.length - 1; i>=0; i--){
+        sol += price/coins[i];
+        price %=coins[i];
+    }
+    return sol;
+}
 
 
 
 ////////////////////////////////////////
 
-
-////////////////////////////////////////
-
-
-
-////////////////////////////////////////
-
+int candies(int n, int m) {
+    return n*(m/n);
+}
 
 
 ////////////////////////////////////////
+int specialPolynomial(int x, int n) {
+    int k = 0;
+    int sum = 0;
+    while(true){
+        sum += (int)Math.pow(x,k);
+        if(sum>n)
+            return k-1;
+        k++;
+    }
+}
 
 
 ////////////////////////////////////////
+int largestFullBinaryTree(int[] parent) {
 
-
-
-////////////////////////////////////////
-
-
-
-////////////////////////////////////////
-
-
-////////////////////////////////////////
-
-
-
-////////////////////////////////////////
-
-
-
-////////////////////////////////////////
-
-
-////////////////////////////////////////
-
-
-
-////////////////////////////////////////
-
-
-
-////////////////////////////////////////
-
-
-////////////////////////////////////////
-
-
-
-////////////////////////////////////////
-
-
-
-////////////////////////////////////////
-
-
-////////////////////////////////////////
-
-
-
-////////////////////////////////////////
-
+    class Graph {
+      ArrayList<Integer>[] edges;
+      int maxBinTree;
+  
+      Graph(int[] parent) {
+        maxBinTree = 1;
+        edges = new ArrayList[parent.length];
+        for (int i = 0; i < edges.length; i++) {
+          edges[i] = new ArrayList();
+        }
+        for (int i = 1; i < parent.length; i++) {
+          edges[parent[i]].add(i);
+        }
+      }
+  
+      int dfs(int v) {
+        int firstMax = -1;
+        int secondMax = -1;
+        for (int u : edges[v]) {
+          int curMax = dfs(u);
+          if (curMax > firstMax) {
+            secondMax = firstMax;
+            firstMax = curMax;
+          } else if (curMax > secondMax) {
+            secondMax = curMax;
+          }
+        }
+        if (secondMax == -1) {
+          return 1;
+        }
+        int result = 1 + firstMax + secondMax;
+        if (result > maxBinTree) {
+          maxBinTree = result;
+        }
+        return result;
+      }
+    }
+  
+    Graph g = new Graph(parent);
+    g.dfs(0);
+    return g.maxBinTree;
+  }
+  
 
 
 ////////////////////////////////////////
+boolean sulkyBoy(boolean statement) {
+    boolean boys_statement = !statement;
+    return statement;
+  }
+  
 
 
 ////////////////////////////////////////
+int[] arrayComplexElementsProduct(int[] real, int[] imag) {
 
+    int[] answer = {real[0], imag[0]};
+    for (int i = 1; i < real.length; i++) {
+      int tmp = answer[0] * real[i]  - answer[1] * imag[i];
+      answer[1] = answer[1] * real[i] + answer[0] * imag[i];
+      answer[0] = tmp;
+    }
+    return answer;
+  }
+  
+
+////////////////////////////////////////
+
+int extraNumber(int a, int b, int c) {
+    if(a == b)
+        return c;
+    if(a==c)
+        return b;
+    return a;
+}
 
 
 ////////////////////////////////////////
-
-
-
-////////////////////////////////////////
-
-
-////////////////////////////////////////
-
-
-
-////////////////////////////////////////
+boolean isTandemRepeat(String inputString) {
+    System.out.println(inputString.substring(0,inputString.length()/2));
+    System.out.println(inputString.substring(inputString.length()/2));
+    return inputString.substring(0,inputString.length()/2).equals(inputString.substring(inputString.length()/2));
+}
 
 
 
