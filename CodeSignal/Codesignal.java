@@ -1164,107 +1164,493 @@ boolean isTandemRepeat(String inputString) {
 
 ////////////////////////////////////////
 
+String myConcat(String[] strings, String separator) {
+    String sol = "";
+    for(String s: strings){
+        sol += s+separator;
+    }
+    return sol;
+}
 
 ////////////////////////////////////////
+int axisAlignedBoundingBox(int[] x, int[] y) {
 
-
-
-////////////////////////////////////////
-
-
-
-////////////////////////////////////////
-
-
-////////////////////////////////////////
-
-
-
-////////////////////////////////////////
-
-
-
-////////////////////////////////////////
-
-
-////////////////////////////////////////
-
-
-
-////////////////////////////////////////
-
+    int minX = x[0],
+        maxX = x[0],
+        minY = y[0],
+        maxY = y[0];
+  
+    for (int i = 1; i < x.length; i++) {
+      minX = Math.min(x[i], minX);
+      maxX = Math.max(x[i], maxX);
+      minY = Math.min(y[i], minY);
+      maxY = Math.max(y[i], maxY);
+    }
+  
+    return (maxX - minX) * (maxY - minY);
+  }
+  
 
 
 ////////////////////////////////////////
+boolean isLuckyNumber(int n) {
+    while (n > 0) {
+      int tmpDigit = n % 10;
+      if ( tmpDigit !=4 && tmpDigit !=7 ) {
+        return false;
+      }
+      n = n / 10;
+    }
+    return true;
+  }
+  
 
 
 ////////////////////////////////////////
-
-
-
-////////////////////////////////////////
-
-
-
-////////////////////////////////////////
-
-
-////////////////////////////////////////
-
+int numberOfEvenDigits(int n) {
+    int sol = 0;
+    while(n>0){
+        if((n%10)%2==0)
+            sol++;
+        n/=10;
+    }
+    return sol;
+}
 
 
 ////////////////////////////////////////
+boolean checkFactorial(int n) {
 
-
-
-////////////////////////////////////////
-
-
-////////////////////////////////////////
-
-
-
-////////////////////////////////////////
-
-
-
-////////////////////////////////////////
-
-
-////////////////////////////////////////
-
-
-
-////////////////////////////////////////
-
+    for (int divisor = 2; n != 1; divisor++) {
+      if (n % divisor == 0) {
+        n /= divisor;
+      } else {
+        return  false ;
+      }
+    }
+    return true;
+  }
+  
 
 
 ////////////////////////////////////////
 
+int[] primeFactors2(int n) {
+    int[] prime = {2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97, 101, 103, 107, 109, 113, 127, 131, 137, 139, 149, 151, 157, 163, 167};
+    ArrayList<Integer> list = new ArrayList<Integer>();
+    for(int i = 0; prime[i]<n;i++){
+        if(n%prime[i] == 0){
+            list.add(prime[i]);
+        }
+    }
+    int[] sol = new int[list.size()];
+    int k = 0;
+    for(int num: list)
+    {
+        sol[k] = num;
+        k++;
+    }
+    return sol;
+    
+}
+
+
+
+////////////////////////////////////////
+int numberOfEvenDigits(int n) {
+    int sol = 0;
+    while(n>0){
+        if((n%10)%2==0)
+            sol++;
+        n/=10;
+    }
+    return sol;
+}
+
+
+////////////////////////////////////////
+boolean passwordCheckRegExp(String inputString) {
+    
+    if(inputString.length()>=5)
+        if(inputString.replaceAll("[a-z]","").length() != inputString.length())
+            if(inputString.replaceAll("[A-Z]","").length() != inputString.length())
+                if(inputString.replaceAll("[0-9]","").length() != inputString.length())
+                    return true;
+        
+    return false;
+}
+
+
 
 ////////////////////////////////////////
 
+int halvingSum(int n) {
+    int sum = n;
+    while(n>0){
+        sum += n/2;
+        n/=2;
+    }
+    return sum;
+}
 
 
 ////////////////////////////////////////
+boolean arithmeticExpression(int a, int b, int c) {
+    return (a+b == c)|| (a-b == c)||(a*b == c)||((float)a/b == c);
+}
+
+
+////////////////////////////////////////
+boolean isDiagonalMatrix(int[][] matrix) {
+    for(int i = 0; i<matrix.length; i++){
+        for(int j = 0; j<matrix[0].length; j++){
+            if(j!=i){
+                if(matrix[i][j] != 0)
+                    return false;
+            }
+        }
+    }
+    return true;
+}
 
 
 
 ////////////////////////////////////////
+int[] onlyEvenNumbers(int left, int right) {
+    ArrayList<Integer> result = new ArrayList<>();
+    for (int i = left; i <= right; i++) {
+      if (i % 2 == 0) {
+        result.add(i);
+      }
+    }
+  
+    int[] array = new int[result.size()];
+    for (int i = 0; i < array.length; ++i) {
+      array[i] = result.get(i);
+    }
+    return array;
+  }
+  
 
 
 ////////////////////////////////////////
+boolean higherVersion(String ver1, String ver2) {
+    String[] v1 = ver1.split("\\.");
+    String[] v2 = ver2.split("\\.");
+    for(int i = 0; i<v1.length; i++){
+        if(Integer.parseInt(v1[i]) > Integer.parseInt(v2[i]) )
+            return true;
+        if(Integer.parseInt(v1[i]) < Integer.parseInt(v2[i]) )
+            return false;
+    }
+    return false;
+}
+
+
+////////////////////////////////////////
+int swapNeighbouringDigits(int n) {
+    String sol = "";
+    char[] arr= (n+"").toCharArray();
+    
+    for(int i = 1; i<arr.length; i+=2){
+        sol += (arr[i]+""+arr[i-1])+"";
+    }
+    return Integer.parseInt(sol.trim());
+}
 
 
 
 ////////////////////////////////////////
+int seatsInTheater(int nCols, int nRows, int col, int row) {
+    return (nRows-row)*(nCols - col +1);
+}
 
 
 
 ////////////////////////////////////////
+int lrSegmentNumber(int l, int r) {
+    String sol = "";
+    for(int i = l; i<=r; i++){
+        sol += i+"";
+    }
+    return Integer.parseInt(sol);
+}
 
 
 ////////////////////////////////////////
+int visitsOnCircularRoad(int n, int[] visitsOrder) {
+
+    int current = 1,
+        res = 0;
+    for (int i = 0; i < visitsOrder.length; i++) {
+      res += Math.min(Math.abs(visitsOrder[i] - current),
+          n - Math.abs(visitsOrder[i] - current));
+      visitsOrder[i] = current;
+    }
+    return res;
+  }
+  
+
+
+////////////////////////////////////////
+int summaryProficiency(int[] a, int n, int m) {
+    int sum = 0;
+    for(int i = 0; i<a.length; i++){
+        if(n == 0) break;
+        if(a[i] >= m){
+            sum +=a[i];
+            n--;
+        }
+    }
+    return sum;
+}
+
+
+
+////////////////////////////////////////
+int rectangleRotation(int a, int b) {
+    a=(int)(a/Math.sqrt(2));
+    b=(int)(b/Math.sqrt(2));
+    int c = (a+1)*(b+1)+a*b;
+    return c%2==0?c-1:c;
+}
+
+
+////////////////////////////////////////
+int crosswordFormation(String[] words) {
+    int t = 0;
+ if(words[0]==null||words[1]==null||words[2]==null||words[3]==null) return 0;
+for (int i = 0; i < words.length; i++)
+    for (int j = 0; j < words.length; j++)
+        for (int k = 0; k < words.length; k++)
+            for (int l = 0; l < words.length; l++)
+                if (i != j && i != k && i != l && 
+                    j != k && j != l && k != l)
+                    t+=get(words[i],words[j],words[k],words[l]);
+return t;
+}
+
+ private int get(String s1, String s2, String s3, String s4) {
+    // TODO Auto-generated method stub
+    int kq = 0;
+     
+    int ls1 = s1.length();
+    int ls2 = s2.length();
+    int ls3 = s3.length();
+    int ls4 = s4.length();
+    for (int i = 0; i < ls1; i++) {
+        for (int j = 0; j < ls2 ; j++) {
+            if (s1.charAt(i) == s2.charAt(j)) {
+               // System.out.println(s1.charAt(i));
+                for (int j2 = j+2; j2 < ls2  ; j2++) {
+                    for (int k = 0; k < ls3; k++) {
+                        if (s2.charAt(j2) == s3.charAt(k)) {
+                            for (int k2 = k+2; k2 < ls3 ; k2++) {
+                                for (int l2 = ls4-1; l2 >-1 ; l2--) {
+                                    if (s3.charAt(k2) == s4.charAt(l2)) {
+                                        int p4 = l2 - j2 + j;
+                                        int p1 = i + k2 - k;
+                                        if(p4>-1&&p4<ls4&&p1<ls1&&p1>-1)
+                                            if (s4.charAt(p4) == s1.charAt(p1))
+                                            {
+                                             //   System.out.println(i+" "+j2 +" "+k2+" "+p4);
+                                                kq++;
+                                            }
+                                    }
+
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    return kq;
+}
+
+
+////////////////////////////////////////
+String reduceString(String inputString) {
+    while(true){
+        if(inputString.length() <= 1) return "";
+        if(inputString.charAt(0) == inputString.charAt(inputString.length()-1) && inputString.length()>2)
+            inputString = inputString.substring(1,inputString.length()-1);
+        else 
+            return inputString;
+    }
+    
+}
+
+
+
+////////////////////////////////////////
+int[][] constructSubmatrix(int[][] matrix,
+                           int[] rowsToDelete,
+                           int[] columnsToDelete) {
+  int newRowsLength = matrix.length - rowsToDelete.length;
+  int newColumnsLength = matrix[0].length - columnsToDelete.length;
+  int[][] res = new int[newRowsLength][newColumnsLength];
+  boolean[] useRow = new boolean[matrix.length];
+  boolean[] useColumn = new boolean[matrix[0].length];
+  Arrays.fill(useRow, true);
+  Arrays.fill(useColumn, true);
+
+  for (int i = 0; i < rowsToDelete.length; i++) {
+    useRow[rowsToDelete[i]] = false;
+  }
+  for (int i = 0; i < columnsToDelete.length; i++) {
+    useColumn[columnsToDelete[i]] = false;
+  }
+
+  for (int i = 0, i2 = 0; i < matrix.length; i++) {
+    if (useRow[i]) {
+      for (int j = 0, j2 = 0; j < matrix[0].length; j++) {
+        if (useColumn[j]) {
+          res[ i2 ][j2++] = matrix[i][j];
+        }
+      }
+      i2++;
+    }
+  }
+
+  return res;
+}
+
+
+////////////////////////////////////////
+int[] alternatingSums(int[] a) {
+    int odd = 0;
+    int eve = 0;
+    for(int i = 0; i<a.length; i++){
+        if(i%2==0)
+            eve +=a[i];
+        else
+            odd+=a[i];
+    }
+    int[] sol = {eve,odd};
+    return sol;
+}
+
+
+
+////////////////////////////////////////
+int digitsProduct(int product) {
+    if(isPrime(product)) return -1;
+    for(int i = product; ; i++){
+        int ml = 1;
+        int num = i;
+        while(num!=0){
+            ml *= num%10;
+            num/=10;
+        }
+        System.out.println(ml+" "+i);
+        if(ml == product)
+            return i;
+    }
+}
+boolean isPrime(int n){
+    if(n==2) return true;
+    if(n==0 || n==1) return false;
+    for(int i = 2; i<=n/2+1; i++){
+        if(n%i == 0)
+            return false;
+    }
+    return true;
+}
+
+
+
+////////////////////////////////////////
+int createAnagram(String s, String t) {
+
+    int[] cnt1 = new int[26];
+    int[] cnt2 = new int[26];
+    for (int i = 0; i < s.length(); i++) {
+      cnt1[s.charAt(i) - 'A']++;
+      cnt2[t.charAt(i) - 'A']++;
+    }
+  
+    int ans = 0;
+    for (int i = 0; i < 26; i++) {
+      ans += Math.abs(cnt1[i] - cnt2[i]);
+    }
+  
+    return ans/2;
+  }
+  
+
+////////////////////////////////////////
+String[] sortByLength(String[] inputArray) {
+    Arrays.sort(inputArray, new Comparator<String>(){
+            public int compare(String s1, String s2){
+                return s1.length() - s2.length();
+            }
+        });
+    return inputArray;
+}
+
+
+
+////////////////////////////////////////
+ArrayList<Integer> arrayCenter(ArrayList<Integer> a) {
+
+    int n = a.size();
+    int suma = a.get(0),
+        mina = suma;
+    for (int i = 1; i < n; i++) {
+      suma += a.get(i);
+      mina = Math.min(mina, a.get(i));
+    }
+  
+    ArrayList<Integer> b = new ArrayList<>();
+    for (int i = 0; i < n; i++) {
+      if (Math.abs(n * a.get(i) - suma) < n * mina) {
+        b.add(a.get(i));
+      }
+    }
+  
+    return b;
+  }
+  
+
+
+////////////////////////////////////////
+int depositProfit(int deposit, int rate, int threshold) {
+    double grow = 1 + rate / 100.0;
+    int year = (int)(Math.log((double)threshold / deposit) / Math.log(grow));
+    if (deposit * Math.pow(grow, year) < threshold) {
+      year++;
+    }
+    return year;
+  }
+
+////////////////////////////////////////
+int countSumOfTwoRepresentations3(int n, int l, int r) {
+    ArrayList<Integer> list = new ArrayList<Integer>();
+    for(int i = l; i<=r; i++){
+        list.add(i);
+    }
+    int sol=0;
+    for(int num:list){
+        if(Math.abs(num-n)>=num){
+            if(list.contains(Math.abs(num-n)))
+                sol++;
+        }
+    }
+    return sol;
+}
+////////////////////////////////////////
+int countSumOfTwoRepresentations3(int n, int l, int r) {
+    int res {};
+    for (int i = 0; i <= 1000000; ++i) {
+        if (l <=  n - i && n - i <= r && n - i <= i && l <= i && i <= r) {
+            res++;
+        }
+    }
+    return res;
+}
 
 
 
