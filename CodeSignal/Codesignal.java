@@ -1655,28 +1655,104 @@ int countSumOfTwoRepresentations3(int n, int l, int r) {
 
 
 ////////////////////////////////////////
+int chessKnight(String cell) {
+    int row =  cell.charAt(1)-'1'+1 ,
+        column = cell.charAt(0) - 'a' + 1;
+    int[][] steps = {
+        {-2, -1}, {-1, -2}, {1, -2}, {2, -1},
+        {2, 1}, {1, 2}, {-1, 2}, {-2, 1}
+    };
+    int answer = 0;
+  
+    for (int i = 0; i < steps.length; i++) {
+      int tmpRow = row + steps[i][0];
+      int tmpColumn = column + steps[i][1];
+      if (tmpRow >= 1 && tmpRow <= 8 &&
+          tmpColumn >= 1 && tmpColumn <= 8) {
+        answer++;
+      }
+    }
+  
+    return answer;
+  }
+  
 
+
+////////////////////////////////////////
+int[][] create2DArray(int[] lengths) {
+
+    int[][] result = new int[lengths.length][];
+  
+    for (int i = 0; i < lengths.length; i++) {
+      result[i] = new int[lengths[i]];
+      for (int j = 0; j < lengths[i]; j++) {
+        result[i][j] = j;
+      }
+    }
+  
+    return result;
+  }
+  
+
+////////////////////////////////////////
+int[] improperFractionToMixed(int[] a) {
+
+    int[] b = {a[0] / a[1], 0, 0};
+    b[1] = a[0] - a[1] * b[0];
+    b[2] = a[1];
+  
+    return b;
+  }
+  
 
 
 ////////////////////////////////////////
 
-
-////////////////////////////////////////
-
-
-
-////////////////////////////////////////
-
-
-
-////////////////////////////////////////
+int arrayMaximalAdjacentDifference(int[] inputArray) {
+    int diff = 0;
+    for(int i = 1; i<inputArray.length;i++){
+        if(diff < Math.abs(inputArray[i-1] - inputArray[i]))
+            diff = Math.abs(inputArray[i-1] - inputArray[i]); 
+    }
+    return diff;
+}
 
 
 ////////////////////////////////////////
+int largestNumber(int n) {
+    String sol = "";
+    for(int i = 0; i<n; i++){
+        sol += "9";
+    }
+    return Integer.parseInt(sol);
+}
+
+
+////////////////////////////////////////
+String longestWord(String text) {
+    String[] str = text.split(" ");
+    String sol = "";
+    int len = 0;
+    for(String s: str){
+        s = s.replaceAll("[^a-zA-Z]","");
+        if(s.length()> len)
+        {
+            len = s.length();
+            sol = s;
+        }   
+    }
+    return sol;
+}
 
 
 
 ////////////////////////////////////////
+boolean isCorrectSentence(String inputString) {
+    if(inputString.charAt(0)>= 'A' && inputString.charAt(0)<= 'Z' )
+        if(inputString.substring(inputString.length()-1).equals("."))
+            return true;
+    return false;
+}
 
 
 
