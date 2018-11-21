@@ -1757,36 +1757,227 @@ boolean isCorrectSentence(String inputString) {
 
 
 ////////////////////////////////////////
+int zigzag(int[] a) {
+
+    int best = 1;
+    int left = 0;
+    while (left < a.length) {
+      int right = left+1  ;
+      while (right < a.length) {
+        if (right == left + 1) {
+          if (a[left] == a[right]) {
+            break;
+          }
+        } else {
+          if ((a[right - 1] - a[right - 2]) * (a[right - 1] - a[right]) <= 0) {
+            break;
+          }
+        }
+        right++;
+      }
+      best = Math.max(best, right - left);
+      left = right;
+      if (left < a.length && a[left - 1] != a[left]) {
+        left--;
+      }
+    }
+  
+    return best;
+  }
+  
+
+////////////////////////////////////////
+int countLineColorings(int points, int colors) {
+    int result = colors;
+    for (int i = 1; i < points; i++) {
+      result *= colors - 1;
+    }
+    return result;
+  }
+  
+
+
+////////////////////////////////////////
+int countInversionsNaive(int[] inputArray) {
+
+    int result = 0;
+  
+    for (int i = 0; i < inputArray.length; i++) {
+      for (int j = i + 1; j < inputArray.length; j++) {
+        if (inputArray[j] < inputArray[i]) {
+          result++;
+        }
+      }
+    }
+    return result;
+  }
+  
+
+
+////////////////////////////////////////
+int leastCommonPrimeDivisor(int a, int b) {
+
+    for (int divisor = 2; a > 1 && b > 1; divisor++) {
+      if (a % divisor == 0 && b % divisor == 0) {
+        return divisor;
+      }
+      while (a % divisor == 0) {
+        a /=  divisor ;
+      }
+      while (b % divisor == 0) {
+        b /= divisor;
+      }
+    }
+  
+    return -1;
+  }
+  
+
+////////////////////////////////////////
+
+String removeAdjacent(String s) {
+
+    if (s.equals("")) {
+      return "";
+    }
+  
+    StringBuilder ans = new StringBuilder();
+    ans.append(s.charAt(0));
+    for (int i = 1; i < s.length(); i++) {
+      if (s.charAt(i) != s.charAt(i - 1)) {
+        ans.append(s.charAt(i));
+      }
+    }
+  
+    return ans.toString();
+  }
+  
+
+////////////////////////////////////////
+void merge(int[] sequence, int left, int middle, int right) {
+    int[] result = new int[right - left];
+    int i, j;
+    int k = 0;
+  
+    for (i = left, j = middle; i < middle && j < right; ) {
+      if (sequence[i] < sequence[j]) {
+        result[k++] = sequence[i];
+        i++;
+      }
+      else {
+        result[k++] = sequence[j];
+        j++;
+      }
+    }
+  
+    while (i < middle) {
+      result[k++] = sequence[i];
+      i++;
+    }
+  
+    while (j < right) {
+      result[k++] = sequence[j];
+      j++;
+    }
+  
+    for (i = left; i < right; i++) {
+      sequence[i] = result[i - left];
+    }
+  }
+  
+  void split(int[] sequence, int left, int right) {
+    if (left + 1 == right) {
+      return;
+    }
+    int middle = (left + right) / 2;
+    split(sequence, left, middle);
+    split(sequence, middle, right);
+    merge(sequence, left, middle, right);
+  }
+  
+  int[] mergeSort(int[] sequence) {
+    split(sequence, 0, sequence.length);
+  
+    return sequence;
+  }
+  
+
+
+////////////////////////////////////////
+int largestFullBinaryTree(int[] parent) {
+
+    class Graph {
+      ArrayList<Integer>[] edges;
+      int maxBinTree;
+  
+      Graph(int[] parent) {
+        maxBinTree = 1;
+        edges = new ArrayList[parent.length];
+        for (int i = 0; i < edges.length; i++) {
+          edges[i] = new ArrayList();
+        }
+        for (int i = 1; i < parent.length; i++) {
+          edges[parent[i]].add(i);
+        }
+      }
+  
+      int dfs(int v) {
+        int firstMax = -1;
+        int secondMax = -1;
+        for (int u : edges[v]) {
+          int curMax = dfs(u);
+          if (curMax > firstMax) {
+            secondMax = firstMax;
+            firstMax = curMax;
+          } else if (curMax > secondMax) {
+            secondMax = curMax;
+          }
+        }
+        if (secondMax == -1) {
+          return 1;
+        }
+        int result = 1 + firstMax + secondMax;
+        if (result > maxBinTree) {
+          maxBinTree = result;
+        }
+        return result;
+      }
+    }
+  
+    Graph g = new Graph(parent);
+    g.dfs(0);
+    return g.maxBinTree;
+  }
+  
+
+////////////////////////////////////////
+String oneTwoMany(int n) {
+    if(n == 1)
+        return "one";
+    if(n == 2)
+        return "two";
+    return "many";
+}
+
 
 
 ////////////////////////////////////////
 
-
-
-////////////////////////////////////////
-
-
-
-////////////////////////////////////////
-
-
-////////////////////////////////////////
-
-
-
-////////////////////////////////////////
-
-
-
-////////////////////////////////////////
-
-
-////////////////////////////////////////
-
-
-
-////////////////////////////////////////
-
+String longestDigitsPrefix(String inputString) {
+    
+    String sol ="";
+    
+    if(Character.isDigit(inputString.charAt(0))){
+            
+        for(char c: inputString.toCharArray()){
+            if(Character.isDigit(c))
+                sol +=(c+"");
+            else break;
+        }
+        
+    }
+    return sol;
+}
 
 
 ////////////////////////////////////////
