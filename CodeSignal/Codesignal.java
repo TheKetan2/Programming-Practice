@@ -527,6 +527,95 @@ int candles(int candlesNumber, int makeNew) {
 
 
 ////////////////////////////////////////
+int arrayMode(int[] sequence) {
+    int[] arr = new int[10000];
+    int max = 0;
+    int sol = 0;
+    for(int num:sequence){
+       arr[num]++;
+       if(max<arr[num]){
+          max = arr[num];
+          sol = num;
+       }
+          
+    }
+    return sol;
+ }
+////////////////////////////////////////
+
+int[][] matrixTransposition(int[][] matrix) {
+    int[][] sol = new int[matrix[0].length][matrix.length];
+    
+    for(int i = 0; i<matrix.length; i++){
+        for(int j = 0; j<matrix[0].length; j++){
+            sol[j][i] = matrix[i][j];
+        }
+    }
+    return sol;
+}
+
+////////////////////////////////////////
+
+boolean validTime(String time) {
+
+    class Helper {
+      int charToInt(char symbol) {
+        return symbol - '0';
+      }
+    }
+    Helper h = new Helper();
+  
+    int hours = h.charToInt(time.charAt(0))*10 + h.charToInt(time.charAt(1)),
+        minutes = h.charToInt(time.charAt(3)) * 10 + h.charToInt(time.charAt(4));
+  
+    if (hours < 24 && minutes < 60) {
+      return true;
+    }
+    return false;
+  }
+
+
+////////////////////////////////////////
+
+boolean isInformationConsistent(int[][] evidences) {
+
+    for (int j = 0; j < evidences[0].length; j++) {
+      boolean innocent = false,
+              guilty = false;
+      for (int i = 0; i < evidences.length; i++) {
+        switch (evidences[i][j]) {
+          case -1:
+            innocent = true;
+            break;
+          case 1:
+            guilty = true;
+            break;
+        }
+      }
+  
+      if ( innocent && guilty ) {
+        return false;
+      }
+    }
+  
+    return true;
+  }
+
+  
+  /////////////////////////////////////////////
+
+  int rightmostRoundNumber(int[] inputArray) {
+    int index = 0;
+    for(int i = inputArray.length-1; i>=0; i--){
+        
+        if(inputArray[i]%10 == 0)
+            return i;
+        
+    }
+    return -1;
+}
+
+////////////////////////////////////////////////
 
 int countBlackCells(int n, int m) {
     int div = 1;
@@ -1254,6 +1343,29 @@ int[] primeFactors2(int n) {
     
 }
 
+////////////////////////////////////////
+
+int[] primeFactors(int n) {
+    ArrayList<Integer> factors = new ArrayList<>();
+    int divisor = 2;
+  
+    while (n >= 2) {
+      if (n % divisor == 0) {
+        factors.add(divisor);
+        n /= divisor;
+      } else {
+        divisor++;
+      }
+    }
+  
+    int[] ans = new int[factors.size()];
+    for (int i = 0; i < ans.length; ++i) {
+      ans[i] = factors.get(i);
+    }
+    return ans;
+  }
+  
+
 
 
 ////////////////////////////////////////
@@ -1834,6 +1946,26 @@ int leastCommonPrimeDivisor(int a, int b) {
   
 
 ////////////////////////////////////////
+int greatestCommonPrimeDivisor(int a, int b) {
+    int sol = 0;
+    for (int divisor = 2; a > 1 && b > 1; divisor++) {
+      if (a % divisor == 0 && b % divisor == 0) {
+        sol = divisor;
+      }
+      while (a % divisor == 0) {
+        a /=  divisor ;
+      }
+      while (b % divisor == 0) {
+        b /= divisor;
+      }
+    }
+  
+    return sol != 0? sol:-1;
+}
+
+////////////////////////////////////////
+
+
 
 String removeAdjacent(String s) {
 
@@ -1981,13 +2113,57 @@ String longestDigitsPrefix(String inputString) {
 
 
 ////////////////////////////////////////
+boolean isPangram(String sentence) {
+    boolean[] found = new boolean[26];
+    boolean result = true;
+    for (int i = 0; i < sentence.length(); i++) {
+      int code =  (int)sentence.charAt(i) ;
+      if ((int)'A' <= code && code <= (int)'Z') {
+        code += (int)'a' - (int)'A';
+      }
+      if ((int)'a' <= code && code <= (int)'z') {
+        found[code - (int)'a'] = true;
+      }
+    }
+  
+    for (int i = 0; i < 26; i++) {
+      if (!found[i]) {
+        result = false;
+      }
+    }
+  
+    return result;
+  }
+  
+
+////////////////////////////////////////
+int numberReverse(int input) {
+
+    int reversed = 0;
+    while (input != 0) {
+      reversed = reversed * 10 + input % 10;
+      input /= 10;
+    }
+    return reversed;
+  }
+  
 
 
 ////////////////////////////////////////
-
-
-
-////////////////////////////////////////
+int sumOfPowers(int n, int divisor) {
+    int s = 0;
+    for (int i = 1; i <= n; i++) {
+        int u = 1;
+        int c = 0;
+        while (true) {
+            u *= divisor;
+            if (i % u != 0) break;
+            c++;
+        }
+        s += c;
+    }
+    return s;
+}
 
 
 
