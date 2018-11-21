@@ -179,6 +179,77 @@ int[] fractionReducing(int[] fraction) {
 
 ////////////////////////////////////////
 
+boolean robotWalk(int[] a) {
+    int minX = 0;
+    int minY = -1;
+    int maxX = Integer.MAX_VALUE;
+    int maxY = Integer.MAX_VALUE;
+
+    int x = 0;
+    int y = 0;
+
+    for (int i = 0; i < a.length; i++) {
+        switch (i % 4) {
+
+        case 0:
+            y += a[i];
+            if (y >= maxY) {
+                return true;
+            }
+            maxY = y;
+            break;
+
+        case 1:
+            x += a[i];
+            if (x >= maxX) {
+                return true;
+            }
+            maxX = x;
+            break;
+
+        case 2:
+            y -= a[i];
+            if (y <= minY) {
+                return true;
+            }
+            minY = y;
+            break;
+
+        case 3:
+            x -= a[i];
+            if (x <= minX) {
+                return true;
+            }
+            minX = x;
+            break;
+        }
+    }
+
+    return false;
+}
+
+///////////////////////////////////////
+
+int[] fractionSum(int[] a, int[] b) {
+    int[] fraction = {a[0]*b[1] + a[1]*b[0], a[1]*b[1]};
+    
+    int div = Math.min(fraction[0],fraction[1]);
+    while(div !=1){
+        if(fraction[0]%div == 0 && fraction[1]%div == 0){
+            fraction[0]/=div;
+            fraction[1]/=div;
+            div = Math.min(fraction[0],fraction[1]);
+        }
+        else
+            div--;
+    }
+    return fraction;
+    
+
+}
+
+///////////////////////////////////////////
+
 String properNounCorrection(String noun) {
     return noun.substring(0,1).toUpperCase()+noun.substring(1).toLowerCase();
 }
@@ -892,6 +963,31 @@ int makeArrayConsecutive2(int[] statues) {
 }
 
 
+////////////////////////////////////////
+
+int[] makeArrayConsecutive(int[] sequence) {
+
+    ArrayList<Integer> answer = new ArrayList<>();
+    int current_position = 0;
+  
+    Arrays.sort(sequence);
+    for (int i = sequence[0]; i < sequence[sequence.length - 1]; i++) {
+      if (sequence[current_position] != i) {
+        answer.add( i );
+      }
+      else {
+        current_position++;
+      }
+    }
+  
+    int[] result = new int[answer.size()];
+    for (int i = 0; i < answer.size(); i++) {
+      result[i] = answer.get(i);
+    }
+    return result;
+  }
+
+  
 ////////////////////////////////////////
 String buildPalindrome(String st) {
     String str = new StringBuilder(st).reverse().toString();
@@ -1675,6 +1771,21 @@ boolean isPrime(int n){
 
 
 ////////////////////////////////////////
+
+int hailstoneSequence(int n) {
+    int steps = 0;
+    while(n !=1){
+        if(n%2==0)
+            n/=2;
+        else 
+            n = 3*n+1;
+        steps++;
+    }
+    return steps;
+}
+
+
+////////////////////////////////////////
 int createAnagram(String s, String t) {
 
     int[] cnt1 = new int[26];
@@ -2083,6 +2194,17 @@ int largestFullBinaryTree(int[] parent) {
   
 
 ////////////////////////////////////////
+
+
+String whoseMove(String lastPlayer, boolean win) {
+    if(win)
+        return lastPlayer;
+    else
+        return lastPlayer.equals("black")?"white":"black";
+}
+
+
+////////////////////////////////////////
 String oneTwoMany(int n) {
     if(n == 1)
         return "one";
@@ -2113,6 +2235,48 @@ String longestDigitsPrefix(String inputString) {
 
 
 ////////////////////////////////////////
+
+int divisorsPairs(int[] sequence) {
+    //HashSet<Integer> hs = HashSet<Integer>();
+    Arrays.sort(sequence);
+    int sol = 0;
+    for(int i = 0; i<sequence.length-1; i++){
+        for(int j = i+1; j<sequence.length; j++){
+            if(sequence[j] % sequence[i] == 0)
+                sol++;
+        }
+    }
+    return sol;
+    
+}
+
+
+////////////////////////////////////////
+
+
+String formatString(String input) {
+    String sol = "";
+    String[] arr = input.split(" ");
+    for(String s: arr){
+        if(s.length() != 0)
+            sol += s+" ";
+    }
+    return sol.trim();
+}
+
+
+///////////////////////////////////////
+
+int arrayElementsProduct(int[] inputArray) {
+    int mult = 1;
+    for(int n: inputArray){
+        mult *=n;
+    }
+    return mult;
+}
+
+////////////////////////////////////////
+
 boolean isPangram(String sentence) {
     boolean[] found = new boolean[26];
     boolean result = true;
