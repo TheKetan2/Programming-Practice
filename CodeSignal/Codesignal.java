@@ -249,6 +249,32 @@ int[] fractionSum(int[] a, int[] b) {
 }
 
 ///////////////////////////////////////////
+int[] fractionSubtraction(int[] a, int[] b) {
+    int[] fraction = {a[0]*b[1] - a[1]*b[0], a[1]*b[1]};
+    
+    int div = Math.min(fraction[0],fraction[1]);
+    while(div !=1){
+        if(fraction[0]%div == 0 && fraction[1]%div == 0){
+            fraction[0]/=div;
+            fraction[1]/=div;
+            div = Math.min(fraction[0],fraction[1]);
+        }
+        else
+            div--;
+    }
+    return fraction;
+}
+
+////////////////////////////////////////////
+int sumOfDivisors(int n) {
+    int sum = 0;
+    for(int i = 1; i<=n; i++){
+        if(n%i == 0)
+            sum +=i;
+    }
+    return sum;
+}
+///////////////////////////////////////////
 
 String properNounCorrection(String noun) {
     return noun.substring(0,1).toUpperCase()+noun.substring(1).toLowerCase();
@@ -613,6 +639,22 @@ int arrayMode(int[] sequence) {
     return sol;
  }
 ////////////////////////////////////////
+int arrayMode(int[] sequence) {
+    ArrayList<Integer> count = new ArrayList<>();
+    int answer = 0;
+  
+    for (int i = 0; i < 1000; i++) {
+      count.add(0);
+    }
+    for (int i = 0; i < sequence.length; i++) {
+      count.set(sequence[i] - 1, count.get(sequence[i] - 1) + 1);
+      if (count.get(sequence[i] - 1) > count.get(answer)) {
+        answer = sequence[i] - 1;
+      }
+    }
+    return  answer +1;
+  }
+///////////////////////////////////////  
 
 int[][] matrixTransposition(int[][] matrix) {
     int[][] sol = new int[matrix[0].length][matrix.length];
@@ -800,6 +842,19 @@ String replaceFirstDigitRegExp(String input) {
     return input.substring(0,index) +"#"+input.substring(index+1);
 }
 
+///////////////////////////////////////
+char lastDigitRegExp(String inputString) {
+    inputString = new StringBuilder(inputString).reverse().toString();
+    int index = 0;
+    for(char c: inputString.toCharArray()){
+        if(c >='0' && c<='9')
+            return c;
+         index++;   
+    }
+    
+    return '0';
+}
+///////////////////////////////////////
 
 
 ////////////////////////////////////////
@@ -1976,7 +2031,20 @@ boolean isCorrectSentence(String inputString) {
             return true;
     return false;
 }
+///////////////////////////////////////
+int arrayMaximalDifference(int[] inputArray) {
 
+    int answer = 0;
+    for (int i = 0; i < inputArray.length; i++) {
+      for (int j = 0; j < inputArray.length; j++) {
+        if (inputArray[i] - inputArray[j] > answer) {
+          answer = inputArray[i] - inputArray[j];
+        }
+      }
+    }
+    return answer;
+  }
+///////////////////////////////////////////  
 
 
 ////////////////////////////////////////
@@ -2337,3 +2405,114 @@ int fibonacciNumber(int n) {
 }
 
 //////////////////////////////////
+int returnTwelve(int number) {
+    while (number < 12) {
+      number = 12 ;
+    }
+    return number;
+  }
+
+///////////////////////////////////
+int bfsDistancesUnweightedGraph2(boolean[][] matrix, int vertex1, int vertex2) {
+
+    boolean[] visited = new boolean[matrix.length];
+    LinkedList<Integer> queue = new LinkedList<>();
+    int[] distance = new int[matrix.length];
+  
+    visited[vertex1] = true;
+    queue.add(vertex1);
+    while (queue.size() > 0) {
+      int currentVertex = queue.pop();
+      visited[currentVertex] = true;
+      for (int nextVertex = 0; nextVertex < matrix.length; nextVertex++) {
+        if (matrix[currentVertex][nextVertex] && !visited[nextVertex]) {
+          visited[nextVertex] = true;
+          distance[nextVertex] = distance[currentVertex] + 1;
+          queue.add(nextVertex);
+        }
+      }
+    }
+  
+    return distance[vertex2];
+  }
+////////////////////////////////////  
+int exerciseElaboration(int p, int n) {
+    String num = "";
+    if(n == 0){
+        p = p*10 + p;
+        int ans = 0;
+        double power = Math.pow(p,2); 
+        while(power > 0){
+            ans += power%10;
+            power/=10;
+        }
+        return ans;
+    }
+    
+    else {
+        while(n>0){
+            num +="0";
+            n--;
+        }
+    }
+    num = p +num+p;
+    double power = Math.pow(Integer.parseInt(num),2);
+    int sol = 0;
+    while(power>0){
+        sol += power%10;
+        power/=10;
+    }
+    return sol;
+}
+////////////////////////////////////////
+ArrayList<Integer> sortedIndices(ArrayList<Integer> a) {
+    ArrayList<Integer> indices = new ArrayList<>();
+    for (int i = 0; i < a.size(); i++) {
+      indices.add(i );
+    }
+    for (int i = 0; i < a.size() - 1; i++) {
+      for (int j = 0; j < a.size() - i - 1; j++) {
+        if (a.get(indices.get(j)) > a.get(indices.get(j + 1))) {
+          int tmp = indices.get(j + 1);
+          indices.set(j + 1, indices.get(j));
+          indices.set(j, tmp);
+        }
+      }
+    }
+    return indices;
+  }
+/////////////////////////////////////
+ArrayList<Integer> myFilter(ArrayList<Integer> inputArray,
+                            int extraElement) {
+
+  ArrayList<Integer> result = new ArrayList<>();
+  for (int i = 0; i < inputArray.size(); i++) {
+    if (inputArray.get(i) == extraElement) {
+      continue;
+    }
+    result.add(inputArray.get(i));
+  }
+
+  return result;
+}
+///////////////////////////////////////
+int arrayMinimumAboveBound(int[] inputArray, int bound) {
+    Arrays.sort(inputArray);
+    for(int num: inputArray){
+        if(num > bound)
+            return num;
+    }
+    return 0;
+}
+
+//////////////////////////////////////
+int maxMultiple(int divisor, int bound) {
+    while(true){
+        if(bound%divisor == 0)
+            return bound;
+        bound--;
+    }
+}
+
+
+///////////////////////////////////////
