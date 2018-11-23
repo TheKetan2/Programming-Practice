@@ -1395,9 +1395,8 @@ int extraNumber(int a, int b, int c) {
 
 ////////////////////////////////////////
 boolean isTandemRepeat(String inputString) {
-    System.out.println(inputString.substring(0,inputString.length()/2));
-    System.out.println(inputString.substring(inputString.length()/2));
-    return inputString.substring(0,inputString.length()/2).equals(inputString.substring(inputString.length()/2));
+    return inputString.replaceAll(inputString.substring(inputString.length()/2),"").length() == 0;
+
 }
 
 
@@ -2516,3 +2515,39 @@ int maxMultiple(int divisor, int bound) {
 
 
 ///////////////////////////////////////
+
+String findEmailDomain(String address) {
+    return address.substring(address.lastIndexOf("@")+1);
+}
+
+//////////////////////////////////////
+int[] dresses(String[] colors) {
+    ArrayList<Integer> list = new ArrayList<>();
+    int i = 0;
+    for(String s:colors){
+        char[] arr = s.toCharArray();
+        int red = Integer.parseInt(arr[0]+""+arr[1],16) ;
+        int green = Integer.parseInt(arr[2]+""+arr[3],16);
+        int blue = Integer.parseInt(arr[4]+""+arr[5],16);
+        
+        System.out.println(red+" "+green+" "+blue+ " "+ i);
+        if(green > red && green > blue){
+            System.out.println("Selected: "+ i);
+            list.add(i);
+        }
+        ++i;
+        
+    }
+    
+    int[] sol = new int[list.size()];
+    int j = 0;
+    for(int n: list){
+        sol[j] = n;
+        j++;
+    }
+    
+
+    return sol;
+    
+}
+///////////////////////////////////////////
