@@ -70,9 +70,6 @@ String swapCase(String text) {
     }
     return sol;
 }
-
-
-
 ////////////////////////////////////////
 boolean willYou(boolean young, boolean beautiful, boolean loved) {
     return (young && beautiful && !loved) || (loved &&(!young || !beautiful));
@@ -275,6 +272,18 @@ int sumOfDivisors(int n) {
     return sum;
 }
 ///////////////////////////////////////////
+String replaceAllDigitsRegExp(String input) {
+    String sol = "";
+    for(char c: input.toCharArray()){
+        if(c >='0' && c<='9')
+            sol +="#";
+        else 
+            sol += c+"";
+            
+    }
+    return sol;
+}
+//////////////////////////////////////////
 
 String properNounCorrection(String noun) {
     return noun.substring(0,1).toUpperCase()+noun.substring(1).toLowerCase();
@@ -2551,3 +2560,194 @@ int[] dresses(String[] colors) {
     
 }
 ///////////////////////////////////////////
+String htmlEndTagByStartTag(String startTag) {
+    String[] split = startTag.split("[< >]");
+    return "</" + split[1] + ">";
+}
+
+//////////////////////////////////////////
+
+boolean checkEqualFrequency(int[] inputArray) {
+
+    int numberOfEqual = 1;
+  
+    Arrays.sort(inputArray);
+  
+    while (numberOfEqual < inputArray.length
+        && inputArray[numberOfEqual - 1] == inputArray[numberOfEqual]) {
+      numberOfEqual++;
+    }
+  
+    if (inputArray.length % numberOfEqual != 0) {
+      return false;
+    }
+  
+    for (int i = 0; i < inputArray.length; i += numberOfEqual) {
+      if (i != 0 && inputArray[i] == inputArray[i - 1]) {
+        return false;
+      }
+      for (int j = i + 1; j < i + numberOfEqual; j++) {
+        if (inputArray[j] != inputArray[j - 1]) {
+          return false;
+        }
+      }
+    }
+  
+    return true;
+  }
+
+  ///////////////////////////////////////////
+  boolean isIncreasingDigitsSequence(int n) {
+    char[] arr = (n+"").toCharArray();
+    
+    for(int i = 1; i<arr.length; i++){
+         if(arr[i-1]>=arr[i])
+              return false;
+    }
+    return true;
+}
+
+////////////////////////////////////////////
+boolean robotWalk(int[] a) {
+    int minX = 0;
+    int minY = -1;
+    int maxX =  Integer.MAX_VALUE ;
+    int maxY = Integer.MAX_VALUE;
+
+    int x = 0;
+    int y = 0;
+
+    for (int i = 0; i < a.length; i++) {
+        switch (i % 4) {
+
+        case 0:
+            y += a[i];
+            if (y >= maxY) {
+                return true;
+            }
+            maxY = y;
+            break;
+
+        case 1:
+            x += a[i];
+            if (x >= maxX) {
+                return true;
+            }
+            maxX = x;
+            break;
+
+        case 2:
+            y -= a[i];
+            if (y <= minY) {
+                return true;
+            }
+            minY = y;
+            break;
+
+        case 3:
+            x -= a[i];
+            if (x <= minX) {
+                return true;
+            }
+            minX = x;
+            break;
+        }
+    }
+
+    return false;
+}
+///////////////////////////////////
+int arrayElementsProduct(int[] inputArray) {
+
+    int result = inputArray[0];
+  
+    for (int i = 1; i < inputArray.length; i++) {
+      result *= inputArray[i];
+    }
+    return result;
+  }
+
+  //////////////////////////////////
+
+  int differentSquares(int[][] matrix) {
+    HashSet<String> hs = new HashSet<String>();
+    if(matrix.length == 1 || matrix[0].length == 1) return 0;
+    for(int i = 1; i<matrix.length;i++){
+        for(int j = 1;j<matrix[0].length;j++){
+            hs.add( matrix[i-1][j-1]+"k"
+                    +matrix[i-1][j]+"k"
+                    +matrix[i][j-1]+"k"
+                    +matrix[i][j]);
+        }
+    }
+    System.out.println(hs.toString());
+    
+    return hs.size();
+}
+
+///////////////////////////////////
+
+String caseUnification(String inputString) {
+    Matcher matcherForUppercase = Pattern.compile("[a-z]").matcher(inputString);
+    Matcher matcherForLowercase = Pattern.compile("[A-Z]").matcher(inputString);
+  
+    int changesToMakeUppercase = 0;
+    while (matcherForUppercase.find()) {
+      changesToMakeUppercase++;
+    }
+    int changesToMakeLowercase = 0;
+    while (matcherForLowercase.find()) {
+      changesToMakeLowercase++;
+    }
+    if (changesToMakeUppercase == 0
+      || changesToMakeLowercase != 0
+      && changesToMakeUppercase < changesToMakeLowercase) {
+      return inputString.toUpperCase();
+    } else {
+      return inputString.toLowerCase() ;
+    }
+  }
+
+  //////////////////////////////////////
+
+  int findSquareSide(int[] x, int[] y) {
+    int a, b, c;
+        
+        a = (x[0]-x[1]) * (x[0]-x[1])  + (y[0]-y[1]) * (y[0]-y[1]);
+        b = (x[0]-x[2]) * (x[0]-x[2])  + (y[0]-y[2]) * (y[0]-y[2]);
+        c = (x[0]-x[3]) * (x[0]-x[3])  + (y[0]-y[3]) * (y[0]-y[3]);
+      
+        if(a==b)
+            return a;
+        if(a==c)
+            return a;
+        
+            return b;
+    }
+
+    ///////////////////////////////////
+
+    String reflectString(String inputString) {
+
+        StringBuilder result = new StringBuilder();
+        for (int i = 0; i < inputString.length(); i++) {
+          int order = (int)inputString.charAt(i) - (int)'a',
+              reflectedCharCode = 'z'-order ;
+          result.append( (char)reflectedCharCode);
+        }
+      
+        return result.toString();
+      }
+//////////////////////////////////////    
+int calculationsWithCoins(int a, int b, int c) {
+    HashSet<Integer> hs = new HashSet<>();
+    hs.add(a);
+    hs.add(b);
+    hs.add(c);
+    hs.add(a+b);
+    hs.add(a+c);
+    hs.add(b+c);
+    hs.add(a+b+c);
+    return hs.size();
+}
+/////////////////////////////////////
