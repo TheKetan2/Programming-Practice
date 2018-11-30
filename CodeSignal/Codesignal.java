@@ -2340,20 +2340,99 @@ int countSumOfTwoRepresentations3(int n, int l, int r) {
     }
 
     //////////////////////////////////////////////
-boolean higherVersion(String ver1, String ver2) {
+    boolean higherVersion(String ver1, String ver2) {
 
-    String[] a = ver1.split("\\.");
-    String[] b = ver2.split("\\.");
-    for (int i = 0; i < a.length; i++) {
-      int cmp = Integer.parseInt(a[i]) - Integer.parseInt(b[i]);
-      if (cmp > 0) {
-        return true;
-      } else if (cmp < 0) {
-        return  false ;
+        String[] a = ver1.split("\\.");
+        String[] b = ver2.split("\\.");
+        for (int i = 0; i < a.length; i++) {
+            int cmp = Integer.parseInt(a[i]) - Integer.parseInt(b[i]);
+            if (cmp > 0) {
+                return true;
+            } else if (cmp < 0) {
+                return false;
+            }
+        }
+
+        return false;
+    }
+
+    //////////////////////////////////////////////
+
+    String runLengthEncoding(String inputString) {
+
+        int repeatLength = 1;
+        StringBuilder answer = new StringBuilder();
+        for (int i = 1; i < inputString.length(); i++) {
+            if (inputString.charAt(i) != inputString.charAt(i - 1)) {
+                answer.append(repeatLength);
+                answer.append(inputString.charAt(i - 1));
+                repeatLength = 1;
+            } else {
+                repeatLength++;
+            }
+        }
+        answer.append(repeatLength);
+        answer.append(inputString.charAt(inputString.length() - 1));
+        return answer.toString();
+    }
+
+    //////////////////////////////////////////////
+
+    int differentValues(int[] a, int d) {
+        ArrayList<Integer> list = new ArrayList<>();
+        for (int i = 0; i < a.length - 1; i++) {
+            for (int j = i + 1; j < a.length; j++) {
+                if (Math.abs(a[i] - a[j]) <= d)
+                    list.add(Math.abs(a[i] - a[j]));
+            }
+        }
+        if (list.size() == 0)
+            return -1;
+        Collections.sort(list);
+        System.out.println(list.toString());
+        return list.get(list.size() - 1);
+    }
+    ////////////////////////////////////////////
+
+    int matrixElementsSum(int[][] matrix) {
+
+        int result = 0;
+        for (int i = 0; i < matrix[0].length; i++) {
+            for (int j = 0; j < matrix.length; j++) {
+                if (matrix[j][i] == 0) {
+                    break;
+                }
+                result += matrix[j][i];
+            }
+        }
+
+        return result;
+    }
+
+    ////////////////////////////////////////////
+
+    int sumUpDigits(String inputString) {
+
+        int answer = 0;
+
+        for (int i = 0; i < inputString.length(); i++) {
+            if ('1' <= inputString.charAt(i) && inputString.charAt(i) <= '9') {
+                answer += Character.getNumericValue(inputString.charAt(i));
+            }
+        }
+
+        return answer;
+    }
+
+    ///////////////////////////////////////////
+String longestString(String[] inputArray) {
+
+    String answer = inputArray[0];
+    for (int i = 1; i < inputArray.length; i++) {
+      if (inputArray[i].length() > answer.length()) {
+        answer = inputArray[i];
       }
     }
-  
-    return false;
+    return answer;
   }
-
-//////////////////////////////////////////////
+//////////////////////////////////////////
