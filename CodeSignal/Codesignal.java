@@ -2470,16 +2470,138 @@ int countSumOfTwoRepresentations3(int n, int l, int r) {
     }
 
     ////////////////////////////////////
-int firstNotDivisible(int[] divisors, int start) {
-    Arrays.sort(divisors);
-    for(int i = start; ; i++){
-        int complete = 0;
-        for(int num: divisors){
-            if(i%num!=0)
-                complete++;
-            if(complete== divisors.length)
-                return i;
+    int firstNotDivisible(int[] divisors, int start) {
+        Arrays.sort(divisors);
+        for (int i = start;; i++) {
+            int complete = 0;
+            for (int num : divisors) {
+                if (i % num != 0)
+                    complete++;
+                if (complete == divisors.length)
+                    return i;
+            }
         }
     }
+
+    ////////////////////////////////////
+    int[][] reverseOnDiagonals(int[][] matrix) {
+
+        for (int i = 0, j = matrix.length - 1; i < j; i++, j--) {
+            int temp = matrix[i][i];
+            matrix[i][i] = matrix[j][j];
+            matrix[j][j] = temp;
+        }
+
+        for (int i = 0, j = matrix.length - 1; i < j; i++, j--) {
+            System.out.println(i + " " + j);
+            int temp = matrix[i][j];
+            matrix[i][j] = matrix[j][i];
+            matrix[j][i] = temp;
+        }
+        return matrix;
+
+    }
+
+    //////////////////////////////////////
+    int uniqueDigitProducts(int[] a) {
+        HashSet<Integer> hs = new HashSet<>();
+        for (int num : a) {
+            int product = 1;
+            while (num > 0) {
+                product *= num % 10;
+                num /= 10;
+            }
+            hs.add(product);
+        }
+        return hs.size();
+    }
+
+    //////////////////////////////////////
+    int findSquareSide(int[] x, int[] y) {
+
+        class Helper {
+            int sqr(int x) {
+                return x * x;
+            }
+
+            int squareDistance(int[] a, int[] b) {
+                return sqr(a[0] - b[0]) + sqr(a[1] - b[1]);
+            };
+
+            int[] point(int x, int y) {
+                return new int[] { x, y };
+            }
+        }
+        Helper h = new Helper();
+
+        int answer = h.squareDistance(h.point(x[0], y[0]), h.point(x[1], y[1]));
+        for (int i = 2; i < 4; i++) {
+            answer = Math.min(answer, h.squareDistance(h.point(x[i - 1], y[i - 1]), h.point(x[i], y[i])));
+        }
+        return answer;
+    }
+
+    //////////////////////////////////////////
+    boolean regularBracketSequence2(String sequence) {
+
+        LinkedList<Character> stack = new LinkedList<>();
+        for (int i = 0; i < sequence.length(); i++) {
+            if (stack.size() > 0 && stack.getLast() == '(' && sequence.charAt(i) == ')') {
+                stack.pollLast();
+                continue;
+            }
+            if (stack.size() > 0 && stack.getLast() == '[' && sequence.charAt(i) == ']') {
+                stack.pollLast();
+                continue;
+            }
+            stack.addLast(sequence.charAt(i));
+        }
+
+        if (stack.size() != 0) {
+            return false;
+        }
+        return true;
+    }
+    ///////////////////////////////////////////
+
+    int[] primeFactors(int n) {
+        ArrayList<Integer> factors = new ArrayList<>();
+        int divisor = 2;
+
+        while (n >= 2) {
+            if (n % divisor == 0) {
+                factors.add(divisor);
+                n /= divisor;
+            } else {
+                divisor++;
+            }
+        }
+
+        int[] ans = new int[factors.size()];
+        for (int i = 0; i < ans.length; ++i) {
+            ans[i] = factors.get(i);
+        }
+        return ans;
+    }
+
+    ////////////////////////////////////////////
+
+    int differentSymbolsNaive(String s) {
+        HashSet<Character> hs = new HashSet<>();
+        for (char c : s.toCharArray()) {
+            hs.add(c);
+        }
+        return hs.size();
+    }
+
+    ///////////////////////////////////////////
+    int kthDigit(int n, int k) {
+        return Character.getNumericValue((n + "").charAt(k - 1));
+    }
+
+    /////////////////////////////////////////
+boolean isPerfectScore(boolean ans1, boolean ans2, boolean ans3) {
+    return (ans1 && ans2) && ans3;
 }
-//////////////////////////////////
+
+////////////////////////////////////////
