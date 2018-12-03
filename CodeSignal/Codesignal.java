@@ -2425,14 +2425,61 @@ int countSumOfTwoRepresentations3(int n, int l, int r) {
     }
 
     ///////////////////////////////////////////
-String longestString(String[] inputArray) {
+    String longestString(String[] inputArray) {
 
-    String answer = inputArray[0];
-    for (int i = 1; i < inputArray.length; i++) {
-      if (inputArray[i].length() > answer.length()) {
-        answer = inputArray[i];
-      }
+        String answer = inputArray[0];
+        for (int i = 1; i < inputArray.length; i++) {
+            if (inputArray[i].length() > answer.length()) {
+                answer = inputArray[i];
+            }
+        }
+        return answer;
     }
-    return answer;
-  }
-//////////////////////////////////////////
+
+    //////////////////////////////////////////
+    int[] mixedFractionToImproper(int[] a) {
+        return new int[] { a[0] * a[2] + a[1], a[2] };
+    }
+    /////////////////////////////////////////
+
+    boolean validTime(String time) {
+
+        class Helper {
+            int charToInt(char symbol) {
+                return symbol - '0';
+            }
+        }
+        Helper h = new Helper();
+
+        int hours = h.charToInt(time.charAt(0)) * 10 + h.charToInt(time.charAt(1)),
+                minutes = h.charToInt(time.charAt(3)) * 10 + h.charToInt(time.charAt(4));
+
+        if (hours < 24 && minutes < 60) {
+            return true;
+        }
+        return false;
+    }
+
+    //////////////////////////////////////
+    int halvingSum(int n) {
+        int sum = 0;
+        for (int i = n; i > 0; i /= 2) {
+            sum += i;
+        }
+        return sum;
+    }
+
+    ////////////////////////////////////
+int firstNotDivisible(int[] divisors, int start) {
+    Arrays.sort(divisors);
+    for(int i = start; ; i++){
+        int complete = 0;
+        for(int num: divisors){
+            if(i%num!=0)
+                complete++;
+            if(complete== divisors.length)
+                return i;
+        }
+    }
+}
+//////////////////////////////////
