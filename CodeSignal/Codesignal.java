@@ -1,247 +1,3 @@
-void merge(int[]sequence,int left,int middle,int right){int[]result=new int[right-left];int i,j;int k=0;
-
-for(i=left,j=middle;i<middle&&j<right;){if(sequence[i]<sequence[j]){result[k++]=sequence[i];i++;}else{result[k++]=sequence[j];j++;}}
-
-while(i<middle){result[k++]=sequence[i];i++;}
-
-while(j<right){result[k++]=sequence[j];j++;}
-
-for(i=left;i<right;i++){sequence[i]=result[i-left];}}
-
-void split(int[]sequence,int left,int right){if(left+1==right){return;}int middle=(left+right)/2;split(sequence,left,middle);split(sequence,middle,right);merge(sequence,left,middle,right);}
-
-int[]mergeSort(int[]sequence){split(sequence,0,sequence.length);
-
-return sequence;}
-
-/////////////////////////////////////////
-
-int cubeVolume(int n){int result=1;for(int i=0;i<3;i++){result+=n;}return result;}
-
-////////////////////////////////////////
-String swapCase(String text){String sol="";int diff='a'-'A';for(char c:text.toCharArray()){if(c>='a'&&c<='z')sol+=(char)(c-diff)+"";else if(c>='A'&&c<='Z')sol+=(char)(c+diff)+"";else sol+=c+"";}return sol;}
-////////////////////////////////////////
-boolean willYou(boolean young,boolean beautiful,boolean loved){return(young&&beautiful&&!loved)||(loved&&(!young||!beautiful));}
-
-////////////////////////////////////////
-String properOrImproper(int[]a){if(Math.abs(a[0]/a[1])<1)return"Proper";return"Improper";}
-
-////////////////////////////////////////
-int houseNumbersSum(int[]inputArray){int sol=0;for(int i=0;i<inputArray.length;i++){if(inputArray[i]==0)break;else sol+=inputArray[i];}return sol;}
-
-////////////////////////////////////////
-Integer arrayConversion(ArrayList<Integer>inputArray){
-
-int operation=1;while(inputArray.size()>1){ArrayList<Integer>newArray=new ArrayList<>();for(int i=0;i<inputArray.size();i+=2){if(operation%2==1){newArray.add(inputArray.get(i)+inputArray.get(i+1));}else{newArray.add(inputArray.get(i)*inputArray.get(i+1));}}inputArray=newArray;operation++;}
-
-return inputArray.get(0);}
-
-////////////////////////////////////////
-int pagesNumbering(int n){
-
-int tenPower=1,digitsPerPage=1,result=0;
-
-while(tenPower<=n){result+=tenPower*9*digitsPerPage;tenPower*=10;digitsPerPage++;}result+=(n-tenPower+1)*(digitsPerPage-1);
-
-return result;}
-
-////////////////////////////////////////
-boolean isIdentityMatrix(int[][]matrix){
-
-for(int i=0;i<matrix.length;i++){for(int j=0;j<matrix.length;j++){if(matrix[i][j]!=1&&i==j||matrix[i][j]!=0&&i!=j){return false;}}}return true;}
-
-////////////////////////////////////////
-int[]fractionReducing(int[]fraction){int div=Math.min(fraction[0],fraction[1]);while(div!=1){if(fraction[0]%div==0&&fraction[1]%div==0){fraction[0]/=div;fraction[1]/=div;div=Math.min(fraction[0],fraction[1]);}else div--;}return fraction;}
-
-////////////////////////////////////////
-
-boolean robotWalk(int[]a){int minX=0;int minY=-1;int maxX=Integer.MAX_VALUE;int maxY=Integer.MAX_VALUE;
-
-int x=0;int y=0;
-
-for(int i=0;i<a.length;i++){switch(i%4){
-
-case 0:y+=a[i];if(y>=maxY){return true;}maxY=y;break;
-
-case 1:x+=a[i];if(x>=maxX){return true;}maxX=x;break;
-
-case 2:y-=a[i];if(y<=minY){return true;}minY=y;break;
-
-case 3:x-=a[i];if(x<=minX){return true;}minX=x;break;}}
-
-return false;}
-
-///////////////////////////////////////
-
-int[]fractionSum(int[]a,int[]b){int[]fraction={a[0]*b[1]+a[1]*b[0],a[1]*b[1]};
-
-int div=Math.min(fraction[0],fraction[1]);while(div!=1){if(fraction[0]%div==0&&fraction[1]%div==0){fraction[0]/=div;fraction[1]/=div;div=Math.min(fraction[0],fraction[1]);}else div--;}return fraction;
-
-}
-
-///////////////////////////////////////////
-int[]fractionSubtraction(int[]a,int[]b){int[]fraction={a[0]*b[1]-a[1]*b[0],a[1]*b[1]};
-
-int div=Math.min(fraction[0],fraction[1]);while(div!=1){if(fraction[0]%div==0&&fraction[1]%div==0){fraction[0]/=div;fraction[1]/=div;div=Math.min(fraction[0],fraction[1]);}else div--;}return fraction;}
-
-////////////////////////////////////////////
-int sumOfDivisors(int n){int sum=0;for(int i=1;i<=n;i++){if(n%i==0)sum+=i;}return sum;}
-///////////////////////////////////////////
-String replaceAllDigitsRegExp(String input){String sol="";for(char c:input.toCharArray()){if(c>='0'&&c<='9')sol+="#";else sol+=c+"";
-
-}return sol;}
-//////////////////////////////////////////
-
-String properNounCorrection(String noun){return noun.substring(0,1).toUpperCase()+noun.substring(1).toLowerCase();}
-
-////////////////////////////////////////
-int champernowneDigit(int n){String nums="";for(int i=1;i<1000;i++){nums+=i+"";}return Character.getNumericValue(nums.charAt(n-1));}
-
-////////////////////////////////////////
-
-String angleType(double measure){
-
-if(measure<90){return"acute";}
-
-if(measure==90){return"right";}
-
-if(measure<180){return"obtuse";}
-
-return"straight";}
-
-////////////////////////////////////////
-int binaryPower(int n,int k){final int MOD=(int)1e7+7;
-
-if(k==0){return 1;}if(k%2==0){return binaryPower((int)((n*1 L*n)%MOD),k/2);}return(int)((binaryPower(n,k-1)*1 L*n)%MOD);}
-
-////////////////////////////////////////
-int binaryPower(int n,int k){final int MOD=(int)1e7+7;
-
-if(k==0){return 1;}if(k%2==0){return binaryPower((int)((n*1 L*n)%MOD),k/2);}return(int)((binaryPower(n,k-1)*1 L*n)%MOD);}
-
-////////////////////////////////////////
-
-String truncateString(String s){
-
-while(true){if(s.length()==0)return"";if(s.length()>=2&&(Integer.parseInt(s.substring(0,1))+Integer.parseInt(s.substring(s.length()-1)))%3==0){s=s.substring(1,s.length()-1);System.out.println(s);}else if(Integer.parseInt(s.substring(0,1))%3==0){s=s.substring(1);System.out.println(s);}else if(Integer.parseInt(s.substring(s.length()-1))%3==0){s=s.substring(0,s.length()-1);System.out.println(s);}else return s;}}
-
-////////////////////////////////////////
-int lrSegmentNumber(int l,int r){String num="";for(int i=l;i<=r;i++){num+=i+"";}return Integer.parseInt(num);}
-
-////////////////////////////////////////
-
-String buildPalindrome(String st){String str=new StringBuilder(st).reverse().toString();if(str.equals(st))return st;for(int i=0;i<st.length();i++){System.out.println("New String: "+st.substring(0,i)+str);if((st.substring(0,i)+str).equals(new StringBuilder((st.substring(0,i)+str)).reverse().toString()))return st.substring(0,i)+str;}return"lol";}
-////////////////////////////////////////
-boolean chessBoardCellColor(String cell1,String cell2){String alpha="ABCDEFGH";int c1A=alpha.indexOf(cell1.charAt(0))+1;int c1N=Integer.parseInt(cell1.substring(1));
-
-int c2A=alpha.indexOf(cell2.charAt(0))+1;int c2N=Integer.parseInt(cell2.substring(1));
-
-if((c1A+c1N+c2A+c2N)%2==0)return true;return false;
-
-}
-
-////////////////////////////////////////
-int quasifactorial(int n){int answer=1;for(int i=2;i<=n;++i){answer*=i;--answer;}return answer;}
-
-////////////////////////////////////////
-int firstMultiple2(int[]divisors,int start){int sol=start;while(true){for(int n:divisors){if(sol%n==0)return sol;}sol++;}
-
-}
-
-////////////////////////////////////////
-
-int firstMultiple(int[]divisors,int start){int sol=start;while(true){int count=0;for(int n:divisors){
-
-if(sol%n==0)count++;}if(count==divisors.length)return sol;sol++;}
-
-}
-
-//////////////////////////////////////////
-int crossingSum(int[][]matrix,int row,int column){
-
-int result=0;for(int i=0;i<matrix.length;i++){result+=matrix[i][column];}for(int i=0;i<matrix[0].length;i++){result+=matrix[row][i];}result-=matrix[row][column];
-
-return result;}
-
-////////////////////////////////////////
-int leastFactorial(int n){int fact=1;for(int i=1;;i++){fact*=i;if(fact>=n)return fact;
-
-}
-//return 0;
-}
-
-////////////////////////////////////////
-int appleBoxes(int k){int odd=0;int eve=0;for(int i=1;i<=k;i++){if(i%2==0)eve+=(i*i);else odd+=(i*i);}return eve-odd;}
-
-////////////////////////////////////////
-int avoidObstacles(int[]inputArray){
-
-Arrays.sort(inputArray);
-
-int sol,i;
-
-for(i=1;;i++){sol=0;for(int n:inputArray){if(n%i==0){break;}else sol++;}if(sol==inputArray.length)return i;}
-
-}
-
-////////////////////////////////////////
-
-int matrixTrace(int[][]matrix){int sum=0;for(int i=0;i<matrix.length;i++){sum+=matrix[i][i];}return sum;}
-
-////////////////////////////////////////
-int evenNumbersBeforeFixed(int[]sequence,int fixedElement){int sol=0;for(int i=0;i<sequence.length;i++){
-
-if(sequence[i]!=fixedElement){if(sequence[i]%2==0)sol++;}else return sol;
-
-}
-
-return-1;}
-
-////////////////////////////////////////
-boolean isMonotonous(int[]sequence){int flag=0;if(sequence.length<2)return true;for(int i=1;i<sequence.length;i++){if(sequence[i-1]<sequence[i]){flag++;
-
-}else if((sequence[i-1]>sequence[i]))flag--;else return false;
-
-}return Math.abs(flag)==sequence.length-1;}
-
-////////////////////////////////////////
-int differentValuesInMultiplicationTable2(int n,int m){HashSet<Integer>hs=new HashSet<Integer>();for(int i=1;i<=n;i++){for(int j=1;j<=m;j++){hs.add(i*j);}}return hs.size();}
-
-////////////////////////////////////////
-int additionWithoutCarrying(int param1,int param2){String sol="";if(param1==0&&param2==0)return 0;while(param1>0||param2>0){
-
-//System.out.println((param1%10 + param2%10)%10);
-int last=(param1%10+param2%10)%10;
-
-sol=last+sol;if(param1>0)param1/=10;if(param2>0)param2/=10;}System.out.println(sol);
-
-return Integer.parseInt(sol);
-
-}
-
-////////////////////////////////////////
-
-boolean increaseNumberRoundness(int n){while(n%10==0&&n>0)n/=10;while(n%10>0&&n>0)n/=10;return n!=0;}
-
-////////////////////////////////////////
-int rounders(int n){String[]arr=(n+"").split("");int len=arr.length;for(int i=len-1;i>=1;i--){if(Integer.parseInt(arr[i])<5)arr[i]="0";else{arr[i]="0";arr[i-1]=(Integer.parseInt(arr[i-1])+1)+"";}}String sol="";for(String c:arr){sol+=c+"";}return Integer.parseInt(sol);}
-
-////////////////////////////////////////
-int candles(int candlesNumber,int makeNew){return candlesNumber+(candlesNumber-1)/(makeNew-1);}
-
-////////////////////////////////////////
-int arrayMode(int[]sequence){int[]arr=new int[10000];int max=0;int sol=0;for(int num:sequence){arr[num]++;if(max<arr[num]){max=arr[num];sol=num;}
-
-}return sol;}
-////////////////////////////////////////
-int arrayMode(int[]sequence){ArrayList<Integer>count=new ArrayList<>();int answer=0;
-
-for(int i=0;i<1000;i++){count.add(0);}for(int i=0;i<sequence.length;i++){count.set(sequence[i]-1,count.get(sequence[i]-1)+1);if(count.get(sequence[i]-1)>count.get(answer)){answer=sequence[i]-1;}}return answer+1;}
-///////////////////////////////////////  
-
-int[][]matrixTransposition(int[][]matrix){int[][]sol=new int[matrix[0].length][matrix.length];
-
-for(int i=0;i<matrix.length;i++){for(int j=0;j<matrix[0].length;j++){sol[j][i]=matrix[i][j];}}return sol;}
 
 ////////////////////////////////////////
 
@@ -2773,16 +2529,643 @@ class Helper {
     }
 
     //////////////////////////////////////
-   int toAndFro(int a, int b, int t) {
-   
-    int len = Math.abs(b - a);
-    t %= (2 * len);
-    if (t <= len) {
-     return a + (b - a) / Math.abs(b - a) * t;
-    } else {
-     t -= len;
-     return b + (a - b) / Math.abs(b - a) * t;
-    }
-   }
+    int toAndFro(int a, int b, int t) {
 
-////////////////////////////////////////
+        int len = Math.abs(b - a);
+        t %= (2 * len);
+        if (t <= len) {
+            return a + (b - a) / Math.abs(b - a) * t;
+        } else {
+            t -= len;
+            return b + (a - b) / Math.abs(b - a) * t;
+        }
+    }
+
+    ////////////////////////////////////////
+    ////////////////////////////////////////////////
+    void merge(int[] sequence, int left, int middle, int right) {
+        int[] result = new int[right - left];
+        int i, j;
+        int k = 0;
+
+        for (i = left, j = middle; i < middle && j < right;) {
+            if (sequence[i] < sequence[j]) {
+                result[k++] = sequence[i];
+                i++;
+            } else {
+                result[k++] = sequence[j];
+                j++;
+            }
+        }
+
+        while (i < middle) {
+            result[k++] = sequence[i];
+            i++;
+        }
+
+        while (j < right) {
+            result[k++] = sequence[j];
+            j++;
+        }
+
+        for (i = left; i < right; i++) {
+            sequence[i] = result[i - left];
+        }
+    }
+
+    void split(int[] sequence, int left, int right) {
+        if (left + 1 == right) {
+            return;
+        }
+        int middle = (left + right) / 2;
+        split(sequence, left, middle);
+        split(sequence, middle, right);
+        merge(sequence, left, middle, right);
+    }
+
+    int[] mergeSort(int[] sequence) {
+        split(sequence, 0, sequence.length);
+
+        return sequence;
+    }
+
+    /////////////////////////////////////////
+
+    int cubeVolume(int n) {
+        int result = 1;
+        for (int i = 0; i < 3; i++) {
+            result += n;
+        }
+        return result;
+    }
+
+    ////////////////////////////////////////
+    String swapCase(String text) {
+        String sol = "";
+        int diff = 'a' - 'A';
+        for (char c : text.toCharArray()) {
+            if (c >= 'a' && c <= 'z')
+                sol += (char) (c - diff) + "";
+            else if (c >= 'A' && c <= 'Z')
+                sol += (char) (c + diff) + "";
+            else
+                sol += c + "";
+        }
+        return sol;
+    }
+
+    ////////////////////////////////////////
+    boolean willYou(boolean young, boolean beautiful, boolean loved) {
+        return (young && beautiful && !loved) || (loved && (!young || !beautiful));
+    }
+
+    ////////////////////////////////////////
+    String properOrImproper(int[] a) {
+        if (Math.abs(a[0] / a[1]) < 1)
+            return "Proper";
+        return "Improper";
+    }
+
+    ////////////////////////////////////////
+    int houseNumbersSum(int[] inputArray) {
+        int sol = 0;
+        for (int i = 0; i < inputArray.length; i++) {
+            if (inputArray[i] == 0)
+                break;
+            else
+                sol += inputArray[i];
+        }
+        return sol;
+    }
+
+    ////////////////////////////////////////
+    Integer arrayConversion(ArrayList<Integer> inputArray) {
+
+        int operation = 1;
+        while (inputArray.size() > 1) {
+            ArrayList<Integer> newArray = new ArrayList<>();
+            for (int i = 0; i < inputArray.size(); i += 2) {
+                if (operation % 2 == 1) {
+                    newArray.add(inputArray.get(i) + inputArray.get(i + 1));
+                } else {
+                    newArray.add(inputArray.get(i) * inputArray.get(i + 1));
+                }
+            }
+            inputArray = newArray;
+            operation++;
+        }
+
+        return inputArray.get(0);
+    }
+
+    ////////////////////////////////////////
+    int pagesNumbering(int n) {
+
+        int tenPower = 1, digitsPerPage = 1, result = 0;
+
+        while (tenPower <= n) {
+            result += tenPower * 9 * digitsPerPage;
+            tenPower *= 10;
+            digitsPerPage++;
+        }
+        result += (n - tenPower + 1) * (digitsPerPage - 1);
+
+        return result;
+    }
+
+    ////////////////////////////////////////
+    boolean isIdentityMatrix(int[][] matrix) {
+
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix.length; j++) {
+                if (matrix[i][j] != 1 && i == j || matrix[i][j] != 0 && i != j) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    ////////////////////////////////////////
+    int[] fractionReducing(int[] fraction) {
+        int div = Math.min(fraction[0], fraction[1]);
+        while (div != 1) {
+            if (fraction[0] % div == 0 && fraction[1] % div == 0) {
+                fraction[0] /= div;
+                fraction[1] /= div;
+                div = Math.min(fraction[0], fraction[1]);
+            } else
+                div--;
+        }
+        return fraction;
+    }
+
+    ////////////////////////////////////////
+
+    boolean robotWalk(int[] a) {
+        int minX = 0;
+        int minY = -1;
+        int maxX = Integer.MAX_VALUE;
+        int maxY = Integer.MAX_VALUE;
+
+        int x = 0;
+        int y = 0;
+
+        for (int i = 0; i < a.length; i++) {
+            switch (i % 4) {
+
+            case 0:
+                y += a[i];
+                if (y >= maxY) {
+                    return true;
+                }
+                maxY = y;
+                break;
+
+            case 1:
+                x += a[i];
+                if (x >= maxX) {
+                    return true;
+                }
+                maxX = x;
+                break;
+
+            case 2:
+                y -= a[i];
+                if (y <= minY) {
+                    return true;
+                }
+                minY = y;
+                break;
+
+            case 3:
+                x -= a[i];
+                if (x <= minX) {
+                    return true;
+                }
+                minX = x;
+                break;
+            }
+        }
+
+        return false;
+    }
+
+    ///////////////////////////////////////
+
+    int[] fractionSum(int[] a, int[] b) {
+        int[] fraction = { a[0] * b[1] + a[1] * b[0], a[1] * b[1] };
+
+        int div = Math.min(fraction[0], fraction[1]);
+        while (div != 1) {
+            if (fraction[0] % div == 0 && fraction[1] % div == 0) {
+                fraction[0] /= div;
+                fraction[1] /= div;
+                div = Math.min(fraction[0], fraction[1]);
+            } else
+                div--;
+        }
+        return fraction;
+
+    }
+
+    ///////////////////////////////////////////
+    int[] fractionSubtraction(int[] a, int[] b) {
+        int[] fraction = { a[0] * b[1] - a[1] * b[0], a[1] * b[1] };
+
+        int div = Math.min(fraction[0], fraction[1]);
+        while (div != 1) {
+            if (fraction[0] % div == 0 && fraction[1] % div == 0) {
+                fraction[0] /= div;
+                fraction[1] /= div;
+                div = Math.min(fraction[0], fraction[1]);
+            } else
+                div--;
+        }
+        return fraction;
+    }
+
+    ////////////////////////////////////////////
+    int sumOfDivisors(int n) {
+        int sum = 0;
+        for (int i = 1; i <= n; i++) {
+            if (n % i == 0)
+                sum += i;
+        }
+        return sum;
+    }
+
+    ///////////////////////////////////////////
+    String replaceAllDigitsRegExp(String input) {
+        String sol = "";
+        for (char c : input.toCharArray()) {
+            if (c >= '0' && c <= '9')
+                sol += "#";
+            else
+                sol += c + "";
+
+        }
+        return sol;
+    }
+    //////////////////////////////////////////
+
+    String properNounCorrection(String noun) {
+        return noun.substring(0, 1).toUpperCase() + noun.substring(1).toLowerCase();
+    }
+
+    ////////////////////////////////////////
+    int champernowneDigit(int n) {
+        String nums = "";
+        for (int i = 1; i < 1000; i++) {
+            nums += i + "";
+        }
+        return Character.getNumericValue(nums.charAt(n - 1));
+    }
+
+    ////////////////////////////////////////
+
+    String angleType(double measure) {
+
+        if (measure < 90) {
+            return "acute";
+        }
+
+        if (measure == 90) {
+            return "right";
+        }
+
+        if (measure < 180) {
+            return "obtuse";
+        }
+
+        return "straight";
+    }
+
+    ////////////////////////////////////////
+    int binaryPower(int n,int k){final int MOD=(int)1e7+7;
+    
+    if(k==0){return 1;}if(k%2==0){return binaryPower((int)((n*1 L*n)%MOD),k/2);}return(int)((binaryPower(n,k-1)*1 L*n)%MOD);}
+
+    ////////////////////////////////////////
+    int binaryPower(int n,int k){final int MOD=(int)1e7+7;
+    
+    if(k==0){return 1;}if(k%2==0){return binaryPower((int)((n*1 L*n)%MOD),k/2);}return(int)((binaryPower(n,k-1)*1 L*n)%MOD);}
+
+    ////////////////////////////////////////
+
+    String truncateString(String s) {
+
+        while (true) {
+            if (s.length() == 0)
+                return "";
+            if (s.length() >= 2
+                    && (Integer.parseInt(s.substring(0, 1)) + Integer.parseInt(s.substring(s.length() - 1))) % 3 == 0) {
+                s = s.substring(1, s.length() - 1);
+                System.out.println(s);
+            } else if (Integer.parseInt(s.substring(0, 1)) % 3 == 0) {
+                s = s.substring(1);
+                System.out.println(s);
+            } else if (Integer.parseInt(s.substring(s.length() - 1)) % 3 == 0) {
+                s = s.substring(0, s.length() - 1);
+                System.out.println(s);
+            } else
+                return s;
+        }
+    }
+
+    ////////////////////////////////////////
+    int lrSegmentNumber(int l, int r) {
+        String num = "";
+        for (int i = l; i <= r; i++) {
+            num += i + "";
+        }
+        return Integer.parseInt(num);
+    }
+
+    ////////////////////////////////////////
+
+    String buildPalindrome(String st) {
+        String str = new StringBuilder(st).reverse().toString();
+        if (str.equals(st))
+            return st;
+        for (int i = 0; i < st.length(); i++) {
+            System.out.println("New String: " + st.substring(0, i) + str);
+            if ((st.substring(0, i) + str).equals(new StringBuilder((st.substring(0, i) + str)).reverse().toString()))
+                return st.substring(0, i) + str;
+        }
+        return "lol";
+    }
+
+    ////////////////////////////////////////
+    boolean chessBoardCellColor(String cell1, String cell2) {
+        String alpha = "ABCDEFGH";
+        int c1A = alpha.indexOf(cell1.charAt(0)) + 1;
+        int c1N = Integer.parseInt(cell1.substring(1));
+
+        int c2A = alpha.indexOf(cell2.charAt(0)) + 1;
+        int c2N = Integer.parseInt(cell2.substring(1));
+
+        if ((c1A + c1N + c2A + c2N) % 2 == 0)
+            return true;
+        return false;
+
+    }
+
+    ////////////////////////////////////////
+    int quasifactorial(int n) {
+        int answer = 1;
+        for (int i = 2; i <= n; ++i) {
+            answer *= i;
+            --answer;
+        }
+        return answer;
+    }
+
+    ////////////////////////////////////////
+    int firstMultiple2(int[] divisors, int start) {
+        int sol = start;
+        while (true) {
+            for (int n : divisors) {
+                if (sol % n == 0)
+                    return sol;
+            }
+            sol++;
+        }
+
+    }
+
+    ////////////////////////////////////////
+
+    int firstMultiple(int[] divisors, int start) {
+        int sol = start;
+        while (true) {
+            int count = 0;
+            for (int n : divisors) {
+
+                if (sol % n == 0)
+                    count++;
+            }
+            if (count == divisors.length)
+                return sol;
+            sol++;
+        }
+
+    }
+
+    //////////////////////////////////////////
+    int crossingSum(int[][] matrix, int row, int column) {
+
+        int result = 0;
+        for (int i = 0; i < matrix.length; i++) {
+            result += matrix[i][column];
+        }
+        for (int i = 0; i < matrix[0].length; i++) {
+            result += matrix[row][i];
+        }
+        result -= matrix[row][column];
+
+        return result;
+    }
+
+    ////////////////////////////////////////
+    int leastFactorial(int n) {
+        int fact = 1;
+        for (int i = 1;; i++) {
+            fact *= i;
+            if (fact >= n)
+                return fact;
+
+        }
+        // return 0;
+    }
+
+    ////////////////////////////////////////
+    int appleBoxes(int k) {
+        int odd = 0;
+        int eve = 0;
+        for (int i = 1; i <= k; i++) {
+            if (i % 2 == 0)
+                eve += (i * i);
+            else
+                odd += (i * i);
+        }
+        return eve - odd;
+    }
+
+    ////////////////////////////////////////
+    int avoidObstacles(int[] inputArray) {
+
+        Arrays.sort(inputArray);
+
+        int sol, i;
+
+        for (i = 1;; i++) {
+            sol = 0;
+            for (int n : inputArray) {
+                if (n % i == 0) {
+                    break;
+                } else
+                    sol++;
+            }
+            if (sol == inputArray.length)
+                return i;
+        }
+
+    }
+
+    ////////////////////////////////////////
+
+    int matrixTrace(int[][] matrix) {
+        int sum = 0;
+        for (int i = 0; i < matrix.length; i++) {
+            sum += matrix[i][i];
+        }
+        return sum;
+    }
+
+    ////////////////////////////////////////
+    int evenNumbersBeforeFixed(int[] sequence, int fixedElement) {
+        int sol = 0;
+        for (int i = 0; i < sequence.length; i++) {
+
+            if (sequence[i] != fixedElement) {
+                if (sequence[i] % 2 == 0)
+                    sol++;
+            } else
+                return sol;
+
+        }
+
+        return -1;
+    }
+
+    ////////////////////////////////////////
+    boolean isMonotonous(int[] sequence) {
+        int flag = 0;
+        if (sequence.length < 2)
+            return true;
+        for (int i = 1; i < sequence.length; i++) {
+            if (sequence[i - 1] < sequence[i]) {
+                flag++;
+
+            } else if ((sequence[i - 1] > sequence[i]))
+                flag--;
+            else
+                return false;
+
+        }
+        return Math.abs(flag) == sequence.length - 1;
+    }
+
+    ////////////////////////////////////////
+    int differentValuesInMultiplicationTable2(int n, int m) {
+        HashSet<Integer> hs = new HashSet<Integer>();
+        for (int i = 1; i <= n; i++) {
+            for (int j = 1; j <= m; j++) {
+                hs.add(i * j);
+            }
+        }
+        return hs.size();
+    }
+
+    ////////////////////////////////////////
+    int additionWithoutCarrying(int param1, int param2) {
+        String sol = "";
+        if (param1 == 0 && param2 == 0)
+            return 0;
+        while (param1 > 0 || param2 > 0) {
+
+            // System.out.println((param1%10 + param2%10)%10);
+            int last = (param1 % 10 + param2 % 10) % 10;
+
+            sol = last + sol;
+            if (param1 > 0)
+                param1 /= 10;
+            if (param2 > 0)
+                param2 /= 10;
+        }
+        System.out.println(sol);
+
+        return Integer.parseInt(sol);
+
+    }
+
+    ////////////////////////////////////////
+
+    boolean increaseNumberRoundness(int n) {
+        while (n % 10 == 0 && n > 0)
+            n /= 10;
+        while (n % 10 > 0 && n > 0)
+            n /= 10;
+        return n != 0;
+    }
+
+    ////////////////////////////////////////
+    int rounders(int n) {
+        String[] arr = (n + "").split("");
+        int len = arr.length;
+        for (int i = len - 1; i >= 1; i--) {
+            if (Integer.parseInt(arr[i]) < 5)
+                arr[i] = "0";
+            else {
+                arr[i] = "0";
+                arr[i - 1] = (Integer.parseInt(arr[i - 1]) + 1) + "";
+            }
+        }
+        String sol = "";
+        for (String c : arr) {
+            sol += c + "";
+        }
+        return Integer.parseInt(sol);
+    }
+
+    ////////////////////////////////////////
+    int candles(int candlesNumber, int makeNew) {
+        return candlesNumber + (candlesNumber - 1) / (makeNew - 1);
+    }
+
+    ////////////////////////////////////////
+    int arrayMode(int[] sequence) {
+        int[] arr = new int[10000];
+        int max = 0;
+        int sol = 0;
+        for (int num : sequence) {
+            arr[num]++;
+            if (max < arr[num]) {
+                max = arr[num];
+                sol = num;
+            }
+
+        }
+        return sol;
+    }
+
+    ////////////////////////////////////////
+    int arrayMode(int[] sequence) {
+        ArrayList<Integer> count = new ArrayList<>();
+        int answer = 0;
+
+        for (int i = 0; i < 1000; i++) {
+            count.add(0);
+        }
+        for (int i = 0; i < sequence.length; i++) {
+            count.set(sequence[i] - 1, count.get(sequence[i] - 1) + 1);
+            if (count.get(sequence[i] - 1) > count.get(answer)) {
+                answer = sequence[i] - 1;
+            }
+        }
+        return answer + 1;
+    }
+    ///////////////////////////////////////
+
+    int[][]matrixTransposition(int[][]matrix){
+        int[][]sol=new int[matrix[0].length][matrix.length];
+    
+        for(int i=0;i<matrix.length;i++){
+            for(int j=0;j<matrix[0].length;j++){
+                sol[j][i]=matrix[i][j];
+            }
+        }
+        return sol;
+    }
+/////////////////////////////////////////////
