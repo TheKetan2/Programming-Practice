@@ -15,5 +15,5 @@ def isOneSwapEnough(s):
                 
     return False
                 
-    
+
 

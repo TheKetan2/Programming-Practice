@@ -149,6 +149,14 @@ int firstMultiple2(int[]divisors,int start){int sol=start;while(true){for(int n:
 }
 
 ////////////////////////////////////////
+
+int firstMultiple(int[]divisors,int start){int sol=start;while(true){int count=0;for(int n:divisors){
+
+if(sol%n==0)count++;}if(count==divisors.length)return sol;sol++;}
+
+}
+
+//////////////////////////////////////////
 int crossingSum(int[][]matrix,int row,int column){
 
 int result=0;for(int i=0;i<matrix.length;i++){result+=matrix[i][column];}for(int i=0;i<matrix[0].length;i++){result+=matrix[row][i];}result-=matrix[row][column];
@@ -2600,8 +2608,186 @@ int countSumOfTwoRepresentations3(int n, int l, int r) {
     }
 
     /////////////////////////////////////////
-boolean isPerfectScore(boolean ans1, boolean ans2, boolean ans3) {
-    return (ans1 && ans2) && ans3;
-}
+    boolean isPerfectScore(boolean ans1, boolean ans2, boolean ans3) {
+        return (ans1 && ans2) && ans3;
+    }
+
+    ////////////////////////////////////////
+
+    int digitDistanceNumber(int n) {
+        int result = 0;
+        int lastDigit = n % 10;
+        int tenPower = 1;
+        n /= 10;
+        while (n != 0) {
+            result += tenPower * Math.abs(n % 10 - lastDigit);
+            tenPower *= 10;
+            lastDigit = n % 10;
+            n /= 10;
+        }
+
+        return result;
+    }
+
+    //////////////////////////////////////
+    boolean isLucky(int n) {
+        int fh = 0;
+        int sh = 0;
+        int len = (n + "").length();
+        for (int i = 0; i < len / 2; i++) {
+            fh += n % 10;
+            n /= 10;
+        }
+
+        while (n > 0) {
+            sh += n % 10;
+            n /= 10;
+        }
+        return fh == sh;
+    }
+
+    /////////////////////////////////////////
+    String[] isDivisibleBy3(String inputString) {
+        List<String> list = new ArrayList<>();
+        int sum = 0;
+        for (char c : inputString.replace("*", "").toCharArray()) {
+            sum += Character.getNumericValue(c);
+        }
+
+        for (int i = 0; i <= 9; i++) {
+            if ((sum + i) % 3 == 0)
+                list.add((inputString.replace("*", i + "")));
+
+        }
+
+        return list.toArray(new String[list.size()]);
+    }
+
+    ///////////////////////////////////////////
+
+    int differentSymbolsNaive(String s) {
+
+        int result = 0;
+
+        for (int i = 0; i < 26; i++) {
+            boolean found = false;
+            for (int j = 0; j < s.length(); j++) {
+                if (s.charAt(j) == 'a' + i) {
+                    found = true;
+                    break;
+                }
+            }
+            if (found) {
+                result++;
+            }
+        }
+        return result;
+    }
+
+    /////////////////////////////////////////
+
+    int[][] spiralNumbers(int n) {
+        int[][] m = new int[n][n];
+        int[][] directions = { { 0, 1 }, { 1, 0 }, { 0, -1 }, { -1, 0 } };
+        int currentDirectionIndex = 0;
+        int currentRow = 0;
+        int currentColumn = 0;
+        int currentNum = 1;
+        int tmpRow;
+        int tmpColumn;
+        for (int i = n * n; i > 0; i--) {
+            m[currentRow][currentColumn] = currentNum++;
+            if (i > 1) {
+                // Determine the next cell
+                while (true) {
+                    tmpRow = currentRow + directions[currentDirectionIndex][0];
+                    tmpColumn = currentColumn + directions[currentDirectionIndex][1];
+                    if (tmpRow < 0 || tmpRow >= n || tmpColumn < 0 || tmpColumn >= n || m[tmpRow][tmpColumn] != 0) {
+                        currentDirectionIndex = (currentDirectionIndex + 1) % 4;
+                    } else {
+                        currentRow = tmpRow;
+                        currentColumn = tmpColumn;
+                        break;
+                    }
+                }
+            }
+        }
+        return m;
+    }
+
+    /////////////////////////////////////////
+
+    int lastDigit(int a, int b) {
+        if (b == 0)
+            return 1;
+        a = a;
+        int c = a % 10;
+        for (int i = 2; i <= b; i++) {
+            c *= a;
+            c %= 10;
+        }
+        return c % 10;
+    }
+
+    ////////////////////////////////////////
+
+    String properNounCorrection(String noun) {
+
+        class Helper {
+            boolean isLowerCase(char symbol) {
+                if (symbol >= 'a' && symbol <= 'z') {
+                    return true;
+                }
+                return false;
+            }
+        }
+        ;
+        Helper h = new Helper();
+
+        StringBuilder result = new StringBuilder();
+
+        if (h.isLowerCase(noun.charAt(0))) {
+            result.append((char) (noun.charAt(0) - 'a' + 'A'));
+        } else {
+            result.append(noun.charAt(0));
+        }
+
+        for (int i = 1; i < noun.length(); i++) {
+            if (!h.isLowerCase(noun.charAt(i))) {
+                result.append((char) (noun.charAt(i) - 'A' + 'a'));
+            } else {
+                result.append(noun.charAt(i));
+            }
+        }
+
+        return result.toString();
+    }
+
+    //////////////////////////////////////////
+
+    int concatenateNumbers(int a, int b) {
+        int tmp = b;
+
+        while (tmp > 0) {
+            tmp /= 10;
+            a *= 10;
+        }
+
+        return a + b;
+    }
+
+    //////////////////////////////////////
+  int toAndFro(int a, int b, int t) {
+
+    int len = Math.abs(b - a);
+    t %= (2 * len);
+    if (t <= len) {
+      return a + (b - a) / Math.abs(b - a) * t;
+    }
+    else {
+      t -= len;
+      return  b + (a - b) / Math.abs(b - a) * t ;
+    }
+  }
 
 ////////////////////////////////////////
