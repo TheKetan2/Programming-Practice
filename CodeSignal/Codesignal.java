@@ -112,12 +112,12 @@ return"straight";}
 ////////////////////////////////////////
 int binaryPower(int n,int k){final int MOD=(int)1e7+7;
 
-if(k==0){return 1;}if(k%2==0){return binaryPower((int)((n*1L*n)%MOD),k/2);}return(int)((binaryPower(n,k-1)*1L*n)%MOD);}
+if(k==0){return 1;}if(k%2==0){return binaryPower((int)((n*1 L*n)%MOD),k/2);}return(int)((binaryPower(n,k-1)*1 L*n)%MOD);}
 
 ////////////////////////////////////////
 int binaryPower(int n,int k){final int MOD=(int)1e7+7;
 
-if(k==0){return 1;}if(k%2==0){return binaryPower((int)((n*1L*n)%MOD),k/2);}return(int)((binaryPower(n,k-1)*1L*n)%MOD);}
+if(k==0){return 1;}if(k%2==0){return binaryPower((int)((n*1 L*n)%MOD),k/2);}return(int)((binaryPower(n,k-1)*1 L*n)%MOD);}
 
 ////////////////////////////////////////
 
@@ -200,9 +200,7 @@ return-1;}
 ////////////////////////////////////////
 boolean isMonotonous(int[]sequence){int flag=0;if(sequence.length<2)return true;for(int i=1;i<sequence.length;i++){if(sequence[i-1]<sequence[i]){flag++;
 
-}
-
-else if((sequence[i-1]>sequence[i]))flag--;else return false;
+}else if((sequence[i-1]>sequence[i]))flag--;else return false;
 
 }return Math.abs(flag)==sequence.length-1;}
 
@@ -263,7 +261,7 @@ class Helper {
     {
         return true;
     }return false;
-  }
+   }
 
     ////////////////////////////////////////
 
@@ -759,14 +757,14 @@ class Helper {
     }
 
     ////////////////////////////////////////
-def permutationShift(permutation):
-    
+   def permutationShift(permutation):
+   
     s = []
-    for i, e in enumerate(permutation):
-        s.append(e-i)
-    return max(s) - min(s)
-
-////////////////////////////////////////
+   for i, e in enumerate(permutation):
+    s.append(e - i)
+   return max(s) - min(s)
+   
+   ////////////////////////////////////////
     int commonCharacterCount(String s1, String s2) {
         int sol = 0;
         for (char c : s1.toCharArray()) {
@@ -1387,15 +1385,15 @@ def permutationShift(permutation):
     }
 
     ////////////////////////////////////////
-int countSumOfTwoRepresentations3(int n, int l, int r) {
+   int countSumOfTwoRepresentations3(int n, int l, int r) {
     int res {};
     for (int i = 0; i <= 1000000; ++i) {
-        if (l <=  n - i && n - i <= r && n - i <= i && l <= i && i <= r) {
-            res++;
-        }
+     if (l <= n - i && n - i <= r && n - i <= i && l <= i && i <= r) {
+      res++;
+     }
     }
     return res;
-}
+   }
 
     ////////////////////////////////////////
     int chessKnight(String cell) {
@@ -1876,9 +1874,7 @@ int countSumOfTwoRepresentations3(int n, int l, int r) {
                 power /= 10;
             }
             return ans;
-        }
-
-        else {
+        } else {
             while (n > 0) {
                 num += "0";
                 n--;
@@ -2777,17 +2773,16 @@ int countSumOfTwoRepresentations3(int n, int l, int r) {
     }
 
     //////////////////////////////////////
-  int toAndFro(int a, int b, int t) {
-
+   int toAndFro(int a, int b, int t) {
+   
     int len = Math.abs(b - a);
     t %= (2 * len);
     if (t <= len) {
-      return a + (b - a) / Math.abs(b - a) * t;
+     return a + (b - a) / Math.abs(b - a) * t;
+    } else {
+     t -= len;
+     return b + (a - b) / Math.abs(b - a) * t;
     }
-    else {
-      t -= len;
-      return  b + (a - b) / Math.abs(b - a) * t ;
-    }
-  }
+   }
 
 ////////////////////////////////////////
