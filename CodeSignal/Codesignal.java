@@ -3381,19 +3381,34 @@ class Helper {
     }
     //////////////////////////////////////////
 
-int differentValues(int[] a, int d) {
+    int differentValues(int[] a, int d) {
 
-    int best = -1;
-    for (int i = 0; i < a.length; i++) {
-      for (int j = i + 1; j < a.length; j++) {
-        int diff = Math.abs(a[j] - a[i]);
-        if (diff <= d && diff>=best) {
-          best = diff;
+        int best = -1;
+        for (int i = 0; i < a.length; i++) {
+            for (int j = i + 1; j < a.length; j++) {
+                int diff = Math.abs(a[j] - a[i]);
+                if (diff <= d && diff >= best) {
+                    best = diff;
+                }
+            }
         }
+
+        return best;
+    }
+
+    ///////////////////////////////////////
+int rangeBitCount(int a, int b) {
+
+    int ans = 0;
+    for (int i = a; i <= b; i++) {
+      int t = i;
+      while (t > 0) {
+        ans += t & 1;
+        t >>= 1;
       }
     }
   
-    return best;
+    return ans;
   }
 
-///////////////////////////////////////
+////////////////////////////////////
