@@ -3292,14 +3292,108 @@ class Helper {
 
     /////////////////////////////////////////
 
-ArrayList<Integer> rangeArray(int l, int r, int step) {
+    ArrayList<Integer> rangeArray(int l, int r, int step) {
 
-    ArrayList<Integer> result = new ArrayList();
-    while (l < r) {
-      result.add(l);
-      l +=  step ;
+        ArrayList<Integer> result = new ArrayList();
+        while (l < r) {
+            result.add(l);
+            l += step;
+        }
+        return result;
     }
-    return result;
+
+    //////////////////////////////////////
+    boolean isPermutation(int n, int[] inputArray) {
+
+        int[] countOccurences = new int[n];
+
+        for (int i = 0; i < inputArray.length; i++) {
+            if (inputArray[i] - 1 < 0 || inputArray[i] - 1 >= n) {
+                return false;
+            }
+            countOccurences[inputArray[i] - 1]++;
+        }
+
+        for (int i = 0; i < n; i++) {
+            if (countOccurences[i] != 1) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    ///////////////////////////////////////////////
+    int arrayMinimumIndex(int[] inputArray) {
+
+        int indexOfMinimum = 0;
+        for (int i = 1; i < inputArray.length; i++) {
+            if (inputArray[i] < inputArray[indexOfMinimum]) {
+                indexOfMinimum = i;
+            }
+        }
+        return indexOfMinimum;
+    }
+
+    /////////////////////////////////////////
+    int numberOfTriangles2(int[] sticks) {
+        Arrays.sort(sticks);
+        int count = 0;
+        for (int i = 0; i < sticks.length - 2; i++) {
+            for (int j = i + 1; j < sticks.length - 1; j++) {
+                for (int k = j + 1; k < sticks.length; k++) {
+                    if (sticks[i] + sticks[j] > sticks[k])
+                        count++;
+                }
+            }
+
+        }
+        return count;
+    }
+
+    ////////////////////////////////////////
+    String removeDuplicateCharacters(String str) {
+        int[] alpha = new int[255];
+
+        for (char c : str.toCharArray()) {
+            alpha[c]++;
+        }
+        String sol = "";
+        for (char c : str.toCharArray()) {
+            if (alpha[c] == 1)
+                sol += (char) c;
+        }
+        return sol;
+    }
+
+    ////////////////////////////////////////
+
+    int smallestMultiple(int left, int right) {
+        int sol = right;
+        for (int i = left; i <= right; i++) {
+
+            if (sol % i != 0) {
+                i = left;
+                sol++;
+            }
+
+        }
+        return sol;
+    }
+    //////////////////////////////////////////
+
+int differentValues(int[] a, int d) {
+
+    int best = -1;
+    for (int i = 0; i < a.length; i++) {
+      for (int j = i + 1; j < a.length; j++) {
+        int diff = Math.abs(a[j] - a[i]);
+        if (diff <= d && diff>=best) {
+          best = diff;
+        }
+      }
+    }
+  
+    return best;
   }
 
-//////////////////////////////////////
+///////////////////////////////////////
