@@ -1115,6 +1115,30 @@ class Helper {
     }
 
     ////////////////////////////////////////
+    int[] arrayCenter(int[] a) {
+        int n = a.length;
+        int suma = a[0], mina = suma;
+        for (int i = 1; i < n; i++) {
+            suma += a[i];
+            mina = Math.min(mina, a[i]);
+        }
+
+        ArrayList<Integer> b = new ArrayList<>();
+        for (int i = 0; i < n; i++) {
+            if (Math.abs(n * a[i] - suma) < n * mina) {
+                b.add(a[i]);
+            }
+        }
+        int sol[] = new int[b.size()];
+        int i = 0;
+        for (int num : b) {
+            sol[i] = num;
+            i++;
+        }
+        return sol;
+    }
+
+    ////////////////////////////////////////
     int depositProfit(int deposit, int rate, int threshold) {
         double grow = 1 + rate / 100.0;
         int year = (int) (Math.log((double) threshold / deposit) / Math.log(grow));
@@ -3158,14 +3182,124 @@ class Helper {
     }
     ///////////////////////////////////////
 
-    int[][]matrixTransposition(int[][]matrix){
-        int[][]sol=new int[matrix[0].length][matrix.length];
-    
-        for(int i=0;i<matrix.length;i++){
-            for(int j=0;j<matrix[0].length;j++){
-                sol[j][i]=matrix[i][j];
+    int[][] matrixTransposition(int[][] matrix) {
+        int[][] sol = new int[matrix[0].length][matrix.length];
+
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[0].length; j++) {
+                sol[j][i] = matrix[i][j];
             }
         }
         return sol;
     }
-/////////////////////////////////////////////
+
+    /////////////////////////////////////////////
+    boolean isSum(int value) {
+        int sum = 0;
+        for (int i = 1;; i++) {
+            sum += i;
+            if (sum == value)
+                return true;
+            if (sum > value)
+                return false;
+        }
+    }
+
+    ////////////////////////////////////////
+
+    int axisAlignedBoundingBox(int[] x, int[] y) {
+
+        int minX = x[0], maxX = x[0], minY = y[0], maxY = y[0];
+
+        for (int i = 1; i < x.length; i++) {
+            minX = Math.min(x[i], minX);
+            maxX = Math.max(x[i], maxX);
+            minY = Math.min(y[i], minY);
+            maxY = Math.max(y[i], maxY);
+        }
+
+        return (maxX - minX) * (maxY - minY);
+    }
+
+    //////////////////////////////////////////////
+    int divideAsLongAsPossible(int n, int d) {
+
+        while (n % d == 0) {
+            n /= d;
+        }
+        return n;
+    }
+
+    ///////////////////////////////////////////
+
+    int largestNumber(int n) {
+        if (n <= 1)
+            return 9;
+        int sol = 9;
+        while (n > 1) {
+            sol *= 10;
+            sol += 9;
+            n--;
+        }
+        return sol;
+    }
+
+    /////////////////////////////////////////
+
+    boolean parallelLines(int[] line1, int[] line2) {
+        return line1[0] * line2[1] == line1[1] * line2[0];
+    }
+
+    ////////////////////////////////////////
+    int arraySumAdjacentDifference(int[] inputArray) {
+        int sum = 0;
+        for (int i = 1; i < inputArray.length; i++) {
+            sum += (Math.abs(inputArray[i] - inputArray[i - 1]));
+        }
+        return sum;
+    }
+
+    ////////////////////////////////////////////
+    boolean isEarlier(int[] time1, int[] time2) {
+        if (time1[0] > time2[0])
+            return false;
+        else if (time1[0] < time2[0])
+            return true;
+        return time1[1] < time2[1];
+    }
+
+    //////////////////////////////////////////
+
+    int deleteDigit(int n) {
+        int answer = 0;
+        ArrayList<Integer> digits = new ArrayList<>();
+        while (n != 0) {
+            digits.add(n % 10);
+            n /= 10;
+        }
+        int number = 0;
+        for (int deletedIndex = 0; deletedIndex < digits.size(); deletedIndex++) {
+            number = 0;
+            for (int i = digits.size() - 1; i >= 0; i--) {
+                if (i != deletedIndex) {
+                    number = number * 10 + digits.get(i);
+                }
+            }
+            answer = Math.max(number, answer);
+        }
+        return answer;
+    }
+
+    /////////////////////////////////////////
+
+ArrayList<Integer> rangeArray(int l, int r, int step) {
+
+    ArrayList<Integer> result = new ArrayList();
+    while (l < r) {
+      result.add(l);
+      l +=  step ;
+    }
+    return result;
+  }
+
+//////////////////////////////////////
