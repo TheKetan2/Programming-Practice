@@ -3397,18 +3397,106 @@ class Helper {
     }
 
     ///////////////////////////////////////
-int rangeBitCount(int a, int b) {
+    int rangeBitCount(int a, int b) {
 
-    int ans = 0;
-    for (int i = a; i <= b; i++) {
-      int t = i;
-      while (t > 0) {
-        ans += t & 1;
-        t >>= 1;
-      }
+        int ans = 0;
+        for (int i = a; i <= b; i++) {
+            int t = i;
+            while (t > 0) {
+                ans += t & 1;
+                t >>= 1;
+            }
+        }
+
+        return ans;
     }
-  
-    return ans;
-  }
 
-////////////////////////////////////
+    ////////////////////////////////////
+    int numberOfOperations(int a, int b) {
+        int[] arr = { a, b };
+        Arrays.sort(arr);
+        int sol = 0;
+        while (arr[1] % arr[0] == 0) {
+            arr[1] /= arr[0];
+
+            Arrays.sort(arr);
+            sol++;
+
+        }
+        return sol;
+    }
+
+    ////////////////////////////////////
+    int stringsCrossover(String[] inputArray, String result) {
+
+        int answer = 0;
+
+        for (int i = 0; i < inputArray.length; i++) {
+            for (int j = i + 1; j < inputArray.length; j++) {
+                boolean correct = true;
+                for (int k = 0; k < result.length(); k++) {
+                    if (result.charAt(k) != inputArray[i].charAt(k) && result.charAt(k) != inputArray[j].charAt(k)) {
+                        correct = false;
+                        break;
+                    }
+                }
+                if (correct) {
+                    answer++;
+                }
+            }
+        }
+        return answer;
+    }
+
+    ///////////////////////////////////
+    String[] addBorder(String[] picture) {
+        String startEnd = "";
+        for (int i = 0; i < picture[0].length() + 2; i++) {
+            startEnd += "*";
+        }
+
+        ArrayList<String> list = new ArrayList<>();
+        list.add(startEnd);
+        for (int i = 0; i < picture.length; i++) {
+            list.add("*" + picture[i] + "*");
+        }
+        list.add(startEnd);
+        return list.toArray(new String[list.size()]);
+    }
+
+    ///////////////////////////////////////
+
+    int sequencePeakElement(int[] sequence) {
+        int left = 1;
+        int right = sequence.length - 2;
+        while (left < right) {
+            int middle = (left + right) / 2;
+            if (sequence[middle] > Math.max(sequence[middle - 1], sequence[middle + 1])) {
+                left = right = middle;
+                break;
+            }
+            if (sequence[middle - 1] < sequence[middle]) {
+                left = middle + 1;
+            } else {
+                right = middle - 1;
+            }
+        }
+        return sequence[left];
+    }
+
+    /////////////////////////////////////
+    boolean leapYear(int year) {
+
+        if (year % 4 == 0 && year % 100 != 0 || year % 400 == 0) {
+            return true;
+        }
+        return false;
+    }
+
+    ///////////////////////////////////////
+
+boolean areEquallyStrong(int yourLeft, int yourRight, int friendsLeft, int friendsRight) {
+    return ((yourLeft == friendsLeft && yourRight == friendsRight) || (yourLeft == friendsRight && yourRight == friendsLeft));
+}
+
+///////////////////////////////////////
