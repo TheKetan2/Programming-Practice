@@ -3495,8 +3495,43 @@ class Helper {
 
     ///////////////////////////////////////
 
-boolean areEquallyStrong(int yourLeft, int yourRight, int friendsLeft, int friendsRight) {
-    return ((yourLeft == friendsLeft && yourRight == friendsRight) || (yourLeft == friendsRight && yourRight == friendsLeft));
-}
+    boolean areEquallyStrong(int yourLeft, int yourRight, int friendsLeft, int friendsRight) {
+        return ((yourLeft == friendsLeft && yourRight == friendsRight)
+                || (yourLeft == friendsRight && yourRight == friendsLeft));
+    }
 
-///////////////////////////////////////
+    ///////////////////////////////////////
+
+    int sumBelowBound(int bound) {
+
+        int left = 0, right = bound + 1;
+        while (right - left > 1) {
+            int middle = (left + right) / 2;
+            if (middle * (middle + 1) / 2 <= bound) {
+                left = middle;
+            } else {
+                right = middle;
+            }
+        }
+
+        return left;
+    }
+
+    /////////////////////////////////////
+    int oddNumbersBeforeZero(int[] sequence) {
+        int sol = 0;
+        for (int i : sequence) {
+            if (i == 0)
+                break;
+            if (i % 2 != 0)
+                sol++;
+        }
+        return sol;
+    }
+
+    //////////////////////////////////////
+boolean isSuspiciousRespondent(boolean ans1, boolean ans2, boolean ans3) {
+    return  ans1 == ans2 && ans1 == ans3 ;
+  }
+
+/////////////////////////////////////
