@@ -3064,6 +3064,21 @@ class Helper {
     }
 
     ////////////////////////////////////////
+
+    boolean isMonotonous(int[] sequence) {
+        if (sequence.length == 1) {
+            return true;
+        }
+        int direction = sequence[1] - sequence[0];
+        for (int i = 0; i < sequence.length - 1; i++) {
+            if (direction * (sequence[i + 1] - sequence[i]) <= 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    ////////////////////////////////////////
     boolean isMonotonous(int[] sequence) {
         int flag = 0;
         if (sequence.length < 2)
@@ -3530,8 +3545,195 @@ class Helper {
     }
 
     //////////////////////////////////////
-boolean isSuspiciousRespondent(boolean ans1, boolean ans2, boolean ans3) {
-    return  ans1 == ans2 && ans1 == ans3 ;
+    boolean isSuspiciousRespondent(boolean ans1, boolean ans2, boolean ans3) {
+        return ans1 == ans2 && ans1 == ans3;
+    }
+
+    /////////////////////////////////////
+
+    int axisAlignedCirclesBoundingBox(int[] x, int[] y, int[] r) {
+
+        int minX = x[0] - r[0], maxX = x[0] + r[0], minY = y[0] - r[0], maxY = y[0] + r[0];
+
+        for (int i = 1; i < x.length; i++) {
+            minX = Math.min(x[i] - r[i], minX);
+            maxX = Math.max(x[i] + r[i], maxX);
+            minY = Math.min(y[i] - r[i], minY);
+            maxY = Math.max(y[i] + r[i], maxY);
+        }
+
+        return (maxX - minX) * (maxY - minY);
+    }
+
+    //////////////////////////////////////
+
+    int sumUpDigits(String inputString) {
+
+        int answer = 0;
+
+        for (int i = 0; i < inputString.length(); i++) {
+            if ('1' <= inputString.charAt(i) && inputString.charAt(i) <= '9') {
+                answer += inputString.charAt(i) - '0';
+            }
+        }
+
+        return answer;
+    }
+
+    /////////////////////////////////////////
+
+    int[] extractMatrixColumn(int[][] matrix, int column) {
+        int[] sol = new int[matrix.length];
+        for (int i = 0; i < matrix.length; i++) {
+            sol[i] = matrix[i][column];
+        }
+        return sol;
+    }
+
+    ////////////////////////////////////////
+
+    int lateRide(int n) {
+        int sol = 0;
+        int hr = n / 60;
+        int mm = n % 60;
+        while (hr > 0) {
+            sol += hr % 10;
+            hr /= 10;
+        }
+        while (mm > 0) {
+            sol += mm % 10;
+            mm /= 10;
+        }
+        return sol;
+    }
+
+    //////////////////////////////////////
+    int sequencePeakElement(int[] sequence) {
+        int left = 1;
+        int right = sequence.length - 1;
+        while (left < right) {
+            int middle = (left + right) / 2;
+            if (sequence[middle] > Math.max(sequence[middle - 1], sequence[middle + 1])) {
+                left = right = middle;
+                break;
+            }
+            if (sequence[middle - 1] < sequence[middle]) {
+                left = middle + 1;
+            } else {
+                right = middle - 1;
+            }
+        }
+        return sequence[left];
+    }
+
+    ///////////////////////////////////
+
+    boolean symbolsPermutation(String word1, String word2) {
+        int[] aplpha1 = new int[255];
+        int[] aplpha2 = new int[255];
+
+        for (char c : word1.toCharArray()) {
+            aplpha1[c]++;
+        }
+        for (char c : word2.toCharArray()) {
+            aplpha2[c]++;
+        }
+        for (int i = 0; i < 255; i++) {
+            if (aplpha1[i] != aplpha2[i])
+                return false;
+        }
+        return true;
+
+    }
+
+    //////////////////////////////////////
+
+    boolean validTime(String time) {
+
+        class Helper {
+            int charToInt(char symbol) {
+                return symbol - '0';
+            }
+        }
+        Helper h = new Helper();
+
+        int hours = h.charToInt(time.charAt(0)) * 10 + h.charToInt(time.charAt(1)),
+                minutes = h.charToInt(time.charAt(3)) * 10 + h.charToInt(time.charAt(4));
+
+        if (hours >= 0 && hours < 24 && minutes >= 0 && minutes < 60) {
+            return true;
+        }
+        return false;
+    }
+
+    ///////////////////////////////////////
+
+    ArrayList<Integer> nextPermutation(ArrayList<Integer> permutation) {
+
+        for (int i = permutation.size() - 2; i >= 0; i--) {
+            if (permutation.get(i) < permutation.get(i + 1)) {
+                int index = i + 1, t = permutation.get(i);
+                for (int j = i + 1; j < permutation.size(); j++) {
+                    if (permutation.get(j) > t && permutation.get(j) < permutation.get(index)) {
+                        index = j;
+                    }
+                }
+                permutation.set(i, permutation.get(index));
+                permutation.set(index, t);
+                ArrayList<Integer> suffix = new ArrayList<>(permutation.subList(i + 1, permutation.size()));
+                Collections.reverse(suffix);
+                permutation.subList(i + 1, permutation.size()).clear();
+                permutation.addAll(suffix);
+                return permutation;
+            }
+        }
+
+        Collections.sort(permutation);
+        return permutation;
+    }
+
+    //////////////////////////////////////////////
+    boolean latinLettersSearchRegExp(String input) {
+        return input.replaceAll("[a-zA-Z]", "").length() != input.length();
+    }
+
+    //////////////////////////////////////////
+    int powerRecursive(int x, int exponent) {
+        if (exponent == 0) {
+            return 1;
+        } else {
+            return (int) Math.pow(x, exponent);
+        }
+    }
+
+    /////////////////////////////////////////
+
+    int numberOfOperations(int a, int b) {
+
+        if (a < b) {
+            int t = a;
+            a = b;
+            b = t;
+        }
+        if (a % b != 0) {
+            return 0;
+        }
+        return 1 + numberOfOperations(a / b, b);
+    }
+
+    /////////////////////////////////////////
+String[] allLongestStrings(String[] inputArray) {
+
+    ArrayList<String> answer = new ArrayList<>(Arrays.asList(inputArray[0]));
+    for (int i = 1; i < inputArray.length; i++) {
+      if (inputArray[i].length() == answer.get(0).length()) {
+        answer.add( inputArray[i] );
+      }
+      if (inputArray[i].length() > answer.get(0).length()) {
+        answer = new ArrayList<>(Arrays.asList(inputArray[i]));
+      }
+    }
+    return answer.toArray(new String[0]);
   }
 
-/////////////////////////////////////
+//////////////////////////////////////////

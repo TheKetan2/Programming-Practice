@@ -16,3 +16,24 @@ function isOneSwapEnough(inputString) {
     if (countDiff > 2) return false;
     return true;
 }
+
+/////////////////////////////////////////
+int equalPairOfBits(int n, int m) {
+    return Integer.lowestOneBit(~(n^m));
+  
+  }
+
+  ///////////////////////////////////////
+  String caesarBoxCipherEncoding(String inputString) {
+    int s = (int)Math.sqrt(inputString.length());
+    String sol = "";
+    for(int i = 0; i<s; i++){
+    for(int j = i; j<inputString.length(); j+=s){
+    sol += inputString.charAt(j)+"";
+    }
+
+    }
+    return sol;
+}
+
+///////////////////////////////////////////
