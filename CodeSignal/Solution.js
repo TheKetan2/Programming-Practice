@@ -37,3 +37,24 @@ int equalPairOfBits(int n, int m) {
 }
 
 ///////////////////////////////////////////
+int secondRightmostZeroBit(int n) {
+    return ~(n|(n+1)) & ((n|(n+1))+1) ;
+  }
+  
+  ///////////////////////////////////////////
+  int arrayMode(int[] sequence) {
+    int[] num = new int[10000];
+    int sol = 0;
+    int size = 0;
+    for(int n: sequence){
+        num[n]++;
+        if(size< num[n]){
+            size = num[n];
+            sol = n;
+        }
+            
+    }
+    return sol;
+}
+
+////////////////////////////////////////////

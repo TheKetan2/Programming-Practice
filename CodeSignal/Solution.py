@@ -15,5 +15,9 @@ def isOneSwapEnough(s):
                 
     return False
                 
-
+   def permutationShift(permutation):
+    s = []
+    for i, e in enumerate(permutation):
+        s.append(e - i)
+    return max(s) - min(s)
 

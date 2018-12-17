@@ -513,14 +513,8 @@ class Helper {
     }
 
     ////////////////////////////////////////
-   def permutationShift(permutation):
-   
-    s = []
-   for i, e in enumerate(permutation):
-    s.append(e - i)
-   return max(s) - min(s)
-   
-   ////////////////////////////////////////
+
+    ////////////////////////////////////////
     int commonCharacterCount(String s1, String s2) {
         int sol = 0;
         for (char c : s1.toCharArray()) {
@@ -1944,6 +1938,49 @@ class Helper {
         hs.add(b + c);
         hs.add(a + b + c);
         return hs.size();
+    }
+
+    /////////////////////////////////////
+    boolean coolString(String inputString) {
+
+        class Helper {
+            boolean isLowercase(char symbol) {
+                if ('a' <= symbol && symbol <= 'z') {
+                    return true;
+                }
+                return false;
+            }
+
+            boolean isUppercase(char symbol) {
+                if ('A' <= symbol && symbol <= 'Z') {
+                    return true;
+                }
+                return false;
+            }
+        }
+        Helper h = new Helper();
+
+        boolean firstIsLowercase = h.isLowercase(inputString.charAt(0));
+        boolean firstIsUppercase = h.isUppercase(inputString.charAt(0));
+
+        if (inputString.length() < 2 && inputString.replaceAll("[a-zA-Z]", "").length() != 0)
+            return false;
+
+        for (int i = 1; i < inputString.length(); i++) {
+            if (i % 2 == 1) {
+                if (h.isLowercase(inputString.charAt(i)) == firstIsLowercase
+                        || h.isUppercase(inputString.charAt(i)) == firstIsUppercase) {
+                    return false;
+                }
+            } else {
+                if (h.isLowercase(inputString.charAt(i)) != firstIsLowercase
+                        || h.isUppercase(inputString.charAt(i)) != firstIsUppercase) {
+                    return false;
+                }
+            }
+        }
+
+        return true;
     }
 
     /////////////////////////////////////
@@ -3722,18 +3759,258 @@ class Helper {
     }
 
     /////////////////////////////////////////
-String[] allLongestStrings(String[] inputArray) {
+    String[] allLongestStrings(String[] inputArray) {
 
-    ArrayList<String> answer = new ArrayList<>(Arrays.asList(inputArray[0]));
-    for (int i = 1; i < inputArray.length; i++) {
-      if (inputArray[i].length() == answer.get(0).length()) {
-        answer.add( inputArray[i] );
-      }
-      if (inputArray[i].length() > answer.get(0).length()) {
-        answer = new ArrayList<>(Arrays.asList(inputArray[i]));
-      }
+        ArrayList<String> answer = new ArrayList<>(Arrays.asList(inputArray[0]));
+        for (int i = 1; i < inputArray.length; i++) {
+            if (inputArray[i].length() == answer.get(0).length()) {
+                answer.add(inputArray[i]);
+            }
+            if (inputArray[i].length() > answer.get(0).length()) {
+                answer = new ArrayList<>(Arrays.asList(inputArray[i]));
+            }
+        }
+        return answer.toArray(new String[0]);
     }
-    return answer.toArray(new String[0]);
-  }
 
-//////////////////////////////////////////
+    //////////////////////////////////////////
+    int[] bfsDistancesUnweightedGraph(boolean[][] matrix, int startVertex) {
+
+        boolean[] visited = new boolean[matrix.length];
+        LinkedList<Integer> queue = new LinkedList<>();
+        int[] distance = new int[matrix.length];
+
+        visited[startVertex] = true;
+        queue.add(startVertex);
+        while (queue.size() != 1) {
+            int currentVertex = queue.pop();
+            visited[currentVertex] = true;
+            for (int nextVertex = 0; nextVertex < matrix.length; nextVertex++) {
+                if (matrix[currentVertex][nextVertex] && !visited[nextVertex]) {
+                    visited[nextVertex] = true;
+                    distance[nextVertex] = distance[currentVertex] + 1;
+                    queue.add(nextVertex);
+                }
+            }
+        }
+
+        return distance;
+    }
+
+    /////////////////////////////////////////////////////
+
+    int arrayMinimumAboveBound(int[] inputArray, int bound) {
+
+        int best = -1;
+        for (int i = 0; i < inputArray.length; i++) {
+            if (inputArray[i] > bound && (best == -1 || inputArray[i] < best)) {
+                best = inputArray[i];
+            }
+        }
+
+        return best;
+    }
+
+    ////////////////////////////////////////////////
+    int minimalNumberOfCoins(int[] coins, int price) {
+
+        int result = 0;
+
+        for (int i = coins.length - 1; i >= 0; i--) {
+            result += price / coins[i];
+            price %= coins[i];
+        }
+
+        if (price != 0) {
+            return -1;
+        }
+        return result;
+    }
+
+    ///////////////////////////////////////////////
+
+    String longestWord(String text) {
+
+        char[] chars = text.toCharArray();
+        String answer = "";
+        StringBuilder current = new StringBuilder();
+
+        for (int i = 0; i < chars.length; i++) {
+            if ('a' <= chars[i] && chars[i] <= 'z' || 'A' <= chars[i] && chars[i] <= 'Z') {
+                current.append(chars[i]);
+                if (current.length() > answer.length()) {
+                    answer = current.toString();
+                }
+            } else {
+                current = new StringBuilder();
+            }
+        }
+
+        return answer;
+    }
+
+    //////////////////////////////////////////
+    String capitalizeVowelsRegExp(String input) {
+        String sol = "";
+        for (char c : input.toCharArray()) {
+            if ("aeiouy".indexOf(c) >= 0)
+                sol += (char) (c - ('a' - 'A'));
+            else
+                sol += c;
+        }
+        return sol;
+    }
+
+    //////////////////////////////////////////
+    boolean alphabetSubsequence(String s) {
+        for (int i = 1; i < s.length(); i++) {
+            System.out.println(s.charAt(i - 1) - s.charAt(i));
+            if (s.charAt(i) - s.charAt(i - 1) <= 0)
+                return false;
+        }
+        return true;
+    }
+
+    //////////////////////////////////////////
+
+    String[] isDivisibleBy6(String inputString) {
+
+        int digitSum = 0;
+        char leftBound = '0', rightBound = '9';
+        ArrayList<String> answer = new ArrayList<>();
+        char[] mask = inputString.toCharArray();
+        int asteriskPos = -1;
+
+        for (int i = 0; i < mask.length; i++) {
+            if (leftBound <= mask[i] && mask[i] <= rightBound) {
+                digitSum += mask[i] - leftBound;
+            } else {
+                asteriskPos = i;
+            }
+        }
+
+        for (int i = 0; i < 10; i++) {
+            if ((digitSum + i) % 3 == 0) {
+                mask[asteriskPos] = (char) (leftBound + i);
+                if ((mask[mask.length - 1] - leftBound) % 2 == 0) {
+                    answer.add(String.valueOf(mask));
+                }
+            }
+        }
+
+        return answer.toArray(new String[0]);
+    }
+
+    //////////////////////////////////////////////
+    int digitSumsDifference(int n) {
+
+        int result = 0;
+        while (n != 0) {
+            int digit = n % 10;
+            if (digit % 2 == 1) {
+                result -= digit % 10;
+            } else {
+                result += digit;
+            }
+            n /= 10;
+        }
+
+        return result;
+    }
+
+    //////////////////////////////////////////////
+    boolean rightTriangle(int[] sides) {
+        Arrays.sort(sides);
+        return sides[0] * sides[0] + sides[1] * sides[1] == sides[2] * sides[2];
+    }
+
+    //////////////////////////////////////////////
+
+    boolean orthogonalLines(int[] line1, int[] line2) {
+        return line1[0] * line2[0] + line1[1] * line2[1] == 0;
+    }
+
+    //////////////////////////////////////////////
+
+    ArrayList<Integer> extractEachKth(ArrayList<Integer> inputArray, int k) {
+
+        ArrayList<Integer> result = new ArrayList<>();
+        for (int i = 0; i < inputArray.size(); i++) {
+            if ((i + 1) % k != 0) {
+                result.add(inputArray.get(i));
+            }
+        }
+        return result;
+    }
+    /////////////////////////////////////////////
+
+    int nearestRoundNumber(int value) {
+        return (int) Math.ceil(value / 10.0) * 10;
+    }
+
+    ////////////////////////////////////////////
+
+    int binarySearch(int[] inputArray, int searchElement) {
+
+        int minIndex = -1;
+        int maxIndex = inputArray.length;
+        int currentIndex;
+        int currentElement;
+
+        while (minIndex < maxIndex - 1) {
+            currentIndex = (minIndex + maxIndex) / 2;
+            currentElement = inputArray[currentIndex];
+
+            if (currentElement < searchElement) {
+                minIndex = currentIndex;
+            } else {
+                maxIndex = currentIndex;
+            }
+        }
+
+        if (maxIndex == inputArray.length || inputArray[maxIndex] != searchElement) {
+            return -1;
+        }
+        return maxIndex;
+    }
+
+    //////////////////////////////////////////
+int arrayMaxConsecutiveSum(int[] inputArray, int k) {
+    
+    int max = Integer.MIN_VALUE;
+    for(int i = 0; i<=inputArray.length-k; i++){
+        int sum = 0;
+        for(int j = i; j<i+k; j++){
+            sum += inputArray[j];
+        }
+        if(sum > max)
+            max = sum;
+    }
+    return max;
+}
+
+///////////////////////////////////////////
+int differentDigitsNumberSearch(int[] inputArray) {
+    HashSet<Integer> hs = new HashSet<>();
+    
+    int sol = -1;
+    for(int num: inputArray){
+        sol = num;
+        while(num>0){
+            if(!hs.add(num%10)){
+        System.out.print("Stop");
+            break;
+            }
+                
+            num/=10;
+        }
+        System.out.print(hs.toString() + " "+ num);
+        if(num == 0)
+            return sol; 
+        hs = new HashSet<>();
+    }
+    return -1;
+    
+}
+
+///////////////////////////////////////////
