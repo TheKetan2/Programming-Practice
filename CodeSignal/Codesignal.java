@@ -3975,42 +3975,145 @@ class Helper {
     }
 
     //////////////////////////////////////////
-int arrayMaxConsecutiveSum(int[] inputArray, int k) {
-    
-    int max = Integer.MIN_VALUE;
-    for(int i = 0; i<=inputArray.length-k; i++){
-        int sum = 0;
-        for(int j = i; j<i+k; j++){
-            sum += inputArray[j];
-        }
-        if(sum > max)
-            max = sum;
-    }
-    return max;
-}
+    int arrayMaxConsecutiveSum(int[] inputArray, int k) {
 
-///////////////////////////////////////////
-int differentDigitsNumberSearch(int[] inputArray) {
-    HashSet<Integer> hs = new HashSet<>();
-    
-    int sol = -1;
-    for(int num: inputArray){
-        sol = num;
-        while(num>0){
-            if(!hs.add(num%10)){
-        System.out.print("Stop");
-            break;
+        int max = Integer.MIN_VALUE;
+        for (int i = 0; i <= inputArray.length - k; i++) {
+            int sum = 0;
+            for (int j = i; j < i + k; j++) {
+                sum += inputArray[j];
             }
-                
-            num/=10;
+            if (sum > max)
+                max = sum;
         }
-        System.out.print(hs.toString() + " "+ num);
-        if(num == 0)
-            return sol; 
-        hs = new HashSet<>();
+        return max;
     }
-    return -1;
-    
+
+    ///////////////////////////////////////////
+    int differentDigitsNumberSearch(int[] inputArray) {
+        HashSet<Integer> hs = new HashSet<>();
+
+        int sol = -1;
+        for (int num : inputArray) {
+            sol = num;
+            while (num > 0) {
+                if (!hs.add(num % 10)) {
+                    System.out.print("Stop");
+                    break;
+                }
+
+                num /= 10;
+            }
+            System.out.print(hs.toString() + " " + num);
+            if (num == 0)
+                return sol;
+            hs = new HashSet<>();
+        }
+        return -1;
+
+    }
+
+    ///////////////////////////////////////////
+    int leastCommonPrimeDivisor(int a, int b) {
+
+        for (int divisor = 2; a > 1 && b > 1; divisor++) {
+            if (a % divisor == 0 && b % divisor == 0) {
+                return divisor;
+            }
+            while (a % divisor == 0) {
+                a /= divisor;
+            }
+            while (b % divisor == 0) {
+                b /= divisor;
+            }
+        }
+
+        return -1;
+    }
+
+    /////////////////////////////////////////
+    int arithmeticProgression(int element1, int element2, int n) {
+        int diff = element2 - element1;
+        return element2 + (diff * (n - 2));
+    }
+
+    ///////////////////////////////////////
+    int arrayMinimum(int[] inputArray) {
+
+        int indexOfMinimum = 0;
+        for (int i = 1; i < inputArray.length; i++) {
+            if (inputArray[i] < inputArray[indexOfMinimum]) {
+                indexOfMinimum = i;
+            }
+        }
+        return inputArray[indexOfMinimum];
+    }
+
+    //////////////////////////////////////////
+    String integerToStringOfFixedWidth(int number, int width) {
+
+        StringBuffer result = new StringBuffer();
+
+        for (int i = 0; i < width; i++) {
+            result.append('0');
+        }
+
+        int position = width - 1;
+        while (number != 0 && position >= 0) {
+            result.replace(position, position + 1, Integer.toString(number % 10));
+            number /= 10;
+            position--;
+        }
+
+        return result.toString();
+    }
+
+    ////////////////////////////////////////
+
+    int[] myReverse(int[] input) {
+
+        for (int i = 0; i * 2 < input.length; i++) {
+            int tmp = input[i];
+            input[i] = input[input.length - i - 1];
+            input[input.length - i - 1] = tmp;
+        }
+        return input;
+    }
+
+    //////////////////////////////////////
+    int gcdEuclid(int a, int b) {
+
+        if (a == 0) {
+            return b;
+        }
+        return gcdEuclid(b % a, a);
+    }
+
+    ////////////////////////////////////////
+
+    int summaryProficiency(int[] a, int n, int m) {
+
+        int result = 0;
+        for (int i = 0; n > 0; i++) {
+            if (a[i] >= m) {
+                result += a[i];
+                n--;
+            }
+        }
+
+        return result;
+    }
+
+    ///////////////////////////////////////
+
+boolean isArithmeticProgression(int[] sequence) {
+    if(sequence.length <=2) return true;
+    int diff = sequence[0] - sequence[1];
+    for(int i  = 1; i<sequence.length; i++){
+        if(sequence[i-1] - sequence[i] != diff)
+            return false;
+    }
+    return true;
 }
 
-///////////////////////////////////////////
+////////////////////////////////////////
