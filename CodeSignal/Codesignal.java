@@ -4106,14 +4106,27 @@ class Helper {
 
     ///////////////////////////////////////
 
-boolean isArithmeticProgression(int[] sequence) {
-    if(sequence.length <=2) return true;
-    int diff = sequence[0] - sequence[1];
-    for(int i  = 1; i<sequence.length; i++){
-        if(sequence[i-1] - sequence[i] != diff)
-            return false;
+    boolean isArithmeticProgression(int[] sequence) {
+        if (sequence.length <= 2)
+            return true;
+        int diff = sequence[0] - sequence[1];
+        for (int i = 1; i < sequence.length; i++) {
+            if (sequence[i - 1] - sequence[i] != diff)
+                return false;
+        }
+        return true;
     }
-    return true;
+
+    ////////////////////////////////////////
+int smallestNumber(int n) {
+    if(n == 1)
+        return 0;
+    int sol = 1;
+    while(n>0){
+        sol*=10;
+        n--;
+    }
+    return sol/10;
 }
 
-////////////////////////////////////////
+///////////////////////////////////////
