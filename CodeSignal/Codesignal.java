@@ -173,7 +173,19 @@ class Helper {
 
         return '0';
     }
+
     ///////////////////////////////////////
+    int kthDivisor(int n, int k) {
+        ArrayList<Integer> list = new ArrayList<>();
+        for (int i = 1; i <= n; i++) {
+            if (n % i == 0)
+                list.add(i);
+        }
+        if (list.size() < k)
+            return -1;
+        return list.get(k - 1);
+
+    }
 
     ////////////////////////////////////////
     int gcdNaive(int a, int b) {
@@ -404,6 +416,28 @@ class Helper {
     }
 
     ////////////////////////////////////////
+
+    int differentSubstrings(String inputString) {
+
+        ArrayList<String> substrings = new ArrayList<>();
+        int result = 1;
+
+        for (int i = 0; i < inputString.length(); i++) {
+            for (int j = i + 1; j <= inputString.length(); j++) {
+                substrings.add(inputString.substring(i, j));
+            }
+        }
+        Collections.sort(substrings);
+        for (int i = 1; i < substrings.size(); i++) {
+            if (!substrings.get(i).equals(substrings.get(i - 1))) {
+                result++;
+            }
+        }
+
+        return result;
+    }
+
+    /////////////////////////////////////////
     int differentSubstringsTrie(String inputString) {
 
         class Helper {
@@ -488,6 +522,22 @@ class Helper {
     }
 
     ////////////////////////////////////////
+
+    boolean isLowerTriangularMatrix(int[][] matrix) {
+
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = i + 1; j < matrix.length; j++) {
+                System.out.println(matrix[i][j]);
+                if (matrix[i][j] != 0)
+                    return false;
+            }
+        }
+
+        return true;
+
+    }
+
+    /////////////////////////////////////////
 
     int pagesNumberingWithInk(int current, int numberOfDigits) {
         String numbers = "";
@@ -973,6 +1023,11 @@ class Helper {
     }
 
     ////////////////////////////////////////
+    int parabole(int a, int b, int c, int x) {
+        return a * x * x + b * x + c;
+    }
+
+    ///////////////////////////////////////////
     int[][] constructSubmatrix(int[][] matrix, int[] rowsToDelete, int[] columnsToDelete) {
         int newRowsLength = matrix.length - rowsToDelete.length;
         int newColumnsLength = matrix[0].length - columnsToDelete.length;
@@ -1895,6 +1950,16 @@ class Helper {
         } else {
             return inputString.toLowerCase();
         }
+    }
+
+    //////////////////////////////////////
+
+    String caseUnification(String inputString) {
+        int upper = inputString.length() - inputString.replaceAll("[A-Z]", "").length();
+        int lower = inputString.length() - inputString.replaceAll("[a-z]", "").length();
+        if (upper < lower)
+            return inputString.toLowerCase();
+        return inputString.toUpperCase();
     }
 
     //////////////////////////////////////
@@ -4118,15 +4183,138 @@ class Helper {
     }
 
     ////////////////////////////////////////
-int smallestNumber(int n) {
-    if(n == 1)
-        return 0;
-    int sol = 1;
-    while(n>0){
-        sol*=10;
-        n--;
+    int smallestNumber(int n) {
+        if (n == 1)
+            return 0;
+        int sol = 1;
+        while (n > 0) {
+            sol *= 10;
+            n--;
+        }
+        return sol / 10;
     }
-    return sol/10;
-}
 
-///////////////////////////////////////
+    ///////////////////////////////////////
+    int numberReverse(int input) {
+
+        int reversed = 0;
+        while (input != 0) {
+            reversed = reversed * 10 + input % 10;
+            input /= 10;
+        }
+        return reversed;
+    }
+
+    /////////////////////////////////////
+    int bfsComponentSize(boolean[][] matrix) {
+
+        ArrayList<Boolean> visited = new ArrayList<>();
+        LinkedList<Integer> queue = new LinkedList<>();
+        int componentSize = 0;
+
+        for (int i = 0; i < matrix.length; i++) {
+            visited.add(false);
+        }
+
+        visited.set(1, true);
+        queue.add(1);
+
+        while (queue.size() > 0) {
+            int currentVertex = queue.pop();
+            visited.set(currentVertex, true);
+            componentSize++;
+            for (int nextVertex = 0; nextVertex < matrix.length; nextVertex++) {
+                if (matrix[currentVertex][nextVertex] && !visited.get(nextVertex)) {
+                    visited.set(nextVertex, true);
+                    queue.add(nextVertex);
+                }
+            }
+        }
+
+        return componentSize;
+    }
+
+    ////////////////////////////////////////
+    int sumOfTheAngles(int n) {
+        return (n - 2) * 180;
+    }
+
+    ////////////////////////////////////////
+    boolean areSimilarNumbers(int a, int b, int divisor) {
+        if (a % divisor == 0 && b % divisor == 0)
+            return true;
+        if (a % divisor != 0 && b % divisor != 0)
+            return true;
+        return false;
+    }
+
+    String myCoffee(int number) {
+        switch (number) {
+        case 1:
+            return "French Roast";
+        case 2:
+            return "Colombian";
+        case 3:
+            return "Kona";
+        }
+        return "Invalid";
+    }
+
+    /////////////////////////////////////////
+    String myCoffee(int number) {
+        switch (number) {
+        case 1:
+            return "French Roast";
+        case 2:
+            return "Colombian";
+        case 3:
+            return "Kona";
+        }
+        return "Invalid";
+    }
+
+    ////////////////////////////////////////////
+
+    int[] nextSecond(int[] currentTime) {
+        int total_sec = currentTime[0] * 3600 + currentTime[1] * 60 + currentTime[2] + 1;
+        currentTime[0] = (total_sec / 3600) % 24;
+        total_sec %= 3600;
+        currentTime[1] = (total_sec / 60) % 60;
+        total_sec %= 60;
+        currentTime[2] = total_sec;
+        return currentTime;
+    }
+
+    ////////////////////////////////////////////
+    boolean isSuspiciousRespondent(boolean ans1, boolean ans2, boolean ans3) {
+        return ans1 == ans2 && ans2 == ans3;
+    }
+
+    ////////////////////////////////////////////
+int sequenceElement(int[] a, int n) {
+
+    final int MOD = (int) 1e5;
+    List<Integer> seq = new ArrayList<>();
+    for (int i = 0; i < 5; i++) {
+      seq.add(a[i]);
+    }
+  
+    int lastFive = a[0] * (int)1e4 + a[1] * (int)1e3 +
+                   a[2] * (int)1e2 + a[3] * 10 + a[4];
+    Map<Integer, Integer> was = new HashMap<>();
+    was.put(lastFive, 4);
+  
+    for (int i = 5;; i++) {
+      seq.add((seq.get(i - 1) + seq.get(i - 2) +
+                seq.get(i - 3) + seq.get(i - 4) + seq.get(i - 5)) % 10);
+      lastFive = (lastFive * 10 + seq.get(i)) % MOD;
+      if (was.containsKey(lastFive)) {
+        int last = was.get(lastFive);
+        return seq.get(n % (i - last));
+      } else {
+        was.put(lastFive, i);
+      }
+    }
+  }
+
+//////////////////////////////////////////////
