@@ -949,6 +949,28 @@ class Helper {
     }
 
     ////////////////////////////////////////
+
+
+    int sameElementsNaive(int[] a, int[] b) {
+        HashSet<Integer> hsA = new HashSet<>();
+        HashSet<Integer> hsB = new HashSet<>();
+        for(int num: a){
+            hsA.add(num);
+        }
+        int sol = 0;
+        for(int num: b){
+            hsB.add(num);
+        }
+        for(int num:hsA){
+            if(!hsB.add(num)){
+                sol++;
+            }
+        }
+        return sol;
+    }
+    
+
+    ///////////////////////////////////////////
     int rectangleRotation(int a, int b) {
         a = (int) (a / Math.sqrt(2));
         b = (int) (b / Math.sqrt(2));
@@ -4318,3 +4340,41 @@ int sequenceElement(int[] a, int n) {
   }
 
 //////////////////////////////////////////////
+
+String longestDigitsPrefix(String inputString) {
+    StringBuilder result = new StringBuilder();
+    for (int i = 0; i < inputString.length(); i++) {
+      if ('0' <= inputString.charAt(i) && inputString.charAt(i) <= '9') {
+        result.append(inputString.charAt(i));
+      }
+      else {
+        break;
+      }
+    }
+    return result.toString();
+  }
+
+  ///////////////////////////////////////////
+
+  String caseUnification(String inputString) {
+    Matcher matcherForUppercase = Pattern.compile("[a-z]").matcher(inputString);
+    Matcher matcherForLowercase = Pattern.compile("[A-Z]").matcher(inputString);
+  
+    int changesToMakeUppercase = 0;
+    while (matcherForUppercase.find()) {
+      changesToMakeUppercase++;
+    }
+    int changesToMakeLowercase = 0;
+    while (matcherForLowercase.find()) {
+      changesToMakeLowercase++;
+    }
+    if (changesToMakeUppercase == 0
+      || changesToMakeLowercase != 0
+      && changesToMakeUppercase < changesToMakeLowercase) {
+      return inputString.toUpperCase();
+    } else {
+      return inputString.toLowerCase();
+    }
+  }
+  
+  //////////////////////////////////////
