@@ -602,7 +602,7 @@ class Helper {
             b = c;
             i++;
         }
-        return i;
+        return i - 1;
     }
 
     ////////////////////////////////////////
@@ -950,25 +950,23 @@ class Helper {
 
     ////////////////////////////////////////
 
-
     int sameElementsNaive(int[] a, int[] b) {
         HashSet<Integer> hsA = new HashSet<>();
         HashSet<Integer> hsB = new HashSet<>();
-        for(int num: a){
+        for (int num : a) {
             hsA.add(num);
         }
         int sol = 0;
-        for(int num: b){
+        for (int num : b) {
             hsB.add(num);
         }
-        for(int num:hsA){
-            if(!hsB.add(num)){
+        for (int num : hsA) {
+            if (!hsB.add(num)) {
                 sol++;
             }
         }
         return sol;
     }
-    
 
     ///////////////////////////////////////////
     int rectangleRotation(int a, int b) {
@@ -4313,68 +4311,190 @@ class Helper {
     }
 
     ////////////////////////////////////////////
-int sequenceElement(int[] a, int n) {
+    int sequenceElement(int[] a, int n) {
 
-    final int MOD = (int) 1e5;
-    List<Integer> seq = new ArrayList<>();
-    for (int i = 0; i < 5; i++) {
-      seq.add(a[i]);
+        final int MOD = (int) 1e5;
+        List<Integer> seq = new ArrayList<>();
+        for (int i = 0; i < 5; i++) {
+            seq.add(a[i]);
+        }
+
+        int lastFive = a[0] * (int) 1e4 + a[1] * (int) 1e3 + a[2] * (int) 1e2 + a[3] * 10 + a[4];
+        Map<Integer, Integer> was = new HashMap<>();
+        was.put(lastFive, 4);
+
+        for (int i = 5;; i++) {
+            seq.add((seq.get(i - 1) + seq.get(i - 2) + seq.get(i - 3) + seq.get(i - 4) + seq.get(i - 5)) % 10);
+            lastFive = (lastFive * 10 + seq.get(i)) % MOD;
+            if (was.containsKey(lastFive)) {
+                int last = was.get(lastFive);
+                return seq.get(n % (i - last));
+            } else {
+                was.put(lastFive, i);
+            }
+        }
+    }
+
+    //////////////////////////////////////////////
+
+    String longestDigitsPrefix(String inputString) {
+        StringBuilder result = new StringBuilder();
+        for (int i = 0; i < inputString.length(); i++) {
+            if ('0' <= inputString.charAt(i) && inputString.charAt(i) <= '9') {
+                result.append(inputString.charAt(i));
+            } else {
+                break;
+            }
+        }
+        return result.toString();
+    }
+
+    ///////////////////////////////////////////
+
+    String caseUnification(String inputString) {
+        Matcher matcherForUppercase = Pattern.compile("[a-z]").matcher(inputString);
+        Matcher matcherForLowercase = Pattern.compile("[A-Z]").matcher(inputString);
+
+        int changesToMakeUppercase = 0;
+        while (matcherForUppercase.find()) {
+            changesToMakeUppercase++;
+        }
+        int changesToMakeLowercase = 0;
+        while (matcherForLowercase.find()) {
+            changesToMakeLowercase++;
+        }
+        if (changesToMakeUppercase == 0
+                || changesToMakeLowercase != 0 && changesToMakeUppercase < changesToMakeLowercase) {
+            return inputString.toUpperCase();
+        } else {
+            return inputString.toLowerCase();
+        }
+    }
+
+    //////////////////////////////////////
+
+    int sequencePeakElement(int[] sequence) {
+        int left = 1;
+        int right = sequence.length - 1;
+        while (left < right) {
+            int middle = (left + right) / 2;
+            if (sequence[middle] > Math.max(sequence[middle - 1], sequence[middle + 1])) {
+                left = right = middle;
+                break;
+            }
+            if (sequence[middle - 1] < sequence[middle]) {
+                left = middle + 1;
+            } else {
+                right = middle - 1;
+            }
+        }
+        return sequence[left];
+    }
+
+    //////////////////////////////////////
+
+    int mySqrt(int n) {
+
+        int left = 1, right = n + 1;
+        while (left + 1 < right) {
+            int middle = (left + right) / 2;
+            if (middle * middle <= n) {
+                left = middle;
+            } else {
+                right = middle;
+            }
+        }
+
+        return left;
+    }
+
+    //////////////////////////////////////////
+
+    int toAndFro(int a, int b, int t) {
+
+        int len = Math.abs(b - a);
+        t %= (2 * len);
+        if (t <= len) {
+            return a + (b - a) / Math.abs(a - b) * t;
+        } else {
+            t -= len;
+            return b + (a - b) / Math.abs(a - b) * t;
+        }
+    }
+
+    ///////////////////////////////////////////
+
+    boolean leapYear(int year) {
+
+        if (year % 4 == 0 && year % 100 != 0 || year % 400 == 0) {
+            return true;
+        }
+        return false;
+    }
+
+    ////////////////////////////////////////////
+
+    int maxGCD(int[] sequence) {
+        class Helper {
+            int gcd(int a, int b) {
+                if (b == 0) {
+                    return a;
+                }
+                return gcd(b, a % b);
+            }
+        }
+        ;
+
+        Helper h = new Helper();
+        int bestRes = 0;
+
+        for (int i = 0; i < sequence.length; i++) {
+            int result = sequence[0];
+            if (i == 0) {
+                result = sequence[1];
+            }
+            for (int j = 0; j < sequence.length; j++) {
+                if (i == j) {
+                    continue;
+                }
+                result = h.gcd(result, sequence[j]);
+            }
+            if (result > bestRes) {
+                bestRes = result;
+            }
+        }
+
+        return bestRes;
+    }
+
+    /////////////////////////////////////////////
+  boolean checkEqualFrequency(int[] inputArray) {
+
+    int numberOfEqual = 1;
+  
+    Arrays.sort(inputArray);
+  
+    while (numberOfEqual < inputArray.length
+        && inputArray[numberOfEqual - 1] == inputArray[numberOfEqual]) {
+      numberOfEqual++;
     }
   
-    int lastFive = a[0] * (int)1e4 + a[1] * (int)1e3 +
-                   a[2] * (int)1e2 + a[3] * 10 + a[4];
-    Map<Integer, Integer> was = new HashMap<>();
-    was.put(lastFive, 4);
+    if (inputArray.length % numberOfEqual != 0) {
+      return false;
+    }
   
-    for (int i = 5;; i++) {
-      seq.add((seq.get(i - 1) + seq.get(i - 2) +
-                seq.get(i - 3) + seq.get(i - 4) + seq.get(i - 5)) % 10);
-      lastFive = (lastFive * 10 + seq.get(i)) % MOD;
-      if (was.containsKey(lastFive)) {
-        int last = was.get(lastFive);
-        return seq.get(n % (i - last));
-      } else {
-        was.put(lastFive, i);
+    for (int i = 0; i < inputArray.length; i += numberOfEqual) {
+      if (i != 0 && inputArray[i] == inputArray[i - 1]) {
+        return  false ;
+      }
+      for (int j = i + 1; j < i + numberOfEqual; j++) {
+        if (inputArray[j] != inputArray[j - 1]) {
+          return false;
+        }
       }
     }
-  }
-
-//////////////////////////////////////////////
-
-String longestDigitsPrefix(String inputString) {
-    StringBuilder result = new StringBuilder();
-    for (int i = 0; i < inputString.length(); i++) {
-      if ('0' <= inputString.charAt(i) && inputString.charAt(i) <= '9') {
-        result.append(inputString.charAt(i));
-      }
-      else {
-        break;
-      }
-    }
-    return result.toString();
-  }
-
-  ///////////////////////////////////////////
-
-  String caseUnification(String inputString) {
-    Matcher matcherForUppercase = Pattern.compile("[a-z]").matcher(inputString);
-    Matcher matcherForLowercase = Pattern.compile("[A-Z]").matcher(inputString);
   
-    int changesToMakeUppercase = 0;
-    while (matcherForUppercase.find()) {
-      changesToMakeUppercase++;
-    }
-    int changesToMakeLowercase = 0;
-    while (matcherForLowercase.find()) {
-      changesToMakeLowercase++;
-    }
-    if (changesToMakeUppercase == 0
-      || changesToMakeLowercase != 0
-      && changesToMakeUppercase < changesToMakeLowercase) {
-      return inputString.toUpperCase();
-    } else {
-      return inputString.toLowerCase();
-    }
+    return true;
   }
-  
-  //////////////////////////////////////
+
+///////////////////////////////////////////////////
