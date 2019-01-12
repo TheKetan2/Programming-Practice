@@ -4497,15 +4497,114 @@ class Helper {
     }
 
     ///////////////////////////////////////////////////
-boolean checkIncreasingSequence(int[] seq) {
-    if(seq.length <=1)
+    boolean checkIncreasingSequence(int[] seq) {
+        if (seq.length <= 1)
+            return true;
+        for (int i = 1; i < seq.length; i++) {
+            if (seq[i - 1] >= seq[i])
+                return false;
+        }
         return true;
-    for(int i = 1; i<seq.length; i++){
-        if(seq[i-1] >= seq[i])
-            return false;
+
+    }
+
+    //////////////////////////////////////////////
+    boolean chessBoardCellColor(String cell1, String cell2) {
+
+        class Helper {
+            int getX(String pos) {
+                return pos.charAt(0) - 'A';
+            }
+
+            int getY(String pos) {
+                return pos.charAt(0) - '0';
+            }
+        }
+        Helper h = new Helper();
+
+        int sum1 = h.getX("" + cell1.charAt(0)) + h.getY("" + cell1.charAt(1));
+        int sum2 = h.getX("" + cell2.charAt(0)) + h.getY("" + cell2.charAt(1));
+        if (sum1 % 2 == sum2 % 2) {
+            return true;
+        }
+        return false;
+
+    }
+
+    //////////////////////////////////////////////////
+
+  int[] nextSecond(int[] currentTime) {
+
+    if (currentTime[2] == 59) {
+      currentTime[2] = 0;
+      if (currentTime[1] == 59) {
+        currentTime[1] = 0;
+        currentTime[0]++;
+        currentTime[0]%=24;
+        
+      }
+      else {
+        currentTime[1]++;
+      }
+    }
+    else {
+      currentTime[2]++;
+    }
+  
+    return currentTime;
+  }
+
+//////////////////////////////////////////
+int[] fractionSum(int[] a, int[] b) {
+
+    class Helper {
+      int gcdEuclid(int a, int b) {
+        if (a == 0) {
+          return b;
+        }
+        return gcdEuclid(b % a, a);
+      }
+    }
+    Helper h = new Helper();
+  
+    int[] c = {a[0] * b[1] + a[1] * b[0], a[1] * b[1]};
+    int gcd =  h.gcdEuclid(c[0],c[1]) ;
+  
+    c[0] /= gcd;
+    c[1] /= gcd;
+  
+    return c;
+  }
+  
+  /////////////////////////////////////////
+  boolean isTournament(int n, int[] fromV, int[] toV) {
+
+    ArrayList<ArrayList<Boolean>> edges = new ArrayList<>();
+  
+    for (int i = 0; i < n; i++) {
+      ArrayList<Boolean> line = new ArrayList<>();
+      for (int j = 0; j < n; j++) {
+        line.add(false);
+      }
+      edges.add(line);
+    }
+  
+    for (int i = 0; i < fromV.length; i++) {
+      edges.get( fromV[i] - 1 ).set( toV[i] - 1, true );
+    }
+  
+    for (int i = 0; i < n; i++) {
+      for (int j = i + 1; j < n; j++) {
+        if (edges.get(i).get(j) == edges.get(j).get(i)) {
+          return false;
+        }
+      }
+    }
+  
+    if (fromV.length != n * (n - 1) / 2) {
+      return  false ;
     }
     return true;
-    
-}
-
-//////////////////////////////////////////////
+  }
+  
+  //////////////////////////////////////////
