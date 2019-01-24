@@ -386,6 +386,34 @@ class Helper {
     }
 
     ////////////////////////////////////////
+    int[] makeArrayConsecutive(int[] sequence) {
+        Arrays.sort(sequence);
+        ArrayList<Integer> list = new ArrayList<>();
+
+        for (int num : sequence) {
+            list.add(num);
+        }
+
+        int start = sequence[0];
+        int end = sequence[sequence.length - 1];
+
+        int[] sol = new int[end - start + 1 - sequence.length];
+        int j = 0;
+
+        for (int i = start; i <= end; i++) {
+
+            if (!list.contains(i)) {
+                sol[j] = i;
+                j++;
+            }
+
+        }
+
+        return sol;
+
+    }
+
+    ///////////////////////////////////////
 
     boolean isInRange(int a, int b, int c) {
         return b >= a && b <= c;
@@ -1618,6 +1646,23 @@ class Helper {
             mult *= n;
         }
         return mult;
+    }
+
+    ////////////////////////////////////////
+    int countTriangles(int[] x, int[] y) {
+
+        int result = 0;
+        for (int i = 0; i < x.length; i++) {
+            for (int j = i + 1; j < x.length; j++) {
+                for (int k = j + 1; k < x.length; k++) {
+                    int doubleArea = (x[i] - x[j]) * (y[i] - y[k]) - (x[i] - x[k]) * (y[i] - y[j]);
+                    if (doubleArea != 0) {
+                        result++;
+                    }
+                }
+            }
+        }
+        return result;
     }
 
     ////////////////////////////////////////
@@ -3859,6 +3904,16 @@ class Helper {
     }
 
     //////////////////////////////////////////
+    boolean variableName(String name) {
+        if (name.charAt(0) >= '0' && name.charAt(0) <= '9') {
+            System.out.println("1");
+            return false;
+        }
+
+        return name.replaceAll("[A-Za-z0-9_]", "").length() == 0;
+    }
+
+    ///////////////////////////////////////////
     int[] bfsDistancesUnweightedGraph(boolean[][] matrix, int startVertex) {
 
         boolean[] visited = new boolean[matrix.length];
@@ -4057,6 +4112,18 @@ class Helper {
             return -1;
         }
         return maxIndex;
+    }
+
+    //////////////////////////////////////////
+    String reflectString(String inputString) {
+
+        StringBuilder result = new StringBuilder();
+        for (int i = 0; i < inputString.length(); i++) {
+            int order = (int) inputString.charAt(i) - (int) 'a', reflectedCharCode = (int) 'a' + 25 - order;
+            result.append((char) reflectedCharCode);
+        }
+
+        return result.toString();
     }
 
     //////////////////////////////////////////
@@ -4533,78 +4600,125 @@ class Helper {
 
     //////////////////////////////////////////////////
 
-  int[] nextSecond(int[] currentTime) {
+    int[] nextSecond(int[] currentTime) {
 
-    if (currentTime[2] == 59) {
-      currentTime[2] = 0;
-      if (currentTime[1] == 59) {
-        currentTime[1] = 0;
-        currentTime[0]++;
-        currentTime[0]%=24;
-        
-      }
-      else {
-        currentTime[1]++;
-      }
-    }
-    else {
-      currentTime[2]++;
-    }
-  
-    return currentTime;
-  }
+        if (currentTime[2] == 59) {
+            currentTime[2] = 0;
+            if (currentTime[1] == 59) {
+                currentTime[1] = 0;
+                currentTime[0]++;
+                currentTime[0] %= 24;
 
-//////////////////////////////////////////
-int[] fractionSum(int[] a, int[] b) {
-
-    class Helper {
-      int gcdEuclid(int a, int b) {
-        if (a == 0) {
-          return b;
+            } else {
+                currentTime[1]++;
+            }
+        } else {
+            currentTime[2]++;
         }
-        return gcdEuclid(b % a, a);
-      }
-    }
-    Helper h = new Helper();
-  
-    int[] c = {a[0] * b[1] + a[1] * b[0], a[1] * b[1]};
-    int gcd =  h.gcdEuclid(c[0],c[1]) ;
-  
-    c[0] /= gcd;
-    c[1] /= gcd;
-  
-    return c;
-  }
-  
-  /////////////////////////////////////////
-  boolean isTournament(int n, int[] fromV, int[] toV) {
 
-    ArrayList<ArrayList<Boolean>> edges = new ArrayList<>();
-  
-    for (int i = 0; i < n; i++) {
-      ArrayList<Boolean> line = new ArrayList<>();
-      for (int j = 0; j < n; j++) {
-        line.add(false);
-      }
-      edges.add(line);
+        return currentTime;
     }
-  
-    for (int i = 0; i < fromV.length; i++) {
-      edges.get( fromV[i] - 1 ).set( toV[i] - 1, true );
-    }
-  
-    for (int i = 0; i < n; i++) {
-      for (int j = i + 1; j < n; j++) {
-        if (edges.get(i).get(j) == edges.get(j).get(i)) {
-          return false;
+
+    //////////////////////////////////////////
+    int[] fractionSum(int[] a, int[] b) {
+
+        class Helper {
+            int gcdEuclid(int a, int b) {
+                if (a == 0) {
+                    return b;
+                }
+                return gcdEuclid(b % a, a);
+            }
         }
-      }
+        Helper h = new Helper();
+
+        int[] c = { a[0] * b[1] + a[1] * b[0], a[1] * b[1] };
+        int gcd = h.gcdEuclid(c[0], c[1]);
+
+        c[0] /= gcd;
+        c[1] /= gcd;
+
+        return c;
     }
-  
-    if (fromV.length != n * (n - 1) / 2) {
-      return  false ;
+
+    /////////////////////////////////////////
+    boolean isTournament(int n, int[] fromV, int[] toV) {
+
+        ArrayList<ArrayList<Boolean>> edges = new ArrayList<>();
+
+        for (int i = 0; i < n; i++) {
+            ArrayList<Boolean> line = new ArrayList<>();
+            for (int j = 0; j < n; j++) {
+                line.add(false);
+            }
+            edges.add(line);
+        }
+
+        for (int i = 0; i < fromV.length; i++) {
+            edges.get(fromV[i] - 1).set(toV[i] - 1, true);
+        }
+
+        for (int i = 0; i < n; i++) {
+            for (int j = i + 1; j < n; j++) {
+                if (edges.get(i).get(j) == edges.get(j).get(i)) {
+                    return false;
+                }
+            }
+        }
+
+        if (fromV.length != n * (n - 1) / 2) {
+            return false;
+        }
+        return true;
     }
-    return true;
-  }
-  
-  //////////////////////////////////////////
+
+    //////////////////////////////////////////
+    int graphEdges(boolean[][] matrix) {
+        var c = 0;
+
+        for (var i = 0; i < matrix.length; ++i)
+            for (var j = 0; j < matrix[i].length; ++j)
+                if (matrix[i][j])
+                    ++c;
+
+        return c / 2;
+    }
+
+    ////////////////////////////////////////////
+    boolean bishopAndPawn(String bishop, String pawn) {
+        class Parser {
+            int getX(char pos) {
+                return pos - 'a';
+            }
+
+            int getY(char pos) {
+                return pos - '1';
+            }
+        }
+        Parser p = new Parser();
+
+        int x1 = p.getX(bishop.charAt(0)), y1 = p.getY(bishop.charAt(1)), x2 = p.getX(pawn.charAt(0)),
+                y2 = p.getY(pawn.charAt(1));
+
+        if (x1 + y1 == x2 + y2 || x1 - y1 == x2 - y2) {
+            return true;
+        }
+
+        return false;
+    }
+
+    /////////////////////////////////////////
+
+int magicalWell(int a, int b, int n) {
+    int sol = 0; 
+    while(n>0){
+        sol += (a*b);
+        a++;
+        b++;
+        n--;
+    }
+    
+    return sol;
+}
+
+/////////////////////////////////////////////
