@@ -4709,16 +4709,67 @@ class Helper {
 
     /////////////////////////////////////////
 
-int magicalWell(int a, int b, int n) {
-    int sol = 0; 
-    while(n>0){
-        sol += (a*b);
-        a++;
-        b++;
-        n--;
+    int magicalWell(int a, int b, int n) {
+        int sol = 0;
+        while (n > 0) {
+            sol += (a * b);
+            a++;
+            b++;
+            n--;
+        }
+
+        return sol;
     }
-    
+
+    /////////////////////////////////////////////
+
+    int kthDigit(int n, int k) {
+
+        int numDigits = 0, number = n;
+        while (number != 0) {
+            numDigits++;
+            number /= 10;
+        }
+
+        int indexFromLast = numDigits - k + 1;
+
+        while (n != 0) {
+            if (--indexFromLast == 0) {
+                return n % 10;
+            }
+            n /= 10;
+        }
+
+        return -1;
+    }
+
+    //////////////////////////////////////////
+int rangeBitCount(int a, int b) {
+
+    int ans = 0;
+    for (int i = a; i <= b; i++) {
+      int t = i;
+      while (t != 0) {
+        ans+=(t%2);
+        t/=2;
+      }
+    }
+  
+    return ans;
+  }
+
+/////////////////////////////////////////////
+//“Ten properties of a subject, according to Leonardo: light and dark, color and substance, form and position, distance and nearness, movement and stillness.”
+
+int countInversionsNaive(int[] inputArray) {
+    int sol = 0;
+    for(int i = 0; i<inputArray.length-1; i++){
+        for(int j = i+1; j<inputArray.length; j++){
+            if(inputArray[i]>inputArray[j])
+            sol++;
+        }
+    }
     return sol;
 }
 
-/////////////////////////////////////////////
+////////////////////////////////////////////
