@@ -4744,32 +4744,76 @@ class Helper {
     }
 
     //////////////////////////////////////////
-int rangeBitCount(int a, int b) {
+    int rangeBitCount(int a, int b) {
 
-    int ans = 0;
-    for (int i = a; i <= b; i++) {
-      int t = i;
-      while (t != 0) {
-        ans+=(t%2);
-        t/=2;
-      }
-    }
-  
-    return ans;
-  }
-
-/////////////////////////////////////////////
-//“Ten properties of a subject, according to Leonardo: light and dark, color and substance, form and position, distance and nearness, movement and stillness.”
-
-int countInversionsNaive(int[] inputArray) {
-    int sol = 0;
-    for(int i = 0; i<inputArray.length-1; i++){
-        for(int j = i+1; j<inputArray.length; j++){
-            if(inputArray[i]>inputArray[j])
-            sol++;
+        int ans = 0;
+        for (int i = a; i <= b; i++) {
+            int t = i;
+            while (t != 0) {
+                ans += (t % 2);
+                t /= 2;
+            }
         }
+
+        return ans;
+    }
+
+    /////////////////////////////////////////////
+    // “Ten properties of a subject, according to Leonardo: light and dark, color a
+    ///////////////////////////////////////////// d substance, form and position, d
+    ///////////////////////////////////////////// stance and nearness, movement a
+    ///////////////////////////////////////////// d stillness.”
+
+    int countInversionsNaive(int[] inputArray) {
+        int sol = 0;
+        for (int i = 0; i < inputArray.length - 1; i++) {
+            for (int j = i + 1; j < inputArray.length; j++) {
+                if (inputArray[i] > inputArray[j])
+                    sol++;
+            }
+        }
+        return sol;
+    }
+
+    ////////////////////////////////////////////
+int digitDegree(int n) {
+    
+    int deg = 0;
+    while(true){
+        if(n <10)
+            break;
+        int temp = 0;
+        while(n>0){
+            temp += n%10;
+            n/=10;
+        }
+        n = temp;
+        deg++;
+    }
+    return deg;
+}
+
+///////////////////////////////////////////
+
+char fractionComparison(int[] a, int[] b) {
+    if(a[0]*b[1] == a[1]*b[0] )
+        return '=';
+    if(a[0]*b[1] < a[1]*b[0] )
+        return '<';
+        return '>';
+}
+
+///////////////////////////////////////////
+int fixedPointsPermutation(int[] permutation) {
+    int[] copy = permutation.clone();
+    Arrays.sort(permutation);
+    int sol = 0;
+    
+    for(int i = 0; i<permutation.length; i++){
+        if(copy[i] == permutation[i])
+            sol++;
     }
     return sol;
 }
 
-////////////////////////////////////////////
+/////////////////////////////////////////////
