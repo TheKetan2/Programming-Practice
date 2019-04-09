@@ -4776,44 +4776,123 @@ class Helper {
     }
 
     ////////////////////////////////////////////
-int digitDegree(int n) {
-    
-    int deg = 0;
-    while(true){
-        if(n <10)
-            break;
-        int temp = 0;
-        while(n>0){
-            temp += n%10;
-            n/=10;
+    int digitDegree(int n) {
+
+        int deg = 0;
+        while (true) {
+            if (n < 10)
+                break;
+            int temp = 0;
+            while (n > 0) {
+                temp += n % 10;
+                n /= 10;
+            }
+            n = temp;
+            deg++;
         }
-        n = temp;
-        deg++;
+        return deg;
     }
-    return deg;
-}
 
-///////////////////////////////////////////
+    ///////////////////////////////////////////
 
-char fractionComparison(int[] a, int[] b) {
-    if(a[0]*b[1] == a[1]*b[0] )
-        return '=';
-    if(a[0]*b[1] < a[1]*b[0] )
-        return '<';
+    char fractionComparison(int[] a, int[] b) {
+        if (a[0] * b[1] == a[1] * b[0])
+            return '=';
+        if (a[0] * b[1] < a[1] * b[0])
+            return '<';
         return '>';
-}
+    }
 
-///////////////////////////////////////////
-int fixedPointsPermutation(int[] permutation) {
-    int[] copy = permutation.clone();
-    Arrays.sort(permutation);
+    ///////////////////////////////////////////
+    int fixedPointsPermutation(int[] permutation) {
+        int[] copy = permutation.clone();
+        Arrays.sort(permutation);
+        int sol = 0;
+
+        for (int i = 0; i < permutation.length; i++) {
+            if (copy[i] == permutation[i])
+                sol++;
+        }
+        return sol;
+    }
+
+    /////////////////////////////////////////////
+    char firstDigit(String inputString) {
+        for (char c : inputString.toCharArray()) {
+            if (c >= '0' && c <= '9')
+                return c;
+        }
+        return '0';
+    }
+
+    /////////////////////////////////////////////
+    int maxZeros(int n) {
+        int answer = 0, maxZeros = 0;
+        for (int k = 2; k <= n; k++) {
+            int numZeros = 0, value = n;
+            while (value != 0) {
+                if (value % k == 0) {
+                    numZeros++;
+                }
+                value /= k;
+            }
+            if (numZeros > maxZeros) {
+                maxZeros = numZeros;
+                answer = k;
+            }
+        }
+        return answer;
+    }
+
+    //////////////////////////////////////////////
+    int countNeighbouringPairs(String inputString) {
+        int sol = 0;
+        for (int i = 1; i < inputString.length(); i++) {
+            if (inputString.charAt(i) == inputString.charAt(i - 1))
+                sol++;
+        }
+        return sol;
+    }
+
+    //////////////////////////////////////////////
+    boolean shefferStroke(boolean a, boolean b) {
+        if (a == false || b == false)
+            return true;
+        return false;
+    }
+
+    //////////////////////////////////////////////
+String digitCharactersSum(char ch1, char ch2) {
+    int x1 = (int)ch1 - (int)'0';
+    int x2 = (int)ch2 - (int)'0';
+    if (x1 + x2 < 10) {
+      char digit = (char)((int)'0' + x1 + x2);
+      return Character.toString(digit);
+    }
+    else {
+      char digit = (char)((int)'0' + (x1 + x2) % 10);
+      return "1" + digit;
+    }
+  }
+
+///////////////////////////////////////////////
+int sumOfCubes(int n) {
     int sol = 0;
-    
-    for(int i = 0; i<permutation.length; i++){
-        if(copy[i] == permutation[i])
-            sol++;
+    while(n>0){
+        sol += (n*n*n);
+        n--;
     }
     return sol;
 }
+///////////////////////////////////////////////
+int firstMultiple2(int[] divisors, int start) {
 
-/////////////////////////////////////////////
+    for (int answer = start; ; answer++) {
+      for (int i = 0; i < divisors.length; i++) {
+        if (answer % divisors[i] == 0) {
+          return answer;
+        }
+      }
+    }
+  }
+////////////////////////////////////////////////  
