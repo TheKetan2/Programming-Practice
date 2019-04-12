@@ -4862,37 +4862,51 @@ class Helper {
     }
 
     //////////////////////////////////////////////
-String digitCharactersSum(char ch1, char ch2) {
-    int x1 = (int)ch1 - (int)'0';
-    int x2 = (int)ch2 - (int)'0';
-    if (x1 + x2 < 10) {
-      char digit = (char)((int)'0' + x1 + x2);
-      return Character.toString(digit);
-    }
-    else {
-      char digit = (char)((int)'0' + (x1 + x2) % 10);
-      return "1" + digit;
-    }
-  }
-
-///////////////////////////////////////////////
-int sumOfCubes(int n) {
-    int sol = 0;
-    while(n>0){
-        sol += (n*n*n);
-        n--;
-    }
-    return sol;
-}
-///////////////////////////////////////////////
-int firstMultiple2(int[] divisors, int start) {
-
-    for (int answer = start; ; answer++) {
-      for (int i = 0; i < divisors.length; i++) {
-        if (answer % divisors[i] == 0) {
-          return answer;
+    String digitCharactersSum(char ch1, char ch2) {
+        int x1 = (int) ch1 - (int) '0';
+        int x2 = (int) ch2 - (int) '0';
+        if (x1 + x2 < 10) {
+            char digit = (char) ((int) '0' + x1 + x2);
+            return Character.toString(digit);
+        } else {
+            char digit = (char) ((int) '0' + (x1 + x2) % 10);
+            return "1" + digit;
         }
-      }
     }
-  }
-////////////////////////////////////////////////  
+
+    ///////////////////////////////////////////////
+    int sumOfCubes(int n) {
+        int sol = 0;
+        while (n > 0) {
+            sol += (n * n * n);
+            n--;
+        }
+        return sol;
+    }
+
+    ///////////////////////////////////////////////
+    int firstMultiple2(int[] divisors, int start) {
+
+        for (int answer = start;; answer++) {
+            for (int i = 0; i < divisors.length; i++) {
+                if (answer % divisors[i] == 0) {
+                    return answer;
+                }
+            }
+        }
+    }
+
+    ////////////////////////////////////////////////
+int[] threeAndFour(int n) {
+    ArrayList<Integer> list = new ArrayList<Integer>();
+    int num = 0;
+    while(num <=n){
+        if(num%3==0 && num%4==0){
+            list.add(num);
+        }
+        num++;
+    }
+    return list.stream().mapToInt(i -> i).toArray();
+}
+
+///////////////////////////////////////////////
