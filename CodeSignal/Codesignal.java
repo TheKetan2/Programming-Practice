@@ -114,6 +114,22 @@ class Helper {
     }
 
     ////////////////////////////////////////
+    
+int telephoneGame(String[] messages) {
+    int index = -1;
+    if(messages.length > 0){
+        for(String str: messages){
+            if(!str.equals(messages[0])){
+                return index+1;
+            }
+            index++;
+            
+        }
+    }
+    return -1;
+}
+
+    ////////////////////////////////////////
     int lastDigit(int a, int b) {
 
         int sol = 1;
@@ -591,6 +607,20 @@ class Helper {
     }
 
     ////////////////////////////////////////
+    int telephoneGame(String[] messages) {
+        int index = -1;
+        if(messages.length > 0){
+            for(String str: messages){
+                if(!str.equals(messages[0])){
+                    return index+1;
+                }
+                index++;
+
+            }
+        }
+        return -1;
+    }
+
 
     ////////////////////////////////////////
     int commonCharacterCount(String s1, String s2) {
@@ -4906,7 +4936,12 @@ int[] threeAndFour(int n) {
         }
         num++;
     }
+<<<<<<< HEAD
     return list.stream().mapToInt(i -> i).toArray();
 }
 
 ///////////////////////////////////////////////
+=======
+  }
+////////////////////////////////////////////////  
+>>>>>>> dbecea64fb2878f2275ab7cc6ae61368023d594f
