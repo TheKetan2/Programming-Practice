@@ -114,20 +114,20 @@ class Helper {
     }
 
     ////////////////////////////////////////
-    
-int telephoneGame(String[] messages) {
-    int index = -1;
-    if(messages.length > 0){
-        for(String str: messages){
-            if(!str.equals(messages[0])){
-                return index+1;
+
+    int telephoneGame(String[] messages) {
+        int index = -1;
+        if (messages.length > 0) {
+            for (String str : messages) {
+                if (!str.equals(messages[0])) {
+                    return index + 1;
+                }
+                index++;
+
             }
-            index++;
-            
         }
+        return -1;
     }
-    return -1;
-}
 
     ////////////////////////////////////////
     int lastDigit(int a, int b) {
@@ -609,10 +609,10 @@ int telephoneGame(String[] messages) {
     ////////////////////////////////////////
     int telephoneGame(String[] messages) {
         int index = -1;
-        if(messages.length > 0){
-            for(String str: messages){
-                if(!str.equals(messages[0])){
-                    return index+1;
+        if (messages.length > 0) {
+            for (String str : messages) {
+                if (!str.equals(messages[0])) {
+                    return index + 1;
                 }
                 index++;
 
@@ -620,7 +620,6 @@ int telephoneGame(String[] messages) {
         }
         return -1;
     }
-
 
     ////////////////////////////////////////
     int commonCharacterCount(String s1, String s2) {
@@ -4936,12 +4935,40 @@ int[] threeAndFour(int n) {
         }
         num++;
     }
-<<<<<<< HEAD
-    return list.stream().mapToInt(i -> i).toArray();
-}
 
-///////////////////////////////////////////////
-=======
-  }
-////////////////////////////////////////////////  
->>>>>>> dbecea64fb2878f2275ab7cc6ae61368023d594f
+    ///////////////////////////////////////
+    boolean chessBoardCellColor(String cell1, String cell2) {
+
+        class Helper {
+            int getX(String pos) {
+                return pos.charAt(0) - 'A';
+            }
+
+            int getY(String pos) {
+                return pos.charAt(0) - '1';
+            }
+        }
+        Helper h = new Helper();
+
+        int sum1 = h.getX("" + cell1.charAt(0)) + h.getY("" + cell1.charAt(1));
+        int sum2 = h.getX("" + cell2.charAt(0)) + h.getY("" + cell2.charAt(1));
+        if (sum1 % 2 == sum2 % 2) {
+            return true;
+        }
+        return false;
+    }
+    /////////////////////////////////////////////
+
+    int rounders(int n) {
+        int p = 10;
+        while (n > p) {
+          if ((n % p) / (p / 10) < 5)
+            n = (n / p) * p;
+          else
+            n = (n / p + 1) * p;
+          p *= 10;
+        }
+        return n;
+      }
+
+///////////////////////////////////////////
