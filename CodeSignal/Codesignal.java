@@ -2450,6 +2450,114 @@ class Helper {
     }
 
     ////////////////////////////////////
+    int returnSecondParameter(int a, int b) {
+        return b;
+    }
+
+    ////////////////////////////////////
+
+    String knapsackLight2(int weight1, int weight2, int maxW) {
+        if (weight1 + weight2 <= maxW)
+            return "both";
+        if (weight1 <= maxW && weight2 <= maxW)
+            return "either";
+        if (weight1 <= maxW && weight2 > maxW)
+            return "first";
+        if (weight1 > maxW && weight2 <= maxW)
+            return "second";
+        return "none";
+    }
+
+    ///////////////////////////////////
+
+    boolean robotWalk(int[] a) {
+        int minX = 0;
+        int minY = -1;
+        int maxX = Integer.MAX_VALUE;
+        int maxY = Integer.MAX_VALUE;
+
+        int x = 0;
+        int y = 0;
+
+        for (int i = 0; i < a.length; i++) {
+            switch (i % 4) {
+
+            case 0:
+                y += a[i];
+                if (y >= maxY) {
+                    return true;
+                }
+                maxY = y;
+                break;
+
+            case 1:
+                x += a[i];
+                if (x >= maxX) {
+                    return true;
+                }
+                maxX = x;
+                break;
+
+            case 2:
+                y -= a[i];
+                if (y <= minY) {
+                    return true;
+                }
+                minY = y;
+                break;
+
+            case 3:
+                x -= a[i];
+                if (x <= minX) {
+                    return true;
+                }
+                minX = x;
+                break;
+            }
+        }
+
+        return false;
+    }
+
+    ///////////////////////////////////////
+    int chessKnightMoves(String cell) {
+
+        class Helper {
+            boolean isValid(int pos) {
+                if (0 <= pos && pos < 8) {
+                    return true;
+                }
+                return false;
+            }
+
+            int getX(String pos) {
+                return pos.charAt(0) - 'a';
+            }
+
+            int getY(String pos) {
+                return pos.charAt(0) - '1';
+            }
+        }
+        Helper h = new Helper();
+
+        int current_x = h.getX(cell.substring(0, 1));
+        int current_y = h.getY(cell.substring(1, 2));
+        int result = 1;
+
+        for (int dx = -2; dx <= 2; dx++) {
+            for (int dy = -2; dy <= 2; dy++) {
+                if (Math.abs(dx * dy) == 2) {
+                    if (h.isValid(current_x + dx) && h.isValid(current_y + dy)) {
+                        result++;
+                    }
+                }
+            }
+        }
+        return result;
+
+    }
+
+    /////////////////////////////////////
     int firstNotDivisible(int[] divisors, int start) {
         Arrays.sort(divisors);
         for (int i = start;; i++) {
