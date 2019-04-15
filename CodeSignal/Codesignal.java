@@ -2470,6 +2470,32 @@ class Helper {
 
     ///////////////////////////////////
 
+    int knapsackLight(int value1, int weight1, int value2, int weight2, int maxW) {
+        if (weight1 + weight2 <= maxW)
+            return value1 + value2;
+        if (weight1 <= maxW && weight2 <= maxW)
+            return value1 > value2 ? value1 : value2;
+        if (weight1 <= maxW && weight2 > maxW)
+            return value1;
+        if (weight1 > maxW && weight2 <= maxW)
+            return value2;
+        return 0;
+    }
+
+    ///////////////////////////////////
+
+    int maxDivisor(int left, int right, int divisor) {
+
+        for (int i = right; i >= left; i--) {
+            if (i % divisor == 0) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    /////////////////////////////////
+
     boolean robotWalk(int[] a) {
         int minX = 0;
         int minY = -1;
