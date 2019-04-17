@@ -2495,6 +2495,16 @@ class Helper {
     }
 
     /////////////////////////////////
+    String deleteWhitespaces(String inputStr) {
+        String[] nonWhitespaces = inputStr.split(" ");
+        String answer = "";
+        for (int i = 0; i < nonWhitespaces.length; i++) {
+          answer += nonWhitespaces[i];
+        }
+        return answer;
+      }
+      
+    /////////////////////////////////
 
     boolean robotWalk(int[] a) {
         int minX = 0;
