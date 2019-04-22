@@ -1291,15 +1291,15 @@ class Helper {
     }
 
     ////////////////////////////////////////
-   int countSumOfTwoRepresentations3(int n, int l, int r) {
-    int res {};
-    for (int i = 0; i <= 1000000; ++i) {
-     if (l <= n - i && n - i <= r && n - i <= i && l <= i && i <= r) {
-      res++;
-     }
+    int countSumOfTwoRepresentations3(int n, int l, int r) {
+        int res = 0;
+        for (int i = 0; i <= 1000000; ++i) {
+            if (l <= n - i && n - i <= r && n - i <= i && l <= i && i <= r) {
+                res++;
+            }
+        }
+        return res;
     }
-    return res;
-   }
 
     ////////////////////////////////////////
     int chessKnight(String cell) {
@@ -2268,6 +2268,40 @@ class Helper {
     }
 
     ///////////////////////////////////////////
+
+    boolean isPower(int n) {
+
+        if (n == 1) {
+            return true;
+        }
+
+        for (int i = 2; i < n; i++) {
+            if (n % i == 0) {
+                int tmp = n;
+                while (n % i == 0) {
+                    n /= i;
+                }
+                if (n == 1) {
+                    return true;
+                }
+                n = tmp;
+            }
+        }
+        return false;
+    }
+
+    ///////////////////////////////////////////
+    int maximalEven(int[] inputArray) {
+        Arrays.sort(inputArray);
+        for (int i = inputArray.length - 1; i >= 0; i--) {
+            if (inputArray[i] % 2 == 0) {
+                return inputArray[i];
+            }
+        }
+        return 0;
+    }
+    ///////////////////////////////////////////
+
     boolean pepEight(int line) {
         return line <= 79;
     }
@@ -2499,11 +2533,11 @@ class Helper {
         String[] nonWhitespaces = inputStr.split(" ");
         String answer = "";
         for (int i = 0; i < nonWhitespaces.length; i++) {
-          answer += nonWhitespaces[i];
+            answer += nonWhitespaces[i];
         }
         return answer;
-      }
-      
+    }
+
     /////////////////////////////////
 
     boolean robotWalk(int[] a) {
