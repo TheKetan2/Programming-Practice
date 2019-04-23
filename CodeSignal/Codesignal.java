@@ -1355,6 +1355,18 @@ class Helper {
     }
 
     ////////////////////////////////////////
+    boolean evenDigitsOnly(int n) {
+
+        if (n == 0) {
+            return true;
+        }
+        if (n % 2 != 0) {
+            return false;
+        }
+        return evenDigitsOnly(n / 10);
+    }
+
+    ////////////////////////////////////////
     int largestNumber(int n) {
         String sol = "";
         for (int i = 0; i < n; i++) {
