@@ -4597,6 +4597,53 @@ class Helper {
     }
 
     ////////////////////////////////////////////
+    int arrayMaxConsecutiveSum(int[] inputArray, int k) {
+
+        int result = 0, currentSum = 0;
+
+        for (int i = 0; i < k - 1; i++) {
+            currentSum += inputArray[i];
+        }
+        for (int i = k - 1; i < inputArray.length; i++) {
+            currentSum += inputArray[i];
+            if (currentSum > result) {
+                result = currentSum;
+            }
+            currentSum -= inputArray[i - k + 1];
+        }
+
+        return result;
+    }
+
+    ////////////////////////////////////////////
+    int leastSignificantBit(int n) {
+
+        int ans = 1;
+        while ((n & 1) == 0) {
+            n >>= 1;
+            ans <<= 1;
+        }
+
+        return ans;
+    }
+
+    ////////////////////////////////////////////
+    int divisorsSubset(int[] subset, int n) {
+        int sol = 0;
+        for (int i = 1; i <= n; i++) {
+            int flag = 0;
+            for (int num : subset) {
+                if (i % num == 0) {
+                    flag++;
+                }
+            }
+            if (flag == subset.length)
+                sol++;
+        }
+        return sol;
+    }
+
+    ////////////////////////////////////////////
     int sequenceElement(int[] a, int n) {
 
         final int MOD = (int) 1e5;
