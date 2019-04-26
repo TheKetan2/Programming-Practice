@@ -5174,6 +5174,15 @@ int[] threeAndFour(int n) {
     }
 
     ///////////////////////////////////////
+    int countWaysToChangeDigit(int value) {
+  int answer = 0;
+  while (value > 0) {
+    answer += 9 - value % 10;
+    value %= 10;
+  }
+  return answer;
+}
+//////////////////////////////////////////
     boolean chessBoardCellColor(String cell1, String cell2) {
 
         class Helper {
