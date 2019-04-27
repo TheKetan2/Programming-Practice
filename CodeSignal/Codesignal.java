@@ -2782,6 +2782,34 @@ class Helper {
     }
 
     ///////////////////////////////////////////
+    int[] videoPart(String part, String total) {
+
+        class Helper {
+
+            int getSeconds(String time) {
+                int h = Integer.parseInt(time.substring(0, 2)), m = Integer.parseInt(time.substring(3, 5)),
+                        s = Integer.parseInt(time.substring(6));
+                return h * 60 * 60 + m * 60 + s;
+            }
+
+            int gcd(int a, int b) {
+                while (a > 0) {
+                    int tmp = a;
+                    a = b % a;
+                    b = tmp;
+                }
+                return b;
+            }
+        }
+        Helper h = new Helper();
+
+        int partTime = h.getSeconds(part);
+        int totalTime = h.getSeconds(total);
+        int divisor = h.gcd(partTime, totalTime);
+        return new int[] { partTime / divisor, totalTime / divisor };
+    }
+
+    ///////////////////////////////////////////
     int kthDigit(int n, int k) {
         return Character.getNumericValue((n + "").charAt(k - 1));
     }
@@ -3626,6 +3654,26 @@ class Helper {
         }
         return answer + 1;
     }
+
+    ///////////////////////////////////////
+    int[] fractionDivision(int[] a, int[] b) {
+        int[] sol = new int[2];
+        sol[0] = a[0] * b[1];
+        sol[1] = a[1] * b[0];
+        int limit = Math.min(sol[0], sol[1]);
+        System.out.println(limit);
+        for (int i = 1; i <= limit; i++) {
+            if (sol[0] % i == 0 && sol[1] % i == 0) {
+                sol[0] /= i;
+                sol[1] /= i;
+                limit = Math.min(sol[0], sol[1]);
+                i = 1;
+                System.out.println(limit + " i : " + i);
+            }
+        }
+        return sol;
+    }
+
     ///////////////////////////////////////
 
     int[][] matrixTransposition(int[][] matrix) {
