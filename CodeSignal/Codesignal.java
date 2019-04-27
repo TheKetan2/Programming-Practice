@@ -1707,6 +1707,23 @@ class Helper {
     }
 
     ////////////////////////////////////////
+    int firstNotDivisible(int[] divisors, int start) {
+
+        for (int answer = start;; answer++) {
+            boolean correct = true;
+            for (int i = 0; i < divisors.length; i++) {
+                if (answer % divisors[i] == 0) {
+                    correct = false;
+                    break;
+                }
+            }
+            if (correct) {
+                return answer;
+            }
+        }
+    }
+
+    ////////////////////////////////////////
 
     boolean isPangram(String sentence) {
         boolean[] found = new boolean[26];
@@ -5175,14 +5192,15 @@ int[] threeAndFour(int n) {
 
     ///////////////////////////////////////
     int countWaysToChangeDigit(int value) {
-  int answer = 0;
-  while (value > 0) {
-    answer += 9 - value % 10;
-    value %= 10;
-  }
-  return answer;
-}
-//////////////////////////////////////////
+        int answer = 0;
+        while (value > 0) {
+            answer += 9 - value % 10;
+            value %= 10;
+        }
+        return answer;
+    }
+
+    //////////////////////////////////////////
     boolean chessBoardCellColor(String cell1, String cell2) {
 
         class Helper {
