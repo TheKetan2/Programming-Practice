@@ -4045,6 +4045,60 @@ class Helper {
     }
 
     //////////////////////////////////////
+    String[] sortByLength(String[] inputArray) {
+        List<Integer> initIndex = new ArrayList<>();
+        for (int i = 0; i < inputArray.length; i++) {
+            initIndex.add(i);
+        }
+        for (int i = 0; i < inputArray.length; i++) {
+            int minIndex = i;
+            String tmp = inputArray[i];
+            for (int j = i + 1; j < inputArray.length; j++) {
+                if (inputArray[j].length() < inputArray[minIndex].length()
+                        || inputArray[j].length() == inputArray[minIndex].length()
+                                && initIndex.get(j) < initIndex.get(minIndex)) {
+                    minIndex = j;
+                }
+            }
+            inputArray[i] = inputArray[minIndex];
+            inputArray[minIndex] = tmp;
+            int tmp2 = initIndex.get(minIndex);
+            initIndex.set(minIndex, initIndex.get(i));
+            initIndex.set(i, tmp2);
+        }
+
+        return inputArray;
+    }
+
+    //////////////////////////////////////
+    boolean checkSameElementExistence(int[] arr1, int[] arr2) {
+
+        int i = 0;
+        int j = 0;
+        while (i < arr1.length && j < arr2.length) {
+            if (arr1[i] == arr2[j]) {
+                return true;
+            }
+            if (arr1[i] < arr2[j]) {
+                i++;
+            } else {
+                j++;
+            }
+        }
+
+        return false;
+    }
+
+    //////////////////////////////////////
+
+    String getMonthName(int mo) {
+        String[] month = { "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" };
+        if (mo < 1 || mo > 12)
+            return "invalid month";
+        return month[mo - 1];
+    }
+
+    //////////////////////////////////////
 
     int sumUpDigits(String inputString) {
 
@@ -5241,6 +5295,11 @@ class Helper {
             n--;
         }
         return sol;
+    }
+
+    ///////////////////////////////////////////////
+    boolean pointInLine(int[] point, int[] line) {
+        return point[0] * line[0] + point[1] * line[1] + line[2] == 0;
     }
 
     ///////////////////////////////////////////////
