@@ -543,6 +543,78 @@ class Helper {
     ////////////////////////////////////////
     int squareDigitsSequence(int a0) {
 
+        int cur = a0;
+        Set<Integer> was = new HashSet<>();
+
+        while (!was.contains(cur)) {
+            was.add(cur);
+            int next = 0;
+            while (cur > 0) {
+                next += (cur % 10) * (cur % 10);
+                cur /= 10;
+            }
+            cur = next;
+        }
+
+        return was.size() + 1;
+    }
+
+    ////////////////////////////////////////
+    int arrayChange(int[] inputArray) {
+        int sol = inputArray[0];
+        ArrayList<Integer> list = new ArrayList<Integer>();
+        list.add(inputArray[0]);
+        if(inputArray.length <2) return 0;
+        for(int i = 1; i<inputArray.length; i++){
+            sol += inputArray[i];
+            if(list.get(list.size()-1) >= inputArray[i]){
+                list.add(list.get(list.size()-1) -inputArray[i] + 1 + inputArray[i] );
+                
+            }
+            else{
+                list.add(inputArray[i]);
+            }
+        }
+        int listSum = 0; 
+        for(int num: list){
+            System.out.println(num);
+            listSum +=num;
+        }
+        
+        System.out.println(listSum);
+        System.out.println(sol);
+        return listSum - sol;
+    }
+    
+    ////////////////////////////////////////
+    boolean isInfiniteProcess(int a, int b) {
+        while(a != b){
+           if(a>b)
+              return true;
+           a++;
+           b--;
+        }
+        return false;
+           
+     }
+
+    ////////////////////////////////////////
+    int toAndFro(int a, int b, int t) {
+
+        int len = Math.abs(b - a);
+        t %= (2 * len);
+        if (t <= len) {
+          return a+t;
+        }
+        else {
+          t -= len;
+          return b + (a - b) / Math.abs(a - b) * t;
+        }
+      }
+      
+    ////////////////////////////////////////
+    int squareDigitsSequence(int a0) {
+
         ArrayList<Integer> list = new ArrayList<Integer>();
         int sol = 0;
         list.add(a0);
