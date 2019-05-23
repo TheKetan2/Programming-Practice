@@ -762,6 +762,26 @@ class Helper {
         }
     }
 
+    ///////////////////////////////////////
+        int maximizeNumberRoundness(int n) {
+        int tmp = n;
+        int zeros = 0;
+        while (tmp != 0) {
+            if (tmp % 10 == 0) {
+            zeros++;
+            }
+            tmp /= 10;
+        }
+        int result = zeros;
+        for (int i = 0; i < zeros; i++) {
+            if (n % 10 == 0) {
+            result--;
+            }
+            n /= 10;
+        }
+        return result;
+        }
+
     ////////////////////////////////////////
     int largestFullBinaryTree(int[] parent) {
 
@@ -5443,3 +5463,34 @@ int[] threeAndFour(int n) {
       }
 
 ///////////////////////////////////////////
+int nextPrime(int n){
+
+  for (int i = n + 1; ; i++) {
+    boolean isPrime = true;
+    for (int divisor = 2; divisor < i; divisor++) {
+      if (i % divisor == 0) {
+        isPrime = false;
+        break;
+      }
+    }
+    if (isPrime) {
+      return i;
+    }
+  }
+}
+///////////////////////////////////////////int nextPrime(int n){
+
+    for (int i = n + 1; ; i++) {
+      boolean isPrime = true;
+      for (int divisor = 2; divisor < i; divisor++) {
+        if (i % divisor == 0) {
+          isPrime = false;
+          break;
+        }
+      }
+      if (isPrime) {
+        return i;
+      }
+    }
+  }
+  
