@@ -761,6 +761,20 @@ class Helper {
             k++;
         }
     }
+    ///////////////////////////////////////
+    String longestDigitsPrefix(String inputString) {
+  StringBuilder result = new StringBuilder();
+  for (int i = 0; i < inputString.length(); i++) {
+    if ('0' <= inputString.charAt(i) && inputString.charAt(i) <= '9') {
+      result.append(inputString.charAt(i));
+    }
+    else {
+      break;
+    }
+  }
+  return result.toString();
+}
+
 
     ///////////////////////////////////////
         int maximizeNumberRoundness(int n) {
