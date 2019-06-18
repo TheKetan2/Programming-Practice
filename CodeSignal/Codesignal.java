@@ -850,6 +850,18 @@ boolean subsetsSequence(int[][] sets) {
 }
 
 ///////////////////////////////////////
+int adjacentElementsProduct(int[] inputArray) {
+    int sol = -9999999;
+    for(int i = 1; i<inputArray.length; i++){
+        if(inputArray[i-1] * inputArray[i] > sol){
+            sol = inputArray[i-1] * inputArray[i];
+        }
+        
+    }
+    return sol;
+}
+
+///////////////////////////////////////
 
         int maximizeNumberRoundness(int n) {
         int tmp = n;
