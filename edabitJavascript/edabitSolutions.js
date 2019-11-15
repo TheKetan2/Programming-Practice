@@ -193,3 +193,45 @@ function both(n1, n2) {
   if (n1 < 0 && n2 < 0) return true;
   return false;
 }
+
+// Create a function that takes an integer and returns an array from 1 to the given number, where:
+
+// If the number can be divided evenly by 4, amplify it by 10 (i.e. return 10 times the number).
+// If the number cannot be divided evenly by 4, simply return the number.
+
+function amplify(num) {
+  let solution = [];
+  for (let i = 1; i <= num; i++) {
+    if (i % 4 == 0) solution.push(i * 10);
+    else solution.push(i);
+  }
+  return solution;
+}
+
+function difference(nums) {
+  nums.sort((a, b) => a - b);
+  return nums[nums.length - 1] - nums[0];
+}
+
+function netPresentValue(pv, ir, years) {
+  //pv * (1 - (1 + investment rate) ^negative number of years) / investment rate
+  let npv = Math.round(((1 - (1 + ir) ** -years) / ir) * pv);
+  return npv < 0 ? false : `\$${npv}`;
+}
+
+function missingAngle(angle1, angle2) {
+  let thirdAngle = 180 - (angle1 + angle2);
+  return thirdAngle == 90 ? "right" : thirdAngle > 90 ? "obtuse" : "acute";
+}
+
+function countWords(str) {
+  return str.split(" ").length;
+}
+
+function getSequence(low, high) {
+  let solution = [];
+  for (let i = low; i <= high; i++) {
+    solution.push(i);
+  }
+  return solution;
+}
