@@ -176,3 +176,20 @@ function diffMaxMin(arr) {
   arr.sort((a, b) => a - b);
   return arr[arr.length - 1] - arr[0];
 }
+
+function numberSyllables(word) {
+  return word.split("-").length;
+}
+
+function hasKey(obj, key) {
+  for (k in obj) {
+    if (k === key) return true;
+  }
+  return false;
+}
+
+function both(n1, n2) {
+  if ((n1 > 0 && n2 > 0) || n1 === n2) return true;
+  if (n1 < 0 && n2 < 0) return true;
+  return false;
+}
