@@ -235,3 +235,18 @@ function getSequence(low, high) {
   }
   return solution;
 }
+
+function canPartition(arr) {
+  let positiveArr = arr.map(item => (item < 0 ? -item : item));
+  let index = positiveArr.indexOf(Math.max(...positiveArr));
+
+  return (
+    arr.filter(num => num === 0).length > 1 ||
+    arr[index] === arr.reduce((a, b) => a * b) / arr[index]
+  );
+}
+
+function isBetween(first, last, word) {
+  let arr = [first, word, last];
+  return arr.join("") === arr.sort().join("");
+}
