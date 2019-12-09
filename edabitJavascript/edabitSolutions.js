@@ -250,3 +250,46 @@ function isBetween(first, last, word) {
   let arr = [first, word, last];
   return arr.join("") === arr.sort().join("");
 }
+
+function FizzBuzz(num) {
+  if (num % 15 === 0) return "FizzBuzz";
+  if (num % 3 === 0) return "Fizz";
+  if (num % 5 === 0) return "Buzz";
+  return num.toString();
+}
+
+function retrieveMajor(semver) {
+  return semver.split(".")[0];
+}
+
+function retrieveMinor(semver) {
+  return semver.split(".")[1];
+}
+
+function retrievePatch(semver) {
+  return semver.split(".")[2];
+}
+
+function scoreCalculator(easy, med, hard) {
+  if (easy < 0 || med < 0 || hard < 0) return "invalid";
+  return easy * 5 + med * 10 + hard * 20;
+}
+
+// Fix this incorrect code!
+function checkAllEven(arr) {
+  return arr.every(num => num % 2 === 0);
+}
+
+function getStudentNames(students) {
+  let solution = [];
+  students.forEach(student => solution.push(student["name"]));
+  return solution;
+}
+
+function hurdleJump(hurdles, jumpHeight) {
+  return hurdles.every(h => h <= jumpHeight);
+}
+
+function findLargestNum(arr) {
+  return Math.max(...arr);
+}
