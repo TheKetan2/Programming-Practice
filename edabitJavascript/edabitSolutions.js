@@ -293,3 +293,66 @@ function hurdleJump(hurdles, jumpHeight) {
 function findLargestNum(arr) {
   return Math.max(...arr);
 }
+
+function countIdentical(arr) {
+  let solution = 0;
+  arr.forEach(arr => {
+    if (arr.filter(num => num !== arr[0]).length === 0) solution++;
+  });
+  return solution;
+}
+
+function countIdentical(arr) {
+  return arr.filter(e => {
+    return new Set(e).size === 1;
+  }).length;
+}
+
+function mysteryFunc(arr, num) {
+  return arr.map(arrNum => arrNum % num);
+}
+
+function MultiplyByLength(arr) {
+  return arr.map(num => num * arr.length);
+}
+
+class Calculator {
+  // Write functions to add(), subtract(), multiply() and divide()
+  add(a, b) {
+    return a + b;
+  }
+  subtract(a, b) {
+    return a - b;
+  }
+  multiply(a, b) {
+    return a * b;
+  }
+  divide(a, b) {
+    return a / b;
+  }
+}
+
+// Fix this code
+function checkEquals(arr1, arr2) {
+  if (arr1.join(".") === arr2.join(".")) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+function filterList(l) {
+  return l.filter(num => typeof num === "number");
+}
+
+function limitNumber(num, rangeLow, rangeHigh) {
+  return [num, rangeLow, rangeHigh].sort((a, b) => a - b)[1];
+}
+
+function removeNull(arr) {
+  return arr.filter(num => num != null);
+}
+
+function calcDeterminant(matrix) {
+  return matrix[0][0] * matrix[1][1] - matrix[0][1] * matrix[1][0];
+}
