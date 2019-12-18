@@ -356,3 +356,42 @@ function removeNull(arr) {
 function calcDeterminant(matrix) {
   return matrix[0][0] * matrix[1][1] - matrix[0][1] * matrix[1][0];
 }
+
+function countAll(str) {
+  let solution = { LETTERS: 0, DIGITS: 0 };
+  str = str.replace(/\s/g, "");
+  solution.DIGITS = str.split("").filter(c => c >= "0" && c <= "9").length;
+  solution.LETTERS = str.split("").length - solution.DIGITS;
+  return solution;
+}
+
+function canConcatenate(arr, target) {
+  return (
+    JSON.stringify(
+      arr.reduce((a, b) => a.concat(b)).sort((n1, n2) => n1 - n2)
+    ) === JSON.stringify(target.sort((n1, n2) => n1 - n2))
+  );
+}
+
+function getWord(left, right) {
+  return left[0].toUpperCase() + left.substr(1) + right;
+}
+
+function sameCase(str) {
+  return str.toUpperCase() === str ? true : str.toLowerCase() === str;
+}
+
+function Go(num) {
+  return "-".repeat(num);
+}
+
+
+
+function maxHam(s1, s2) {
+	if(s1.split("").sort().join("") != s2.split("").sort().join("") ) return false;
+	let sol = 0;
+	for(var i = 0; i<s1.length; i++){
+		if(s1[i] != s2[i]) sol++;
+	}
+	return sol === s1.length? true: sol;
+}
