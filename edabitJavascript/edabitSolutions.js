@@ -385,13 +385,62 @@ function Go(num) {
   return "-".repeat(num);
 }
 
-
-
 function maxHam(s1, s2) {
-	if(s1.split("").sort().join("") != s2.split("").sort().join("") ) return false;
-	let sol = 0;
-	for(var i = 0; i<s1.length; i++){
-		if(s1[i] != s2[i]) sol++;
-	}
-	return sol === s1.length? true: sol;
+  if (
+    s1
+      .split("")
+      .sort()
+      .join("") !=
+    s2
+      .split("")
+      .sort()
+      .join("")
+  )
+    return false;
+  let sol = 0;
+  for (var i = 0; i < s1.length; i++) {
+    if (s1[i] != s2[i]) sol++;
+  }
+  return sol === s1.length ? true : sol;
+}
+
+// Fix this incorrect code, so that all tests pass!
+function removeVowels(str) {
+  return str.replace(/[aeiou]/g, "");
+}
+
+function findEvenNums(num) {
+  let solution = [];
+  for (let i = 2; i <= num; i += 2) {
+    solution.push(i);
+  }
+  return solution;
+}
+
+function noStrangers(str) {
+  let aq = new Set();
+  let fr = new Set();
+  let strArr = str
+    .toLowerCase()
+    .replace(/[^a-z' ]/g, "")
+    .split(" ");
+  let uniqueWords = new Set(strArr);
+  let wordObj = {};
+  for (word of [...uniqueWords]) {
+    wordObj[word] = 0;
+  }
+  //console.log(wordObj);
+
+  for (word of strArr) {
+    wordObj[word] += 1;
+    if (wordObj[word] >= 3 && wordObj[word] < 5) aq.add(word);
+    else if (wordObj[word] >= 5) fr.add(word);
+    //console.log("length: ",len, "Word: ", word);
+  }
+
+  for (word of fr) {
+    aq.delete(word);
+  }
+
+  return [[...aq], [...fr]];
 }
