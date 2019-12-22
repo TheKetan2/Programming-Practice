@@ -444,3 +444,16 @@ function noStrangers(str) {
 
   return [[...aq], [...fr]];
 }
+
+function boundSort(arr, bounds) {
+  console.log("main array: ", arr);
+  let slicedArray = arr.slice(bounds[0], bounds[1] + 1);
+  slicedArray = slicedArray.sort((a, b) => a - b);
+  console.log("subarray: ", slicedArray);
+  slicedArray = slicedArray.concat(arr.slice(bounds[1] + 1));
+  console.log(slicedArray);
+  for (let i = 1; i < arr.length; i++) {
+    if (slicedArray[i - 1] > slicedArray[i]) return false;
+  }
+  return true;
+}
