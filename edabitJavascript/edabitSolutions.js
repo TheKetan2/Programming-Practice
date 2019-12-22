@@ -457,3 +457,17 @@ function boundSort(arr, bounds) {
   }
   return true;
 }
+
+function checkPalindrome(str) {
+  return (
+    str ===
+    str
+      .split("")
+      .reverse()
+      .join("")
+  );
+}
+
+function findSmallestNum(arr) {
+  return Math.min(...arr);
+}
