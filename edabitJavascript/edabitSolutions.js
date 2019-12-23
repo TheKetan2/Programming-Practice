@@ -472,7 +472,81 @@ function findSmallestNum(arr) {
   return Math.min(...arr);
 }
 
-
 function sevenBoom(arr) {
-	return JSON.stringify(arr).indexOf(7)>=0? "Boom!": "there is no 7 in the array";;
+  return JSON.stringify(arr).indexOf(7) >= 0
+    ? "Boom!"
+    : "there is no 7 in the array";
+}
+
+function tapCode(text) {
+  const morseCode = {
+    a: ". .",
+    b: ". ..",
+    c: ". ...",
+    d: ". ....",
+    e: ". .....",
+    f: ".. .",
+    g: ".. ..",
+    h: ".. ...",
+    i: ".. ....",
+    j: ".. .....",
+    k: ". ...",
+    l: "... .",
+    m: "... ..",
+    n: "... ...",
+    o: "... ....",
+    p: "... .....",
+    q: ".... .",
+    r: ".... ..",
+    s: ".... ...",
+    t: ".... ....",
+    u: ".... .....",
+    v: "..... .",
+    w: "..... ..",
+    x: "..... ...",
+    y: "..... ....",
+    z: "..... ....."
+  };
+
+  const revMorse = {
+    ". .": "a",
+    ". ..": "b",
+    ". ...": "c",
+    ". ....": "d",
+    ". .....": "e",
+    ".. .": "f",
+    ".. ..": "g",
+    ".. ...": "h",
+    ".. ....": "i",
+    ".. .....": "j",
+    "... .": "l",
+    "... ..": "m",
+    "... ...": "n",
+    "... ....": "o",
+    "... .....": "p",
+    ".... .": "q",
+    ".... ..": "r",
+    ".... ...": "s",
+    ".... ....": "t",
+    ".... .....": "u",
+    "..... .": "v",
+    "..... ..": "w",
+    "..... ...": "x",
+    "..... ....": "y",
+    "..... .....": "z"
+  };
+  sol = "";
+  if (text.indexOf(".") < 0) {
+    for (ch of text.split("")) {
+      sol += morseCode[ch];
+      sol += " ";
+    }
+  } else {
+    let str = text.split(" ");
+    for (let i = 0; i < str.length; i += 2) {
+      console.log([str[i] + " " + str[i + 1]]);
+      sol += revMorse[str[i] + " " + str[i + 1]];
+    }
+  }
+  return sol.trim();
 }
