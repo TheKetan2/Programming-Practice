@@ -554,3 +554,27 @@ function tapCode(text) {
 function existsHigher(arr, n) {
   return arr.filter(num => num >= n).length > 0;
 }
+
+function findLargestNum(arr) {
+  return Math.max(...arr);
+}
+
+function transform(arr) {
+  return arr.map(num => (num % 2 == 0 ? num - 1 : num + 1));
+}
+
+function nextElement(arr) {
+  return arr[arr.length - 1] + arr[1] - arr[0];
+}
+
+let arr = [1, 2, 3, 4, 5, 6];
+removeNum = numToBeRemoved => arr.filter(num => num != numToBeRemoved);
+
+function countdown(start) {
+  let sol = [];
+  while (start >= 0) {
+    sol.push(start);
+    start--;
+  }
+  return sol;
+}
