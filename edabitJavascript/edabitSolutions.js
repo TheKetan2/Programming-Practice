@@ -578,3 +578,26 @@ function countdown(start) {
   }
   return sol;
 }
+
+function unlucky13(nums) {
+  return nums.filter(num => num % 13 != 0);
+}
+
+function mapping(letters) {
+  let smallCap = {};
+  for (let s of letters) {
+    smallCap[s] = String.fromCharCode(s.charCodeAt(0) - 32);
+  }
+  return smallCap;
+}
+
+"hello world how ya doing"
+  .split("")
+  .map((s, i) => (i % 2 != 0 ? s.toUpperCase() : s))
+  .join("");
+
+function dividesEvenly(a, b) {
+  const div = a / b;
+  console.log(div);
+  return div === Math.round(div);
+}
