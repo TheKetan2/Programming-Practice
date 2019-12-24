@@ -550,3 +550,7 @@ function tapCode(text) {
   }
   return sol.trim();
 }
+
+function existsHigher(arr, n) {
+  return arr.filter(num => num >= n).length > 0;
+}
