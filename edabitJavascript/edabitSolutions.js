@@ -601,3 +601,11 @@ function dividesEvenly(a, b) {
   console.log(div);
   return div === Math.round(div);
 }
+
+function checkFactors(factors, num) {
+  return factors.filter(fNum => num % fNum != 0).length === 0;
+}
+
+function removeFirstLast(str) {
+  return str.length <= 2 ? str : str.substr(1, str.length - 2);
+}
