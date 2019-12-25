@@ -609,3 +609,28 @@ function checkFactors(factors, num) {
 function removeFirstLast(str) {
   return str.length <= 2 ? str : str.substr(1, str.length - 2);
 }
+
+function sharedDigits(arr) {
+  for (let i = 1; i < arr.length; i++) {
+    let str1 = Array.from(new Set(String(arr[i - 1]).split(""))).join("");
+    let str2 = Array.from(new Set(String(arr[i]).split(""))).join("");
+    let set = new Set(str1.split("").concat(str2.split("")));
+    if ((str1 + str2).length === set.size) return false;
+  }
+
+  return true;
+}
+
+function isStrangePair(str1, str2) {
+  if (str1.length === 0 && str2.length === 0) return true;
+  return (
+    str1.charAt(0) === str2.charAt(str2.length - 1) &&
+    str2.charAt(0) === str1.charAt(str1.length - 1)
+  );
+}
+
+function canCapture([yourRook, opponentsRook]) {
+  let str = yourRook + opponentsRook;
+  let set = new Set(str.split(""));
+  return str.length != set.size;
+}
