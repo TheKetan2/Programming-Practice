@@ -634,3 +634,49 @@ function canCapture([yourRook, opponentsRook]) {
   let set = new Set(str.split(""));
   return str.length != set.size;
 }
+
+// Fix this incorrect code so that all tests pass!
+function flatten(arr) {
+  return arr.flat();
+}
+
+function countVowels(str) {
+  return str.length - str.replace(/[aeiou]/g, "").length;
+}
+
+function dictionary(initial, words) {
+  return words.filter(word => word.indexOf(initial) === 0);
+}
+
+function sum(n) {
+  let sum = 0;
+  for (let i = 0; i <= n; i++) {
+    sum += i;
+  }
+  return sum;
+}
+
+function sum(n) {
+  // Reccursive solution
+  return n == 1 ? n : n * sum(n - 1);
+}
+
+function noOdds(arr) {
+  return arr.filter(num => num % 2 == 0);
+}
+
+function toArray(str) {
+  return str.length === 0 ? [] : str.split(", ");
+}
+
+function capitalLetters(txt) {
+  return txt.length - txt.replace(/[A-Z]/g, "").length;
+}
+
+function correctStream(user, correct) {
+  let sol = [];
+  for (let i = 0; i < user.length; i++) {
+    user[i] === correct[i] ? sol.push(1) : sol.push(-1);
+  }
+  return sol;
+}
