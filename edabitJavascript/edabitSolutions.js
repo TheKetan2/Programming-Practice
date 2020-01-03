@@ -680,3 +680,69 @@ function correctStream(user, correct) {
   }
   return sol;
 }
+
+function replaceVowels(str, ch) {
+  return str.replace(/[aeiou]/g, ch);
+}
+
+function binaryToDecimal(binary) {
+  let len = binary.length,
+    num = 0;
+  for (let i = 0, power = len - 1; i < len; i++, power--) {
+    num += binary[i] === 1 ? Math.pow(2, power) : 0;
+  }
+  return num;
+}
+
+function isInOrder(str) {
+  return (
+    str ===
+    str
+      .split("")
+      .sort()
+      .join("")
+  );
+}
+
+function subReddit(link) {
+  let len = "https://www.reddit.com/r/".length;
+  let sub = link.substr(len);
+  let subLen = sub.length;
+  return sub.substr(0, subLen - 1);
+}
+
+function evenOddPartition(arr) {
+  let odd = [],
+    even = [];
+  for (a of arr) {
+    a % 2 == 0 ? even.push(a) : odd.push(a);
+  }
+  return [even, odd];
+}
+
+function evenOddPartition(arr) {
+  let odd = [],
+    even = [];
+  for (a of arr) {
+    a % 2 == 0 ? even.push(a) : odd.push(a);
+  }
+  return [even, odd];
+}
+
+function reverse(bool) {
+  return bool == true ? false : bool === false ? true : "boolean expected";
+}
+
+function divisible(arr) {
+  return arr.reduce((a, b) => a * b) % arr.reduce((a, b) => a + b) === 0;
+}
+
+function nthSmallest(arr, n) {
+  return arr.sort()[n - 1] ? arr.sort()[n - 1] : null;
+}
+
+function filterStateNames(arr, type) {
+  return type === "abb"
+    ? arr.filter(a => a.length === 2)
+    : arr.filter(a => a.length > 2);
+}
