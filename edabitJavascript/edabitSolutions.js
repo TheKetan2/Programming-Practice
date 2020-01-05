@@ -746,3 +746,47 @@ function filterStateNames(arr, type) {
     ? arr.filter(a => a.length === 2)
     : arr.filter(a => a.length > 2);
 }
+
+// Fix this incorrect code so that all tests pass!
+function removeEmptyArrays(arr) {
+  return arr.filter(x => x.length != 0);
+}
+
+function convertCartesian(x, y) {
+  return x.map((ex, i) => [ex, y[i]]);
+}
+
+function oddProduct(arr) {
+  return arr.filter(num => num % 2 != 0).reduce((a, b) => a * b);
+}
+function owofied(sentence) {
+  let sol = sentence.replace(/["i"]/g, "wi");
+  return sol.replace(/["e"]/g, "we") + " owo";
+}
+
+function last(a, n) {
+  return a.length < n ? "invalid" : n == 0 ? [] : a.splice(a.length - n);
+}
+
+function totalCups(n) {
+  return n + Math.floor(n / 6);
+}
+
+function howManyTimes(num) {
+  return `Ed${"a".repeat(num)}bit`;
+}
+
+function isFourLetters(arr) {
+  return arr.filter(a => a.length === 4);
+}
+
+function filterDigitLength(arr, num) {
+  return arr.filter(a => (a + "").length === num);
+}
+
+function AlphabetSoup(str) {
+  return str
+    .split("")
+    .sort()
+    .join("");
+}
