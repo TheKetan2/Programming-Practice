@@ -790,3 +790,17 @@ function AlphabetSoup(str) {
     .sort()
     .join("");
 }
+
+function nextPrime(num) {
+  while (true) {
+    if (isPrime(num)) return num;
+    num++;
+  }
+}
+
+const isPrime = num => {
+  for (let i = 2; i < Math.sqrt(num) + 1; i++) {
+    if (num % i === 0) return false;
+  }
+  return true;
+};
