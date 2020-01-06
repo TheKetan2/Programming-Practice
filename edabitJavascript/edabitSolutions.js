@@ -804,3 +804,61 @@ const isPrime = num => {
   }
   return true;
 };
+
+function greetPeople(names) {
+  return names.map(name => "Hello " + name).join(", ");
+}
+
+function isPositiveDominant(a) {
+  let set = new Set(a);
+  return (
+    Array.from(set).filter(num => num < 0).length <
+    Array.from(set).filter(num => num > 0).length
+  );
+}
+
+function isEmpty(obj) {
+  return JSON.stringify(obj).replace(/[{}]/g, "").length ? false : true;
+}
+
+function abcmath(a, b, c) {
+  while (b--) {
+    a += a;
+  }
+  return a % c === 0;
+}
+
+function hashPlusCount(str) {
+  return [str.replace(/[^#]/g, "").length, str.replace(/[^+]/g, "").length];
+}
+
+function getAbsSum(arr) {
+  return arr
+    .map(num => (num < 0 ? -num : num))
+    .reduce((acc, curr) => acc + curr);
+}
+
+function filterArray(arr) {
+  return arr.filter(elem => typeof elem != "string");
+}
+
+function doubleChar(str) {
+  let sol = "";
+  for (let i = 0; i < str.length; i++) {
+    sol += str.charAt(i) + str.charAt(i);
+  }
+  return sol;
+}
+
+function factorial(int) {
+  if (int < 1) return 1;
+  return int * factorial(int - 1);
+}
+
+function countVowels(str) {
+  return str.replace(/[^aeiou]/g, "").length;
+}
+
+function set(arr) {
+  return Array.from(new Set(arr));
+}
