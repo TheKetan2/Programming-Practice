@@ -862,3 +862,69 @@ function countVowels(str) {
 function set(arr) {
   return Array.from(new Set(arr));
 }
+
+function firstVowel(str) {
+  for (let i = 0; i < str.length; i++) {
+    if ("aeiou".includes(str.toLowerCase().charAt(i))) {
+      return i;
+    }
+  }
+
+  return -1;
+}
+
+function societyName(friends) {
+  return friends
+    .map(f => f.charAt(0))
+    .sort()
+    .join("");
+}
+/*
+chatroomStatus([]) ➞ "no one online"
+
+chatroomStatus(["paRIE_to"]) ➞ "parIE_to online"
+
+chatroomStatus(["s234f", "mailbox2"]) ➞ "s234f and mailbox2 online"
+
+chatroomStatus(["pap_ier44", "townieBOY", "panda321", "motor_bike5", "sandwichmaker833", "violinist91"])
+➞ "pap_ier44, townieBOY and 4 more online"
+*/
+function chatroomStatus(users) {
+  return users.length === 0
+    ? "no one online"
+    : users.length === 1
+    ? users[0] + " online"
+    : users.length === 2
+    ? users[0] + " and " + users[1] + " online"
+    : `${users[0]}, ${users[1]} and ${users.length - 2} more online`;
+}
+
+function sayHelloBye(name, num) {
+  return num
+    ? "Hello " + name.charAt(0).toUpperCase() + name.substr(1)
+    : "Bye " + name.charAt(0).toUpperCase() + name.substr(1);
+}
+
+function convertBinary(str) {
+  return str
+    .toLowerCase()
+    .split("")
+    .map(c => (c >= "a" && c <= "m" ? "0" : "1"))
+    .join("");
+}
+//Write a function that transforms all letters from
+//[a, m] to 0 and letters from [n, z] to 1 in a string.
+
+function sumOfCubes(nums) {
+  let sol = 0;
+  for (num of nums) {
+    sol += num * num * num;
+  }
+  return sol;
+}
+
+function spelling(str) {
+  let strTemp = str;
+  return str.split("").map((s, i) => strTemp.substr(0, i + 1));
+}
+
