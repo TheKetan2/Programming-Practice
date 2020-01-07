@@ -928,3 +928,14 @@ function spelling(str) {
   return str.split("").map((s, i) => strTemp.substr(0, i + 1));
 }
 
+String.prototype.swapCase = function() {
+  return this.split("")
+    .map(char =>
+      char >= "a" && char <= "z"
+        ? char.toUpperCase()
+        : char >= "A" && char <= "Z"
+        ? char.toLowerCase()
+        : char
+    )
+    .join("");
+};
