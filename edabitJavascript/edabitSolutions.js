@@ -939,3 +939,63 @@ String.prototype.swapCase = function() {
     )
     .join("");
 };
+
+/* Fill in 5 array prototype methods below:
+	1. square()
+	2. cube()
+	3. divisible_by()
+	4. strictly_above()
+	5. strictly_below()
+*/
+
+Array.prototype.square = function() {
+  return this.map(num => num * num);
+};
+
+Array.prototype.cube = function() {
+  return this.map(num => num * num * num);
+};
+
+Array.prototype.divisible_by = function(x) {
+  return this.filter(num => num % x === 0);
+};
+
+Array.prototype.strictly_above = function(x) {
+  return this.filter(num => num > x);
+};
+
+Array.prototype.strictly_below = function(x) {
+  return this.filter(num => num < x);
+};
+
+function maximumScore(tileHand) {
+  return tileHand.map(obj => obj.score).reduce((a, b) => a + b);
+}
+
+function mauriceWins(mSnails, sSnails) {
+  let sol = 0;
+  mSnails.sort((a, b) => a - b);
+  sSnails.sort((a, b) => a - b);
+
+  if (mSnails[0] > sSnails[2]) {
+    sol += 1;
+  }
+  if (mSnails[1] > sSnails[0]) {
+    sol += 1;
+  }
+  if (mSnails[2] > sSnails[1]) {
+    sol += 1;
+  }
+  console.log(sol);
+  return sol > 1;
+}
+
+function myPi(n) {
+  let pi = "3.14159265358979323";
+  let sol = "3." + Math.round(parseInt(pi.substr(2, n + 1)) / 10);
+  return parseFloat(sol);
+}
+
+function capToFront(s) {
+  return s.replace(/[^A-Z]/g, "") + s.replace(/[^a-z]/g, "");
+}
