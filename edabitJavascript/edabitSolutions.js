@@ -999,3 +999,52 @@ function myPi(n) {
 function capToFront(s) {
   return s.replace(/[^A-Z]/g, "") + s.replace(/[^a-z]/g, "");
 }
+
+function isAvgWhole(arr) {
+  let avg = arr.reduce((acc, curr) => acc + curr) / arr.length;
+  return avg === Math.round(avg);
+}
+
+function isSymmetrical(num) {
+  let str = num + "";
+  return (
+    str ===
+    str
+      .split("")
+      .reverse()
+      .join("")
+  );
+}
+
+function removeVowels(str) {
+  return str.replace(/[aeiouAEIOU]/g, "");
+}
+
+function joinPath(portion1, portion2) {
+  return portion1.replace(/[/]/g, "") + "/" + portion2.replace(/[/]/g, "");
+}
+
+function leftDigit(num) {
+  return parseInt(num.replace(/[^0-9]/g, "")[0]);
+}
+
+function isPrefix(word, prefix) {
+  return word.indexOf(prefix.substr(0, prefix.length - 1)) === 0;
+}
+
+function isSuffix(word, suffix) {
+  return word.indexOf(suffix.substr(1)) === word.length - (suffix.length - 1);
+}
+
+function charIndex(word, char) {
+  if (word.indexOf(char) === -1) return undefined;
+  return [word.indexOf(char), word.lastIndexOf(char)];
+}
+
+function toArray(num) {
+  return (num + "").split("").map(num => parseInt(num));
+}
+
+function toNumber(arr) {
+  return parseInt(JSON.stringify(arr).replace(/[^0-9]/g, ""));
+}
