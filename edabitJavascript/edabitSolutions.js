@@ -1048,3 +1048,42 @@ function toArray(num) {
 function toNumber(arr) {
   return parseInt(JSON.stringify(arr).replace(/[^0-9]/g, ""));
 }
+
+function validateSwaps(arr, str) {
+  return arr.map(word => {
+    if (word.length != str.length) return false;
+    else
+      return word.split("").filter((ch, i) => ch != str.charAt(i)).length === 2;
+  });
+}
+
+function sortByLength(arr) {
+  return arr.sort((a, b) => a.length - b.length);
+}
+
+function isOmnipresent(arr, val) {
+  for (a of arr) {
+    if (!a.includes(val)) return false;
+  }
+  return true;
+}
+
+function isValid(zip) {
+  return zip.length === 5 ? zip.replace(/[^0-9]/g, "").length === 5 : false;
+}
+
+function findNemo(sentence) {
+  let sol = 0;
+  for (word of sentence.split(" ")) {
+    if (word === "Nemo") return `I found Nemo at ${sol + 1}!`;
+    sol++;
+  }
+  return "I can't find Nemo :(";
+}
+
+function reverseCase(str) {
+  return str
+    .split("")
+    .map(ch => (ch === ch.toLowerCase() ? ch.toUpperCase() : ch.toLowerCase()))
+    .join("");
+}
