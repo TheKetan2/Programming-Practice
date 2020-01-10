@@ -1188,3 +1188,25 @@ function asciiCapitalize(str) {
 function filterUnique(arr) {
   return arr.filter(word => new Set(word.split("")).size === word.length);
 }
+
+function century(year) {
+  let post =
+    Math.ceil(year / 100) <= 20
+      ? "th"
+      : Math.ceil(year / 100) % 10 === 1
+      ? "st"
+      : Math.ceil(year / 100) % 10 === 2
+      ? "nd"
+      : Math.ceil(year / 100) % 10 === 3
+      ? "rd"
+      : "th";
+  return `${Math.ceil(year / 100)}${post} century`;
+}
+
+function flip(y) {
+  return y ? 0 : 1;
+}
+
+String.prototype.vreplace = function(vowel) {
+  return this.replace(/[aeiou]/g, vowel);
+};
