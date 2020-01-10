@@ -1087,3 +1087,104 @@ function reverseCase(str) {
     .map(ch => (ch === ch.toLowerCase() ? ch.toUpperCase() : ch.toLowerCase()))
     .join("");
 }
+
+function findLargestNums(arr) {
+  return arr.map(a => Math.max(...a));
+}
+
+function totalVolume(...boxes) {
+  return boxes
+    .map(box => box.reduce((acc, curr) => acc * curr))
+    .reduce((acc, curr) => acc + curr);
+}
+
+function isSpecialArray(arr) {
+  return (
+    arr.filter(
+      (num, i) => (i % 2 === 0 && num % 2 === 0) || (i % 2 != 0 && num % 2 != 0)
+    ).length === arr.length
+  );
+}
+
+function sortDescending(num) {
+  return parseInt(
+    (num + "")
+      .split("")
+      .sort()
+      .reverse()
+      .join("")
+  );
+}
+
+function highLow(str) {
+  let arr = str.split(" ").map(num => parseInt(num));
+  return [Math.max(...arr), Math.min(...arr)].join(" ");
+}
+
+function formatPhoneNumber(numbers) {
+  let str = numbers.join("");
+  return `(${str.substr(0, 3)}) ${str.substr(3, 3)}-${str.substr(6)}`;
+}
+
+function isSastry(number) {
+  let sqrt = Math.sqrt(parseInt(number + "" + (number + 1)));
+  return Math.round(sqrt) === sqrt;
+}
+
+function factorChain(arr) {
+  for (let i = 1; i < arr.length; i++) {
+    if (arr[i] % arr[i - 1] != 0) return false;
+  }
+  return true;
+}
+
+function sortNumsAscending(arr) {
+  return arr ? arr.sort((a, b) => a - b) : [];
+}
+
+function indexShuffle(str) {
+  let odd = "",
+    even = "";
+  for (let i = 0; i < str.length; i += 2) {
+    even += str.charAt(i);
+    odd += str.charAt(i + 1);
+  }
+  return even + odd;
+}
+
+function getDistance(a, b) {
+  return parseFloat(
+    Math.sqrt(
+      (-a.x + b.x) * (-a.x + b.x) + (-a.y + b.y) * (-a.y + b.y)
+    ).toFixed(3)
+  );
+}
+
+function specialReverse(s, c) {
+  return s
+    .split(" ")
+    .map(word =>
+      word.indexOf(c) === 0
+        ? word
+            .split("")
+            .reverse()
+            .join("")
+        : word
+    )
+    .join(" ");
+}
+
+function countOnes(matrix) {
+  return matrix.flat().filter(num => num === 1).length;
+}
+
+function asciiCapitalize(str) {
+  return str
+    .split("")
+    .map(ch => (ch.charCodeAt() % 2 == 0 ? ch.toUpperCase() : ch.toLowerCase()))
+    .join("");
+}
+
+function filterUnique(arr) {
+  return arr.filter(word => new Set(word.split("")).size === word.length);
+}
