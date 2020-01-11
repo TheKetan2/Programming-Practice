@@ -1210,3 +1210,40 @@ function flip(y) {
 String.prototype.vreplace = function(vowel) {
   return this.replace(/[aeiou]/g, vowel);
 };
+
+function arrayOfMultiples(num, length) {
+  let sol = [];
+  let temp = num;
+  while (length--) {
+    sol.push(temp);
+    temp += num;
+  }
+  return sol;
+}
+
+function flip(y) {
+  return !y ? 1 : 0;
+}
+
+function identicalFilter(arr) {
+  return arr.filter(word => new Set(word.split("")).size === 1);
+}
+
+const sayHello = name => {
+  return "Hello " + name;
+};
+
+const findMissing = array => {
+  if (!array || !array.length) return false;
+  let arrLen = array.map(arr => arr.length).sort((a, b) => a - b);
+  console.log(arrLen);
+  let start = arrLen[0];
+  if (start === 0) return false;
+
+  for (len of arrLen) {
+    if (start !== len) return start;
+    start++;
+  }
+  console.log("solution: ", start);
+  return start;
+};
