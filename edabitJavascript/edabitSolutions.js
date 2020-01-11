@@ -1247,3 +1247,32 @@ const findMissing = array => {
   console.log("solution: ", start);
   return start;
 };
+
+const objectToArray = obj => {
+  let sol = [];
+  for (key in obj) {
+    sol.push([key, obj[key]]);
+  }
+  return sol;
+};
+
+function mean(arr) {
+  let sum = arr.reduce((acc, curr) => acc + curr) / arr.length;
+  return parseFloat(sum.toFixed(2));
+}
+
+function wordNest(word, nest) {
+  return nest.length / word.length - 1;
+}
+
+function concat(...args) {
+  return args.flat();
+}
+
+function detectBrowser(userAgent) {
+  return userAgent.indexOf("Chrome") >= 0
+    ? "Google Chrome"
+    : userAgent.indexOf("Firefox") >= 0
+    ? "Mozilla Firefox"
+    : "Internet Explorer";
+}
