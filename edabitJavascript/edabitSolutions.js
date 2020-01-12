@@ -1276,3 +1276,7 @@ function detectBrowser(userAgent) {
     ? "Mozilla Firefox"
     : "Internet Explorer";
 }
+
+function toArray(obj) {
+  return Object.entries(obj);
+}
