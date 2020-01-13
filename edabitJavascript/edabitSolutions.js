@@ -1379,3 +1379,21 @@ const setParams = (
 };
 
 setParams("8.30", "13.60", "+4.00", "-1.25", "10", "", "");
+
+
+function largerThanRight(arr) {
+  let sol = [];
+
+  for (let i = 0; i < arr.length - 1; i++) {
+    let flag = true;
+    for (let j = i + 1; j < arr.length; j++) {
+      if (arr[i] <= arr[j]) {
+        flag = false;
+        j === arr.length;
+      }
+    }
+    if (flag) sol.push(arr[i]);
+  }
+  sol.push(arr[arr.length - 1]);
+  return sol;
+}
