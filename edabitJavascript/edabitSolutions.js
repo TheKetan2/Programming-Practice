@@ -1745,3 +1745,33 @@ function hasValidPrice(product) {
     ? true
     : false;
 }
+
+class Rectangle {
+  constructor(sideA, sideB) {
+    this.sideA = sideA;
+    this.sideB = sideB;
+  }
+  getArea() {
+    return this.sideA * this.sideB;
+  }
+  getPerimeter() {
+    return (this.sideA + this.sideB) * 2;
+  }
+}
+
+class Circle {
+  //put code here
+  constructor(radius) {
+    this.radius = radius;
+  }
+  getArea() {
+    return Math.PI * Math.pow(this.radius, 2);
+  }
+  getPerimeter() {
+    return 2 * Math.PI * this.radius;
+  }
+}
+
+let q = new Circle(4.44);
+console.log(q.getArea());
+console.log(q.getPerimeter());
