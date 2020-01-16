@@ -1739,3 +1739,9 @@ function keysAndValues(obj) {
   }
   return [solKeys, solValue];
 }
+
+function hasValidPrice(product) {
+  return product && typeof product.price === "number" && product.price >= 0
+    ? true
+    : false;
+}
