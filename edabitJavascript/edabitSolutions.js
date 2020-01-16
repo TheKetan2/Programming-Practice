@@ -1702,8 +1702,6 @@ function transformUpvotes(str) {
   });
 }
 
-
-
 function connellSequence(start, end, n) {
   let seq = [];
   if (start === 1) {
@@ -1719,4 +1717,15 @@ function connellSequence(start, end, n) {
   }
 
   return seq.indexOf(n) == -1 ? "Not Found" : seq.indexOf(n);
+}
+
+let users = [
+  { name: "a", score: 100, reputation: 20 },
+  { name: "b", score: 90, reputation: 40 },
+  { name: "c", score: 110, reputation: 30 }
+];
+function leaderboards(users) {
+  return users.sort(
+    (a, b) => b.score + b.reputation * 2 - (a.score + a.reputation * 2)
+  );
 }
