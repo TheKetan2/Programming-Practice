@@ -1729,3 +1729,13 @@ function leaderboards(users) {
     (a, b) => b.score + b.reputation * 2 - (a.score + a.reputation * 2)
   );
 }
+
+function keysAndValues(obj) {
+  let solKeys = [],
+    solValue = [];
+  for (keys in obj) {
+    solKeys.push(keys);
+    solValue.push(obj[keys]);
+  }
+  return [solKeys, solValue];
+}
