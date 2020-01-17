@@ -1790,3 +1790,7 @@ function minTurns(current, target) {
 function coneVolume(h, r) {
   return parseFloat((Math.PI * (r * r) * (h / 3)).toFixed(2));
 }
+
+function solveForExp(a, b) {
+	return Math.round(Math.log(b)/Math.log(a));
+}
