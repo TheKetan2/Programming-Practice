@@ -1775,3 +1775,13 @@ class Circle {
 let q = new Circle(4.44);
 console.log(q.getArea());
 console.log(q.getPerimeter());
+
+function minTurns(current, target) {
+  return current
+    .split("")
+    .map((a, i) => {
+      let diff = Math.abs(parseInt(a) - parseInt(target.charAt(i)));
+      return diff > 5 ? 10 - diff : diff;
+    })
+    .reduce((acc, curr) => acc + curr);
+}
