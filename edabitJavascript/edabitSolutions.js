@@ -1827,3 +1827,7 @@ function indexMultiplier(arr) {
     ? 0
     : arr.map((a, i) => a * i).reduce((acc, curr) => acc + curr);
 }
+
+function matchLastItem(arr) {
+  return arr.slice(0, -1).join("") === arr[arr.length - 1];
+}
