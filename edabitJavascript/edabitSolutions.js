@@ -1806,3 +1806,7 @@ function isCheckerboard(arr) {
 function testJackpot(result) {
   return new Set(result).size === 1;
 }
+
+function testJackpot(result) {
+  return result.every(a => a === result[0]);
+}
