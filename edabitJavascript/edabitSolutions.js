@@ -1831,3 +1831,8 @@ function indexMultiplier(arr) {
 function matchLastItem(arr) {
   return arr.slice(0, -1).join("") === arr[arr.length - 1];
 }
+
+function mysteryFunc(num) {
+  let n = num + "";
+  return n.split("").reduce((acc, curr) => acc * parseInt(curr));
+}
