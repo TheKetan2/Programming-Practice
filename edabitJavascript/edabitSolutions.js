@@ -1802,3 +1802,7 @@ function isCheckerboard(arr) {
   }
   return true;
 }
+
+function testJackpot(result) {
+  return new Set(result).size === 1;
+}
