@@ -1821,3 +1821,9 @@ function factorGroup(num) {
   console.log(num, " = ", set);
   return set.size % 2 === 0 ? "odd" : "even";
 }
+
+function indexMultiplier(arr) {
+  return arr.length === 0
+    ? 0
+    : arr.map((a, i) => a * i).reduce((acc, curr) => acc + curr);
+}
