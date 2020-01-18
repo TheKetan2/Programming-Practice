@@ -1786,11 +1786,19 @@ function minTurns(current, target) {
     .reduce((acc, curr) => acc + curr);
 }
 
-
 function coneVolume(h, r) {
   return parseFloat((Math.PI * (r * r) * (h / 3)).toFixed(2));
 }
 
 function solveForExp(a, b) {
-	return Math.round(Math.log(b)/Math.log(a));
+  return Math.round(Math.log(b) / Math.log(a));
+}
+
+function isCheckerboard(arr) {
+  for (a of arr) {
+    for (let i = 1; i < a.length; i++) {
+      if (a[i] === a[i - 1]) return false;
+    }
+  }
+  return true;
 }
