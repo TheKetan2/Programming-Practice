@@ -1810,3 +1810,14 @@ function testJackpot(result) {
 function testJackpot(result) {
   return result.every(a => a === result[0]);
 }
+
+function factorGroup(num) {
+  let set = new Set();
+  for (let i = 1; i <= num / 2; i++) {
+    if (num % i === 0) {
+      set.add(i);
+    }
+  }
+  console.log(num, " = ", set);
+  return set.size % 2 === 0 ? "odd" : "even";
+}
