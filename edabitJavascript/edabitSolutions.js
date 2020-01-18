@@ -1836,3 +1836,28 @@ function mysteryFunc(num) {
   let n = num + "";
   return n.split("").reduce((acc, curr) => acc * parseInt(curr));
 }
+
+function nextInLine(arr, num) {
+  return arr.push(num).shift();
+}
+
+function nextInLine(arr, num) {
+  if (!Boolean(arr)) return "No array has been selected";
+  arr.shift(num);
+  arr.push(num);
+  return arr;
+}
+
+function returnEndOfNumber(num) {
+  if (num % 100 >= 11 && num % 100 <= 20) return num + "-TH";
+  switch (num % 10) {
+    case 1:
+      return num + "-ST";
+    case 2:
+      return num + "-ND";
+    case 3:
+      return num + "-RD";
+    default:
+      return num + "-TH";
+  }
+}
