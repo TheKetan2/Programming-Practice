@@ -1907,3 +1907,9 @@ function doubleLetters(word) {
   }
   return false;
 }
+
+function counterpartCharCode(char) {
+  return char >= "a" && char <= "z"
+    ? char.charCodeAt() - 32
+    : char.charCodeAt() + 32;
+}
