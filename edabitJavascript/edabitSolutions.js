@@ -1881,3 +1881,10 @@ function progressDays(runs) {
   }
   return sol;
 }
+
+function rev(n) {
+  return (Math.abs(n) + "")
+    .split("")
+    .reverse()
+    .join("");
+}
