@@ -1861,3 +1861,14 @@ function returnEndOfNumber(num) {
       return num + "-TH";
   }
 }
+
+
+function noDuplicateLetters(phrase) {
+  let arr = phrase.split(" ");
+  for (let word of arr) {
+    let len = word.length;
+    let set = new Set(word.split(""));
+    if (len !== set.size) return false;
+  }
+  return true;
+}
