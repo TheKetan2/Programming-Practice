@@ -1898,3 +1898,12 @@ function numOfSubbarrays(arr) {
   }
   return sol;
 }
+
+function doubleLetters(word) {
+  for (let i = 1; i < word.length; i++) {
+    if (word.charAt(i) === word.charAt(i - 1)) {
+      return true;
+    }
+  }
+  return false;
+}
