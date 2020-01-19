@@ -1888,3 +1888,13 @@ function rev(n) {
     .reverse()
     .join("");
 }
+
+function numOfSubbarrays(arr) {
+  let sol = 0;
+  for (let a of arr) {
+    if (typeof a === "object") {
+      sol++;
+    }
+  }
+  return sol;
+}
