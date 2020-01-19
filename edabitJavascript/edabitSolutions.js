@@ -1862,7 +1862,6 @@ function returnEndOfNumber(num) {
   }
 }
 
-
 function noDuplicateLetters(phrase) {
   let arr = phrase.split(" ");
   for (let word of arr) {
@@ -1871,4 +1870,14 @@ function noDuplicateLetters(phrase) {
     if (len !== set.size) return false;
   }
   return true;
+}
+
+function progressDays(runs) {
+  let sol = 0;
+  for (let i = 1; i < runs.length; i++) {
+    if (runs[i] > runs[i - 1]) {
+      sol++;
+    }
+  }
+  return sol;
 }
