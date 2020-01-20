@@ -1913,3 +1913,15 @@ function counterpartCharCode(char) {
     ? char.charCodeAt() - 32
     : char.charCodeAt() + 32;
 }
+
+function countOnes(i) {
+  let sol = 0;
+  while (i) {
+    //console.log(i);
+    if (i % 2 == 1) {
+      sol++;
+    }
+    i = Math.floor(i / 2);
+  }
+  return sol;
+}
