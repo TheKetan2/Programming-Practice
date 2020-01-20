@@ -1969,3 +1969,13 @@ function hackerSpeak(str) {
     .replace(/s/g, "5")
     .replace(/o/g, "0");
 }
+
+function uniqueArr(arr) {
+  let sol = [];
+  for (num of arr) {
+    if (num > 0 && !sol.includes(num)) {
+      sol.push(num);
+    }
+  }
+  return sol;
+}
