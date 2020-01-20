@@ -1925,3 +1925,9 @@ function countOnes(i) {
   }
   return sol;
 }
+
+function bbqSkewers(grill) {
+  let nonVeg = grill.filter(str => str.indexOf("x") >= 0).length;
+  let veg = grill.filter(str => str.indexOf("x") == -1).length;
+  return [veg, nonVeg];
+}
