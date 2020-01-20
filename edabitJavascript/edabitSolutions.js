@@ -1931,3 +1931,17 @@ function bbqSkewers(grill) {
   let veg = grill.filter(str => str.indexOf("x") == -1).length;
   return [veg, nonVeg];
 }
+
+function inBox(arr) {
+  let sol = false;
+  for (let i = 1; i < arr.length - 1; i++) {
+    let insideBox = arr[i]
+      .substr(arr[i].indexOf("#") + 1, arr[i].lastIndexOf("#") - 1)
+      .trim();
+    console.log(insideBox);
+    if (insideBox.length) {
+      sol = true;
+    }
+  }
+  return sol;
+}
