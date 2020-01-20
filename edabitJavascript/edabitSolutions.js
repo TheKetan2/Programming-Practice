@@ -1960,3 +1960,12 @@ function evenOddTransform(arr, n) {
   }
   return arr;
 }
+
+function hackerSpeak(str) {
+  return str
+    .replace(/a/g, "4")
+    .replace(/i/g, "1")
+    .replace(/e/g, "3")
+    .replace(/s/g, "5")
+    .replace(/o/g, "0");
+}
