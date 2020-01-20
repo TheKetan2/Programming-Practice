@@ -1945,3 +1945,7 @@ function inBox(arr) {
   }
   return sol;
 }
+
+function reverseImage(image) {
+  return image.map(arr => arr.map(num => (num == 0 ? 1 : 0)));
+}
