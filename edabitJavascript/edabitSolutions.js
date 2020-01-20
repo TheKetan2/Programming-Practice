@@ -1949,3 +1949,14 @@ function inBox(arr) {
 function reverseImage(image) {
   return image.map(arr => arr.map(num => (num == 0 ? 1 : 0)));
 }
+
+function capMe(arr) {
+  return arr.map(name => name[0].toUpperCase() + name.substr(1).toLowerCase());
+}
+
+function evenOddTransform(arr, n) {
+  while (n--) {
+    arr = arr.map(num => (num % 2 == 1 ? num + 2 : num - 2));
+  }
+  return arr;
+}
