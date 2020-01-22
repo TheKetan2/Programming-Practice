@@ -2058,3 +2058,26 @@ function correctSpacing(sentence) {
     .filter(word => word.length > 0)
     .join(" ");
 }
+
+function XO(str) {
+  let len = str.length;
+  return (
+    len - str.toLowerCase().replace("x", "").length ===
+    len - str.toLowerCase().replace("o", "").length
+  );
+}
+
+function XO(str) {
+  let len = str.length;
+  str = str.toLowerCase();
+  console.log(str);
+  console.log(
+    len - str.replace(/["x"]/g, "").length,
+    " ",
+    len - str.replace(/["o"]/g, "").length
+  );
+  return (
+    len - str.replace(/["x"]/g, "").length ===
+    len - str.replace(/["o"]/g, "").length
+  );
+}
