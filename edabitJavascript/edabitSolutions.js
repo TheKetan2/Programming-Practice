@@ -1989,3 +1989,25 @@ function makeTitle(str) {
     .map(w => w[0].toUpperCase() + w.slice(1))
     .join(" ");
 }
+
+function formatNum(num) {
+  let strNum = num.toString();
+  if (strNum.length <= 3) return strNum;
+  let revStr = strNum
+    .split("")
+    .reverse()
+    .join("");
+  let sol = [];
+  for (let i = 0; i < revStr.length; i++) {
+    if (i === 0) {
+      sol.push(revStr[i]);
+    } else if (i % 3 === 0) {
+      console.log(i);
+      sol.push(",");
+      sol.push(revStr[i]);
+    } else {
+      sol.push(revStr[i]);
+    }
+  }
+  return sol.reverse().join("");
+}
