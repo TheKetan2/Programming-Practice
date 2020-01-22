@@ -2081,3 +2081,8 @@ function XO(str) {
     len - str.replace(/["o"]/g, "").length
   );
 }
+
+function sumTwoSmallestNums(arr) {
+  let newArr = arr.sort((a, b) => a - b).filter(a => a >= 0);
+  return newArr[0] + newArr[1];
+}
