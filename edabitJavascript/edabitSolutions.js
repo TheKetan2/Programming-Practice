@@ -2019,3 +2019,8 @@ function inatorInator(inv) {
       : "-inator";
   return `${inv + inator + " "}${inv.length + "000"}`;
 }
+
+function equal(a, b, c) {
+  let set = new Set([a, b, c]);
+  return set.size === 3 ? 0 : set.size === 2 ? 2 : set.size === 1 ? 3 : 0;
+}
