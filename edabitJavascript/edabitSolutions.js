@@ -2025,9 +2025,21 @@ function equal(a, b, c) {
   return set.size === 3 ? 0 : set.size === 2 ? 2 : set.size === 1 ? 3 : 0;
 }
 
-const rx = /[#@]\w+/g 
+const rx = /[#@]\w+/g;
 
 function isIsogram(str) {
   let set = new Set(str.toLowerCase().split(""));
   return set.size === str.length;
+}
+
+function uniqueSort(arr) {
+  let obj = {};
+  let sol = [];
+  for (num of arr) {
+    if (!obj[num]) {
+      sol.push(num);
+      obj[num] = true;
+    }
+  }
+  return sol.sort((a, b) => a - b);
 }
