@@ -2011,3 +2011,11 @@ function formatNum(num) {
   }
   return sol.reverse().join("");
 }
+
+function inatorInator(inv) {
+  let inator =
+    "aeiou".indexOf(inv[inv.length - 1].toLowerCase()) === -1
+      ? "inator"
+      : "-inator";
+  return `${inv + inator + " "}${inv.length + "000"}`;
+}
