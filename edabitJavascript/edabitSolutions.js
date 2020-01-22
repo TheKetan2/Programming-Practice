@@ -1982,3 +1982,10 @@ function uniqueArr(arr) {
 function removeDups(arr) {
   return Array.from(new Set(arr));
 }
+
+function makeTitle(str) {
+  return str
+    .split(" ")
+    .map(w => w[0].toUpperCase() + w.slice(1))
+    .join(" ");
+}
