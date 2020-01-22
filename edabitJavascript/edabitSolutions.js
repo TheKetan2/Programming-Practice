@@ -2051,3 +2051,10 @@ function factorize(num) {
   }
   return sol;
 }
+
+function correctSpacing(sentence) {
+  return sentence
+    .split(" ")
+    .filter(word => word.length > 0)
+    .join(" ");
+}
