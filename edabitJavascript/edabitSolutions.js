@@ -2086,3 +2086,23 @@ function sumTwoSmallestNums(arr) {
   let newArr = arr.sort((a, b) => a - b).filter(a => a >= 0);
   return newArr[0] + newArr[1];
 }
+
+function carryDigits(n1, n2) {
+  let carry = 0,
+    curryNums = 0;
+  while (n1 / 10 > 0 || n2 / 10 > 0) {
+    let numSum = carry + (n1 % 10) + (n2 % 10);
+    if (numSum >= 10) {
+      carry = Math.round(numSum / 10);
+      console.log(carry);
+      curryNums++;
+      n1 /= 10;
+      n2 /= 10;
+    } else {
+      carry = 0;
+      n1 /= 10;
+      n2 /= 10;
+    }
+  }
+  return curryNums;
+}
