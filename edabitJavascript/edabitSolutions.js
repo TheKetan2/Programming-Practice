@@ -2138,7 +2138,6 @@ function getMiddle(str) {
   return len % 2 === 0 ? str.substr(len / 2 - 1, 2) : str.charAt(len / 2);
 }
 
-
 function incrementToTop(arr) {
   let max = Math.max(...arr);
   let sol = 0;
@@ -2161,4 +2160,11 @@ function mean(num) {
     len++;
   }
   return sum / len;
+}
+
+function mean(num) {
+  return (
+    (num + "").split("").reduce((acc, curr) => parseInt(acc) + parseInt(curr)) /
+    ("" + num).length
+  );
 }
