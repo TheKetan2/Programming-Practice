@@ -2137,3 +2137,13 @@ function getMiddle(str) {
   if (len <= 2) return str;
   return len % 2 === 0 ? str.substr(len / 2 - 1, 2) : str.charAt(len / 2);
 }
+
+
+function incrementToTop(arr) {
+  let max = Math.max(...arr);
+  let sol = 0;
+  for (num of arr) {
+    sol += max - num;
+  }
+  return sol;
+}
