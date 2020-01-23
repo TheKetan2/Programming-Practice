@@ -2131,3 +2131,9 @@ function findZip(str) {
 function removeSpecialCharacters(str) {
   return str.replace(/[^a-zA-Z0-9-_ ]/g, "");
 }
+
+function getMiddle(str) {
+  let len = str.length;
+  if (len <= 2) return str;
+  return len % 2 === 0 ? str.substr(len / 2 - 1, 2) : str.charAt(len / 2);
+}
