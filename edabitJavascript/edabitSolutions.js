@@ -2119,7 +2119,11 @@ function halveCount(a, b) {
 function compoundInterest(p, t, r, n) {
   //10000*Math.pow((1+(0.06/12)),10*12)
   let finalAmount = p * Math.pow(1 + r / n, n * t);
-  return finalAmount.toFixed(2) === Math.round(finalAmount)
-    ? Math.round(finalAmount)
-    : finalAmount.toFixed(2);
+  return parseFloat(finalAmount.toFixed(2)) === Math.round(finalAmount)
+    ? parseInt(finalAmount)
+    : parseFloat(finalAmount.toFixed(2));
+}
+
+function findZip(str) {
+  return str.replace("zip", "...").indexOf("zip");
 }
