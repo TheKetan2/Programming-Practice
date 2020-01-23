@@ -2106,3 +2106,12 @@ function carryDigits(n1, n2) {
   }
   return curryNums;
 }
+
+function halveCount(a, b) {
+  let sol = 0;
+  while (a / 2 > b) {
+    a /= 2;
+    sol++;
+  }
+  return sol;
+}
