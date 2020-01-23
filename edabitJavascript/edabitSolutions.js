@@ -2127,3 +2127,7 @@ function compoundInterest(p, t, r, n) {
 function findZip(str) {
   return str.replace("zip", "...").indexOf("zip");
 }
+
+function removeSpecialCharacters(str) {
+  return str.replace(/[^a-zA-Z0-9-_ ]/g, "");
+}
