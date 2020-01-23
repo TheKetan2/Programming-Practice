@@ -2147,3 +2147,18 @@ function incrementToTop(arr) {
   }
   return sol;
 }
+
+function mean(num) {
+  let len = 0;
+  let sum = 0;
+  console.log(num);
+  while (num) {
+    let lastNum = num % 10;
+    console.log(lastNum);
+    sum += lastNum;
+    num /= 10;
+    num = Math.floor(num);
+    len++;
+  }
+  return sum / len;
+}
