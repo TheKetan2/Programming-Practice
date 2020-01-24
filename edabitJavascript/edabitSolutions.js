@@ -2174,3 +2174,7 @@ function maskify(str) {
     ? str
     : "#".repeat(num.length - 4) + num.substr(num.length - 4);
 }
+
+function lastDig(a, b, c) {
+  return (a * (b % 10)) % 10 === c % 10;
+}
