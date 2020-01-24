@@ -2239,6 +2239,24 @@ function howManyTimes(msg) {
   msg = msg.replace(/[ ]/g, "").toLowerCase();
   return msg
     .split("")
-    .map(charCode => charCode.charCodeAt() - 97 + 1)
+    .map(charCode => charCode.charCodeAt() - 96)
     .reduce((acc, curr) => acc + curr);
+}
+
+function longestZero(s) {
+  s += "1";
+  let sol = [];
+  let zero = 0;
+  for (let i = 0; i < s.length; i++) {
+    console.log(s[i]);
+
+    if (s[i] !== "0") {
+      sol.push(zero);
+      zero = 0;
+    } else {
+      zero++;
+    }
+  }
+  console.log(sol);
+  return "0".repeat(Math.max(...sol));
 }
