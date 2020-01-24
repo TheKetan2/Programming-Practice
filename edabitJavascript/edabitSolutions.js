@@ -2192,3 +2192,17 @@ function changeTypes(arr) {
     }
   });
 }
+
+function makeSandwich(ingredients, flavour) {
+  let sol = [];
+  for (elem of ingredients) {
+    if (elem === flavour) {
+      sol.push("bread");
+      sol.push(elem);
+      sol.push("bread");
+    } else {
+      sol.push(elem);
+    }
+  }
+  return sol;
+}
