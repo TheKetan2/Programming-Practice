@@ -2260,3 +2260,10 @@ function longestZero(s) {
   console.log(sol);
   return "0".repeat(Math.max(...sol));
 }
+
+function canAlternate(s) {
+  return (
+    Math.abs(s.replace(/["1"]/g, "").length - s.replace(/["0"]/g, "").length) <=
+    1
+  );
+}
