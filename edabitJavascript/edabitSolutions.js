@@ -2234,3 +2234,11 @@ function sameAscii(a, b) {
   console.log(sumA, sumB);
   return sumA === sumB;
 }
+
+function howManyTimes(msg) {
+  msg = msg.replace(/[ ]/g, "").toLowerCase();
+  return msg
+    .split("")
+    .map(charCode => charCode.charCodeAt() - 97 + 1)
+    .reduce((acc, curr) => acc + curr);
+}
