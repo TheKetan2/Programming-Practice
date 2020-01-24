@@ -2211,3 +2211,26 @@ function validateEmail(str) {
   var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   return re.test(str.toLowerCase());
 }
+
+function isPalindrome(str) {
+  return (
+    str ===
+    str
+      .split("")
+      .reverse()
+      .join("")
+  );
+}
+
+function sameAscii(a, b) {
+  let sumA = a
+    .split("")
+    .map(num => num.charCodeAt())
+    .reduce((acc, curr) => acc + curr);
+  let sumB = b
+    .split("")
+    .map(num => num.charCodeAt())
+    .reduce((acc, curr) => acc + curr);
+  console.log(sumA, sumB);
+  return sumA === sumB;
+}
