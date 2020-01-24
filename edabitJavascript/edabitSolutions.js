@@ -2178,3 +2178,17 @@ function maskify(str) {
 function lastDig(a, b, c) {
   return (a * (b % 10)) % 10 === c % 10;
 }
+
+function changeTypes(arr) {
+  return arr.map(element => {
+    if (typeof element === "number") {
+      return element % 2 == 0 ? element + 1 : element;
+    }
+    if (typeof element === "string") {
+      return element[0].toUpperCase() + element.substr(1) + "!";
+    }
+    if (typeof element === "boolean") {
+      return !element;
+    }
+  });
+}
