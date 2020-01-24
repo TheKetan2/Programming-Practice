@@ -2267,3 +2267,9 @@ function canAlternate(s) {
     1
   );
 }
+
+function validatePIN(pin) {
+  return pin.length === 4 || pin.length === 6
+    ? pin.replace(/[0-9]/g, "").length === 0
+    : false;
+}
