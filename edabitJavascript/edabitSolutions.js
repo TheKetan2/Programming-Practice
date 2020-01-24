@@ -2168,3 +2168,9 @@ function mean(num) {
     ("" + num).length
   );
 }
+
+function maskify(str) {
+  return str.length <= 4
+    ? str
+    : "#".repeat(num.length - 4) + num.substr(num.length - 4);
+}
