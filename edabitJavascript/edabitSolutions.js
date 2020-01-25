@@ -2321,3 +2321,13 @@ function toHex(str) {
     .map(char => char.charCodeAt().toString(16))
     .join(" ");
 }
+
+function stepsToConvert(str) {
+  let up = 0,
+    low = 0;
+  for (let i = 0; i < str.length; i++) {
+    if (str[i] >= "a" && str[i] <= "z") low++;
+    if (str[i] >= "A" && str[i] <= "Z") up++;
+  }
+  return low < up ? low : up;
+}
