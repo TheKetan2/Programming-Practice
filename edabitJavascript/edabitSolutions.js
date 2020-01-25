@@ -2277,3 +2277,15 @@ function validatePIN(pin) {
 function missingNum(arr) {
   return 55 - arr.reduce((acc, curr) => acc + curr);
 }
+
+function pizzaPoints(customers, minOrders, minPrice) {
+  let sol = [];
+  for (cust in customers) {
+    if (
+      customers[cust].filter(price => price >= minPrice).length >= minOrders
+    ) {
+      sol.push(cust);
+    }
+  }
+  return sol.sort();
+}
