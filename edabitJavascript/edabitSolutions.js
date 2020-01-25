@@ -2304,3 +2304,11 @@ function isAnagram(s1, s2) {
   return str1 === str2;
 }
 
+function dailyStreak(arr) {
+  
+  return arr
+    .join(" ")
+    .split("false")
+    .map(str => (str.trim().length ? str.trim().split(" ").length : 0))
+    .sort((a, b) => b - a)[0];
+}
