@@ -2305,7 +2305,6 @@ function isAnagram(s1, s2) {
 }
 
 function dailyStreak(arr) {
-  
   return arr
     .join(" ")
     .split("false")
