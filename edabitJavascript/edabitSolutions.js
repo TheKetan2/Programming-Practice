@@ -2311,3 +2311,13 @@ function dailyStreak(arr) {
     .map(str => (str.trim().length ? str.trim().split(" ").length : 0))
     .sort((a, b) => b - a)[0];
 }
+
+// charCodeAt().toString(16);
+
+function toHex(str) {
+  //str = str.replace(/[ ]/g, "");
+  return str
+    .split("")
+    .map(char => char.charCodeAt().toString(16))
+    .join(" ");
+}
