@@ -2331,3 +2331,22 @@ function stepsToConvert(str) {
   }
   return low < up ? low : up;
 }
+
+function pagesInBook(total) {
+  let sum = 0;
+  for (let i = 0; i <= total; i++) {
+    sum += i;
+    if (sum === total) {
+      return true;
+    }
+    if (sum > total) {
+      return false;
+    }
+  }
+}
+
+function getBudgets(arr) {
+  return arr
+    .map(obj => Object.values(obj)[2])
+    .reduce((acc, curr) => acc + curr);
+}
