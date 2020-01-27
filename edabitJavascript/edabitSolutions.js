@@ -2425,7 +2425,7 @@ function capLast(txt) {
 function isAutomorphic(n) {
   let square = n * n;
   while (n > 0) {
-    console.log(n % 10, " ", square % 10);
+    // console.log(n % 10, " ", square % 10);
     if (n % 10 !== square % 10) {
       return false;
     }
@@ -2435,3 +2435,15 @@ function isAutomorphic(n) {
   return true;
 }
 
+function asciiSort(arr) {
+  let wordOne = arr[0]
+    .split("")
+    .map(c => c.charCodeAt())
+    .reduce((acc, curr) => acc + curr);
+  let wordTwo = arr[1]
+    .split("")
+    .map(c => c.charCodeAt())
+    .reduce((acc, curr) => acc + curr);
+
+  return wordOne > wordTwo ? arr[1] : arr[0];
+}
