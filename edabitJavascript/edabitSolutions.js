@@ -2373,6 +2373,12 @@ function parityAnalysis(num) {
     .split("")
     .map(num => parseInt(num))
     .reduce((acc, curr) => acc + parseInt(curr));
-  console.log(sum);
+  // console.log(sum);
   return num % 2 === sum % 2;
+}
+
+function variableValid(variable) {
+  return variable.length && variable.indexOf(" ") === -1
+    ? variable[0] >= "a" && variable[0] <= "z"
+    : false;
 }
