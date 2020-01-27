@@ -2367,3 +2367,12 @@ function fact(num) {
 function evalFactorial(arr) {
   return arr.map(num => fact(parseInt(num))).reduce((acc, curr) => acc + curr);
 }
+
+function parityAnalysis(num) {
+  const sum = (num + "")
+    .split("")
+    .map(num => parseInt(num))
+    .reduce((acc, curr) => acc + parseInt(curr));
+  console.log(sum);
+  return num % 2 === sum % 2;
+}
