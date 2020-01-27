@@ -2414,3 +2414,10 @@ function getDay(day) {
   ];
   return days[new Date(day).getDay()];
 }
+
+function capLast(txt) {
+  return txt
+    .split(" ")
+    .map(word => word.slice(0, -1) + word.slice(-1).toUpperCase())
+    .join(" ");
+}
