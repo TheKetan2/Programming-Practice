@@ -2421,3 +2421,17 @@ function capLast(txt) {
     .map(word => word.slice(0, -1) + word.slice(-1).toUpperCase())
     .join(" ");
 }
+
+function isAutomorphic(n) {
+  let square = n * n;
+  while (n > 0) {
+    console.log(n % 10, " ", square % 10);
+    if (n % 10 !== square % 10) {
+      return false;
+    }
+    square = Math.floor(square / 10);
+    n = Math.floor(n / 10);
+  }
+  return true;
+}
+
