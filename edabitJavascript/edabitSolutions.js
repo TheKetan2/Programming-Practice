@@ -2382,3 +2382,22 @@ function variableValid(variable) {
     ? variable[0] >= "a" && variable[0] <= "z"
     : false;
 }
+
+function mathExpr(expr) {
+  expr = expr.replace(/[" "]/g, "");
+  let arr = [];
+  for (let i = 0; i < expr.length; i++) {
+    if (Number(expr[i])) {
+      arr.push(expr[i]);
+    } else if ("+-*/%".indexOf(expr[i]) !== -1) {
+      arr.pop();
+    } else {
+      return false;
+    }
+  }
+  return true;
+}
+
+function inkLevels(inks) {
+  return Math.min(...Object.values(inks));
+}
