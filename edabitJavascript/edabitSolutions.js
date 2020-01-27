@@ -2398,7 +2398,19 @@ function mathExpr(expr) {
   return true;
 }
 
-
 function inkLevels(inks) {
   return Math.min(...Object.values(inks));
+}
+
+function getDay(day) {
+  const days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday"
+  ];
+  return days[new Date(day).getDay()];
 }
