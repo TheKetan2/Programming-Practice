@@ -2353,9 +2353,17 @@ function getBudgets(arr) {
 
 function profitMargin(costPrice, salesPrice) {
   let part = (salesPrice - costPrice) / salesPrice;
-  return (part * 100).toFixed(1)+"%";
+  return (part * 100).toFixed(1) + "%";
 }
 
 function redundant(str) {
   return () => str;
+}
+
+function fact(num) {
+  if (num === 0 || num === 1) return 1;
+  return num * fact(num - 1);
+}
+function evalFactorial(arr) {
+  return arr.map(num => fact(parseInt(num))).reduce((acc, curr) => acc + curr);
 }
