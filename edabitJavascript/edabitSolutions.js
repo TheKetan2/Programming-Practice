@@ -2350,3 +2350,8 @@ function getBudgets(arr) {
     .map(obj => Object.values(obj)[2])
     .reduce((acc, curr) => acc + curr);
 }
+
+function profitMargin(costPrice, salesPrice) {
+  let part = (salesPrice - costPrice) / salesPrice;
+  return (part * 100).toFixed(1);
+}
