@@ -2353,5 +2353,9 @@ function getBudgets(arr) {
 
 function profitMargin(costPrice, salesPrice) {
   let part = (salesPrice - costPrice) / salesPrice;
-  return (part * 100).toFixed(1);
+  return (part * 100).toFixed(1)+"%";
+}
+
+function redundant(str) {
+  return () => str;
 }
