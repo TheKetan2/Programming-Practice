@@ -2447,3 +2447,14 @@ function asciiSort(arr) {
 
   return wordOne > wordTwo ? arr[1] : arr[0];
 }
+
+function reverseOdd(str) {
+  return str.split(" ").map(word =>
+    word.length % 2 === 1
+      ? word
+          .split("")
+          .reverse()
+          .join(" ")
+      : word
+  ).join(" ");
+}
