@@ -2449,12 +2449,51 @@ function asciiSort(arr) {
 }
 
 function reverseOdd(str) {
-  return str.split(" ").map(word =>
-    word.length % 2 === 1
-      ? word
-          .split("")
-          .reverse()
-          .join(" ")
-      : word
-  ).join(" ");
+  return str
+    .split(" ")
+    .map(word =>
+      word.length % 2 === 1
+        ? word
+            .split("")
+            .reverse()
+            .join(" ")
+        : word
+    )
+    .join(" ");
+}
+
+// function canPatch(bridge, planks) {
+//   const holes = bridge
+//     .join("")
+//     .split("1")
+//     .filter(hole => hole.length > 0)
+//     .map(arr => arr.length);
+
+//   for (hole of holes) {
+//     planks.push(0);
+//     if (!planks.includes(hole - 1)) {
+//       return false;
+//     }
+//     let newStr = planks.join();
+//     let index = newStr.indexOf(hole);
+//     let finalStr = newStr.substr(0, index) + newStr.substr(index + 1);
+//     planks = finalStr
+//       .split(",")
+//       .map(a => parseInt(a))
+//       .filter(a => a.length > 0);
+//   }
+//   return true;
+// }
+
+function powerOfTwo(num) {
+  let powTwo = 0;
+  pow = 0;
+  while (powTwo <= num) {
+    powTwo = Math.pow(2, pow);
+    if (num === powTwo) {
+      return true;
+    }
+    pow++;
+  }
+  return false;
 }
