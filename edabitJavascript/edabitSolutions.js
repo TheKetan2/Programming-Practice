@@ -2560,3 +2560,16 @@ function splitCode(item) {
   let str = item.replace(/[0-9]/g, "");
   return [str, parseInt(nums)];
 }
+
+function findOccurrences(str, char) {
+  let sol = {};
+  for (word of str.split(" ")) {
+    let count = 0;
+    for (ch of word.toLowerCase().split("")) {
+      if (ch === char.toLowerCase()) count++;
+    }
+    sol[word.toLowerCase()] = count;
+  }
+  return sol;
+}
+
