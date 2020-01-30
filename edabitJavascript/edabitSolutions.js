@@ -2535,3 +2535,14 @@ function getXP(obj) {
     "XP"
   );
 }
+
+function blahBlah(str, n) {
+  let blh = "blah ".repeat(n).trim() + "...";
+  let strArr = str.split(" ");
+  let len = strArr.length;
+  strArr = strArr.splice(0, len - n);
+
+  return len < n
+    ? "blah ".repeat(len).trim() + "..."
+    : strArr.join(" ") + " " + blh;
+}
