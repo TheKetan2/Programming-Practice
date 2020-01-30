@@ -2524,3 +2524,14 @@ function boxSeq(step) {
   }
   return boxes;
 }
+
+function getXP(obj) {
+  return (
+    obj["Very Easy"] * 5 +
+    obj["Easy"] * 10 +
+    obj["Medium"] * 20 +
+    obj["Hard"] * 40 +
+    obj["Very Hard"] * 80 +
+    "XP"
+  );
+}
