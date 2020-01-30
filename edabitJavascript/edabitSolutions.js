@@ -2501,3 +2501,11 @@ function powerOfTwo(num) {
 function triangle(n) {
   return n === 1 ? 1 : n + triangle(n - 1);
 }
+
+function booboo(n) {
+  return n === 1 ? 1 : n + booboo(n - 1);
+}
+
+function blocks(step) {
+  return step === 0 ? 0 : booboo(step) + step * 3 + step * 2 - 1;
+}
