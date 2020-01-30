@@ -2509,3 +2509,18 @@ function booboo(n) {
 function blocks(step) {
   return step === 0 ? 0 : booboo(step) + step * 3 + step * 2 - 1;
 }
+
+function boxSeq(step) {
+  if (step === 0) {
+    return 0;
+  }
+  let boxes = 3;
+  for (let i = 2; i <= step; i++) {
+    if (i % 2 === 0) {
+      boxes -= 1;
+    } else {
+      boxes += 3;
+    }
+  }
+  return boxes;
+}
