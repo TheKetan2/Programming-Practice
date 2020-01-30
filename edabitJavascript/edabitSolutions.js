@@ -2555,3 +2555,8 @@ function blahBlah(str, n) {
   );
 }
 
+function splitCode(item) {
+  let nums = item.replace(/[^0-9]/g, "");
+  let str = item.replace(/[0-9]/g, "");
+  return [str, parseInt(nums)];
+}
