@@ -2546,3 +2546,12 @@ function blahBlah(str, n) {
     ? "blah ".repeat(len).trim() + "..."
     : strArr.join(" ") + " " + blh;
 }
+
+function blahBlah(str, n) {
+  let strArr = str.split(" ");
+  return (
+    strArr.map((word, i) => (i < strArr.length - n ? word : "blah")).join(" ") +
+    "..."
+  );
+}
+
