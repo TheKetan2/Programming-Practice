@@ -2573,3 +2573,14 @@ function findOccurrences(str, char) {
   return sol;
 }
 
+function matrix(x, y, z) {
+  let sol = [];
+  for (let i = 0; i < x; i++) {
+    let temp = [];
+    while (y--) {
+      temp.push(z);
+    }
+    sol.push(temp);
+  }
+  return sol;
+}
