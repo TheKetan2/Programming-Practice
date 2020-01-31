@@ -2584,3 +2584,13 @@ function matrix(x, y, z) {
   }
   return sol;
 }
+
+function mergeArrays(a, b) {
+  const max = Math.max(a.length, b.length);
+  let sol = [];
+  for (let i = 0; i < max; i++) {
+    sol.push(a[i]);
+    sol.push(b[i]);
+  }
+  return sol.filter(elem => elem);
+}
