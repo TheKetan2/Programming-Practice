@@ -2604,3 +2604,14 @@ function abbreviate(...variable) {
     .join("")
     .toUpperCase();
 }
+
+function gcd(n1, n2) {
+  let min = Math.min(n1, n2);
+  while (min) {
+    console.log(min);
+    if (n1 % min === 0 && n2 % min === 0) {
+      return min;
+    }
+    min--;
+  }
+}
