@@ -2625,3 +2625,7 @@ function miniPeaks(arr) {
   }
   return sol;
 }
+
+function returnOnlyInteger(arr) {
+  return arr.filter(num => typeof num === "number");
+}
