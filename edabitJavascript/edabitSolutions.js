@@ -2594,3 +2594,13 @@ function mergeArrays(a, b) {
   }
   return sol.filter(elem => elem);
 }
+
+function abbreviate(...variable) {
+  let len = variable.length === 1 ? 4 : variable[1];
+  return variable[0]
+    .split(" ")
+    .filter(word => word.length >= len)
+    .map(word => word[0])
+    .join("")
+    .toUpperCase();
+}
