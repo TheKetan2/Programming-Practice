@@ -2629,3 +2629,21 @@ function miniPeaks(arr) {
 function returnOnlyInteger(arr) {
   return arr.filter(num => typeof num === "number");
 }
+
+function semiprime(n) {
+  if (isPrime(n)) {
+    return "Neither";
+  }
+  let num1 = 0,
+    num2 = 0;
+  for (let i = 2; i < Math.sqrt(n); i++) {
+    if (n % i === 0) {
+      num1 = i;
+      num2 = n / i;
+    }
+  }
+  if (isPrime(num1) && isPrime(num2)) {
+    return num1 === num2 ? "Semiprime" : "Squarefree Semiprime";
+  }
+  return "Neither";
+}
