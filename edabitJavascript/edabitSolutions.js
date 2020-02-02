@@ -2647,3 +2647,33 @@ function semiprime(n) {
   }
   return "Neither";
 }
+
+function greaterPermutation(expr, nums) {
+  let max = Number.NEGATIVE_INFINITY,
+    sol = "";
+  let a = nums[0],
+    b = nums[1],
+    c = nums[2];
+  let permutaion = [
+    [a, b, c],
+    [a, c, b],
+    [b, a, c],
+    [b, c, a],
+    [c, b, a],
+    [c, a, b]
+  ];
+
+  for (exp of permutaion) {
+    let tempExpr = expr.replace(/["a"]/g, exp[0]);
+    tempExpr = tempExpr.replace(/["b"]/g, exp[1]);
+    tempExpr = tempExpr.replace(/["c"]/g, exp[2]);
+    let tempValue = eval(tempExpr);
+    console.log(tempExpr, " ", tempValue);
+    if (tempValue > max) {
+      max = Math.round(tempValue) === tempValue? tempValue: parseFloat(tempValue.toFixed(2));
+
+      sol = tempExpr + " = " + max;
+    }
+  }
+  return sol;
+}
