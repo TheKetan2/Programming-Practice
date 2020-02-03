@@ -2677,3 +2677,17 @@ function greaterPermutation(expr, nums) {
   }
   return sol;
 }
+
+function Circle(radius) {
+  // Write your properties and methods here
+  return {
+    radius: radius,
+    diameter: radius * 2,
+    getC: () => Number((Math.PI * 2 * radius).toFixed(2)),
+    getA: () => Number((Math.PI * radius * radius).toFixed(2))
+  };
+}
+
+// Instantiate your constructor class here
+c1 = Circle(3);
+c2 = Circle(5);
