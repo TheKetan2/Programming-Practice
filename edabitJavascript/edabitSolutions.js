@@ -2716,5 +2716,9 @@ function straightDigital(number) {
 
 function tallestBuildingHeight(arr) {
   const building = arr.filter(str => str.trim().length);
-  return building.length * 20 +"m"
+  return building.length * 20 + "m";
+}
+
+function numLayers(n) {
+  return n === 1 ? 0.001 + "m" : Math.pow(2, n - 1) / 1000 + "m";
 }
