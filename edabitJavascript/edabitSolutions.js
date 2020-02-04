@@ -2713,3 +2713,8 @@ function straightDigital(number) {
   }
   return diff;
 }
+
+function tallestBuildingHeight(arr) {
+  const building = arr.filter(str => str.trim().length);
+  return building.length * 20 +"m"
+}
