@@ -2670,7 +2670,10 @@ function greaterPermutation(expr, nums) {
     let tempValue = eval(tempExpr);
     console.log(tempExpr, " ", tempValue);
     if (tempValue > max) {
-      max = Math.round(tempValue) === tempValue? tempValue: parseFloat(tempValue.toFixed(2));
+      max =
+        Math.round(tempValue) === tempValue
+          ? tempValue
+          : parseFloat(tempValue.toFixed(2));
 
       sol = tempExpr + " = " + max;
     }
@@ -2691,3 +2694,22 @@ function Circle(radius) {
 // Instantiate your constructor class here
 c1 = Circle(3);
 c2 = Circle(5);
+
+let regEx = /\Bend\B/gi;
+
+function straightDigital(number) {
+  if (number < 100) {
+    return "Not Straight";
+  }
+  let arr = (number + "").split("").map(num => parseInt(num));
+  if (new Set(arr).size === 1) {
+    return "Trivial Straight";
+  }
+  let diff = arr[1] - arr[0];
+  for (let i = 2; i < arr.length; i++) {
+    if (arr[i] - arr[i - 1] !== diff) {
+      return "Not Straight";
+    }
+  }
+  return diff;
+}
