@@ -2722,3 +2722,14 @@ function tallestBuildingHeight(arr) {
 function numLayers(n) {
   return n === 1 ? 0.001 + "m" : Math.pow(2, n - 1) / 1000 + "m";
 }
+
+function partiallyHide(phrase) {
+  return phrase
+    .split(" ")
+    .map(word =>
+      word.length <= 2
+        ? word
+        : word[0] + "-".repeat(word.length - 2) + word[word.length - 1]
+    )
+    .join(" ");
+}
