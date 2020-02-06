@@ -2735,5 +2735,16 @@ function partiallyHide(phrase) {
 }
 
 function findPerimeter(height, width) {
-  return 2 * (height +width);
+  return 2 * (height + width);
+}
+
+function diceGame(arr) {
+  let sol = 0;
+  for (a of arr) {
+    if (a[0] === a[1]) {
+      return 0;
+    }
+    sol += a[0] + a[1];
+  }
+  return sol;
 }
