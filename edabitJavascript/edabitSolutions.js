@@ -2764,3 +2764,7 @@ function increasingWordWeights(sentence) {
 function addition(num) {
   return num + 1;
 }
+
+function triArea(base, height) {
+  return (base * height) / 2;
+}
