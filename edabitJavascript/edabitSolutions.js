@@ -2768,3 +2768,20 @@ function addition(num) {
 function triArea(base, height) {
   return (base * height) / 2;
 }
+
+function collatz(n) {
+  if (n === 1) return [0, 1];
+  let arr = [];
+  while (n !== 1) {
+    if (n % 2 === 0) {
+      n /= 2;
+      arr.push(n);
+    } else {
+      n *= 3;
+      n += 1;
+      arr.push(n);
+    }
+  }
+  console.log(arr);
+  return [arr.length, Math.max(...arr)];
+}
