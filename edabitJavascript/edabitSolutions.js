@@ -2785,3 +2785,19 @@ function collatz(n) {
   console.log(arr);
   return [arr.length, Math.max(...arr)];
 }
+
+function scaleTip(arr) {
+  let left = 0,
+    right = 0,
+    flag = false;
+  for (ch of arr) {
+    if (ch === "I") flag = true;
+    if (!flag && ch !== "I") {
+      left += ch;
+    }
+    if (flag && ch !== "I") {
+      right += ch;
+    }
+  }
+  return left === right ? "balanced" : left > right ? "left" : "right";
+}
