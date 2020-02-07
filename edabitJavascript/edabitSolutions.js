@@ -2748,3 +2748,15 @@ function diceGame(arr) {
   }
   return sol;
 }
+
+function increasingWordWeights(sentence) {
+  let weightArr = sentence.split(" ").map(word => {
+    let wt = 0;
+    for (ch of [...word.replace(/[^a-zA-Z]/g, "")]) {
+      wt += ch.charCodeAt();
+    }
+    return wt;
+  });
+  console.log(weightArr);
+  return weightArr.join(" ") === weightArr.sort((a, b) => a - b).join(" ");
+}
