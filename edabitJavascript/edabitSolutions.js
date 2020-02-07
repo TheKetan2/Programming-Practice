@@ -2760,3 +2760,7 @@ function increasingWordWeights(sentence) {
   console.log(weightArr);
   return weightArr.join(" ") === weightArr.sort((a, b) => a - b).join(" ");
 }
+
+function addition(num) {
+  return num + 1;
+}
