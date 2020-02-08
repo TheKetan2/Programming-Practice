@@ -2817,3 +2817,27 @@ const str = `
 	for(let {name} of users) {
 			names.push(name)
 	}`;
+
+const GUEST_LIST = {
+  Randy: "Germany",
+  Karla: "France",
+  Wendy: "Japan",
+  Norman: "England",
+  Sam: "Argentina"
+};
+
+function greeting(name) {
+  return GUEST_LIST[name]
+    ? `Hi! I'm ${name}, and I'm from ${GUEST_LIST[name]}.`
+    : "Hi! I'm a guest.";
+}
+
+function testFairness(agatha, bertha) {
+  let agathaArea = agatha
+    .map(arr => arr[0] * arr[1])
+    .reduce((acc, curr) => acc + curr);
+  let berthaArea = bertha
+    .map(arr => arr[0] * arr[1])
+    .reduce((acc, curr) => acc + curr);
+  return agathaArea === berthaArea;
+}
