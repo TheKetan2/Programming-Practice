@@ -2801,3 +2801,5 @@ function scaleTip(arr) {
   }
   return left === right ? "balanced" : left > right ? "left" : "right";
 }
+
+const str = `({ first = "John", last = "Doe", alias:nickname="JD" } = { first: "James", last: "Baker" }).toString()`;
