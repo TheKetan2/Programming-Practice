@@ -2803,3 +2803,17 @@ function scaleTip(arr) {
 }
 
 const str = `({ first = "John", last = "Doe", alias:nickname="JD" } = { first: "James", last: "Baker" }).toString()`;
+
+let names = [];
+
+let users = [
+  { name: "John", email: "john@example.com" },
+  { name: "Jason", email: "jason@example.com" },
+  { name: "Jeremy", email: "jeremy@example.com" },
+  { name: "Jacob", email: "jacob@example.com" }
+];
+
+const str = `
+	for(let {name} of users) {
+			names.push(name)
+	}`;
