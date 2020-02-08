@@ -2866,3 +2866,13 @@ function palindromicDate(date) {
         .join("")
   );
 }
+
+function Magic(str) {
+  let [d, m, y] = str.split(" ");
+  const product = Number(d) * Number(m);
+  return product >= 0 && product < 10
+    ? product === Number(y) % 10
+    : product >= 10 && product < 100
+    ? product === Number(y) % 100
+    : procuct === Number(y) % 1000;
+}
