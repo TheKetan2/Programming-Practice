@@ -2846,3 +2846,23 @@ function countTowers(towers) {
   let base = towers[towers.length - 1];
   return base[0].split(" ").filter(b => b.length === 2).length;
 }
+
+function palindromicDate(date) {
+  let dateArr1 = date.split("/");
+  let dateArr2 = [dateArr1[1], dateArr1[0], dateArr1[2]];
+  console.log(dateArr1.join(""), " ", dateArr2.join(""));
+  return (
+    dateArr1.join("") ===
+      dateArr1
+        .join("")
+        .split("")
+        .reverse()
+        .join("") &&
+    dateArr2.join("") ===
+      dateArr2
+        .join("")
+        .split("")
+        .reverse()
+        .join("")
+  );
+}
