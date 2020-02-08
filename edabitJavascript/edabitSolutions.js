@@ -2841,3 +2841,8 @@ function testFairness(agatha, bertha) {
     .reduce((acc, curr) => acc + curr);
   return agathaArea === berthaArea;
 }
+
+function countTowers(towers) {
+  let base = towers[towers.length - 1];
+  return base[0].split(" ").filter(b => b.length === 2).length;
+}
