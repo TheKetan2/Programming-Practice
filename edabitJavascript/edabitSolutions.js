@@ -2876,3 +2876,13 @@ function Magic(str) {
     ? product === Number(y) % 100
     : procuct === Number(y) % 1000;
 }
+
+function calculateScores(str) {
+  let score = [
+    [...str].filter(char => char === "A").length,
+    [...str].filter(char => char === "B").length,
+    [...str].filter(char => char === "C").length
+  ];
+
+  return score;
+}
