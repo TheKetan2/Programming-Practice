@@ -2720,7 +2720,15 @@ function tallestBuildingHeight(arr) {
 }
 
 function numLayers(n) {
-  return n === 1 ? 0.001 + "m" : Math.pow(2, n - 1) / 1000 + "m";
+  let layers = Math.pow(2, n - 1) / 1000;
+
+  return n === 1
+    ? 0.001 + "m"
+    : Math.floor(layers).toString().length > 16
+    ? layers.toExponential() + "m"
+    : Math.floor(layers).toString().length === 16
+    ? layers + ".0m"
+    : layers + "m";
 }
 
 function partiallyHide(phrase) {
