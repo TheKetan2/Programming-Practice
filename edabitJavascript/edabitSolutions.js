@@ -2894,3 +2894,7 @@ function calculateScores(str) {
 
   return score;
 }
+
+function matchHouses(step) {
+  return step === 0 ? 0 : step * 4 + (step + 1);
+}
