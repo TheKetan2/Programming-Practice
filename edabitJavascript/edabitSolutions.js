@@ -2910,3 +2910,7 @@ function squareDigits(n) {
 function alphNum(str) {
   return [...str].map(ch => ch.charCodeAt() - 65).join(" ");
 }
+
+function reverseAndNot(i) {
+  return Number([...(i + "")].reverse().join("") + i);
+}
