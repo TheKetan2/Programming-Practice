@@ -2898,3 +2898,15 @@ function calculateScores(str) {
 function matchHouses(step) {
   return step === 0 ? 0 : step * 4 + (step + 1);
 }
+
+function fracRound(frac, n) {
+  return `${frac} rounded to ${n} decimal places is ${eval(frac).toFixed(n)}`;
+}
+
+function squareDigits(n) {
+  return Number([...(n + "")].map(num => Number(num) ** 2).join(""));
+}
+
+function alphNum(str) {
+  return [...str].map(ch => ch.charCodeAt() - 65).join(" ");
+}
