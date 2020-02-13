@@ -2914,3 +2914,8 @@ function alphNum(str) {
 function reverseAndNot(i) {
   return Number([...(i + "")].reverse().join("") + i);
 }
+
+function removeLeadingTrailing(n) {
+  let num = parseFloat(n);
+  return num === Math.floor(num) ? Math.floor(num).toString() : num.toString();
+}
