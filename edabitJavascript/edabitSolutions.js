@@ -2923,3 +2923,14 @@ function removeLeadingTrailing(n) {
 function reverseArr(num) {
   return [...(num + "")].map(n => Number(n)).reverse();
 }
+
+function xmasItems(n) {
+  let present = [1];
+  let lastPresent = 1;
+  for (let i = 2; i <= n; i++) {
+    present.push(lastPresent + i);
+    lastPresent += i;
+  }
+  console.log(present);
+  return n <= 0 ? 0 : present.reduce((acc, curr) => acc + curr);
+}
