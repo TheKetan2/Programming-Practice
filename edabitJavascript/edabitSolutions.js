@@ -2919,3 +2919,7 @@ function removeLeadingTrailing(n) {
   let num = parseFloat(n);
   return num === Math.floor(num) ? Math.floor(num).toString() : num.toString();
 }
+
+function reverseArr(num) {
+  return [...(num + "")].map(n => Number(n)).reverse();
+}
