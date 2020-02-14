@@ -2934,3 +2934,10 @@ function xmasItems(n) {
   console.log(present);
   return n <= 0 ? 0 : present.reduce((acc, curr) => acc + curr);
 }
+
+function averageWordLength(str) {
+  let len = str.split(" ").length;
+  return parseFloat(
+    (str.replace(/[^a-zA-Z0-9]/gi, "").length / len).toFixed(2)
+  );
+}
