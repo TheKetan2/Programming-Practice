@@ -2941,3 +2941,22 @@ function averageWordLength(str) {
     (str.replace(/[^a-zA-Z0-9]/gi, "").length / len).toFixed(2)
   );
 }
+
+function longestSubstring(digits) {
+  let sol = digits[0];
+
+  for (let i = 1; i < digits.length; i++) {
+    if (Number(digits[i - 1]) % 2 !== Number(digits[i]) % 2) {
+      sol += digits[i];
+    } else {
+      sol += " " + digits[i];
+    }
+  }
+
+  console.log(sol);
+
+  let maxLen = Math.max(...sol.split(" ").map(num => num.length));
+
+  return sol.split(" ").filter(num => num.length === maxLen)[0];
+}
+("844929328912985315632725682153");
