@@ -2960,3 +2960,14 @@ function longestSubstring(digits) {
   return sol.split(" ").filter(num => num.length === maxLen)[0];
 }
 ("844929328912985315632725682153");
+
+function coveredIntegers(arr) {
+  let set = new Set();
+
+  for (a of arr) {
+    for (let i = a[0]; i <= a[1]; i++) {
+      set.add(i);
+    }
+  }
+  return set.size;
+}
