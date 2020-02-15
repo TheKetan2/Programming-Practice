@@ -2971,3 +2971,10 @@ function coveredIntegers(arr) {
   }
   return set.size;
 }
+
+function hasHiddenFee(prices, t) {
+  return (
+    prices.map(num => Number(num.slice(1))).reduce((acc, curr) => acc + curr) <
+    Number(t.slice(1))
+  );
+}
