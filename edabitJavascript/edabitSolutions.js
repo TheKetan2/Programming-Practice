@@ -2996,3 +2996,14 @@ function clearFog(str) {
     ? "It's a clear day!"
     : str.replace(/[fogFOG]/gi, "");
 }
+
+function completeBinary(str) {
+  let eight = 8;
+  while (true) {
+    if (str.length <= eight) {
+      break;
+    }
+    eight += 8;
+  }
+  return "0".repeat(eight - str.length) + str;
+}
