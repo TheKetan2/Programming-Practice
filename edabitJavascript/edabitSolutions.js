@@ -2989,3 +2989,10 @@ function createPhoneNumber(numbers) {
     numbers.slice(6).join("")
   );
 }
+
+function clearFog(str) {
+  //It's a clear day!
+  return str.length === str.replace(/[fogFOG]/gi, "").length
+    ? "It's a clear day!"
+    : str.replace(/[fogFOG]/gi, "");
+}
