@@ -3007,3 +3007,15 @@ function completeBinary(str) {
   }
   return "0".repeat(eight - str.length) + str;
 }
+
+function changeEnough(change, amountDue) {
+  let totalCents = change[0] * 25 + change[1] * 10 + change[2] * 5 + change[3];
+  return amountDue % (totalCents / 1000) === 0;
+}
+
+function censor(str) {
+  return str
+    .split(" ")
+    .map(word => (word.length > 4 ? "*".repeat(word.length) : word))
+    .join(" ");
+}
