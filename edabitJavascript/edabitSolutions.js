@@ -3031,3 +3031,22 @@ function boomIntensity(n) {
     ? "B" + "O".repeat(n) + "M"
     : "B" + "o".repeat(n) + "m";
 }
+
+function chosenWine(wines) {
+  if (wines.length === 0) return null;
+  if (wines.length === 1) return wines[0].name;
+  let sortedPrice = [
+    { name: "Wine A", price: 8.99 },
+    { name: "Wine 32", price: 13.99 },
+    { name: "Wine 9", price: 10.99 }
+  ]
+    .map(obj => obj.price)
+    .sort((a, b) => b - a);
+  // for (obj of wines) {
+  //   if (obj.price === sortedPrice[1]) {
+  //     return obj.name;
+  //   }
+  // }
+  let solObj = wines.filter(obj => obj.price === sortedPrice[1]);
+  return solObj;
+}
