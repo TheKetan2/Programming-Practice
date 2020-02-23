@@ -3037,3 +3037,42 @@ function chosenWine(wines) {
   if (wines.length === 1) return wines[0].name;
   return wines.sort((a, b) => a.price - b.price)[1].name;
 }
+
+function factorSort(nums) {
+  let sol = {};
+  for (num of nums) {
+    sol[num] = 0;
+    for (let i = 1; i <= num; i++) {
+      if (num % i === 0) {
+        sol[num] += 1;
+      }
+    }
+  }
+  let tempObj = [];
+  for (key of Object.keys(sol)) {
+    tempObj.push({ num: key, freq: sol[key] });
+  }
+  let sortedObj = tempObj.sort((a, b) => b.freq - a.freq);
+  let finalSol = [];
+  let set = new Set();
+  for (item of sortedObj) {
+    set.add(item.freq);
+  }
+
+  for (item of set) {
+    // console.log(
+    //   tempObj
+    //     .filter(obj => obj.freq === item)
+    //     .map(obj => Number(obj.num))
+    //     .sort((a, b) => b - a)
+    // );
+    finalSol = finalSol.concat(
+      tempObj
+        .filter(obj => obj.freq === item)
+        .map(obj => Number(obj.num))
+        .sort((a, b) => b - a)
+    );
+  }
+
+  return finalSol;
+}
