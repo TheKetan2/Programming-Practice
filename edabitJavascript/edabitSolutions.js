@@ -3039,18 +3039,18 @@ function chosenWine(wines) {
 }
 
 function factorSort(nums) {
-  let sol = {};
+  let numFactObj = {};
   for (num of nums) {
-    sol[num] = 0;
+    numFactObj[num] = 0;
     for (let i = 1; i <= num; i++) {
       if (num % i === 0) {
-        sol[num] += 1;
+        numFactObj[num] += 1;
       }
     }
   }
   let tempObj = [];
-  for (key of Object.keys(sol)) {
-    tempObj.push({ num: key, freq: sol[key] });
+  for (key of Object.keys(numFactObj)) {
+    tempObj.push({ num: key, freq: numFactObj[key] });
   }
   let sortedObj = tempObj.sort((a, b) => b.freq - a.freq);
   let finalSol = [];
@@ -3075,4 +3075,24 @@ function factorSort(nums) {
   }
 
   return finalSol;
+}
+
+function correctTitle(str) {
+  str = str.toLowerCase();
+  str = str
+    .split(" ")
+    .map(word =>
+      ["and", "the", "of", "in"].includes(word)
+        ? word
+        : word[0].toUpperCase() + word.slice(1)
+    )
+    .join(" ");
+  return str
+    .split("-")
+    .map(word =>
+      ["and", "the", "of", "in"].includes(word)
+        ? word
+        : word[0].toUpperCase() + word.slice(1)
+    )
+    .join("-");
 }
