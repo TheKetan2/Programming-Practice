@@ -3096,3 +3096,14 @@ function correctTitle(str) {
     )
     .join("-");
 }
+function malthusian(foodGrowth, popMult) {
+  let food = 100,
+    pop = 100,
+    year = 0;
+  while (food >= pop) {
+    food += foodGrowth;
+    pop *= popMult;
+    year++;
+  }
+  return year;
+}
