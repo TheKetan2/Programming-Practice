@@ -3119,3 +3119,22 @@ function fib(n) {
   }
   return fibNum[n];
 }
+
+function sweetestIcecream(arr) {
+  const sweetnessValue = {
+    Plain: 0,
+    Vanilla: 5,
+    ChocolateChip: 5,
+    Strawberry: 10,
+    Chocolate: 10
+  };
+  let maxSweet = 0;
+  for (item of arr) {
+    const { flavor, numSprinkles } = item;
+    console.log(sweetnessValue[flavor] + numSprinkles);
+    if (sweetnessValue[flavor] + numSprinkles > maxSweet) {
+      maxSweet = sweetnessValue[flavor] + numSprinkles;
+    }
+  }
+  return maxSweet;
+}
