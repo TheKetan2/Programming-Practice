@@ -3107,3 +3107,15 @@ function malthusian(foodGrowth, popMult) {
   }
   return year;
 }
+
+function fib(n) {
+  let fibNum = [0, 1, 1, 2, 3, 5, 8, 13, 21];
+  if (fibNum[n] != undefined) {
+    return fibNum[n];
+  }
+  while (fibNum.length <= n) {
+    let len = fibNum.length;
+    fibNum.push(fibNum[len - 2] + fibNum[len - 1]);
+  }
+  return fibNum[n];
+}
