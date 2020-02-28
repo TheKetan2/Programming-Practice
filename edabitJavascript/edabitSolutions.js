@@ -3159,7 +3159,7 @@ function binarySearch(arr, n) {
 function pingPong(arr, win) {
   let len = win ? arr.length * 2 : arr.length * 2 - 1;
   let sol = [];
-  for (let i = 0; i <= len; i++) {
+  for (let i = 0; i < len; i++) {
     if (i % 2 === 0) {
       sol.push("Ping!");
     } else {
@@ -3167,4 +3167,9 @@ function pingPong(arr, win) {
     }
   }
   return sol;
+}
+
+function constructFence(price) {
+  let fenceCount = 1000000 / Number(price.replace(/[^0-9]/g, ""));
+  return "H".repeat(fenceCount);
 }
