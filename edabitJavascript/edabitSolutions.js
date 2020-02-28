@@ -3155,3 +3155,16 @@ function binarySearch(arr, n) {
 
   return false;
 }
+
+function pingPong(arr, win) {
+  let len = win ? arr.length * 2 : arr.length * 2 - 1;
+  let sol = [];
+  for (let i = 0; i <= len; i++) {
+    if (i % 2 === 0) {
+      sol.push("Ping!");
+    } else {
+      sol.push("Pong!");
+    }
+  }
+  return sol;
+}
