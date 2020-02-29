@@ -3152,7 +3152,6 @@ function binarySearch(arr, n) {
     else right = mid - 1;
     mid = Math.round((left + right) / 2);
   }
-
   return false;
 }
 
@@ -3172,4 +3171,10 @@ function pingPong(arr, win) {
 function constructFence(price) {
   let fenceCount = 1000000 / Number(price.replace(/[^0-9]/g, ""));
   return "H".repeat(fenceCount);
+}
+
+function greetingMaker(salutation) {
+  return function closure(name) {
+    return salutation + ", " + name;
+  };
 }
