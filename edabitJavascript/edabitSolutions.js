@@ -3178,3 +3178,14 @@ function greetingMaker(salutation) {
     return salutation + ", " + name;
   };
 }
+
+function isCurzon(num) {
+  return (2 ** num + 1) % (2 * num + 1) === 0;
+}
+
+function afterNYears(names, n) {
+  for (key of Object.keys(names)) {
+    names[key] += Math.abs(n);
+  }
+  return names;
+}
