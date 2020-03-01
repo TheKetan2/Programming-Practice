@@ -3189,3 +3189,9 @@ function afterNYears(names, n) {
   }
   return names;
 }
+
+function moveToEnd(arr, el) {
+  let withoutEL = arr.filter(num => num !== el);
+  let withEL = arr.filter(num => num === el);
+  return withoutEL.concat(withEL);
+}
