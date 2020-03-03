@@ -3237,3 +3237,14 @@ function textToNum(phone) {
 }
 
 // Net is not working so this is dummy commit. Saaaryyyy...
+function twins(arr) {
+  for (let i = 1; i < arr.length; i++) {
+    if (
+      arr.slice(0, i).reduce((acc, curr) => acc + curr) ===
+      arr.slice(i).reduce((acc, curr) => acc + curr)
+    ) {
+      return i;
+    }
+  }
+  return -1;
+}
