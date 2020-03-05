@@ -3298,3 +3298,7 @@ function isSlidey(n) {
   }
   return true;
 }
+
+function oneOddOneEven(n) {
+  return (n % 10) % 2 !== Math.floor(n / 10) % 2;
+}
