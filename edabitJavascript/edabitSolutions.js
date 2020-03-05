@@ -3279,3 +3279,22 @@ function characterMapping(str) {
 function catchZeroDivision(expr) {
   return !isFinite(eval(expr));
 }
+
+function formatMath(expr) {
+  return expr + " = " + eval(expr.replace("x", "*"));
+}
+
+function isSlidey(n) {
+  if (Math.abs(n) < 10) return true;
+  let prevNum = n % 10;
+  n = Math.floor(n / 10);
+  while (n > 0) {
+    if (Math.abs(prevNum - (n % 10)) !== 1) {
+      console.log(Math.abs(prevNum - (n % 10)));
+      return false;
+    }
+    prevNum = n % 10;
+    n = Math.floor(n / 10);
+  }
+  return true;
+}
