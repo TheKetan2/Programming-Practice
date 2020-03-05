@@ -3275,3 +3275,7 @@ function characterMapping(str) {
   }
   return sol;
 }
+
+function catchZeroDivision(expr) {
+  return !isFinite(eval(expr));
+}
