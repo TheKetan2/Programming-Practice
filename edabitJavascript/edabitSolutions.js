@@ -3302,3 +3302,36 @@ function isSlidey(n) {
 function oneOddOneEven(n) {
   return (n % 10) % 2 !== Math.floor(n / 10) % 2;
 }
+
+function leftSide(arr) {
+  let sol = [];
+  for (let i = 1; i <= arr.length; i++) {
+    let sliceArr = arr.slice(0, i);
+    if (sliceArr.length < 1) sol.push(0);
+    else {
+      let count = 0;
+      for (let i = 0; i < sliceArr.length - 1; i++) {
+        if (sliceArr[i] < sliceArr[sliceArr.length - 1]) count++;
+      }
+      sol.push(count);
+    }
+  }
+  return sol;
+}
+
+function rightSide(arr) {
+  let sol = [];
+  newArr = arr.reverse();
+  for (let i = 1; i <= newArr.length; i++) {
+    let sliceArr = newArr.slice(0, i);
+    if (sliceArr.length < 1) sol.push(0);
+    else {
+      let count = 0;
+      for (let i = 0; i < sliceArr.length - 1; i++) {
+        if (sliceArr[i] < sliceArr[sliceArr.length - 1]) count++;
+      }
+      sol.push(count);
+    }
+  }
+  return sol.reverse();
+}
