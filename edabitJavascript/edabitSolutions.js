@@ -3335,3 +3335,17 @@ function rightSide(arr) {
   }
   return sol.reverse();
 }
+
+function billSplit(spicy, cost) {
+  let me = 0,
+    friend = 0;
+  for (let i = 0; i < spicy.length; i++) {
+    if (spicy[i] === "S") {
+      me += cost[i];
+    } else {
+      me += cost[i] / 2;
+      friend += cost[i] / 2;
+    }
+  }
+  return [me, friend];
+}
