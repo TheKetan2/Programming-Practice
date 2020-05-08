@@ -3349,3 +3349,23 @@ function billSplit(spicy, cost) {
   }
   return [me, friend];
 }
+
+
+function boxes(weights) {
+	let sol = 0, boxWt = 0;
+	for(i = 0; i<weights.length; i++){
+		if(boxWt <=10){
+			boxWt += weights[i];
+			//console.log(boxWt)
+			if(boxWt>10){
+				boxWt = 0;
+				i--;
+				sol++;
+			}
+		}
+	}
+	return sol+1;
+}
+
+//[2, 1, 2, 5, 4, 3, 6, 1, 1, 9, 3, 2]
+//[7, 1, 2,  6, 1, 2,  3, 5,  9,  2, 1, 2, 5], 5
