@@ -3312,3 +3312,21 @@ function findMissing(arr) {
     }
   }
 }
+
+function carryDigits(n1, n2) {
+  var sol = 0,
+    carryOver = 0,
+    sum = 0;
+  while (n1 !== 0 && n2 !== 0) {
+    sum = (n1 % 10) + (n2 % 10) + carryOver;
+    console.log("n1: " + n1 + " n2:" + n2 + "sum:" + sum);
+
+    if (sum >= 10) {
+      carryOver = 1;
+      sol++;
+    } else carryOver = 0;
+    n1 = Math.floor(n1 / 10);
+    n2 = Math.floor(n2 / 10);
+  }
+  return sol;
+}
