@@ -3330,3 +3330,10 @@ function carryDigits(n1, n2) {
   }
   return sol;
 }
+
+function averageWordLength(str) {
+  var strArr = str.replace(/[^\w\s]|_/g, "").split(" ");
+  var len = strArr.length;
+  var sol = strArr.map((word) => word.length).reduce((a, b) => a + b) / len;
+  return sol.toFixed(2) == sol + "" ? sol : parseFloat(sol.toFixed(2));
+}
