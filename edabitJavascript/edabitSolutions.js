@@ -64,10 +64,7 @@ function check(arr, el) {
 // formatDate("12/31/2019") ➞ "20193112"
 
 function formatDate(userDate) {
-  return userDate
-    .split("/")
-    .reverse()
-    .join("");
+  return userDate.split("/").reverse().join("");
 }
 
 // Function to return exponential value
@@ -160,7 +157,7 @@ function operation(num1, num2) {
 }
 
 function negate(arr) {
-  return arr.map(item => -item);
+  return arr.map((item) => -item);
 }
 
 function programmers(one, two, three) {
@@ -237,11 +234,11 @@ function getSequence(low, high) {
 }
 
 function canPartition(arr) {
-  let positiveArr = arr.map(item => (item < 0 ? -item : item));
+  let positiveArr = arr.map((item) => (item < 0 ? -item : item));
   let index = positiveArr.indexOf(Math.max(...positiveArr));
 
   return (
-    arr.filter(num => num === 0).length > 1 ||
+    arr.filter((num) => num === 0).length > 1 ||
     arr[index] === arr.reduce((a, b) => a * b) / arr[index]
   );
 }
@@ -277,17 +274,17 @@ function scoreCalculator(easy, med, hard) {
 
 // Fix this incorrect code!
 function checkAllEven(arr) {
-  return arr.every(num => num % 2 === 0);
+  return arr.every((num) => num % 2 === 0);
 }
 
 function getStudentNames(students) {
   let solution = [];
-  students.forEach(student => solution.push(student["name"]));
+  students.forEach((student) => solution.push(student["name"]));
   return solution;
 }
 
 function hurdleJump(hurdles, jumpHeight) {
-  return hurdles.every(h => h <= jumpHeight);
+  return hurdles.every((h) => h <= jumpHeight);
 }
 
 function findLargestNum(arr) {
@@ -296,24 +293,24 @@ function findLargestNum(arr) {
 
 function countIdentical(arr) {
   let solution = 0;
-  arr.forEach(arr => {
-    if (arr.filter(num => num !== arr[0]).length === 0) solution++;
+  arr.forEach((arr) => {
+    if (arr.filter((num) => num !== arr[0]).length === 0) solution++;
   });
   return solution;
 }
 
 function countIdentical(arr) {
-  return arr.filter(e => {
+  return arr.filter((e) => {
     return new Set(e).size === 1;
   }).length;
 }
 
 function mysteryFunc(arr, num) {
-  return arr.map(arrNum => arrNum % num);
+  return arr.map((arrNum) => arrNum % num);
 }
 
 function MultiplyByLength(arr) {
-  return arr.map(num => num * arr.length);
+  return arr.map((num) => num * arr.length);
 }
 
 class Calculator {
@@ -342,7 +339,7 @@ function checkEquals(arr1, arr2) {
 }
 
 function filterList(l) {
-  return l.filter(num => typeof num === "number");
+  return l.filter((num) => typeof num === "number");
 }
 
 function limitNumber(num, rangeLow, rangeHigh) {
@@ -350,7 +347,7 @@ function limitNumber(num, rangeLow, rangeHigh) {
 }
 
 function removeNull(arr) {
-  return arr.filter(num => num != null);
+  return arr.filter((num) => num != null);
 }
 
 function calcDeterminant(matrix) {
@@ -360,7 +357,7 @@ function calcDeterminant(matrix) {
 function countAll(str) {
   let solution = { LETTERS: 0, DIGITS: 0 };
   str = str.replace(/\s/g, "");
-  solution.DIGITS = str.split("").filter(c => c >= "0" && c <= "9").length;
+  solution.DIGITS = str.split("").filter((c) => c >= "0" && c <= "9").length;
   solution.LETTERS = str.split("").length - solution.DIGITS;
   return solution;
 }
@@ -386,16 +383,7 @@ function Go(num) {
 }
 
 function maxHam(s1, s2) {
-  if (
-    s1
-      .split("")
-      .sort()
-      .join("") !=
-    s2
-      .split("")
-      .sort()
-      .join("")
-  )
+  if (s1.split("").sort().join("") != s2.split("").sort().join(""))
     return false;
   let sol = 0;
   for (var i = 0; i < s1.length; i++) {
@@ -459,13 +447,7 @@ function boundSort(arr, bounds) {
 }
 
 function checkPalindrome(str) {
-  return (
-    str ===
-    str
-      .split("")
-      .reverse()
-      .join("")
-  );
+  return str === str.split("").reverse().join("");
 }
 
 function findSmallestNum(arr) {
@@ -505,7 +487,7 @@ function tapCode(text) {
     w: "..... ..",
     x: "..... ...",
     y: "..... ....",
-    z: "..... ....."
+    z: "..... .....",
   };
 
   const revMorse = {
@@ -533,7 +515,7 @@ function tapCode(text) {
     "..... ..": "w",
     "..... ...": "x",
     "..... ....": "y",
-    "..... .....": "z"
+    "..... .....": "z",
   };
   sol = "";
   if (text.indexOf(".") < 0) {
@@ -552,7 +534,7 @@ function tapCode(text) {
 }
 
 function existsHigher(arr, n) {
-  return arr.filter(num => num >= n).length > 0;
+  return arr.filter((num) => num >= n).length > 0;
 }
 
 function findLargestNum(arr) {
@@ -560,7 +542,7 @@ function findLargestNum(arr) {
 }
 
 function transform(arr) {
-  return arr.map(num => (num % 2 == 0 ? num - 1 : num + 1));
+  return arr.map((num) => (num % 2 == 0 ? num - 1 : num + 1));
 }
 
 function nextElement(arr) {
@@ -568,7 +550,7 @@ function nextElement(arr) {
 }
 
 let arr = [1, 2, 3, 4, 5, 6];
-removeNum = numToBeRemoved => arr.filter(num => num != numToBeRemoved);
+removeNum = (numToBeRemoved) => arr.filter((num) => num != numToBeRemoved);
 
 function countdown(start) {
   let sol = [];
@@ -580,7 +562,7 @@ function countdown(start) {
 }
 
 function unlucky13(nums) {
-  return nums.filter(num => num % 13 != 0);
+  return nums.filter((num) => num % 13 != 0);
 }
 
 function mapping(letters) {
@@ -603,7 +585,7 @@ function dividesEvenly(a, b) {
 }
 
 function checkFactors(factors, num) {
-  return factors.filter(fNum => num % fNum != 0).length === 0;
+  return factors.filter((fNum) => num % fNum != 0).length === 0;
 }
 
 function removeFirstLast(str) {
@@ -645,7 +627,7 @@ function countVowels(str) {
 }
 
 function dictionary(initial, words) {
-  return words.filter(word => word.indexOf(initial) === 0);
+  return words.filter((word) => word.indexOf(initial) === 0);
 }
 
 function sum(n) {
@@ -662,7 +644,7 @@ function sum(n) {
 }
 
 function noOdds(arr) {
-  return arr.filter(num => num % 2 == 0);
+  return arr.filter((num) => num % 2 == 0);
 }
 
 function toArray(str) {
@@ -695,13 +677,7 @@ function binaryToDecimal(binary) {
 }
 
 function isInOrder(str) {
-  return (
-    str ===
-    str
-      .split("")
-      .sort()
-      .join("")
-  );
+  return str === str.split("").sort().join("");
 }
 
 function subReddit(link) {
@@ -743,13 +719,13 @@ function nthSmallest(arr, n) {
 
 function filterStateNames(arr, type) {
   return type === "abb"
-    ? arr.filter(a => a.length === 2)
-    : arr.filter(a => a.length > 2);
+    ? arr.filter((a) => a.length === 2)
+    : arr.filter((a) => a.length > 2);
 }
 
 // Fix this incorrect code so that all tests pass!
 function removeEmptyArrays(arr) {
-  return arr.filter(x => x.length != 0);
+  return arr.filter((x) => x.length != 0);
 }
 
 function convertCartesian(x, y) {
@@ -757,7 +733,7 @@ function convertCartesian(x, y) {
 }
 
 function oddProduct(arr) {
-  return arr.filter(num => num % 2 != 0).reduce((a, b) => a * b);
+  return arr.filter((num) => num % 2 != 0).reduce((a, b) => a * b);
 }
 function owofied(sentence) {
   let sol = sentence.replace(/["i"]/g, "wi");
@@ -777,18 +753,15 @@ function howManyTimes(num) {
 }
 
 function isFourLetters(arr) {
-  return arr.filter(a => a.length === 4);
+  return arr.filter((a) => a.length === 4);
 }
 
 function filterDigitLength(arr, num) {
-  return arr.filter(a => (a + "").length === num);
+  return arr.filter((a) => (a + "").length === num);
 }
 
 function AlphabetSoup(str) {
-  return str
-    .split("")
-    .sort()
-    .join("");
+  return str.split("").sort().join("");
 }
 
 function nextPrime(num) {
@@ -798,7 +771,7 @@ function nextPrime(num) {
   }
 }
 
-const isPrime = num => {
+const isPrime = (num) => {
   for (let i = 2; i < Math.sqrt(num) + 1; i++) {
     if (num % i === 0) return false;
   }
@@ -806,14 +779,14 @@ const isPrime = num => {
 };
 
 function greetPeople(names) {
-  return names.map(name => "Hello " + name).join(", ");
+  return names.map((name) => "Hello " + name).join(", ");
 }
 
 function isPositiveDominant(a) {
   let set = new Set(a);
   return (
-    Array.from(set).filter(num => num < 0).length <
-    Array.from(set).filter(num => num > 0).length
+    Array.from(set).filter((num) => num < 0).length <
+    Array.from(set).filter((num) => num > 0).length
   );
 }
 
@@ -834,12 +807,12 @@ function hashPlusCount(str) {
 
 function getAbsSum(arr) {
   return arr
-    .map(num => (num < 0 ? -num : num))
+    .map((num) => (num < 0 ? -num : num))
     .reduce((acc, curr) => acc + curr);
 }
 
 function filterArray(arr) {
-  return arr.filter(elem => typeof elem != "string");
+  return arr.filter((elem) => typeof elem != "string");
 }
 
 function doubleChar(str) {
@@ -875,7 +848,7 @@ function firstVowel(str) {
 
 function societyName(friends) {
   return friends
-    .map(f => f.charAt(0))
+    .map((f) => f.charAt(0))
     .sort()
     .join("");
 }
@@ -909,7 +882,7 @@ function convertBinary(str) {
   return str
     .toLowerCase()
     .split("")
-    .map(c => (c >= "a" && c <= "m" ? "0" : "1"))
+    .map((c) => (c >= "a" && c <= "m" ? "0" : "1"))
     .join("");
 }
 //Write a function that transforms all letters from
@@ -928,9 +901,9 @@ function spelling(str) {
   return str.split("").map((s, i) => strTemp.substr(0, i + 1));
 }
 
-String.prototype.swapCase = function() {
+String.prototype.swapCase = function () {
   return this.split("")
-    .map(char =>
+    .map((char) =>
       char >= "a" && char <= "z"
         ? char.toUpperCase()
         : char >= "A" && char <= "Z"
@@ -948,28 +921,28 @@ String.prototype.swapCase = function() {
 	5. strictly_below()
 */
 
-Array.prototype.square = function() {
-  return this.map(num => num * num);
+Array.prototype.square = function () {
+  return this.map((num) => num * num);
 };
 
-Array.prototype.cube = function() {
-  return this.map(num => num * num * num);
+Array.prototype.cube = function () {
+  return this.map((num) => num * num * num);
 };
 
-Array.prototype.divisible_by = function(x) {
-  return this.filter(num => num % x === 0);
+Array.prototype.divisible_by = function (x) {
+  return this.filter((num) => num % x === 0);
 };
 
-Array.prototype.strictly_above = function(x) {
-  return this.filter(num => num > x);
+Array.prototype.strictly_above = function (x) {
+  return this.filter((num) => num > x);
 };
 
-Array.prototype.strictly_below = function(x) {
-  return this.filter(num => num < x);
+Array.prototype.strictly_below = function (x) {
+  return this.filter((num) => num < x);
 };
 
 function maximumScore(tileHand) {
-  return tileHand.map(obj => obj.score).reduce((a, b) => a + b);
+  return tileHand.map((obj) => obj.score).reduce((a, b) => a + b);
 }
 
 function mauriceWins(mSnails, sSnails) {
@@ -1007,13 +980,7 @@ function isAvgWhole(arr) {
 
 function isSymmetrical(num) {
   let str = num + "";
-  return (
-    str ===
-    str
-      .split("")
-      .reverse()
-      .join("")
-  );
+  return str === str.split("").reverse().join("");
 }
 
 function removeVowels(str) {
@@ -1042,7 +1009,7 @@ function charIndex(word, char) {
 }
 
 function toArray(num) {
-  return (num + "").split("").map(num => parseInt(num));
+  return (num + "").split("").map((num) => parseInt(num));
 }
 
 function toNumber(arr) {
@@ -1050,7 +1017,7 @@ function toNumber(arr) {
 }
 
 function validateSwaps(arr, str) {
-  return arr.map(word => {
+  return arr.map((word) => {
     if (word.length != str.length) return false;
     else
       return word.split("").filter((ch, i) => ch != str.charAt(i)).length === 2;
@@ -1084,17 +1051,19 @@ function findNemo(sentence) {
 function reverseCase(str) {
   return str
     .split("")
-    .map(ch => (ch === ch.toLowerCase() ? ch.toUpperCase() : ch.toLowerCase()))
+    .map((ch) =>
+      ch === ch.toLowerCase() ? ch.toUpperCase() : ch.toLowerCase()
+    )
     .join("");
 }
 
 function findLargestNums(arr) {
-  return arr.map(a => Math.max(...a));
+  return arr.map((a) => Math.max(...a));
 }
 
 function totalVolume(...boxes) {
   return boxes
-    .map(box => box.reduce((acc, curr) => acc * curr))
+    .map((box) => box.reduce((acc, curr) => acc * curr))
     .reduce((acc, curr) => acc + curr);
 }
 
@@ -1107,17 +1076,11 @@ function isSpecialArray(arr) {
 }
 
 function sortDescending(num) {
-  return parseInt(
-    (num + "")
-      .split("")
-      .sort()
-      .reverse()
-      .join("")
-  );
+  return parseInt((num + "").split("").sort().reverse().join(""));
 }
 
 function highLow(str) {
-  let arr = str.split(" ").map(num => parseInt(num));
+  let arr = str.split(" ").map((num) => parseInt(num));
   return [Math.max(...arr), Math.min(...arr)].join(" ");
 }
 
@@ -1163,30 +1126,27 @@ function getDistance(a, b) {
 function specialReverse(s, c) {
   return s
     .split(" ")
-    .map(word =>
-      word.indexOf(c) === 0
-        ? word
-            .split("")
-            .reverse()
-            .join("")
-        : word
+    .map((word) =>
+      word.indexOf(c) === 0 ? word.split("").reverse().join("") : word
     )
     .join(" ");
 }
 
 function countOnes(matrix) {
-  return matrix.flat().filter(num => num === 1).length;
+  return matrix.flat().filter((num) => num === 1).length;
 }
 
 function asciiCapitalize(str) {
   return str
     .split("")
-    .map(ch => (ch.charCodeAt() % 2 == 0 ? ch.toUpperCase() : ch.toLowerCase()))
+    .map((ch) =>
+      ch.charCodeAt() % 2 == 0 ? ch.toUpperCase() : ch.toLowerCase()
+    )
     .join("");
 }
 
 function filterUnique(arr) {
-  return arr.filter(word => new Set(word.split("")).size === word.length);
+  return arr.filter((word) => new Set(word.split("")).size === word.length);
 }
 
 function century(year) {
@@ -1207,7 +1167,7 @@ function flip(y) {
   return y ? 0 : 1;
 }
 
-String.prototype.vreplace = function(vowel) {
+String.prototype.vreplace = function (vowel) {
   return this.replace(/[aeiou]/g, vowel);
 };
 
@@ -1226,16 +1186,16 @@ function flip(y) {
 }
 
 function identicalFilter(arr) {
-  return arr.filter(word => new Set(word.split("")).size === 1);
+  return arr.filter((word) => new Set(word.split("")).size === 1);
 }
 
-const sayHello = name => {
+const sayHello = (name) => {
   return "Hello " + name;
 };
 
-const findMissing = array => {
+const findMissing = (array) => {
   if (!array || !array.length) return false;
-  let arrLen = array.map(arr => arr.length).sort((a, b) => a - b);
+  let arrLen = array.map((arr) => arr.length).sort((a, b) => a - b);
   console.log(arrLen);
   let start = arrLen[0];
   if (start === 0) return false;
@@ -1248,7 +1208,7 @@ const findMissing = array => {
   return start;
 };
 
-const objectToArray = obj => {
+const objectToArray = (obj) => {
   let sol = [];
   for (key in obj) {
     sol.push([key, obj[key]]);
@@ -1357,14 +1317,14 @@ let contactLenses = [
       "-8.50",
       "-9.00",
       "-9.50",
-      "-10.00"
+      "-10.00",
     ],
     cylinder: [],
     axis: [],
     add: [],
     colors: [],
     cost: "61.00",
-    type: "spherical"
+    type: "spherical",
   },
   {
     name: "Alcon Air Optix Aqua Multifocal",
@@ -1440,14 +1400,14 @@ let contactLenses = [
       "-10.50",
       "-11.00",
       "-11.50",
-      "-12.00"
+      "-12.00",
     ],
     cylinder: [],
     axis: [],
     add: ["", "Low (Up to +1.25)", "Medium (Up to +2.00)", "High (over +2.25)"],
     colors: [],
     cost: "72.00",
-    type: "multifocal"
+    type: "multifocal",
   },
   {
     name: "Alcon Air Optix Colors",
@@ -1511,7 +1471,7 @@ let contactLenses = [
       "-7.25",
       "-7.50",
       "-7.75",
-      "-8.00"
+      "-8.00",
     ],
     cylinder: [],
     axis: [],
@@ -1528,10 +1488,10 @@ let contactLenses = [
       "Pure Hazel",
       "Sterling Gray",
       "True Sapphire",
-      "Turquoise"
+      "Turquoise",
     ],
     cost: "55.00",
-    type: "colors"
+    type: "colors",
   },
   {
     name: "Biotrue ONEDay for Astigmatism (30 Pack)",
@@ -1585,7 +1545,7 @@ let contactLenses = [
       "-7.50",
       "-8.00",
       "-8.50",
-      "-9.00"
+      "-9.00",
     ],
     cylinder: ["", "-.75", "-1.25", "-1.75", "-2.25"],
     axis: [
@@ -1602,13 +1562,13 @@ let contactLenses = [
       "120",
       "160",
       "170",
-      "180"
+      "180",
     ],
     add: [],
     colors: [],
     cost: "67.00",
-    type: "toric"
-  }
+    type: "toric",
+  },
 ];
 
 const setParams = (
@@ -1621,7 +1581,7 @@ const setParams = (
   colors
 ) => {
   return contactLenses.filter(
-    contactLense =>
+    (contactLense) =>
       contactLense.basecurves.includes(basecurves) ||
       contactLense.diameters.includes(diameters) ||
       contactLense.cylinder.includes(cylinder) ||
@@ -1693,7 +1653,7 @@ function competitionRank(results, person) {
 }
 
 function transformUpvotes(str) {
-  return str.split(" ").map(vote => {
+  return str.split(" ").map((vote) => {
     if (vote.indexOf("k") >= 0) {
       return parseFloat(vote.substr(0, vote.length - 1)) * 1000;
     } else {
@@ -1722,7 +1682,7 @@ function connellSequence(start, end, n) {
 let users = [
   { name: "a", score: 100, reputation: 20 },
   { name: "b", score: 90, reputation: 40 },
-  { name: "c", score: 110, reputation: 30 }
+  { name: "c", score: 110, reputation: 30 },
 ];
 function leaderboards(users) {
   return users.sort(
@@ -1808,7 +1768,7 @@ function testJackpot(result) {
 }
 
 function testJackpot(result) {
-  return result.every(a => a === result[0]);
+  return result.every((a) => a === result[0]);
 }
 
 function factorGroup(num) {
@@ -1883,10 +1843,7 @@ function progressDays(runs) {
 }
 
 function rev(n) {
-  return (Math.abs(n) + "")
-    .split("")
-    .reverse()
-    .join("");
+  return (Math.abs(n) + "").split("").reverse().join("");
 }
 
 function numOfSubbarrays(arr) {
@@ -1927,8 +1884,8 @@ function countOnes(i) {
 }
 
 function bbqSkewers(grill) {
-  let nonVeg = grill.filter(str => str.indexOf("x") >= 0).length;
-  let veg = grill.filter(str => str.indexOf("x") == -1).length;
+  let nonVeg = grill.filter((str) => str.indexOf("x") >= 0).length;
+  let veg = grill.filter((str) => str.indexOf("x") == -1).length;
   return [veg, nonVeg];
 }
 
@@ -1947,16 +1904,18 @@ function inBox(arr) {
 }
 
 function reverseImage(image) {
-  return image.map(arr => arr.map(num => (num == 0 ? 1 : 0)));
+  return image.map((arr) => arr.map((num) => (num == 0 ? 1 : 0)));
 }
 
 function capMe(arr) {
-  return arr.map(name => name[0].toUpperCase() + name.substr(1).toLowerCase());
+  return arr.map(
+    (name) => name[0].toUpperCase() + name.substr(1).toLowerCase()
+  );
 }
 
 function evenOddTransform(arr, n) {
   while (n--) {
-    arr = arr.map(num => (num % 2 == 1 ? num + 2 : num - 2));
+    arr = arr.map((num) => (num % 2 == 1 ? num + 2 : num - 2));
   }
   return arr;
 }
@@ -1986,17 +1945,14 @@ function removeDups(arr) {
 function makeTitle(str) {
   return str
     .split(" ")
-    .map(w => w[0].toUpperCase() + w.slice(1))
+    .map((w) => w[0].toUpperCase() + w.slice(1))
     .join(" ");
 }
 
 function formatNum(num) {
   let strNum = num.toString();
   if (strNum.length <= 3) return strNum;
-  let revStr = strNum
-    .split("")
-    .reverse()
-    .join("");
+  let revStr = strNum.split("").reverse().join("");
   let sol = [];
   for (let i = 0; i < revStr.length; i++) {
     if (i === 0) {
@@ -2055,7 +2011,7 @@ function factorize(num) {
 function correctSpacing(sentence) {
   return sentence
     .split(" ")
-    .filter(word => word.length > 0)
+    .filter((word) => word.length > 0)
     .join(" ");
 }
 
@@ -2083,7 +2039,7 @@ function XO(str) {
 }
 
 function sumTwoSmallestNums(arr) {
-  let newArr = arr.sort((a, b) => a - b).filter(a => a >= 0);
+  let newArr = arr.sort((a, b) => a - b).filter((a) => a >= 0);
   return newArr[0] + newArr[1];
 }
 
@@ -2180,7 +2136,7 @@ function lastDig(a, b, c) {
 }
 
 function changeTypes(arr) {
-  return arr.map(element => {
+  return arr.map((element) => {
     if (typeof element === "number") {
       return element % 2 == 0 ? element + 1 : element;
     }
@@ -2213,23 +2169,17 @@ function validateEmail(str) {
 }
 
 function isPalindrome(str) {
-  return (
-    str ===
-    str
-      .split("")
-      .reverse()
-      .join("")
-  );
+  return str === str.split("").reverse().join("");
 }
 
 function sameAscii(a, b) {
   let sumA = a
     .split("")
-    .map(num => num.charCodeAt())
+    .map((num) => num.charCodeAt())
     .reduce((acc, curr) => acc + curr);
   let sumB = b
     .split("")
-    .map(num => num.charCodeAt())
+    .map((num) => num.charCodeAt())
     .reduce((acc, curr) => acc + curr);
   console.log(sumA, sumB);
   return sumA === sumB;
@@ -2239,7 +2189,7 @@ function howManyTimes(msg) {
   msg = msg.replace(/[ ]/g, "").toLowerCase();
   return msg
     .split("")
-    .map(charCode => charCode.charCodeAt() - 96)
+    .map((charCode) => charCode.charCodeAt() - 96)
     .reduce((acc, curr) => acc + curr);
 }
 
@@ -2282,7 +2232,7 @@ function pizzaPoints(customers, minOrders, minPrice) {
   let sol = [];
   for (cust in customers) {
     if (
-      customers[cust].filter(price => price >= minPrice).length >= minOrders
+      customers[cust].filter((price) => price >= minPrice).length >= minOrders
     ) {
       sol.push(cust);
     }
@@ -2291,16 +2241,8 @@ function pizzaPoints(customers, minOrders, minPrice) {
 }
 
 function isAnagram(s1, s2) {
-  let str1 = s1
-    .toLowerCase()
-    .split("")
-    .sort()
-    .join("");
-  let str2 = s2
-    .toLowerCase()
-    .split("")
-    .sort()
-    .join("");
+  let str1 = s1.toLowerCase().split("").sort().join("");
+  let str2 = s2.toLowerCase().split("").sort().join("");
   return str1 === str2;
 }
 
@@ -2308,7 +2250,7 @@ function dailyStreak(arr) {
   return arr
     .join(" ")
     .split("false")
-    .map(str => (str.trim().length ? str.trim().split(" ").length : 0))
+    .map((str) => (str.trim().length ? str.trim().split(" ").length : 0))
     .sort((a, b) => b - a)[0];
 }
 
@@ -2318,7 +2260,7 @@ function toHex(str) {
   //str = str.replace(/[ ]/g, "");
   return str
     .split("")
-    .map(char => char.charCodeAt().toString(16))
+    .map((char) => char.charCodeAt().toString(16))
     .join(" ");
 }
 
@@ -2347,7 +2289,7 @@ function pagesInBook(total) {
 
 function getBudgets(arr) {
   return arr
-    .map(obj => Object.values(obj)[2])
+    .map((obj) => Object.values(obj)[2])
     .reduce((acc, curr) => acc + curr);
 }
 
@@ -2365,13 +2307,15 @@ function fact(num) {
   return num * fact(num - 1);
 }
 function evalFactorial(arr) {
-  return arr.map(num => fact(parseInt(num))).reduce((acc, curr) => acc + curr);
+  return arr
+    .map((num) => fact(parseInt(num)))
+    .reduce((acc, curr) => acc + curr);
 }
 
 function parityAnalysis(num) {
   const sum = (num + "")
     .split("")
-    .map(num => parseInt(num))
+    .map((num) => parseInt(num))
     .reduce((acc, curr) => acc + parseInt(curr));
   // console.log(sum);
   return num % 2 === sum % 2;
@@ -2410,7 +2354,7 @@ function getDay(day) {
     "Wednesday",
     "Thursday",
     "Friday",
-    "Saturday"
+    "Saturday",
   ];
   return days[new Date(day).getDay()];
 }
@@ -2418,7 +2362,7 @@ function getDay(day) {
 function capLast(txt) {
   return txt
     .split(" ")
-    .map(word => word.slice(0, -1) + word.slice(-1).toUpperCase())
+    .map((word) => word.slice(0, -1) + word.slice(-1).toUpperCase())
     .join(" ");
 }
 
@@ -2438,11 +2382,11 @@ function isAutomorphic(n) {
 function asciiSort(arr) {
   let wordOne = arr[0]
     .split("")
-    .map(c => c.charCodeAt())
+    .map((c) => c.charCodeAt())
     .reduce((acc, curr) => acc + curr);
   let wordTwo = arr[1]
     .split("")
-    .map(c => c.charCodeAt())
+    .map((c) => c.charCodeAt())
     .reduce((acc, curr) => acc + curr);
 
   return wordOne > wordTwo ? arr[1] : arr[0];
@@ -2451,13 +2395,8 @@ function asciiSort(arr) {
 function reverseOdd(str) {
   return str
     .split(" ")
-    .map(word =>
-      word.length % 2 === 1
-        ? word
-            .split("")
-            .reverse()
-            .join(" ")
-        : word
+    .map((word) =>
+      word.length % 2 === 1 ? word.split("").reverse().join(" ") : word
     )
     .join(" ");
 }
@@ -2592,15 +2531,15 @@ function mergeArrays(a, b) {
     sol.push(a[i]);
     sol.push(b[i]);
   }
-  return sol.filter(elem => elem);
+  return sol.filter((elem) => elem);
 }
 
 function abbreviate(...variable) {
   let len = variable.length === 1 ? 4 : variable[1];
   return variable[0]
     .split(" ")
-    .filter(word => word.length >= len)
-    .map(word => word[0])
+    .filter((word) => word.length >= len)
+    .map((word) => word[0])
     .join("")
     .toUpperCase();
 }
@@ -2627,7 +2566,7 @@ function miniPeaks(arr) {
 }
 
 function returnOnlyInteger(arr) {
-  return arr.filter(num => typeof num === "number");
+  return arr.filter((num) => typeof num === "number");
 }
 
 function semiprime(n) {
@@ -2660,7 +2599,7 @@ function greaterPermutation(expr, nums) {
     [b, a, c],
     [b, c, a],
     [c, b, a],
-    [c, a, b]
+    [c, a, b],
   ];
 
   for (exp of permutaion) {
@@ -2687,7 +2626,7 @@ function Circle(radius) {
     radius: radius,
     diameter: radius * 2,
     getC: () => Number((Math.PI * 2 * radius).toFixed(2)),
-    getA: () => Number((Math.PI * radius * radius).toFixed(2))
+    getA: () => Number((Math.PI * radius * radius).toFixed(2)),
   };
 }
 
@@ -2701,7 +2640,7 @@ function straightDigital(number) {
   if (number < 100) {
     return "Not Straight";
   }
-  let arr = (number + "").split("").map(num => parseInt(num));
+  let arr = (number + "").split("").map((num) => parseInt(num));
   if (new Set(arr).size === 1) {
     return "Trivial Straight";
   }
@@ -2715,7 +2654,7 @@ function straightDigital(number) {
 }
 
 function tallestBuildingHeight(arr) {
-  const building = arr.filter(str => str.trim().length);
+  const building = arr.filter((str) => str.trim().length);
   return building.length * 20 + "m";
 }
 
@@ -2734,7 +2673,7 @@ function numLayers(n) {
 function partiallyHide(phrase) {
   return phrase
     .split(" ")
-    .map(word =>
+    .map((word) =>
       word.length <= 2
         ? word
         : word[0] + "-".repeat(word.length - 2) + word[word.length - 1]
@@ -2758,7 +2697,7 @@ function diceGame(arr) {
 }
 
 function increasingWordWeights(sentence) {
-  let weightArr = sentence.split(" ").map(word => {
+  let weightArr = sentence.split(" ").map((word) => {
     let wt = 0;
     for (ch of [...word.replace(/[^a-zA-Z]/g, "")]) {
       wt += ch.charCodeAt();
@@ -2818,7 +2757,7 @@ let users = [
   { name: "John", email: "john@example.com" },
   { name: "Jason", email: "jason@example.com" },
   { name: "Jeremy", email: "jeremy@example.com" },
-  { name: "Jacob", email: "jacob@example.com" }
+  { name: "Jacob", email: "jacob@example.com" },
 ];
 
 const str = `
@@ -2831,7 +2770,7 @@ const GUEST_LIST = {
   Karla: "France",
   Wendy: "Japan",
   Norman: "England",
-  Sam: "Argentina"
+  Sam: "Argentina",
 };
 
 function greeting(name) {
@@ -2842,17 +2781,17 @@ function greeting(name) {
 
 function testFairness(agatha, bertha) {
   let agathaArea = agatha
-    .map(arr => arr[0] * arr[1])
+    .map((arr) => arr[0] * arr[1])
     .reduce((acc, curr) => acc + curr);
   let berthaArea = bertha
-    .map(arr => arr[0] * arr[1])
+    .map((arr) => arr[0] * arr[1])
     .reduce((acc, curr) => acc + curr);
   return agathaArea === berthaArea;
 }
 
 function countTowers(towers) {
   let base = towers[towers.length - 1];
-  return base[0].split(" ").filter(b => b.length === 2).length;
+  return base[0].split(" ").filter((b) => b.length === 2).length;
 }
 
 function palindromicDate(date) {
@@ -2860,18 +2799,8 @@ function palindromicDate(date) {
   let dateArr2 = [dateArr1[1], dateArr1[0], dateArr1[2]];
   console.log(dateArr1.join(""), " ", dateArr2.join(""));
   return (
-    dateArr1.join("") ===
-      dateArr1
-        .join("")
-        .split("")
-        .reverse()
-        .join("") &&
-    dateArr2.join("") ===
-      dateArr2
-        .join("")
-        .split("")
-        .reverse()
-        .join("")
+    dateArr1.join("") === dateArr1.join("").split("").reverse().join("") &&
+    dateArr2.join("") === dateArr2.join("").split("").reverse().join("")
   );
 }
 
@@ -2887,9 +2816,9 @@ function Magic(str) {
 
 function calculateScores(str) {
   let score = [
-    [...str].filter(char => char === "A").length,
-    [...str].filter(char => char === "B").length,
-    [...str].filter(char => char === "C").length
+    [...str].filter((char) => char === "A").length,
+    [...str].filter((char) => char === "B").length,
+    [...str].filter((char) => char === "C").length,
   ];
 
   return score;
@@ -2904,11 +2833,11 @@ function fracRound(frac, n) {
 }
 
 function squareDigits(n) {
-  return Number([...(n + "")].map(num => Number(num) ** 2).join(""));
+  return Number([...(n + "")].map((num) => Number(num) ** 2).join(""));
 }
 
 function alphNum(str) {
-  return [...str].map(ch => ch.charCodeAt() - 65).join(" ");
+  return [...str].map((ch) => ch.charCodeAt() - 65).join(" ");
 }
 
 function reverseAndNot(i) {
@@ -2921,7 +2850,7 @@ function removeLeadingTrailing(n) {
 }
 
 function reverseArr(num) {
-  return [...(num + "")].map(n => Number(n)).reverse();
+  return [...(num + "")].map((n) => Number(n)).reverse();
 }
 
 function xmasItems(n) {
@@ -2955,9 +2884,9 @@ function longestSubstring(digits) {
 
   console.log(sol);
 
-  let maxLen = Math.max(...sol.split(" ").map(num => num.length));
+  let maxLen = Math.max(...sol.split(" ").map((num) => num.length));
 
-  return sol.split(" ").filter(num => num.length === maxLen)[0];
+  return sol.split(" ").filter((num) => num.length === maxLen)[0];
 }
 ("844929328912985315632725682153");
 
@@ -2974,8 +2903,9 @@ function coveredIntegers(arr) {
 
 function hasHiddenFee(prices, t) {
   return (
-    prices.map(num => Number(num.slice(1))).reduce((acc, curr) => acc + curr) <
-    Number(t.slice(1))
+    prices
+      .map((num) => Number(num.slice(1)))
+      .reduce((acc, curr) => acc + curr) < Number(t.slice(1))
   );
 }
 
@@ -3016,7 +2946,7 @@ function changeEnough(change, amountDue) {
 function censor(str) {
   return str
     .split(" ")
-    .map(word => (word.length > 4 ? "*".repeat(word.length) : word))
+    .map((word) => (word.length > 4 ? "*".repeat(word.length) : word))
     .join(" ");
 }
 
@@ -3068,8 +2998,8 @@ function factorSort(nums) {
     // );
     finalSol = finalSol.concat(
       tempObj
-        .filter(obj => obj.freq === item)
-        .map(obj => Number(obj.num))
+        .filter((obj) => obj.freq === item)
+        .map((obj) => Number(obj.num))
         .sort((a, b) => b - a)
     );
   }
@@ -3081,7 +3011,7 @@ function correctTitle(str) {
   str = str.toLowerCase();
   str = str
     .split(" ")
-    .map(word =>
+    .map((word) =>
       ["and", "the", "of", "in"].includes(word)
         ? word
         : word[0].toUpperCase() + word.slice(1)
@@ -3089,7 +3019,7 @@ function correctTitle(str) {
     .join(" ");
   return str
     .split("-")
-    .map(word =>
+    .map((word) =>
       ["and", "the", "of", "in"].includes(word)
         ? word
         : word[0].toUpperCase() + word.slice(1)
@@ -3126,7 +3056,7 @@ function sweetestIcecream(arr) {
     Vanilla: 5,
     ChocolateChip: 5,
     Strawberry: 10,
-    Chocolate: 10
+    Chocolate: 10,
   };
   let maxSweet = 0;
   for (item of arr) {
@@ -3191,8 +3121,8 @@ function afterNYears(names, n) {
 }
 
 function moveToEnd(arr, el) {
-  let withoutEL = arr.filter(num => num !== el);
-  let withEL = arr.filter(num => num === el);
+  let withoutEL = arr.filter((num) => num !== el);
+  let withEL = arr.filter((num) => num === el);
   return withoutEL.concat(withEL);
 }
 
@@ -3223,7 +3153,7 @@ function textToNum(phone) {
     W: 9,
     X: 9,
     Y: 9,
-    Z: 9
+    Z: 9,
   };
   let sol = "";
   for (ch of [...phone]) {
@@ -3350,22 +3280,35 @@ function billSplit(spicy, cost) {
   return [me, friend];
 }
 
-
 function boxes(weights) {
-	let sol = 0, boxWt = 0;
-	for(i = 0; i<weights.length; i++){
-		if(boxWt <=10){
-			boxWt += weights[i];
-			//console.log(boxWt)
-			if(boxWt>10){
-				boxWt = 0;
-				i--;
-				sol++;
-			}
-		}
-	}
-	return sol+1;
+  let sol = 0,
+    boxWt = 0;
+  for (i = 0; i < weights.length; i++) {
+    if (boxWt <= 10) {
+      boxWt += weights[i];
+      //console.log(boxWt)
+      if (boxWt > 10) {
+        boxWt = 0;
+        i--;
+        sol++;
+      }
+    }
+  }
+  return sol + 1;
 }
 
 //[2, 1, 2, 5, 4, 3, 6, 1, 1, 9, 3, 2]
 //[7, 1, 2,  6, 1, 2,  3, 5,  9,  2, 1, 2, 5], 5
+
+function findMissing(arr) {
+  if (arr === null) return false;
+  if (arr.length === 0) return false;
+  var lenArr = arr.map((a) => a.length).sort();
+  console.log(lenArr);
+  for (var i = 0; i <= lenArr.length; i++) {
+    if (lenArr[i] == 0) return false;
+    if (i + lenArr[0] !== lenArr[i]) {
+      return i + lenArr[0];
+    }
+  }
+}
