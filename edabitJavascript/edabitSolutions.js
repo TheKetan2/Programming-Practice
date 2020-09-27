@@ -3337,3 +3337,13 @@ function averageWordLength(str) {
   var sol = strArr.map((word) => word.length).reduce((a, b) => a + b) / len;
   return sol.toFixed(2) == sol + "" ? sol : parseFloat(sol.toFixed(2));
 }
+
+function twins(arr) {
+  for (var i = 1; i < arr.length; i++) {
+    if (
+      arr.slice(0, i).reduce((a, b) => a + b) ===
+      arr.slice(i).reduce((a, b) => a + b)
+    )
+      return i;
+  }
+}
