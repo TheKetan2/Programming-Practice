@@ -3347,3 +3347,15 @@ function twins(arr) {
       return i;
   }
 }
+
+function collatz(n) {
+  var value = n;
+  var max = n;
+  var steps = 0;
+  while (value !== 1) {
+    steps++;
+    if (max < value) max = value;
+    value % 2 === 0 ? (value /= 2) : (value = value * 3 + 1);
+  }
+  return [steps, max];
+}
