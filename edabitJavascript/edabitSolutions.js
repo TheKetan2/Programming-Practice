@@ -3359,3 +3359,16 @@ function collatz(n) {
   }
   return [steps, max];
 }
+
+function validateSwaps(arr, str) {
+  return arr.map((word) => {
+    let count = 0;
+    if (word.length !== str.length) return false;
+    for (let i = 0; i < str.length; i++) {
+      if (word[i] !== str[i]) {
+        count++;
+      }
+    }
+    return count == 2;
+  });
+}
