@@ -3372,3 +3372,16 @@ function validateSwaps(arr, str) {
     return count == 2;
   });
 }
+
+function competitionRank(results, person) {
+  let names = Object.keys(results);
+  let arr = Object.values(results).sort((a, b) => b - a);
+  console.log(arr);
+  let rankArr = arr.map((num, index) => index + 1);
+  for (let i = 1; i < arr.length; i++) {
+    if (arr[i - 1] === arr[i]) {
+      rankArr[i] = rankArr[i - 1];
+    }
+  }
+  return rankArr[arr.indexOf(results[person])];
+}
