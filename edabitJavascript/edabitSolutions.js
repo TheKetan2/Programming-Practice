@@ -3385,3 +3385,39 @@ function competitionRank(results, person) {
   }
   return rankArr[arr.indexOf(results[person])];
 }
+
+function commonLastVowel(str) {
+  let sol = "";
+  let max = 0;
+  str = str.toLowerCase().replaceAll(/[^aeiou]/gi, "");
+
+  while (str !== "") {
+    console.log(str);
+    let temp = str;
+
+    if (max < str.length - temp.replaceAll(str[0])) {
+      max = str.length - temp.replaceAll(str[0]);
+      sol = str[0];
+      str = temp.replaceAll(str[0]);
+    }
+  }
+  return sol;
+}
+
+function bomb(str) {
+  //Create a function that finds the word "bomb" in the given string.
+  //If found, return "Duck!!!", otherwise return "There is no bomb, relax.".
+
+  return str.toLowerCase().indexOf("bomb") !== -1
+    ? "Duck!!!"
+    : "There is no bomb, relax.";
+}
+
+function bomb(str) {
+  //Create a function that finds the word "bomb" in the given string.
+  //If found, return "Duck!!!", otherwise return "There is no bomb, relax.".
+
+  return str.toLowerCase().indexOf("bomb") !== -1
+    ? "Duck!!!"
+    : "There is no bomb, relax.";
+}
