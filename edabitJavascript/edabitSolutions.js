@@ -3413,11 +3413,12 @@ function bomb(str) {
     : "There is no bomb, relax.";
 }
 
-function bomb(str) {
-  //Create a function that finds the word "bomb" in the given string.
-  //If found, return "Duck!!!", otherwise return "There is no bomb, relax.".
-
-  return str.toLowerCase().indexOf("bomb") !== -1
-    ? "Duck!!!"
-    : "There is no bomb, relax.";
+function charCount(myChar, str) {
+  let count = 0;
+  for (let i = 0; i < str.length; i++) {
+    if (myChar == str[i]) {
+      count++;
+    }
+  }
+  return count;
 }
