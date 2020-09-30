@@ -10,3 +10,5 @@ for i in range(num):
     elem = input().strip().split(" ")
     print(sum(list(map(int, elem))))
         
+
+
