@@ -3448,3 +3448,11 @@ function birdCode(arr) {
   console.log(arr);
   return sol.map((word) => word.toUpperCase());
 }
+
+function toArray(obj) {
+  let sol = [];
+  for (key of Object.keys(obj)) {
+    sol.push([key, obj[key]]);
+  }
+  return sol;
+}
