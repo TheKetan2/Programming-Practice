@@ -3422,3 +3422,29 @@ function charCount(myChar, str) {
   }
   return count;
 }
+
+function birdCode(arr) {
+  let sol = [];
+  for (a of arr) {
+    let strArr = a.replace(/[-]/gi, " ").split(" ");
+    const len = strArr.length;
+    if (len === 1) {
+      sol.push(strArr[0].substr(0, 4));
+    } else if (len === 2) {
+      sol.push(strArr[0].substr(0, 2) + strArr[1].substr(0, 2));
+    } else if (len === 3) {
+      sol.push(
+        strArr[0].substr(0, 1) + strArr[1].substr(0, 1) + strArr[2].substr(0, 2)
+      );
+    } else if (len === 4) {
+      sol.push(
+        strArr[0].substr(0, 1) +
+          strArr[1].substr(0, 1) +
+          strArr[2].substr(0, 1) +
+          strArr[3].substr(0, 1)
+      );
+    }
+  }
+  console.log(arr);
+  return sol.map((word) => word.toUpperCase());
+}
