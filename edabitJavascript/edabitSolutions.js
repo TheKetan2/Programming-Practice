@@ -3456,3 +3456,11 @@ function toArray(obj) {
   }
   return sol;
 }
+
+function addUp(num) {
+  let sol = 0;
+  for (let i = 1; i <= num; i++) {
+    sol += i;
+  }
+  return sol;
+}
