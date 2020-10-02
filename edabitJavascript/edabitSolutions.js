@@ -3464,3 +3464,7 @@ function addUp(num) {
   }
   return sol;
 }
+
+function getOnlyEvens(nums) {
+  return nums.filter((a, i) => a % 2 === 0 && i % 2 === 0);
+}
