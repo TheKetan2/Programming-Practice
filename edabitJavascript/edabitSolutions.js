@@ -3497,3 +3497,9 @@ function isPrime(num) {
   }
   return num === 1 ? false : true;
 }
+
+function isJS(path) {
+	arr = path.split(".")
+	console.log(arr)
+	return ["js","jsx"].includes(arr[arr.length - 1].toLowerCase())
+}
