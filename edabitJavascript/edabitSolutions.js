@@ -3520,3 +3520,12 @@ function sortByLength(arr) {
 function repetition(txt, n) {
   return n ? txt + repetition(txt, n - 1) : "";
 }
+
+function addNums(nums) {
+  //"2, 5, 1, 8, 4"
+  return nums
+    .replace(/[ ]/g, "")
+    .trim()
+    .split(",")
+    .reduce((a, b) => parseInt(a) + parseInt(b), 0);
+}
