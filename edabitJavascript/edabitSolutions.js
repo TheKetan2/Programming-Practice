@@ -3512,3 +3512,7 @@ function isPalindrome(str) {
   str = str.toLowerCase().replace(/[^a-z^0-9]/gi, "");
   return str === str.split("").reverse().join("");
 }
+
+function sortByLength(arr) {
+  return arr.sort((a, b) => a.length - b.length);
+}
