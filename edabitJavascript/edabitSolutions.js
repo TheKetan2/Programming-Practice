@@ -3499,7 +3499,16 @@ function isPrime(num) {
 }
 
 function isJS(path) {
-	arr = path.split(".")
-	console.log(arr)
-	return ["js","jsx"].includes(arr[arr.length - 1].toLowerCase())
+  arr = path.split(".");
+  console.log(arr);
+  return ["js", "jsx"].includes(arr[arr.length - 1].toLowerCase());
+}
+
+function calculateDifference(obj, limit) {
+  return Object.values(obj).reduce((a, b) => a + b) - limit;
+}
+
+function isPalindrome(str) {
+  str = str.toLowerCase().replace(/[^a-z^0-9]/gi, "");
+  return str === str.split("").reverse().join("");
 }
