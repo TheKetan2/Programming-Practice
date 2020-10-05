@@ -3545,3 +3545,10 @@ var removeCoveredIntervals = function (intervals) {
   }
   return intervals.length - k;
 };
+
+function maxTotal(nums) {
+  let sum = 0;
+  nums.sort((a, b) => a - b);
+  let temp = nums.slice(5).reduce((a, b) => a + b);
+  return temp;
+}
