@@ -3553,17 +3553,20 @@ function maxTotal(nums) {
   return temp;
 }
 
-
 function superReducedString(str) {
-	let stack = [];
-	for(char of [...str]){
-		if(stack.length === 0)stack.push(char)
-		else if(stack[stack.length - 1] == char){
-			stack.pop()
-		}else{
-			stack.push(char)
-		}
-	
-	}
-	return stack.length !== 0 ? stack.join(""):"Empty String";
+  let stack = [];
+  for (char of [...str]) {
+    if (stack.length === 0) stack.push(char);
+    else if (stack[stack.length - 1] == char) {
+      stack.pop();
+    } else {
+      stack.push(char);
+    }
+  }
+  return stack.length !== 0 ? stack.join("") : "Empty String";
+}
+
+
+function highestDigit(number) {
+	return Math.max(...[...number.toString()].map(num => parseInt(num)))
 }
