@@ -3566,7 +3566,22 @@ function superReducedString(str) {
   return stack.length !== 0 ? stack.join("") : "Empty String";
 }
 
-
 function highestDigit(number) {
-	return Math.max(...[...number.toString()].map(num => parseInt(num)))
+  return Math.max(...[...number.toString()].map((num) => parseInt(num)));
 }
+
+let a = [1, 2, 3, 3, 2, 3, 4, 3, 3, 2, 4, 4, 4];
+
+let obj = {};
+for (num of a) {
+  if (obj[num] === undefined) {
+    obj[num] = 1;
+  } else {
+    obj[num] += 1;
+  }
+}
+
+Object.keys(obj)
+  .sort((a, b) => obj[b] - obj[a])
+  .map((key) => Array.from({ length: obj[key] }, () => parseInt(key)))
+  .flat();
