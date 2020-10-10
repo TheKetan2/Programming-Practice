@@ -3570,18 +3570,25 @@ function highestDigit(number) {
   return Math.max(...[...number.toString()].map((num) => parseInt(num)));
 }
 
-let a = [1, 2, 3, 3, 2, 3, 4, 3, 3, 2, 4, 4, 4];
 
-let obj = {};
-for (num of a) {
-  if (obj[num] === undefined) {
-    obj[num] = 1;
-  } else {
-    obj[num] += 1;
-  }
+function additivePersistence(n) {
+	let count = 0;
+	while(n>10){
+		console.log("n: ",n)
+		count++;
+		n = n.toString().split("").reduce((a,b) => parseInt(b)+a,0);
+		console.log(n)
+	}
+	return count;
 }
 
-Object.keys(obj)
-  .sort((a, b) => obj[b] - obj[a])
-  .map((key) => Array.from({ length: obj[key] }, () => parseInt(key)))
-  .flat();
+function multiplicativePersistence(n) {
+	let count = 0;
+	while(n>10){
+		console.log("n: ",n)
+		count++;
+		n = n.toString().split("").reduce((a,b) => parseInt(b)*a);
+		console.log(n)
+	}
+	return count;
+}
