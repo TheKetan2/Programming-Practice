@@ -3570,25 +3570,46 @@ function highestDigit(number) {
   return Math.max(...[...number.toString()].map((num) => parseInt(num)));
 }
 
-
 function additivePersistence(n) {
-	let count = 0;
-	while(n>10){
-		console.log("n: ",n)
-		count++;
-		n = n.toString().split("").reduce((a,b) => parseInt(b)+a,0);
-		console.log(n)
-	}
-	return count;
+  let count = 0;
+  while (n > 10) {
+    console.log("n: ", n);
+    count++;
+    n = n
+      .toString()
+      .split("")
+      .reduce((a, b) => parseInt(b) + a, 0);
+    console.log(n);
+  }
+  return count;
 }
 
 function multiplicativePersistence(n) {
-	let count = 0;
-	while(n>10){
-		console.log("n: ",n)
-		count++;
-		n = n.toString().split("").reduce((a,b) => parseInt(b)*a);
-		console.log(n)
-	}
-	return count;
+  let count = 0;
+  while (n > 10) {
+    console.log("n: ", n);
+    count++;
+    n = n
+      .toString()
+      .split("")
+      .reduce((a, b) => parseInt(b) * a);
+    console.log(n);
+  }
+  return count;
 }
+
+function accumulatingArray(arr) {
+  let sol = [];
+  for (let num of arr) {
+    if (!sol.length) sol.push(Number(num));
+    else sol.push(sol[sol.length - 1] + Number(num));
+  }
+  return sol;
+}
+
+function zipIt(women, men) {
+  return women.length !== men.length
+    ? "sizes don't match"
+    : women.map((w, i) => [w, men[i]]);
+}
+
