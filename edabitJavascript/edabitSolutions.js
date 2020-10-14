@@ -3612,4 +3612,3 @@ function zipIt(women, men) {
     ? "sizes don't match"
     : women.map((w, i) => [w, men[i]]);
 }
-

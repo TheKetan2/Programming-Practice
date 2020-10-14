@@ -37,3 +37,23 @@ for (let obj of arrobj) {
 }
 
 console.log(arrobj);
+
+let result = [];
+
+const getEmailMembersFromList = async (listID, offset, count) => {
+  const response = await mailchimpMarketing.lists.getListMembersInfo(listID, {
+    offset,
+    count,
+  });
+  emails = response.members.map((member) => {
+    return member.email_address;
+  });
+  result = [...result, ...emails];
+  console.log(result);
+};
+
+
+
+function multiply(arr) {
+	return arr.map(a => Array.from({length: arr.length}, ()=>a))
+}
