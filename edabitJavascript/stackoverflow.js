@@ -52,8 +52,3 @@ const getEmailMembersFromList = async (listID, offset, count) => {
   console.log(result);
 };
 
-
-
-function multiply(arr) {
-	return arr.map(a => Array.from({length: arr.length}, ()=>a))
-}

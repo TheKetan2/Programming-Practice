@@ -3612,3 +3612,13 @@ function zipIt(women, men) {
     ? "sizes don't match"
     : women.map((w, i) => [w, men[i]]);
 }
+
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+
+function multiply(arr) {
+  return arr.map((a) => Array.from({ length: arr.length }, () => a));
+}
+let nums = [];
