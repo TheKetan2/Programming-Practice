@@ -3622,3 +3622,19 @@ function multiply(arr) {
   return arr.map((a) => Array.from({ length: arr.length }, () => a));
 }
 let nums = [];
+
+function rgbToHex(col) {
+  let numArr = col.replace(/[^0-9 ]/g, "").split(" ");
+  return (
+    "#" +
+    numArr
+      .map((num) =>
+        num === "0"
+          ? "00"
+          : Number(num).toString(16).length === 1
+          ? "0" + "" + Number(num).toString(16)
+          : Number(num).toString(16)
+      )
+      .join("")
+  );
+}
