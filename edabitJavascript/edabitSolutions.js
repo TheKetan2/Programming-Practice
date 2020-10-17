@@ -3638,3 +3638,9 @@ function rgbToHex(col) {
       .join("")
   );
 }
+
+
+function removeABC(str) {
+		let newStr = str.replace(/[abc]/gi,"");
+		return newStr === str? null: newStr;
+}
