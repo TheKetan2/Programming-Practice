@@ -3653,3 +3653,22 @@ function isCurzon(num) {
 function count(n) {
   return Math.abs(n).toString().length;
 }
+
+function cardHide(card) {
+  let str = "";
+  let len = card.length;
+  for (let i = 0; i < len; i++) {
+    str += "*";
+  }
+  return str + card.split("").splice(-4).join("");
+}
+
+function cardHide(card) {
+  let str = "";
+  let len = card.length;
+  for (let i = 0; i < len; i++) {
+    if (i < len - 4) str += "*";
+    else str += card[i];
+  }
+  return str;
+}
