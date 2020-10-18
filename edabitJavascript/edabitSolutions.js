@@ -3644,3 +3644,10 @@ function removeABC(str) {
 		let newStr = str.replace(/[abc]/gi,"");
 		return newStr === str? null: newStr;
 }
+
+
+function isCurzon(num) {
+	let pow = 2n**BigInt(num)+1n
+	let mult = 2n*BigInt(num)+1n
+	return pow%mult ===0n;
+}
