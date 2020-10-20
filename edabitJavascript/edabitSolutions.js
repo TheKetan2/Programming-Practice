@@ -3682,3 +3682,10 @@ function getHashTags(str) {
     .map((word) => "#" + word);
   return strArr.splice(0, 3);
 }
+
+
+function minutesToSeconds(time) {
+	let [h, m]  = time.split(":");
+	console.log(time)
+	return parseInt(m) <60? parseInt(h)*60 + parseInt(m):false;
+}
