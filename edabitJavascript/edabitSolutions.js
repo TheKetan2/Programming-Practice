@@ -3689,3 +3689,13 @@ function minutesToSeconds(time) {
 	console.log(time)
 	return parseInt(m) <60? parseInt(h)*60 + parseInt(m):false;
 }
+
+
+function isSubset(arr1, arr2) {
+	
+	for(let num of arr1){
+		if(!arr2.includes(num))
+			return false;
+	}
+	return true ;
+}
