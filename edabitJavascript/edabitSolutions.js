@@ -3707,7 +3707,16 @@ function intWithinBounds(n, lower, upper) {
   return false;
 }
 
-
 function isRepdigit(num) {
-	return new Set([...num.toString()]).size === 1;
+  return new Set([...num.toString()]).size === 1;
+}
+
+function arrayOperation(x, y, n) {
+  let sol = [];
+  for (let i = x; i <= y; i++) {
+    if (i % n === 0) {
+      sol.push(i);
+    }
+  }
+  return sol;
 }
