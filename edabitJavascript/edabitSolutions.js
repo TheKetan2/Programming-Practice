@@ -3720,3 +3720,15 @@ function arrayOperation(x, y, n) {
   }
   return sol;
 }
+
+function arrayOperation(x, y, n) {
+  let sol = [];
+  let temp = n;
+  while (n <= y) {
+    if (n >= x && n <= y) {
+      sol.push(n);
+    }
+    n += temp;
+  }
+  return sol;
+}
