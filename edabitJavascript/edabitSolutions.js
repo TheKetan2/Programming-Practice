@@ -3732,3 +3732,9 @@ function arrayOperation(x, y, n) {
   }
   return sol;
 }
+
+function lineLength(x, y) {
+  return Number(
+    Math.sqrt(Math.pow(y[0] - x[0], 2) + Math.pow(y[1] - x[1], 2)).toFixed(2)
+  );
+}
