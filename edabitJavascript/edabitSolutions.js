@@ -3683,19 +3683,31 @@ function getHashTags(str) {
   return strArr.splice(0, 3);
 }
 
-
 function minutesToSeconds(time) {
-	let [h, m]  = time.split(":");
-	console.log(time)
-	return parseInt(m) <60? parseInt(h)*60 + parseInt(m):false;
+  let [h, m] = time.split(":");
+  console.log(time);
+  return parseInt(m) < 60 ? parseInt(h) * 60 + parseInt(m) : false;
+}
+
+function isSubset(arr1, arr2) {
+  for (let num of arr1) {
+    if (!arr2.includes(num)) return false;
+  }
+  return true;
+}
+
+function intWithinBounds(n, lower, upper) {
+  if (
+    parseInt(n) === n &&
+    parseInt(lower) === lower &&
+    parseInt(upper) === upper
+  ) {
+    return n > lower && n < upper;
+  }
+  return false;
 }
 
 
-function isSubset(arr1, arr2) {
-	
-	for(let num of arr1){
-		if(!arr2.includes(num))
-			return false;
-	}
-	return true ;
+function isRepdigit(num) {
+	return new Set([...num.toString()]).size === 1;
 }
