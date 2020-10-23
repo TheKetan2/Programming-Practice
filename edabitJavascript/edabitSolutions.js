@@ -3738,3 +3738,13 @@ function lineLength(x, y) {
     Math.sqrt(Math.pow(y[0] - x[0], 2) + Math.pow(y[1] - x[1], 2)).toFixed(2)
   );
 }
+
+function hammingDistance(str1, str2) {
+	let count = 0;
+	for(let i in [...str1]){
+		if(str1[i] !== str2[i]){
+			count++;
+		}
+	}
+	return count;
+}
