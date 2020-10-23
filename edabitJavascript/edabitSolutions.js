@@ -3740,11 +3740,21 @@ function lineLength(x, y) {
 }
 
 function hammingDistance(str1, str2) {
-	let count = 0;
-	for(let i in [...str1]){
-		if(str1[i] !== str2[i]){
-			count++;
-		}
-	}
-	return count;
+  let count = 0;
+  for (let i in [...str1]) {
+    if (str1[i] !== str2[i]) {
+      count++;
+    }
+  }
+  return count;
+}
+
+function shiftToLeft(x, y) {
+  let zero = "";
+  while (y--) {
+    zero += "0";
+  }
+  zero = x.toString(2) + zero;
+  console.log(zero);
+  return parseInt(zero, 2);
 }
