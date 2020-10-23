@@ -3758,3 +3758,13 @@ function shiftToLeft(x, y) {
   console.log(zero);
   return parseInt(zero, 2);
 }
+
+function lychrel(n) {
+  let count = 0;
+  while (n.toString() !== [...n.toString()].reverse().join("")) {
+    n += parseInt([...n.toString()].reverse().join(""));
+    count++;
+    if (count > 25) return true;
+  }
+  return count;
+}
