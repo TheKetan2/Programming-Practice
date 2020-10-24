@@ -3764,7 +3764,16 @@ function lychrel(n) {
   while (n.toString() !== [...n.toString()].reverse().join("")) {
     n += parseInt([...n.toString()].reverse().join(""));
     count++;
-    if (count > 25) return true;
+    if (count > 500) return true;
   }
   return count;
+}
+
+function findLongest(sentence) {
+  // your recursive solution here but i am ishtoopid when it comes to recursion
+  return sentence
+    .toLowerCase()
+    .replace(/[^a-z ]/gi, " ")
+    .split(" ")
+    .sort((a, b) => b.length - a.length)[0];
 }
