@@ -3785,3 +3785,7 @@ function findLongest(sentence) {
           .sort((a, b) => b.length - a.length)[0]
       );
 }
+
+function numberLenSort(arr) {
+  return arr.sort((a, b) => a.toString().length - b.toString().length);
+}
