@@ -3789,3 +3789,18 @@ function findLongest(sentence) {
 function numberLenSort(arr) {
   return arr.sort((a, b) => a.toString().length - b.toString().length);
 }
+
+function calculateLosses(obj) {
+  if (!Object.keys(obj).length) {
+    return "Lucky you!";
+  }
+  return Object.values(obj).reduce((acc, curr) => acc + curr);
+}
+
+function findLongest(sentence) {
+  return sentence
+    .toLowerCase()
+    .replace(/[^a-z ]/gi, " ")
+    .split(" ")
+    .sort((a, b) => b.length - a.length)[0];
+}
