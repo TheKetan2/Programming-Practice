@@ -3770,10 +3770,18 @@ function lychrel(n) {
 }
 
 function findLongest(sentence) {
-  // your recursive solution here but i am ishtoopid when it comes to recursion
-  return sentence
-    .toLowerCase()
-    .replace(/[^a-z ]/gi, " ")
-    .split(" ")
-    .sort((a, b) => b.length - a.length)[0];
+  /* your recursive solution here.
+    but i am ishtoopid when it 
+    comes to recursion, but I can do 
+    jugaad :P
+  */
+  return sentence.split(" ").length === 1
+    ? sentence
+    : findLongest(
+        sentence
+          .toLowerCase()
+          .replace(/[^a-z ]/gi, " ")
+          .split(" ")
+          .sort((a, b) => b.length - a.length)[0]
+      );
 }
