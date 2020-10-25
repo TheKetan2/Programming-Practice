@@ -3804,3 +3804,13 @@ function findLongest(sentence) {
     .split(" ")
     .sort((a, b) => b.length - a.length)[0];
 }
+
+function getTriangleType(arr) {
+  return arr.length !== 3
+    ? "not a triangle"
+    : arr[0] == arr[1] && arr[0] == arr[2]
+    ? "equilateral"
+    : arr[0] !== arr[1] && arr[0] !== arr[2] && arr[1] !== arr[2]
+    ? "scalene"
+    : "isosceles";
+}
