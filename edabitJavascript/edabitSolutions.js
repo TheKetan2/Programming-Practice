@@ -3814,3 +3814,13 @@ function getTriangleType(arr) {
     ? "scalene"
     : "isosceles";
 }
+
+function preventDistractions(str) {
+  let words = ["anime", "meme", "vines", "roasts", "Danny DeVito"];
+  for (let word of words) {
+    if (str.includes(word)) {
+      return "NO!";
+    }
+  }
+  return "Safe watching!";
+}
