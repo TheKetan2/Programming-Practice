@@ -3824,3 +3824,58 @@ function preventDistractions(str) {
   }
   return "Safe watching!";
 }
+
+function expressFactors(n) {
+  let primeFactors = [
+    2,
+    3,
+    5,
+    7,
+    11,
+    13,
+    17,
+    19,
+    23,
+    29,
+    47,
+    67,
+    101,
+    151,
+    197,
+    997,
+    9973,
+  ];
+  let obj = {};
+  let sol = "";
+  while (!primeFactors.includes(n)) {
+    for (let prime of primeFactors) {
+      if (n % prime === 0) {
+        if (obj[prime] === undefined) {
+          obj[prime] = 1;
+        } else {
+          obj[prime] += 1;
+        }
+        n /= prime;
+        console.log(n, "prime:", prime);
+        break;
+      }
+      if (prime * 2 > n) {
+        break;
+      }
+    }
+  }
+  if (obj[n] === undefined) obj[n] = 1;
+  else obj[n] += 1;
+  for (let key of Object.keys(obj)) {
+    if (obj[key] > 1) {
+      sol += key + "^" + obj[key] + " x ";
+    } else {
+      sol += key + " x ";
+    }
+  }
+
+  return sol
+    .trim()
+    .substr(0, sol.length - 2)
+    .trim();
+}
