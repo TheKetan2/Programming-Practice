@@ -3879,3 +3879,20 @@ function expressFactors(n) {
     .substr(0, sol.length - 2)
     .trim();
 }
+
+
+function canSeeStage(seats) {
+  let sol = [];
+  for (let i = 0; i < seats[0].length; i++) {
+    let temp = [];
+    for (let j = 0; j < seats.length; j++) {
+      temp.push(seats[j][i]);
+    }
+		for(let k = 1; k < temp.length; k++){
+			if(temp[k-1]>= temp[k]){
+				return false;
+			}
+		}
+	}
+  return true;
+}
