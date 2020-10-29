@@ -3771,8 +3771,8 @@ function lychrel(n) {
 
 function findLongest(sentence) {
   /* your recursive solution here.
-    but i am ishtoopid when it 
-    comes to recursion, but I can do 
+    but i am ishtoopid when it
+    comes to recursion, but I can do
     jugaad :P
   */
   return sentence.split(" ").length === 1
@@ -3897,11 +3897,22 @@ function canSeeStage(seats) {
 }
 
 function selReverse(arr, len) {
-	if(len === 0)
-		return arr;
-	sol = [];
-	for(let i = 0; i<arr.length; i += len){
-		sol.push(arr.slice(i, i+len).reverse())
+  if (len === 0) return arr;
+  sol = [];
+  for (let i = 0; i < arr.length; i += len) {
+    sol.push(arr.slice(i, i + len).reverse());
+  }
+  return sol.flat();
+}
+
+function oddeven(arr) {
+	let odd = 0, even = 0;
+	for(let num of arr){
+		if(num %2 === 0){
+			even++;
+		}else{
+			odd++;
+		}
 	}
-	return sol.flat();
+	return odd > even;
 }
