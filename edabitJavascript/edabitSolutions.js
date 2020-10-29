@@ -3906,13 +3906,21 @@ function selReverse(arr, len) {
 }
 
 function oddeven(arr) {
-	let odd = 0, even = 0;
-	for(let num of arr){
-		if(num %2 === 0){
-			even++;
-		}else{
-			odd++;
-		}
-	}
-	return odd > even;
+  let odd = 0,
+    even = 0;
+  for (let num of arr) {
+    if (num % 2 === 0) {
+      even++;
+    } else {
+      odd++;
+    }
+  }
+  return odd > even;
+}
+
+function oddeven(arr) {
+  return (
+    arr.filter((num) => num % 2 === 0).length <
+    arr.filter((num) => num % 2 !== 0).length
+  );
 }
