@@ -3930,12 +3930,25 @@ function sortIt(arr) {
     let num1 = typeof a === "number" ? a : a[0];
     let num2 = typeof b === "number" ? b : b[0];
     return num1 - num2;
-
-    
   });
 }
 
-
 function valueInTree(tree, val) {
-	return JSON.stringify(tree).includes(val);
+  return JSON.stringify(tree).includes(val);
+}
+
+/**
+ * digitsCount
+ */
+let sol = 0;
+function digitsCount(num) {
+  // Your recursive implementation of the code here.
+  num = Math.abs(num);
+  if (num === 0) {
+    let temp = sol;
+    sol = 0;
+    return temp == 0 ? 1 : temp;
+  }
+  sol++;
+  return digitsCount(Math.floor(num / 10));
 }
