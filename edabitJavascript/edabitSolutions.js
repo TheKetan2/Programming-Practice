@@ -3952,3 +3952,7 @@ function digitsCount(num) {
   sol++;
   return digitsCount(Math.floor(num / 10));
 }
+
+function totalDistance(height, length, tower) {
+	return Number(((height+length)*tower/height).toFixed(1)); 
+}
