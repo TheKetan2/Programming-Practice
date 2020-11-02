@@ -3969,3 +3969,7 @@ function isApocalyptic(number) {
   let sol = ["Safe", "Single", "Double", "Triple"];
   return sol[len.length - 1];
 }
+
+function checkEnding(str1, str2) {
+  return [...str1].slice(-1 * str2.length).join("") === str2;
+}
