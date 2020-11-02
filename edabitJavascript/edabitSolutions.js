@@ -3954,5 +3954,18 @@ function digitsCount(num) {
 }
 
 function totalDistance(height, length, tower) {
-	return Number(((height+length)*tower/height).toFixed(1)); 
+  return Number((((height + length) * tower) / height).toFixed(1));
+}
+
+function isTriplet(n1, n2, n3) {
+  let arr = [n1, n2, n3].sort((a, b) => parseInt(a) - parseInt(b));
+  return arr[0] ** 2 + arr[1] ** 2 === arr[2] ** 2;
+}
+
+function isApocalyptic(number) {
+  let len = BigInt(2 ** number)
+    .toString()
+    .split("666");
+  let sol = ["Safe", "Single", "Double", "Triple"];
+  return sol[len.length - 1];
 }
