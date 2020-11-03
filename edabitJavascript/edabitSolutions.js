@@ -3973,3 +3973,17 @@ function isApocalyptic(number) {
 function checkEnding(str1, str2) {
   return [...str1].slice(-1 * str2.length).join("") === str2;
 }
+
+const mixMiddle = (str) => {
+  let strArr = str.split(" ").map((word) => {
+    if (word.length <= 3) return word;
+    else {
+      return (
+        word[0] +
+        [...word.substr(1, word.length - 2)].reverse().join("") +
+        word[word.length - 1]
+      );
+    }
+  });
+  return strArr;
+};
