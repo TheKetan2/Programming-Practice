@@ -1,15 +1,21 @@
-const mixMiddle = (str) => {
-  let strArr = str.split(" ").map((word) => {
-    if (word.length <= 3) return word;
-    else {
-      return (
-        word[0] +
-        [...word.substr(1, word.length - 2)].reverse().join("") +
-        word[word.length - 1]
-      );
+function rollingCipher(str, n) {
+  for (let ch of [...str]) {
+    let charCode = ch.charCodeAt() + n;
+    if (charCode > "z".charCodeAt()) {
+      charCode = charCode - "z".charCodeAt();
+      charCode += "a".charCodeAt() - 1;
+    } else if (charCode < "a".charCodeAt()) {
+      charCode = "a".charCodeAt() - charCode;
+      charCode = "z".charCodeAt() - charCode + 1;
     }
-  });
-  return strArr;
-};
+    console.log(String.fromCharCode(charCode));
+  }
+}
 
-console.log(mixMiddle("the quick brown fox jumps high"));
+rollingCipher("abcd", 3); //➞ "bcde"
+
+// rollingCipher("abcd", -1) ➞ "zabc"
+
+// rollingCipher("abcd", 3) ➞ "defg"
+
+// rollingCipher("abcd", 26) ➞ "abcd"

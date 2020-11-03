@@ -3987,3 +3987,17 @@ const mixMiddle = (str) => {
   });
   return strArr;
 };
+
+function rollingCipher(str, n) {
+  for (let ch of [...str]) {
+    let charCode = ch.charCodeAt() + n;
+    if (charCode > "z".charCodeAt()) {
+      charCode = charCode - "z".charCodeAt();
+      charCode += "a".charCodeAt() - 1;
+    } else if (charCode < "a".charCodeAt()) {
+      charCode = "a".charCodeAt() - charCode;
+      charCode = "z".charCodeAt() - charCode + 1;
+    }
+    console.log(String.fromCharCode(charCode));
+  }
+}
