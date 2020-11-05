@@ -1,7 +1,16 @@
-function pieChart(data) {
-  let totalSlices = Object.values(data).reduce((acc, curr) => acc + curr);
-  for (let key of Object.keys(data)) {
-    data[key] = parseFloat(((data[key] * 360) / totalSlices).toFixed(1));
+function minLength(arr, n) {
+  let sol = arr.length;
+  let found = false;
+  for (let i = 0; i < arr.length; i++) {
+    for (let j = i + 1; j <= arr.length; j++) {
+      let sumInRange = arr.slice(i, j).reduce((acc, curr) => acc + curr);
+      if (sumInRange > n) {
+        found = true;
+        if (arr.slice(i, j).length < sol) {
+          sol = arr.slice(i, j).length;
+        }
+      }
+    }
   }
-  return data;
+  return found ? sol : -1;
 }
