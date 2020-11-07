@@ -1,31 +1,25 @@
-let segment = [
-  "",
-  "want",
-  "to",
-  "capitalize",
-  "the",
-  "second",
-  "word",
-  "in",
-  "t",
-  "array",
-];
-
-let capSecond = segment.map((word, index) =>
-  index % 2 !== 0 ? word[0].toUpperCase() + word.substr(1) : word
-);
-
-let sentense = segment.join(" ").trim();
-sentense = sentense[0].toUpperCase() + sentense.substr(1);
-
-console.log(sentense.split(" "));
 
 /**
  <!-- begin snippet: js hide: false console: true babel: false -->
 
 <!-- language: lang-js -->
 
+var target = 13;
+var arr = [{ num: 1 }, { num: 10 }, { num: 20 }];
 
+let sol = null;
+let lowestDiff = 999999;
+
+for (let element of arr) {
+  let diff = Math.abs(13 - element["num"]);
+  if (diff < lowestDiff) {
+    lowestDiff = diff;
+    sol = null;
+    sol = element;
+  }
+}
+
+console.log(sol);
 
 <!-- end snippet -->
 

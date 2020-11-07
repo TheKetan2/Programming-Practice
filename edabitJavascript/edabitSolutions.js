@@ -4037,3 +4037,9 @@ function tempConversion(celsius) {
         Number((celsius + 273.15).toFixed(2)),
       ];
 }
+
+function numbersSum(arr) {
+  return arr
+    .filter((num) => typeof num === "number")
+    .reduce((acc, curr) => acc + curr, 0);
+}
