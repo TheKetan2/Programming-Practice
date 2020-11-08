@@ -4059,3 +4059,12 @@ function word(s) {
   };
   return nums[s];
 }
+
+function checkSum(arr, n) {
+	for(let num of arr){
+		if(arr.includes((n - num))){
+			return true;
+		}
+	}
+	return false;
+}
