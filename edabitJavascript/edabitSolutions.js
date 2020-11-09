@@ -4061,10 +4061,16 @@ function word(s) {
 }
 
 function checkSum(arr, n) {
-	for(let num of arr){
-		if(arr.includes((n - num))){
-			return true;
-		}
-	}
-	return false;
+  for (let num of arr) {
+    if (arr.includes(n - num)) {
+      return true;
+    }
+  }
+  return false;
+}
+
+function counterpartCharCode(char) {
+  return char === char.toUpperCase()
+    ? char.toLowerCase().charCodeAt()
+    : char.toUpperCase().charCodeAt();
 }
