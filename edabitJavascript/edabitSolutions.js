@@ -4074,3 +4074,11 @@ function counterpartCharCode(char) {
     ? char.toLowerCase().charCodeAt()
     : char.toUpperCase().charCodeAt();
 }
+
+function validDivision(d) {
+	let val = eval(d)
+	if(isNaN(val))
+		return "invalid";
+	console.log(val)
+	return  val !== Infinity? val === Math.round(val): "invalid";
+}
