@@ -4076,9 +4076,16 @@ function counterpartCharCode(char) {
 }
 
 function validDivision(d) {
-	let val = eval(d)
-	if(isNaN(val))
-		return "invalid";
-	console.log(val)
-	return  val !== Infinity? val === Math.round(val): "invalid";
+  let val = eval(d);
+  if (isNaN(val)) return "invalid";
+  console.log(val);
+  return val !== Infinity ? val === Math.round(val) : "invalid";
+}
+
+function totalDistance(fuel, fuelUsage, passengers, airCon) {
+  fuelUsage += fuelUsage * (passengers * 0.05);
+  if (airCon) {
+    fuelUsage += fuelUsage * 0.1;
+  }
+  return Number(((fuel / fuelUsage) * 100).toFixed(1));
 }
