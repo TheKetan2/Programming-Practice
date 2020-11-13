@@ -5,6 +5,4 @@ def is_orthogonal(first, second):
 		add += a[0]*a[1]
 	return add == 0
 	
-		
-
-	
+	# return not sum(x*y for x,y zip(first, second))
