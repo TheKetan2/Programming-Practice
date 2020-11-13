@@ -4089,3 +4089,12 @@ function totalDistance(fuel, fuelUsage, passengers, airCon) {
   }
   return Number(((fuel / fuelUsage) * 100).toFixed(1));
 }
+
+function stmid(str) {
+  return str
+    .split(" ")
+    .map((word) =>
+      word.length % 2 === 0 ? word[0] : word[Math.floor(word.length / 2)]
+    )
+    .join("");
+}
