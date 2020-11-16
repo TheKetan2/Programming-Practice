@@ -6,3 +6,11 @@ def is_orthogonal(first, second):
 	return add == 0
 	
 	# return not sum(x*y for x,y zip(first, second))
+
+def double_char(txt):
+	sol = ""
+	for ch in list(txt):
+		sol += (ch+ch)
+	return sol
+	
+	
