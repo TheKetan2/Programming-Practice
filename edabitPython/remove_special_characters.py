@@ -1,3 +1,4 @@
+#https://edabit.com/challenge/kgMEhkNNjRmBTAAPz
 def remove_special_characters(txt):
 	sol = ""
 	for ch in list(txt):
