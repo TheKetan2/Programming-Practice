@@ -1,12 +1,13 @@
-def operation(num1, num2):
-	if abs(num1 - num2) == 24:
-		return "subtracted"
-	elif num1 + num2 == 24:
-		return "added"
-	elif num1/num2 == 24 or num2/num1==24:
-		return "divided"
-	elif num1*num2 == 24:
-		return "multiplied"
-	else:
-		return None
-	#"added", "subtracted", "divided", "multiplied" or None.
+def operation(a, b, op):
+	if op == "add":
+		return str(int(a)+int(b))
+	elif op == "subtract":
+		return str(int(a)-int(b))
+	elif op == "multiply":
+		return str(int(a)*int(b))
+	elif op == "divide":
+		if b == "0":
+			return "undefined"
+		else:
+			return str(int(a)//int(b))
+	
