@@ -32,4 +32,4 @@ const vaccumeCleanerRoute=(str)=>{
   return l==0 && r==0 && u==0 && d==0;
 }
 
-vaccumeCleanerRoute("RUULLDRD")
+vaccumeCleanerRoute("RUULLDRD");
