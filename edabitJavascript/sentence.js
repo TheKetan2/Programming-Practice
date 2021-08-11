@@ -11,6 +11,6 @@ function sentence(words) {
             sol += isVowel ? `, an ${item}` : `, a ${item}`
         }
     })
-    console.log(sol)
+  //  console.log(sol)
     return sol;
 }
