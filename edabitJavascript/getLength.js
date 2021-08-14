@@ -1,3 +1,3 @@
 function getLength(arr) {
-	return arr.flat(Infinity).length
+  return arr.flat(Infinity).length;
 }

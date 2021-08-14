@@ -95,7 +95,6 @@ class Followers extends React.Component {
           following: array,
           followingUsers: tempFollowing,
         });
-      
       }
     } catch (error) {
       this.setState({ error: true });

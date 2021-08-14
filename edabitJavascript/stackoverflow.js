@@ -51,4 +51,3 @@ const getEmailMembersFromList = async (listID, offset, count) => {
   result = [...result, ...emails];
   console.log(result);
 };
-

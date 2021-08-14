@@ -1,3 +1,3 @@
-function perimeter(l, num){
-
-	return l=="c"? num*6.28: num*4}
+function perimeter(l, num) {
+  return l == "c" ? num * 6.28 : num * 4;
+}
