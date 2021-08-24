@@ -1,6 +1,5 @@
 function pigLatinSentence(sentence) {
-  let arr = sentence.split(" ");
-  let sol = arr.map((word) => {
+  let sol = sentence.split(" ").map((word) => {
     if ("aeiouAEIOU".includes(word[0])) {
       return word + "way";
     } else {
