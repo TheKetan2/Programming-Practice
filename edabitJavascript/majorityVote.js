@@ -14,7 +14,6 @@ function majorityVote(arr) {
       obj[vote] = 1;
     }
   }
-  console.log(obj);
   let sol = Object.entries(obj).sort((a, b) => b[1] - a[1]);
   return sol[0][1] == sol[sol.length - 1][1] ? null : sol[0][0];
 }
