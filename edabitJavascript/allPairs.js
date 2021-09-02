@@ -4,6 +4,7 @@ function allPairs(arr, target) {
     for (let j = i + 1; j < arr.length; j++) {
       if (arr[i] + arr[j] === target) {
         sol.push([Math.min(arr[i], arr[j]), Math.max(arr[i], arr[j])]);
+        break;
       }
     }
   }
