@@ -11,3 +11,13 @@ function allPairs(arr, target) {
   sol.sort((a, b) => a[0] - b[0]);
   return sol;
 }
+
+let age = 20;
+undefined;
+let ageArr = Array.from({ length: 60 }, () => {
+  let obj = { age: age };
+  age++;
+  return obj;
+});
+
+console.log(ageArr);
