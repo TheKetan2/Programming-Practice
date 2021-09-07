@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 function sortContacts(names, sort) {
   if (!names) {
     return [];
@@ -14,7 +13,6 @@ function sortContacts(names, sort) {
   }
   return names;
 }
-=======
 function sortContacts(names, sort) {
   if (!names) {
     return [];
@@ -30,4 +28,4 @@ function sortContacts(names, sort) {
   }
   return names;
 }
->>>>>>> 6eab03cfe5c5badad18cff0b17a831df880c13ce
+//6eab03cfe5c5badad18cff0b17a831df880c13ce
