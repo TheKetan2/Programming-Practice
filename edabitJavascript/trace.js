@@ -5,3 +5,7 @@ function trace(arr) {
   }
   return sum;
 }
+
+function trace2(arr) {
+  return arr.reduce((acc, curr, i) => (acc += curr[i]), 0);
+}
