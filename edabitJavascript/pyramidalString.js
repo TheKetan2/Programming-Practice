@@ -1,7 +1,7 @@
 function pyramidalString(string, type) {
   let sol = [];
   let str = string.split("");
-  sol = type == "REG" ? reg(str) : rev(str.reverse());
+  sol = helper(type === "REG" ? str : str.reverse(), type);
   if (sol.length >= 2) {
     if (type == "REG") {
       return sol[sol.length - 1].length > sol[sol.length - 2].length
@@ -13,7 +13,7 @@ function pyramidalString(string, type) {
   }
   return sol;
 }
-const rev = (str) => {
+const helper = (str, type) => {
   let j = 1;
   let res = [];
   while (str.length) {
@@ -21,25 +21,10 @@ const rev = (str) => {
     for (let i = 0; i < j; i++) {
       temp.push(str.shift());
     }
-    temp = temp.reverse().filter((t) => t);
+    temp =
+      type === "REG" ? temp.filter((t) => t) : temp.reverse().filter((t) => t);
     j++;
     res.push(temp.join(" "));
   }
-
-  return res.reverse();
-};
-
-const reg = (str) => {
-  let j = 1;
-  let res = [];
-  while (str.length) {
-    let temp = [];
-    for (let i = 0; i < j; i++) {
-      temp.push(str.shift());
-      temp = temp.filter((t) => t);
-    }
-    j++;
-    res.push(temp.join(" "));
-  }
-  return res;
+  return type === "REG" ? res : res.reverse();
 };
