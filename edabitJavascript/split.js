@@ -7,7 +7,7 @@ function split(str) {
     if (str[i] == ")" && b[len] == "(") {
       b.pop();
       if (b.length == 0) {
-        console.log(i);
+        // console.log(i);
         index.push(i);
       }
     } else {
