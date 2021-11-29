@@ -57,23 +57,3 @@ function secretPassword(message) {
     return "BANG! BANG! BANG!";
   }
 }
-/**
- * 
- * Step 2: Divide the string into three equal parts of three characters each:
-
-1 - mub
-2 - ash
-3 - irh
-Step 3: Convert the first and third letter to the corresponding number, according to the English alphabets (ex. a = 1, b = 2, c = 3 ... z = 26, etc).
-
-mub = 13u2
-Step 4: Reverse the fourth, fifth, and sixth letters:
-
-ash = hsa
-Step 5: Replace seventh, eighth, and ninth letter with next letter (z will be substituted with a).
-
-irh = jsi
-Step 6: Return the string in the following order: "Part_2+Part_3+Part_1"
-
-"hsajsi13u2"
- */
