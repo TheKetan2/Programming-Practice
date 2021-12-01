@@ -1,6 +1,3 @@
-// Input will be an array of objects of the form:
-// {operation: "insert", text: string, position: number}
-// {operation: "delete", from: number, length: number}
 function edit(operations) {
   let sol = "";
   for (let obj of operations) {
