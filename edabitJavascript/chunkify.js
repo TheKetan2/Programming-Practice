@@ -11,3 +11,12 @@ function chunkify(arr, size) {
   }
   return sol;
 }
+
+
+function chunkify(arr, size) {
+  let sol = [];
+  while (arr.length) {
+    sol.push(arr.splice(0,size));
+  }
+  return sol;
+}
