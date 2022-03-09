@@ -1,2 +1,3 @@
 To do: 
 1. finish Flutter Apprentice book.
+2. revise max's flutter course.
