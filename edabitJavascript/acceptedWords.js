@@ -1,3 +1,3 @@
 function acceptedWords(arr) {
-  return arr.filter((word) => word[0] !== "C");
+  return arr.filter((w) => w[0] !== "C");
 }
