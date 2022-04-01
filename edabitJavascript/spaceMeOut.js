@@ -1,3 +1,3 @@
 function spaceMeOut(str) {
-	return str.split("").join(" ").trim();
+  return str.split("").join(" ").trim();
 }
