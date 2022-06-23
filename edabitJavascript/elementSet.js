@@ -1,3 +1,3 @@
 function elementSet(s) {
-	return Array.from(s)[0];
+  return Array.from(s)[0];
 }
