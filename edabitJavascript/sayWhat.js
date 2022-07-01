@@ -1,3 +1,3 @@
 function sayWhat(obj) {
-	return Object.values(obj).join(" ")+" "+obj["2"];
+  return Object.values(obj).join(" ") + " " + obj["2"];
 }
