@@ -1,3 +1,3 @@
 function toBinary(num) {
-  return parseInt(num).toString(2);
+  return num.toString(2);
 }
