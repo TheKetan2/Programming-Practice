@@ -1,3 +1,3 @@
 function detectWord(str) {
-	return str.replace(/[A-Z]/g,"");
+  return str.replace(/[A-Z]/g, "");
 }
