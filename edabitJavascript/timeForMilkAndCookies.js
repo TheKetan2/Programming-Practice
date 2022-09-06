@@ -1,3 +1,3 @@
 function timeForMilkAndCookies(date) {
-	return date.getDate()==24 && date.getMonth()==11;
+  return date.getDate() == 24 && date.getMonth() == 11;
 }
